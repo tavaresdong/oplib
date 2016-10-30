@@ -1,24 +1,4 @@
-A sample project illustrating how to perform unit testing with GoogleTest and CMake
+[![Builld Status](https://travis-ci.org/tavaresdong/oplib.png)](https://travis-ci.org/tavaresdong/oplib).
 
-##Building
 
-~~~
-mkdir build
-cd build
-cmake ..
-make
-~~~
-
-##Running
-
-~~~
-cd build && make test
-~~~
-
-or
-
-~~~
-build/test/testfoo/testfoo
-~~~
-
-Refer to [this blog post](http://kaizou.org/2014/11/gtest-cmake/) for a detailed explaination of how it works.
+# oplib
