@@ -3,7 +3,7 @@ file(GLOB SRCS *.cpp)
 ADD_EXECUTABLE(testfoo ${SRCS})
 
 TARGET_LINK_LIBRARIES(testfoo
-    libalgo
+    libop
     libgtest
     libgmock
 )
