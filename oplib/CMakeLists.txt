@@ -2,7 +2,10 @@ set(libop_SRCS
     foo.h
     foo.cpp
     ibar.h
-    op_alloc.h
+    alloc.H
+    traits.H
+    memutil.H
+    vector.H
 )
 
 # Declare the library

@@ -1,4 +1,3 @@
-#pragma once
 #ifndef OP_ALLOC_H_
 #define OP_ALLOC_H_
 
