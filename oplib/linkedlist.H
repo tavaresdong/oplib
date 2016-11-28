@@ -83,8 +83,8 @@ namespace oplib
             oplib::_construct(&np->data, x);
             return np;
         }
-        void destroy_node(node_ptr *np) { oplib::_destroy(&np->data); }
-        void put_node(node_ptr *np) { allocator.deallocate(np); }
+        void destroy_node(node_ptr np) { oplib::_destroy(&np->data); }
+        void put_node(node_ptr np) { allocator.deallocate(np, 1); }
         
         void empty_init()
         {
@@ -111,7 +111,7 @@ namespace oplib
         iterator insert(iterator position, const value_type& x);
         void push_back(const value_type& x) { insert(end(), x); }
         void push_front(const value_type& x) { insert(begin(), x); }
-        void erase(iterator position);
+        iterator erase(iterator position);
     };
 
     #include "linkedlistT.C"
