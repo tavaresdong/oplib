@@ -20,6 +20,8 @@ namespace oplib
         typedef value_type& reference;
         typedef size_t size_type;
         typedef ptrdiff_t difference_type;
+        typedef const value_type& const_reference;
+        typedef const value_type* const_iterator;
 
     protected:
         Alloc allocator;
@@ -36,7 +38,7 @@ namespace oplib
         iterator allocate_and_fill(size_type n, const T& x)
         {
             iterator result = allocator.allocate(n);
-            uninitialized_fill_n(result, n, x);
+            oplib::uninitialized_fill_n(result, n, x);
             return result;
         }
 
@@ -50,11 +52,13 @@ namespace oplib
         void insert_aux(iterator position, const value_type& x);
 
     public:
-        iterator begin() { return start;  }
-        iterator end() { return finish; }
-        size_type size() { return size_type(end() - begin()); }
+        iterator begin() const { return start;  }
+        iterator end() const { return finish; }
+        const_iterator cbegin() const { return start; }
+        const_iterator cend() const { return finish; }
+        size_type size() const { return size_type(cend() - cbegin()); }
         size_type capacity() { return size_type(eos - begin()); }
-        bool empty() const { return begin() == end(); }
+        bool empty() const { return start == finish; }
         reference operator[] (size_type n) { return *(begin() + n); }
 
         // ctor and dtors

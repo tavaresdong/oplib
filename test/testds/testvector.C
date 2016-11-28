@@ -1,6 +1,8 @@
 #include "alloc.H"
 #include "testvector.H"
 
+#include <string>
+
 vectorTest::vectorTest() {}
 
 vectorTest::~vectorTest() {}
@@ -11,7 +13,68 @@ void vectorTest::TearDown() {}
 
 TEST_F(vectorTest, basic_operation_test) 
 {
-    oplib::Vector<int> v(5, 3);
+    {
+        oplib::Vector<int> v(5, 3);
+        ASSERT_EQ(v.size(), (size_t) 5);
+        v.push_back(42);
+        ASSERT_EQ(v.size(), (size_t) 6);
+        ASSERT_EQ(v.back(), 42);
+        ASSERT_EQ(v.front(), 3);
+        v.pop_back();
+        ASSERT_EQ(v.size(), (size_t) 5);
+    }
+
+    {
+        oplib::Vector<int> v(10);
+        ASSERT_EQ(v.size(), (size_t) 10);
+        ASSERT_EQ(v.front(), 0);
+        ASSERT_FALSE(v.empty());
+    }
+}
+
+TEST_F(vectorTest, copy_assign_test)
+{
+    oplib::Vector<std::string> v(5, "good");
+    oplib::Vector<std::string> vc(v);
+    ASSERT_EQ(vc.size(), (size_t) 5);
+    ASSERT_EQ(vc.back(), "good");
+    oplib::Vector<std::string> vassign;
+    vassign = v;
+    ASSERT_EQ(vassign.size(), (size_t) 5);
+    ASSERT_EQ(vassign.back(), "good");
+}
+
+TEST_F(vectorTest, element_operation)
+{
+    oplib::Vector<int> v;
+    v.push_back(0);
+    v.push_back(1);
+    v.push_back(2);
+    v.push_back(3);
+    v.push_back(4); 
+    v.push_back(5);
+    int i = 0;
+    for (auto iter = v.begin(); iter != v.end(); iter++, i++)
+    {
+        ASSERT_EQ(*iter, i);
+    }
+    ASSERT_EQ(v[1], 1);
+    v[1] = 5;
+    ASSERT_EQ(v[1], 5);
+    auto iter = v.begin() + 3;
+    v.erase(iter);
+    ASSERT_EQ(v[3], 4);
     ASSERT_EQ(v.size(), (size_t) 5);
+    v.resize(4, 1);
+    ASSERT_EQ(v.size(), (size_t) 4);
+    v.resize(6, 1);
+    ASSERT_EQ(v.size(), (size_t) 6);
+    ASSERT_EQ(v[5], 1);
+    v.insert(v.begin(), 2, 10);
+    ASSERT_EQ(v.size(), (size_t) 8);
+    ASSERT_EQ(v[0], v[1]);
+    ASSERT_EQ(v[0], 10);
+    v.clear();
+    ASSERT_EQ(v.size(), (size_t) 0);
 }
 

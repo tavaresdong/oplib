@@ -60,7 +60,7 @@ void Vector<T, Alloc>::insert(iterator position, size_type n, const T& x)
             }
             else
             {
-                _uninitialized_fill_n(finish, n - elems_after_pos, x_copy);
+                oplib::uninitialized_fill_n(finish, n - elems_after_pos, x_copy);
                 finish += (n - elems_after_pos);
                 std::uninitialized_copy(position, old_finish, position);
                 finish += elems_after_pos;
@@ -75,7 +75,7 @@ void Vector<T, Alloc>::insert(iterator position, size_type n, const T& x)
             iterator new_finish = new_start;
             try {
                 new_finish = std::uninitialized_copy(start, position, new_start);
-                new_finish = _uninitialized_fill_n(new_finish, n, x);
+                new_finish = oplib::uninitialized_fill_n(new_finish, n, x);
                 new_finish = std::uninitialized_copy(position, finish, new_finish);
             }
             catch (...)
@@ -136,4 +136,5 @@ Vector<T, Alloc>& Vector<T, Alloc>::operator = (const Vector<T, Alloc>& rhs)
         finish = new_finish;
         eos = start + len;
     }
+    return *this;
 }
