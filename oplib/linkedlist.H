@@ -76,11 +76,19 @@ namespace oplib
         NodeAlloc allocator;
         node_ptr sentinel;
     
-        node_ptr create_node() { return allocator.allocate(1); }
+        node_ptr get_node() { return allocator.allocate(1); }
+        node_ptr create_node(const value_type& x)
+        {
+            node_ptr np = get_node();
+            oplib::_construct(&np->data, x);
+            return np;
+        }
+        void destroy_node(node_ptr *np) { oplib::_destroy(&np->data); }
+        void put_node(node_ptr *np) { allocator.deallocate(np); }
         
         void empty_init()
         {
-            sentinel = create_node();
+            sentinel = get_node();
             sentinel->next = sentinel;
             sentinel->prev = sentinel;
         }
@@ -102,6 +110,8 @@ namespace oplib
         // Memory manipulation
         iterator insert(iterator position, const value_type& x);
         void push_back(const value_type& x) { insert(end(), x); }
+        void push_front(const value_type& x) { insert(begin(), x); }
+        void erase(iterator position);
     };
 
     #include "linkedlistT.C"

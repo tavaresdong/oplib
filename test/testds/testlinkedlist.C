@@ -56,5 +56,9 @@ TEST_F(linkedlistTest, basic_operation)
 
     ASSERT_EQ(v.front(), 0);
     ASSERT_EQ(v.back(), 5);
+
+    v.push_front(-1);
+    ASSERT_EQ(v.size(), (size_t) 7);
+    ASSERT_EQ(v.front(), -1);
 }
 
