@@ -32,3 +32,60 @@ Linkedlist<T, Alloc>::clear()
         iter = erase(iter);
     }
 }
+
+/**
+ * Remove all elements with value x
+ */
+template <typename T, typename Alloc>
+void
+Linkedlist<T, Alloc>::remove(const value_type& x)
+{
+    for (auto iter = begin(); iter.node != sentinel;)
+    {
+        if (*iter == x)
+        {
+            iter = erase(iter);
+        }
+        else
+            ++iter;
+    }
+}
+
+template <typename T, typename Alloc>
+template <typename UnaryPredicate>
+void
+Linkedlist<T, Alloc>::remove_if(UnaryPredicate up)
+{
+    for (auto iter = begin(); iter.node != sentinel;)
+    {
+        if (up(*iter))
+        {
+            iter = erase(iter);
+        }
+        else
+            ++iter;
+   } 
+}
+
+/**
+ * Remove duplicated adjacent elements
+ */
+template <typename T, typename Alloc>
+void
+Linkedlist<T, Alloc>::unique()
+{
+    auto iter = begin();
+    auto prev_value = *iter;
+    for (++iter; iter.node != sentinel; )
+    {
+        if (*iter == prev_value)
+        {
+            iter = erase(iter);
+        }
+        else
+        {
+            prev_value = *iter;
+            ++iter;
+        }
+    }
+}

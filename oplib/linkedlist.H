@@ -115,6 +115,13 @@ namespace oplib
         void pop_front() { erase(begin()); }
         void pop_back() { erase(--end()); }
         void clear();
+        void remove(const value_type& x);
+
+        template <typename UnaryPredicate>
+        void remove_if(UnaryPredicate up);
+        void unique();
+
+        // TODO, more complicated ops: merge sort splice
     };
 
     #include "linkedlistT.C"

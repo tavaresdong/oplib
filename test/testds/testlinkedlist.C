@@ -90,5 +90,26 @@ TEST_F(linkedlistTest, element_manipulation)
 
     v.clear();
     ASSERT_TRUE(v.empty());
+
+    v.push_back(1);
+    v.push_back(2);
+    v.push_back(3);
+    v.push_back(2);
+    v.remove(2);
+    ASSERT_EQ(v.size(), (size_t) 2);
+    
+    v.push_back(2);
+    v.push_back(3);
+    v.remove_if([](int a){ return a == 3; });
+    ASSERT_EQ(v.size(), (size_t) 2);
+    
+    v.push_front(1);
+    v.push_back(1);
+    v.push_back(1);
+    v.push_back(1);
+    v.unique();
+    ASSERT_EQ(v.size(), (size_t) 3);
+    ASSERT_EQ(v.front(), 1);
+    ASSERT_EQ(v.back(), 1);
 }
 
