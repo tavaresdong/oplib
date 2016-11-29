@@ -93,6 +93,8 @@ namespace oplib
             sentinel->prev = sentinel;
         }
 
+        void transfer(iterator position, iterator first, iterator last);
+
     public:
         // Constructors Destructors
         Linkedlist() { empty_init(); }
@@ -122,6 +124,7 @@ namespace oplib
         void unique();
 
         // TODO, more complicated ops: merge sort splice
+        void splice(iterator position, Linkedlist<T, Alloc>& x);
     };
 
     #include "linkedlistT.C"

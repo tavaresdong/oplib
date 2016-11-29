@@ -113,3 +113,25 @@ TEST_F(linkedlistTest, element_manipulation)
     ASSERT_EQ(v.back(), 1);
 }
 
+TEST_F(linkedlistTest, complex_operation)
+{
+    oplib::Linkedlist<int> v;
+    ASSERT_TRUE(v.empty());
+    v.push_back(1);
+    v.push_back(4);
+    auto iter = v.begin();
+    ++iter;
+    
+    oplib::Linkedlist<int> v2;
+    v2.push_back(2);
+    v2.push_back(3);
+    v.splice(iter, v2);
+    ASSERT_EQ(v.size(), (size_t) 4);
+    
+    int i = 1;
+    for (auto val : v)
+    {
+        ASSERT_EQ(val, i);
+        ++i;
+    }
+}

@@ -96,3 +96,23 @@ Linkedlist<T, Alloc>::unique()
         }
     }
 }
+
+template <typename T, typename Alloc>
+void
+Linkedlist<T, Alloc>::transfer(iterator position, iterator first, iterator last)
+{
+    ((node_ptr) last.node->prev)->next = position.node;
+    ((node_ptr) first.node->prev)->next = last.node;
+    ((node_ptr) position.node->prev)->next = first.node;
+    node_ptr prev_pos = (node_ptr) position.node->prev;
+    position.node->prev = last.node->prev;
+    last.node->prev = first.node->prev;
+    first.node->prev = prev_pos;
+}
+
+template <typename T, typename Alloc>
+void
+Linkedlist<T, Alloc>::splice(iterator position, Linkedlist<T, Alloc>& x)
+{
+    transfer(position, x.begin(), x.end());
+}
