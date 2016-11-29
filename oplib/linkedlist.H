@@ -107,11 +107,14 @@ namespace oplib
         reference front() { return *(begin()); }
         reference back() { return *(--end()); }
 
-        // Memory manipulation
+        // Element manipulation
         iterator insert(iterator position, const value_type& x);
         void push_back(const value_type& x) { insert(end(), x); }
         void push_front(const value_type& x) { insert(begin(), x); }
         iterator erase(iterator position);
+        void pop_front() { erase(begin()); }
+        void pop_back() { erase(--end()); }
+        void clear();
     };
 
     #include "linkedlistT.C"

@@ -77,5 +77,18 @@ TEST_F(linkedlistTest, element_manipulation)
     ASSERT_EQ(*iter, 2);
     --iter;
     ASSERT_EQ(*iter, 0);
+
+    v.pop_back();
+    ASSERT_EQ(v.back(), 2);
+    
+    v.pop_front();
+    ASSERT_EQ(v.front(), 2);
+
+    v.push_front(3);
+    v.push_back(3);
+    ASSERT_EQ(v.size(), (size_t) 3);
+
+    v.clear();
+    ASSERT_TRUE(v.empty());
 }
 

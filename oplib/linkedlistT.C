@@ -22,3 +22,13 @@ Linkedlist<T, Alloc>::erase(iterator position)
     put_node(position.node);
     return prev;
 }
+
+template <typename T, typename Alloc>
+void
+Linkedlist<T, Alloc>::clear()
+{
+    for (auto iter = begin(); iter.node != sentinel;)
+    {
+        iter = erase(iter);
+    }
+}
