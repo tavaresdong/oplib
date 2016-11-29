@@ -96,7 +96,7 @@ namespace oplib
     public:
         // Constructors Destructors
         Linkedlist() { empty_init(); }
-        ~Linkedlist() { /* TODO  */}
+        ~Linkedlist();
         iterator begin() const { return (node_ptr)((*sentinel).next); }
         iterator end() const { return sentinel; }
         bool empty() const { return sentinel->next == sentinel; }

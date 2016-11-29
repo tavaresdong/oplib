@@ -1,3 +1,10 @@
+template <typename T, typename Alloc>
+Linkedlist<T, Alloc>::~Linkedlist()
+{
+    clear();
+    destroy_node(sentinel);
+    put_node(sentinel);
+}
 
 template <typename T, typename Alloc>
 typename Linkedlist<T, Alloc>::iterator
