@@ -37,7 +37,7 @@ void linkedlistTest::SetUp() {}
 
 void linkedlistTest::TearDown() {}
 
-TEST_F(linkedlistTest, basic_operation)
+TEST_F(linkedlistTest, test_basic_operation)
 {
     oplib::Linkedlist<int> v;
     ASSERT_TRUE(v.empty());
@@ -65,7 +65,7 @@ TEST_F(linkedlistTest, basic_operation)
     ASSERT_EQ(v.front(), -1);
 }
 
-TEST_F(linkedlistTest, element_manipulation)
+TEST_F(linkedlistTest, test_element_manipulation)
 {
     oplib::Linkedlist<int> v;
     ASSERT_TRUE(v.empty());
@@ -116,7 +116,7 @@ TEST_F(linkedlistTest, element_manipulation)
     ASSERT_EQ(v.back(), 1);
 }
 
-TEST_F(linkedlistTest, complex_operation)
+TEST_F(linkedlistTest, test_complex_operation)
 {
     oplib::Linkedlist<int> v;
     ASSERT_TRUE(v.empty());
@@ -145,7 +145,7 @@ TEST_F(linkedlistTest, complex_operation)
     }
 }
 
-TEST_F(linkedlistTest, merge_and_sort)
+TEST_F(linkedlistTest, test_merge_and_sort)
 {
     oplib::Linkedlist<int> l;
     l.push_back(1); 

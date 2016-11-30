@@ -126,9 +126,12 @@ template <typename T, template <typename> typename Alloc>
 void
 Linkedlist<T, Alloc>::splice(iterator position, Linkedlist<T, Alloc>& nomatter, iterator i)
 {
-    auto next = ++i;
+    auto next = i;
+    ++next;
     if (position == next || position == i)
+    {
         return;
+    }
     transfer(position, i, next);
 } 
 
@@ -197,12 +200,10 @@ Linkedlist<T, Alloc>::sort()
 
     Linkedlist<T, Alloc> leftlist;
     Linkedlist<T, Alloc> rightlist;
-    
     value_type pivot = front();
-    pop_front();
     
     // split this list to two smaller lists, and sort them recursively
-    for (auto iter = begin(); iter != end();)
+    for (auto iter = ++begin(); iter != end();)
     {
         auto prev = iter;
         ++iter;
@@ -218,8 +219,6 @@ Linkedlist<T, Alloc>::sort()
 
     leftlist.sort();
     rightlist.sort();
-
-    push_front(pivot);
     merge(leftlist);
     splice(end(), rightlist);
 }
