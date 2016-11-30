@@ -134,4 +134,12 @@ TEST_F(linkedlistTest, complex_operation)
         ASSERT_EQ(val, i);
         ++i;
     }
+
+    v.reverse();
+    i = 4;
+    for (auto val : v)
+    {
+        ASSERT_EQ(val, i);
+        --i;
+    }
 }

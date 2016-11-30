@@ -125,6 +125,7 @@ namespace oplib
 
         // TODO, more complicated ops: merge sort splice
         void splice(iterator position, Linkedlist<T, Alloc>& x);
+        void reverse();
     };
 
     #include "linkedlistT.C"

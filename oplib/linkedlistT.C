@@ -115,4 +115,23 @@ void
 Linkedlist<T, Alloc>::splice(iterator position, Linkedlist<T, Alloc>& x)
 {
     transfer(position, x.begin(), x.end());
+} 
+
+template <typename T, typename Alloc>
+void
+Linkedlist<T, Alloc>::reverse()
+{
+    if (sentinel->next == sentinel || ((node_ptr) sentinel->next)->next == sentinel)
+    {
+        return;
+    }
+    else
+    {
+        iterator first = begin();
+        while (first.node->next != sentinel)
+        {
+            iterator last = --end();
+            transfer(first, last, end());
+        }
+    }
 }
