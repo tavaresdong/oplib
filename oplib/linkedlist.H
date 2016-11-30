@@ -5,10 +5,10 @@
 #include "memutil.H"
 #include <memory>
 
-#include <iostream> // For debugging
-
 #include <algorithm>
 #include <utility>
+
+#include <iostream>
 
 // Use std::distance method, and bidirectional_iterator_tag TODO, make my own distance
 #include <iterator>
@@ -59,7 +59,7 @@ namespace oplib
     };
     
 
-    template <typename T, typename Alloc = opallocator<_list_node<T>> >
+    template <typename T, template <typename> typename Alloc = opallocator >
     class Linkedlist
     {
     public:
@@ -74,8 +74,9 @@ namespace oplib
     protected:
         using list_node = _list_node<T>;
         using node_ptr = list_node*;
+        using NodeAlloc = Alloc<list_node>;
 
-        Alloc allocator;
+        NodeAlloc allocator;
         node_ptr sentinel;
     
         node_ptr get_node() { return allocator.allocate(1); }
