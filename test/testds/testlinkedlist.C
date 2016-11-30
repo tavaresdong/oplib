@@ -2,6 +2,9 @@
 #include "gtest/gtest.h"
 #include "linkedlist.H"
 #include <string>
+#include <cstdlib>
+#include <ctime>
+#include <climits>
 
 // The fixture for testing class Foo.
 class linkedlistTest : public ::testing::Test {
@@ -118,14 +121,12 @@ TEST_F(linkedlistTest, complex_operation)
     oplib::Linkedlist<int> v;
     ASSERT_TRUE(v.empty());
     v.push_back(1);
-    v.push_back(4);
-    auto iter = v.begin();
-    ++iter;
+    v.push_back(2);
     
     oplib::Linkedlist<int> v2;
-    v2.push_back(2);
     v2.push_back(3);
-    v.splice(iter, v2);
+    v2.push_back(4);
+    v.splice(v.end(), v2);
     ASSERT_EQ(v.size(), (size_t) 4);
     
     int i = 1;
@@ -141,5 +142,41 @@ TEST_F(linkedlistTest, complex_operation)
     {
         ASSERT_EQ(val, i);
         --i;
+    }
+}
+
+TEST_F(linkedlistTest, merge_and_sort)
+{
+    oplib::Linkedlist<int> l;
+    l.push_back(1); 
+    l.push_back(3);
+    l.push_back(7);
+    oplib::Linkedlist<int> l2;
+    l2.push_back(2);
+    l2.push_back(4);
+    l2.push_back(5);
+    l2.push_back(6);
+    l2.push_back(8);
+    l.merge(l2);
+    ASSERT_TRUE(l2.empty());
+
+    int i = 1;
+    for (auto val : l)
+    {
+        ASSERT_EQ(val, i++);
+    }
+
+    oplib::Linkedlist<int> tosort;   
+    srand(std::time(0));
+    for (auto i = 0; i < 100; i++)
+    {
+        tosort.push_back(std::rand() % 100);
+    }
+    tosort.sort();
+    int pre = INT_MIN;
+    for (auto val : tosort)
+    {
+        ASSERT_TRUE(pre <= val);
+        pre = val;
     }
 }

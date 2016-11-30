@@ -3,6 +3,9 @@
 
 #include "alloc.H"
 #include "memutil.H"
+#include <memory>
+
+#include <iostream> // For debugging
 
 #include <algorithm>
 #include <utility>
@@ -56,7 +59,7 @@ namespace oplib
     };
     
 
-    template <typename T, typename Alloc = opallocator<T> >
+    template <typename T, typename Alloc = opallocator<_list_node<T>> >
     class Linkedlist
     {
     public:
@@ -70,10 +73,9 @@ namespace oplib
 
     protected:
         using list_node = _list_node<T>;
-        using NodeAlloc = opallocator<list_node>;
         using node_ptr = list_node*;
 
-        NodeAlloc allocator;
+        Alloc allocator;
         node_ptr sentinel;
     
         node_ptr get_node() { return allocator.allocate(1); }
@@ -125,7 +127,13 @@ namespace oplib
 
         // TODO, more complicated ops: merge sort splice
         void splice(iterator position, Linkedlist<T, Alloc>& x);
+        void splice(iterator position, Linkedlist<T, Alloc>& nomatter, iterator i);
+        void splice(iterator position, iterator first, iterator last);
         void reverse();
+
+        // x and *this list should all be sorted!
+        void merge(Linkedlist<T, Alloc>& x);
+        void sort();
     };
 
     #include "linkedlistT.C"

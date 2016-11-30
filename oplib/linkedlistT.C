@@ -101,13 +101,18 @@ template <typename T, typename Alloc>
 void
 Linkedlist<T, Alloc>::transfer(iterator position, iterator first, iterator last)
 {
-    ((node_ptr) last.node->prev)->next = position.node;
-    ((node_ptr) first.node->prev)->next = last.node;
-    ((node_ptr) position.node->prev)->next = first.node;
-    node_ptr prev_pos = (node_ptr) position.node->prev;
-    position.node->prev = last.node->prev;
-    last.node->prev = first.node->prev;
-    first.node->prev = prev_pos;
+    // If last == pos, no need to transfer
+    // If first == last, empty, don't transfer, or leads to error
+    if (position != last && first != last)
+    {
+        ((node_ptr) last.node->prev)->next = position.node;
+        ((node_ptr) first.node->prev)->next = last.node;
+        ((node_ptr) position.node->prev)->next = first.node;
+        node_ptr prev_pos = (node_ptr) position.node->prev;
+        position.node->prev = last.node->prev;
+        last.node->prev = first.node->prev;
+        first.node->prev = prev_pos;
+    }
 }
 
 template <typename T, typename Alloc>
@@ -115,6 +120,24 @@ void
 Linkedlist<T, Alloc>::splice(iterator position, Linkedlist<T, Alloc>& x)
 {
     transfer(position, x.begin(), x.end());
+} 
+
+template <typename T, typename Alloc>
+void
+Linkedlist<T, Alloc>::splice(iterator position, Linkedlist<T, Alloc>& nomatter, iterator i)
+{
+    auto next = ++i;
+    if (position == next || position == i)
+        return;
+    transfer(position, i, next);
+} 
+
+template <typename T, typename Alloc>
+void
+Linkedlist<T, Alloc>::splice(iterator position, iterator first, iterator last)
+{
+    if (first != last)
+        transfer(position, first, last);
 } 
 
 template <typename T, typename Alloc>
@@ -130,8 +153,73 @@ Linkedlist<T, Alloc>::reverse()
         iterator first = begin();
         while (first.node->next != sentinel)
         {
-            iterator last = --end();
-            transfer(first, last, end());
+            transfer(first, --end(), end());
         }
     }
+}
+
+template <typename T, typename Alloc>
+void
+Linkedlist<T, Alloc>::merge(Linkedlist<T, Alloc>& list)
+{
+    auto first1 = begin();
+    auto last1 = end();
+    auto first2 = list.begin();
+    auto last2 = list.end();
+
+    while (first1 != last1 && first2 != last2)
+    {
+        // Use <= to keep order: list1 then list2(for equal elements)
+        if (*first1 <= *first2)
+        {
+            ++first1;
+        }
+        else
+        {
+            auto prev = first2;
+            transfer(first1, prev, ++first2); 
+        }
+    }
+    
+    if (first2 != last2)
+        transfer(last1, first2, last2);
+}
+
+template <typename T, typename Alloc>
+void
+Linkedlist<T, Alloc>::sort()
+{
+    // Quicksort, TODO: make the quicksort better
+    if (sentinel->next == sentinel || ((node_ptr) sentinel->next)->next == sentinel)
+    {
+        return;
+    }
+
+    Linkedlist<T, Alloc> leftlist;
+    Linkedlist<T, Alloc> rightlist;
+    
+    value_type pivot = front();
+    pop_front();
+    
+    // split this list to two smaller lists, and sort them recursively
+    for (auto iter = begin(); iter != end();)
+    {
+        auto prev = iter;
+        ++iter;
+        if (*prev < pivot)
+        {
+            splice(leftlist.end(), prev, iter);
+        }
+        else
+        {
+            splice(rightlist.end(), prev, iter);
+        }
+    }
+
+    leftlist.sort();
+    rightlist.sort();
+
+    push_front(pivot);
+    merge(leftlist);
+    splice(end(), rightlist);
 }
