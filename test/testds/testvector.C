@@ -2,6 +2,7 @@
 #include "gtest/gtest.h"
 #include "vector.H"
 #include <string>
+#include <iostream>
 
 // The fixture for testing class Foo.
 class vectorTest : public ::testing::Test {
@@ -101,3 +102,8 @@ TEST_F(vectorTest, element_operation)
     ASSERT_EQ(v.size(), (size_t) 0);
 }
 
+TEST_F(vectorTest, test_vector_size)
+{
+    oplib::Vector<int> v;
+    std::cout << "Size of oplib::Vector is " << sizeof(v) << std::endl;
+}

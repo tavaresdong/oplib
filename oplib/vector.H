@@ -7,6 +7,8 @@
 // Will be replaced later
 #include <algorithm>
 #include <utility>
+#include <boost/compressed_pair.hpp>
+#include <boost/timer.hpp>
 
 namespace oplib
 {
@@ -28,6 +30,7 @@ namespace oplib
         iterator start; // current head
         iterator finish; // current tail
         iterator eos; // current tail of usable storage
+        boost::timer t;
 
         void deallocate()
         {

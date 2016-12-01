@@ -7,8 +7,10 @@ addons:
     apt:
       packages:
         - cmake
+        - boost-latest
       sources:
         - kalakris-cmake
+        - libboost1.55-all-dev
 
 before_install:
 - sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
