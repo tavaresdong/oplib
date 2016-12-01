@@ -2,9 +2,9 @@
 template <typename T, typename Alloc>
 void Vector<T, Alloc>::insert_aux(iterator position, const value_type& x)
 {
-    if (finish != eos)
+    if (finish != cp.first())
     {
-        allocator.construct(finish, *(finish - 1));
+        cp.second().construct(finish, *(finish - 1));
         ++finish;
         value_type copy_ele = x;
         std::copy_backward(position, finish - 2, finish - 1);
@@ -15,28 +15,28 @@ void Vector<T, Alloc>::insert_aux(iterator position, const value_type& x)
         const size_type old_size = size();
         const size_type new_size = old_size == 0 ? 1 : old_size * 2;
 
-        iterator new_start = allocator.allocate(new_size);
+        iterator new_start = cp.second().allocate(new_size);
         iterator new_finish = new_start;
 
         try {
             new_finish = std::uninitialized_copy(start, position, new_start);
-            allocator.construct(new_finish, x);
+            cp.second().construct(new_finish, x);
             ++new_finish;
             new_finish = std::uninitialized_copy(position, finish, new_finish);
         }
         catch (...)
         {
-            allocator.destroy(new_start, new_finish);
-            allocator.deallocate(new_start, new_size);
+            cp.second().destroy(new_start, new_finish);
+            cp.second().deallocate(new_start, new_size);
             throw;
         }
 
-        allocator.destroy(start, finish);
+        cp.second().destroy(start, finish);
         deallocate();
 
         start = new_start;
         finish = new_finish;
-        eos = new_start + new_size;
+        cp.first() = new_start + new_size;
     }
 }
 
@@ -45,7 +45,7 @@ void Vector<T, Alloc>::insert(iterator position, size_type n, const T& x)
 {
     if (n > 0)
     {
-        if (size_type(eos - finish) >= n)
+        if (size_type(cp.first() - finish) >= n)
         {
             // enough space
             T x_copy = x;
@@ -71,7 +71,7 @@ void Vector<T, Alloc>::insert(iterator position, size_type n, const T& x)
         {
             const size_type old_size = size();
             const size_type len = old_size + std::max(old_size, n);
-            iterator new_start = allocator.allocate(len);
+            iterator new_start = cp.second().allocate(len);
             iterator new_finish = new_start;
             try {
                 new_finish = std::uninitialized_copy(start, position, new_start);
@@ -80,17 +80,17 @@ void Vector<T, Alloc>::insert(iterator position, size_type n, const T& x)
             }
             catch (...)
             {
-                allocator.destroy(new_start, new_finish);
-                allocator.deallocate(new_start, len);
+                cp.second().destroy(new_start, new_finish);
+                cp.second().deallocate(new_start, len);
                 throw;
             }
             
             // Change to new space
-            allocator.destroy(start, finish);
+            cp.second().destroy(start, finish);
             deallocate();
             start = new_start;
             finish = new_finish;
-            eos = start + len;
+            cp.first() = start + len;
         }
     }
 }
@@ -107,9 +107,9 @@ void Vector<T, Alloc>::resize(size_type new_size, const T& x)
 template <typename T, typename Alloc>
 Vector<T, Alloc>::Vector(const Vector<T, Alloc>& v)
 {
-    start = allocator.allocate(v.size());
+    start = cp.second().allocate(v.size());
     finish = start + v.size();
-    eos = finish;
+    cp.first() = finish;
     std::uninitialized_copy(v.begin(), v.end(), start);
 }
 
@@ -119,22 +119,22 @@ Vector<T, Alloc>& Vector<T, Alloc>::operator = (const Vector<T, Alloc>& rhs)
     if (this != &rhs)
     {
         const size_type len = rhs.size();
-        iterator new_start = allocator.allocate(len);
+        iterator new_start = cp.second().allocate(len);
         iterator new_finish = new_start;
         try {
             new_finish = std::uninitialized_copy(rhs.begin(), rhs.end(), new_start);
         }
         catch (...)
         {
-            allocator.destroy(new_start, new_finish);
-            allocator.deallocate(new_start, len);
+            cp.second().destroy(new_start, new_finish);
+            cp.second().deallocate(new_start, len);
             throw;
         }
-        allocator.destroy(start, finish);
+        cp.second().destroy(start, finish);
         deallocate();
         start = new_start;
         finish = new_finish;
-        eos = start + len;
+        cp.first() = start + len;
     }
     return *this;
 }

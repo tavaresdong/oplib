@@ -8,7 +8,6 @@
 #include <algorithm>
 #include <utility>
 #include <boost/compressed_pair.hpp>
-#include <boost/timer.hpp>
 
 namespace oplib
 {
@@ -26,21 +25,21 @@ namespace oplib
         typedef const value_type* const_iterator;
 
     protected:
-        Alloc allocator;
-        iterator start; // current head
-        iterator finish; // current tail
-        iterator eos; // current tail of usable storage
-        boost::timer t;
+        //Alloc allocator;
+        iterator start = nullptr;
+        iterator finish = nullptr;
+        //iterator eos; // current tail of usable storage
+        boost::compressed_pair<iterator, Alloc> cp;
 
         void deallocate()
         {
             if (start)
-                allocator.deallocate(start, eos - start);
+                cp.second().deallocate(start, cp.first() - start);
         }
 
         iterator allocate_and_fill(size_type n, const T& x)
         {
-            iterator result = allocator.allocate(n);
+            iterator result = cp.second().allocate(n);
             oplib::uninitialized_fill_n(result, n, x);
             return result;
         }
@@ -49,7 +48,7 @@ namespace oplib
         {
             start = allocate_and_fill(n, value);
             finish = start + n;
-            eos = finish;
+            cp.first() = finish;
         }
 
         void insert_aux(iterator position, const value_type& x);
@@ -60,14 +59,16 @@ namespace oplib
         const_iterator cbegin() const { return start; }
         const_iterator cend() const { return finish; }
         size_type size() const { return size_type(cend() - cbegin()); }
-        size_type capacity() { return size_type(eos - begin()); }
+        size_type capacity() { return size_type(cp.first() - begin()); }
         bool empty() const { return start == finish; }
         reference operator[] (size_type n) { return *(begin() + n); }
 
         // ctor and dtors
-        Vector() : start(nullptr), finish(nullptr), eos(nullptr) { }
-        Vector(size_type n, const T& value) { fill_initialize(n, value); }
-        explicit Vector(size_type n) { fill_initialize(n, T()); }
+        Vector(const Alloc& alloc = Alloc()) : cp(nullptr, alloc) { }
+        Vector(size_type n, const T& value, const Alloc& alloc = Alloc())
+          : cp(nullptr, alloc) { fill_initialize(n, value); }
+        explicit Vector(size_type n, const Alloc& alloc = Alloc())
+          : cp(nullptr, alloc) { fill_initialize(n, T()); }
     
         // Copy and assign
         Vector(const Vector<T, Alloc>& v);
@@ -75,7 +76,7 @@ namespace oplib
 
         ~Vector()
         {
-            allocator.destroy(begin(), end());
+            cp.second().destroy(begin(), end());
             deallocate();
         }
 
@@ -85,14 +86,14 @@ namespace oplib
         void pop_back()
         {
             --finish;
-            allocator.destroy(finish);
+            cp.second().destroy(finish);
         }
 
         void push_back(const T& x)
         {
-            if (finish != eos)
+            if (finish != cp.first())
             {
-                allocator.construct(finish, x);
+                cp.second().construct(finish, x);
                 ++finish;
             }
             else
@@ -104,7 +105,7 @@ namespace oplib
         iterator erase(iterator first, iterator last)
         {
             iterator i = std::copy(last, finish, first);
-            allocator.destroy(i, finish);
+            cp.second().destroy(i, finish);
             finish = finish - (last - first);
             return first;
         }
@@ -114,7 +115,7 @@ namespace oplib
             if (position + 1 != finish)
                 std::copy(position + 1, finish, position);
             finish -= 1;
-            allocator.destroy(finish);
+            cp.second().destroy(finish);
             return position;
         }
 

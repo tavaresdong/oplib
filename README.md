@@ -16,4 +16,7 @@ stl-style, others are not, the code uses modern c++ features.
 - add empty-base optimization to the containers with stateless allocators
 - add move semantics related operations to the containers
 
-
+# Requirements:
+- Then environment should have pre-installed boost library version 1.55 or above
+- The environment should have cmake installed
+- The environment should have network connection for we will download gtest from the internet

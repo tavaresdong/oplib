@@ -105,5 +105,5 @@ TEST_F(vectorTest, element_operation)
 TEST_F(vectorTest, test_vector_size)
 {
     oplib::Vector<int> v;
-    std::cout << "Size of oplib::Vector is " << sizeof(v) << std::endl;
+    ASSERT_EQ(sizeof(v), (size_t) 24);
 }
