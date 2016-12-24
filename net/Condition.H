@@ -27,6 +27,8 @@ namespace oplib
 
     void notifyAll();
 
+    // TODO add timewait function
+
   private:
     pthread_cond_t _cond;
     Mutex& _mutex;

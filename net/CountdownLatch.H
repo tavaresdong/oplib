@@ -1,0 +1,35 @@
+/*
+ * CountdownLatch.H
+ *
+ *  Created on: Dec 24, 2016
+ *      Author: yuchend
+ */
+
+#ifndef NET_COUNTDOWNLATCH_H_
+#define NET_COUNTDOWNLATCH_H_
+
+#include <net/Mutex.H>
+#include <net/Condition.H>
+
+namespace oplib
+{
+  class CountdownLatch {
+  public:
+    CountdownLatch(const CountdownLatch&) = delete;
+    CountdownLatch& operator = (const CountdownLatch&) = delete;
+
+    explicit CountdownLatch(int cnt_);
+
+    virtual ~CountdownLatch();
+
+    void countDown();
+
+    void wait();
+  private:
+    Mutex _mutex;  // first
+    Condition _cond;  // second
+    size_t _count;
+  };
+}
+
+#endif /* NET_COUNTDOWNLATCH_H_ */
