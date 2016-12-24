@@ -3,7 +3,7 @@ file(GLOB SRCS *.C)
 ADD_EXECUTABLE(testds ${SRCS})
 
 TARGET_LINK_LIBRARIES(testds
-    libop
+    libop_ds
     libgtest
     libgmock
 )
