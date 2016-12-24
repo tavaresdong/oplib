@@ -1,17 +1,17 @@
-#include "Mutex.H"
-#include "Thread.H"
+#include <net/Mutex.H>
+#include <net/Thread.H>
 
 namespace oplib
 {
   void Mutex::lock()
   {
     CHECK_RETURN(pthread_mutex_lock(&_mutex))
-    _holder = CurrentThread::tid();
+    setHolder();
   }
 
   void Mutex::unlock()
   {
-    _holder = 0;
+    unsetHolder();
     CHECK_RETURN(pthread_mutex_lock(&_mutex))
   }
 
@@ -20,4 +20,13 @@ namespace oplib
     return _holder == CurrentThread::tid();
   }
 
+  void Mutex::setHolder()
+  {
+    _holder = CurrentThread::tid();
+  }
+
+  void Mutex::unsetHolder()
+  {
+    _holder = 0;
+  }
 }

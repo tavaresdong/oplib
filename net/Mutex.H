@@ -32,10 +32,36 @@ namespace oplib
 
     bool lockedByCurrentThread() const;
 
+    pthread_mutex_t* getRawMutex()
+    {
+      return &_mutex;
+    }
+
   private:
     void lock();
-
     void unlock();
+
+    void setHolder();
+    void unsetHolder();
+
+    friend class Condition;
+
+    // Used only by condition, to set/unset holder
+    // Because Condition used raw pthread_mutex_t
+    class CondGuard
+    {
+    public:
+      CondGuard(Mutex& mutex_)
+      :_mutex(mutex_)
+      { _mutex.setHolder(); }
+
+      ~CondGuard()
+      {
+        _mutex.unsetHolder();
+      }
+    private:
+      Mutex& _mutex;
+    };
   private:
   	pthread_mutex_t _mutex;
   	pid_t _holder = 0;

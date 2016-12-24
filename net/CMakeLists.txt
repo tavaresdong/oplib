@@ -1,6 +1,7 @@
 set(libop_net_SRCS
   Mutex.C
   Thread.H
+  Condition.C
 )
 
 # Declare the library

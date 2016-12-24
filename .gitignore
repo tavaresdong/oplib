@@ -33,3 +33,7 @@
 
 # ignore build/ dir
 build/
+
+.project
+.cproject
+.settings/*

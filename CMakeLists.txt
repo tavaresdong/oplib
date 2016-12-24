@@ -7,6 +7,8 @@ set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} --std=c++14 -g -Wall -Wno-unused-variab
 
 enable_testing()
 
+include_directories(${PROJECT_SOURCE_DIR})
+
 add_subdirectory(test)
 add_subdirectory(ds)
 add_subdirectory(net)
