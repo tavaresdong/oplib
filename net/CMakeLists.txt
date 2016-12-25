@@ -4,6 +4,7 @@ set(libop_net_SRCS
   Condition.C
   CountdownLatch.C
   BlockingQueue.H
+  Singleton.H
 )
 
 # Declare the library

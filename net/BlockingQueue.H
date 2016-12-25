@@ -21,6 +21,9 @@ template <typename T>
 class BlockingQueue
 {
 public:
+  BlockingQueue(const BlockingQueue& rhs_) = delete;
+  BlockingQueue& operator = (const BlockingQueue& rhs_) = delete;
+
   BlockingQueue();
   virtual ~BlockingQueue();
 
