@@ -5,8 +5,8 @@
  *      Author: yuchend
  */
 
-#ifndef NET_CONDITION_H_
-#define NET_CONDITION_H_
+#ifndef OPLIB_NET_CONDITION_H_
+#define OPLIB_NET_CONDITION_H_
 
 #include <net/Mutex.H>
 

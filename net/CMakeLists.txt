@@ -3,12 +3,15 @@ set(libop_net_SRCS
   Thread.H
   Condition.C
   CountdownLatch.C
+  BlockingQueue.H
 )
 
 # Declare the library
 add_library(libop_net STATIC
     ${libop_net_SRCS}
 )
+
+target_link_libraries(libop_net pthread)
 
 set_target_properties(libop_net PROPERTIES LINKER_LANGUAGE CXX)
 

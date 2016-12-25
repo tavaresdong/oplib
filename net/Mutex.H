@@ -5,7 +5,7 @@
 #include <stdlib.h>
 
 #define CHECK_RETURN(ret) ({__typeof__(ret) rc = (ret);\
-	                       if(rc == 0) exit(rc); });
+	                       if(rc != 0) exit(rc); });
 namespace oplib 
 {
   // Forward Declaration
@@ -19,7 +19,12 @@ namespace oplib
 
   	Mutex() 
   	{
-      // TODO: Let initializtion with type PTHREAD_MUTEX_NORMAL
+      // Could Initialize thread attribute to ERRORCHECK
+  	  // Generally, we should set it to NORMAL
+  	  // DEFAULT is not good enough, because the behaviour for recursive locking is undefined
+  	  CHECK_RETURN(pthread_mutexattr_init(&_attr))
+      CHECK_RETURN(pthread_mutexattr_settype(&_attr, PTHREAD_MUTEX_NORMAL))
+
   	  CHECK_RETURN(pthread_mutex_init(&_mutex, nullptr))    
   	}
 
@@ -63,6 +68,7 @@ namespace oplib
       Mutex& _mutex;
     };
   private:
+    pthread_mutexattr_t _attr;
   	pthread_mutex_t _mutex;
   	pid_t _holder = 0;
     friend class MutexLockGuard;

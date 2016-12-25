@@ -1,9 +1,7 @@
-file(GLOB SRCS *.C)
+file(GLOB NONRECUR test_NonrecursiveLock.C)
 
-ADD_EXECUTABLE(testnet ${SRCS})
+ADD_EXECUTABLE(testNonrecur ${NONRECUR})
 
-TARGET_LINK_LIBRARIES(testnet
+TARGET_LINK_LIBRARIES(testNonrecur
     libop_net
-    libgtest
-    libgmock
 )

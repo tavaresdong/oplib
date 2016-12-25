@@ -5,8 +5,8 @@
  *      Author: yuchend
  */
 
-#ifndef NET_COUNTDOWNLATCH_H_
-#define NET_COUNTDOWNLATCH_H_
+#ifndef OPLIB_NET_COUNTDOWNLATCH_H_
+#define OPLIB_NET_COUNTDOWNLATCH_H_
 
 #include <net/Mutex.H>
 #include <net/Condition.H>

@@ -12,7 +12,6 @@ namespace oplib
   CountdownLatch::CountdownLatch(int cnt_)
   : _cond(_mutex),
     _count(cnt_)
-
   {}
 
   void CountdownLatch::countDown()
