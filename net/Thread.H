@@ -11,20 +11,44 @@
 #include <sys/types.h>
 #include <sys/syscall.h>
 #include <unistd.h>
-#include "Thread.H"
+#include <net/Common.H>
+
+#include <string>
 
 namespace oplib
 {
 
-  class CurrentThread
+namespace CurrentThread
+{
+  __thread int thread_local_tid;
+
+  namespace
   {
-  public:
-    // TODO a stub
-    static pid_t tid()
+    inline void gettid()
     {
-      return static_cast<pid_t>(::syscall(SYS_gettid));
+      thread_local_tid = static_cast<pid_t>(::syscall(SYS_gettid));
     }
-  };
+  }
+
+  inline int tid()
+  {
+    if (UNLIKELY(thread_local_tid == 0))
+    {
+      gettid();
+    }
+    return thread_local_tid;
+  }
+
+  inline std::string tidString()
+  {
+    if (UNLIKELY(thread_local_tid == 0))
+    {
+      gettid();
+    }
+    return std::to_string(thread_local_tid);
+  }
+}
+
 }
 
 
