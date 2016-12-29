@@ -10,7 +10,8 @@
 namespace oplib
 {
   CountdownLatch::CountdownLatch(int cnt_)
-  : _cond(_mutex),
+  : _mutex(),
+    _cond(_mutex),
     _count(cnt_)
   {}
 
@@ -19,14 +20,25 @@ namespace oplib
     // TODO, use branch prediction here
     // Must lock and then do wait on a condition variable
     MutexLockGuard guard(_mutex);
-    if (_count > 0 )
-    {
-      _count--;
-    }
-    else
+    --_count;
+    if (_count == 0 )
     {
       _cond.notifyAll();
     }
+
+    /* Think about this implementation:
+     * if (_count > 0)
+     * {
+     *   --count;
+     * }
+     * else
+     * {
+     *   _cond.notifyAll();
+     * }
+     * This won't work!
+     * because even if the count is decremented to 0, it won't signal
+     * and there won't be any more countdowns, so the waiter will never be waken up
+     */
   }
 
   void CountdownLatch::wait()
@@ -37,6 +49,9 @@ namespace oplib
     {
       _cond.wait();
     }
+
+    // Whenever we return, we must have hold the lock!
+    // Because when wait returns, the lock is automatically hold
   }
 
   CountdownLatch::~CountdownLatch()

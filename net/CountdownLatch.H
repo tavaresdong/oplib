@@ -28,7 +28,7 @@ namespace oplib
   private:
     Mutex _mutex;  // first
     Condition _cond;  // second
-    size_t _count;
+    int _count;
   };
 }
 

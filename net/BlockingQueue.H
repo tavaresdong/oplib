@@ -31,6 +31,11 @@ public:
   void enqueue(const T& value_);
   T dequeue();
 
+  T take() { return dequeue(); }
+
+  void put(const T& value_) { enqueue(value_); }
+  void put(T&& value_) { enqueue(std::move(value_)); }
+
   size_t size();
 
 private:
@@ -49,7 +54,7 @@ void BlockingQueue<T>::enqueue(T&& value_)
 {
   {
     MutexLockGuard guard(_mutex);
-    _queue.push_back(std::move(value_));
+    _queue.push_front(std::move(value_));
   }
   _notEmpty.notify();
 }
@@ -66,7 +71,7 @@ void BlockingQueue<T>::enqueue(const T& value_)
 {
   {
     MutexLockGuard guard(_mutex);
-    _queue.push_front();
+    _queue.push_front(value_);
   }
 
   // Nofity without holding a Lock is better

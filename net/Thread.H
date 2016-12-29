@@ -77,6 +77,11 @@ namespace CurrentThread
     }
   }
 
+  inline const char* threadName()
+  {
+    return tl_tstatus;
+  }
+
   inline int tid()
   {
     if (UNLIKELY(tl_tid == 0))
