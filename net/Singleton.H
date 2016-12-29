@@ -9,6 +9,8 @@
 #define OPLIB_NET_SINGLETON_H_
 
 #include <pthread.h>
+#include <stdlib.h>
+#include <cassert>
 
 namespace oplib
 {
@@ -25,12 +27,23 @@ namespace oplib
     {
       // Only execute once by one thread
       pthread_once(&_once, init);
+      assert(_instance != nullptr);
       return _instance;
     }
   private:
     static void init(void)
     {
       _instance = new T();
+      ::atexit(destroy);
+    }
+
+    static void destroy(void)
+    {
+      if (_instance)
+      {
+        delete _instance;
+        _instance = nullptr;
+      }
     }
 
     static T* _instance;
