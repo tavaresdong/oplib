@@ -4,8 +4,8 @@
 #include <pthread.h>
 #include <stdlib.h>
 
-#define CHECK_RETURN(ret) ({__typeof__(ret) rc = (ret);\
-	                       if(rc != 0) exit(rc); });
+#include <net/Common.H>
+
 namespace oplib 
 {
   // Forward Declaration

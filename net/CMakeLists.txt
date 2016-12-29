@@ -1,6 +1,6 @@
 set(libop_net_SRCS
   Mutex.C
-  Thread.H
+  Thread.C
   Condition.C
   CountdownLatch.C
   BlockingQueue.H
