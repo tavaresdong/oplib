@@ -1,10 +1,10 @@
 set(libop_net_SRCS
-  Mutex.C
-  Thread.C
-  Condition.C
-  CountdownLatch.C
-  BlockingQueue.H
-  Singleton.H
+  Mutex.cc
+  Thread.cc
+  Condition.cc
+  CountdownLatch.cc
+  BlockingQueue.h
+  Singleton.h
 )
 
 # Declare the library

@@ -1,5 +1,5 @@
-#include <net/Singleton.H>
-#include <net/Thread.H>
+#include <net/Singleton.h>
+#include <net/Thread.h>
 
 #include <stdio.h>
 #include <unistd.h>

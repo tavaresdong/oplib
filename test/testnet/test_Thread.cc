@@ -1,4 +1,4 @@
-#include <net/Thread.H>
+#include <net/Thread.h>
 
 #include <string>
 #include <functional>

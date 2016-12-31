@@ -8,7 +8,7 @@
 #ifndef OPLIB_NET_CONDITION_H_
 #define OPLIB_NET_CONDITION_H_
 
-#include <net/Mutex.H>
+#include <net/Mutex.h>
 
 namespace oplib
 {

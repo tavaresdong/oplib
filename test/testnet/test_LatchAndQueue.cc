@@ -1,6 +1,6 @@
-#include <net/BlockingQueue.H>
-#include <net/CountdownLatch.H>
-#include <net/Thread.H>
+#include <net/BlockingQueue.h>
+#include <net/CountdownLatch.h>
+#include <net/Thread.h>
 
 #include <vector>
 #include <memory>

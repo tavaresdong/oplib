@@ -18,7 +18,7 @@
 #include <memory>
 #include <atomic>
 
-#include <net/Common.H>
+#include <net/Common.h>
 
 namespace oplib
 {

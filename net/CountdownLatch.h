@@ -8,8 +8,8 @@
 #ifndef OPLIB_NET_COUNTDOWNLATCH_H_
 #define OPLIB_NET_COUNTDOWNLATCH_H_
 
-#include <net/Mutex.H>
-#include <net/Condition.H>
+#include <net/Mutex.h>
+#include <net/Condition.h>
 
 namespace oplib
 {

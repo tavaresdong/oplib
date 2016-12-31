@@ -1,7 +1,7 @@
-file(GLOB NONRECUR test_NonrecursiveLock.C)
-file(GLOB SINGLETON test_Singleton.C)
-file(GLOB THREAD test_Thread.C)
-file(GLOB LATCHQUEUE test_LatchAndQueue.C)
+file(GLOB NONRECUR test_NonrecursiveLock.cc)
+file(GLOB SINGLETON test_Singleton.cc)
+file(GLOB THREAD test_Thread.cc)
+file(GLOB LATCHQUEUE test_LatchAndQueue.cc)
 
 ADD_EXECUTABLE(testNonrecur ${NONRECUR})
 ADD_EXECUTABLE(testSingleton ${SINGLETON})

@@ -5,7 +5,7 @@
  *      Author: yuchend
  */
 
-#include "Condition.H"
+#include "Condition.h"
 
 namespace oplib
 {

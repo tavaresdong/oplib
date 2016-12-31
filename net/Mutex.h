@@ -4,7 +4,7 @@
 #include <pthread.h>
 #include <stdlib.h>
 
-#include <net/Common.H>
+#include <net/Common.h>
 
 namespace oplib 
 {
