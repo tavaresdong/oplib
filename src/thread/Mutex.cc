@@ -1,5 +1,5 @@
-#include <net/Mutex.h>
-#include <net/Thread.h>
+#include <thread/Mutex.h>
+#include <thread/Thread.h>
 
 namespace oplib
 {

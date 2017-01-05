@@ -1,2 +1,2 @@
 add_subdirectory(ds)
-add_subdirectory(net)
+add_subdirectory(thread)

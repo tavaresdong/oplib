@@ -1,5 +1,5 @@
-#include <net/Thread.h>
-#include <net/Common.h>
+#include <thread/Thread.h>
+#include <thread/Common.h>
 
 #include <sys/prctl.h>
 #include <stdio.h>

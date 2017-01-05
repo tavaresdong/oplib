@@ -40,4 +40,4 @@ include_directories("${source_dir}/googletest/include"
                     "${source_dir}/googlemock/include")
 
 add_subdirectory(testds)
-add_subdirectory(testnet)
+add_subdirectory(testthread)

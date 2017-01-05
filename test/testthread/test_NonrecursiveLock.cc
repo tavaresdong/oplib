@@ -1,5 +1,5 @@
-#include <net/Mutex.h>
-#include <net/BlockingQueue.h>
+#include <thread/Mutex.h>
+#include <thread/BlockingQueue.h>
 #include <vector>
 #include <iostream>
 

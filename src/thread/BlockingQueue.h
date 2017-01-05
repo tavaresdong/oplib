@@ -8,8 +8,8 @@
 #ifndef OPLIB_NET_BLOCKINGQUEUE_H_
 #define OPLIB_NET_BLOCKINGQUEUE_H_
 
-#include <net/Condition.h>
-#include <net/Mutex.h>
+#include <thread/Condition.h>
+#include <thread/Mutex.h>
 #include <deque>
 
 // TODO chage deque to oplib::deque

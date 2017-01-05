@@ -11,17 +11,17 @@ ADD_EXECUTABLE(testLatchAndQueue ${LATCHQUEUE})
 
 
 TARGET_LINK_LIBRARIES(testNonrecur
-    libop_net
+    libop_thread
 )
 
 TARGET_LINK_LIBRARIES(testSingleton
-    libop_net
+    libop_thread
 )
 
 TARGET_LINK_LIBRARIES(testThread
-    libop_net
+    libop_thread
 )
 
 TARGET_LINK_LIBRARIES(testLatchAndQueue
-    libop_net
+    libop_thread
 )
