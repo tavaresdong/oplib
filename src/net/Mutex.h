@@ -22,10 +22,10 @@ namespace oplib
       // Could Initialize thread attribute to ERRORCHECK
   	  // Generally, we should set it to NORMAL
   	  // DEFAULT is not good enough, because the behaviour for recursive locking is undefined
-  	  CHECK_RETURN(pthread_mutexattr_init(&_attr))
-      CHECK_RETURN(pthread_mutexattr_settype(&_attr, PTHREAD_MUTEX_NORMAL))
+  	  CHECK_RETURN(pthread_mutexattr_init(&_attr));
+      CHECK_RETURN(pthread_mutexattr_settype(&_attr, PTHREAD_MUTEX_NORMAL));
 
-  	  CHECK_RETURN(pthread_mutex_init(&_mutex, nullptr))    
+  	  CHECK_RETURN(pthread_mutex_init(&_mutex, nullptr));
   	}
 
     ~Mutex()

@@ -59,7 +59,7 @@ namespace oplib
     };
     
 
-    template <typename T, template <typename> typename Alloc = opallocator >
+    template <typename T, template <typename> class Alloc = opallocator >
     class Linkedlist
     {
     public:

@@ -22,17 +22,17 @@ namespace oplib
     // Use CondGuard not MutexLockGuard because pthread_copnd_wait will release
     // The lock, we cannot release it twice
     Mutex::CondGuard guard(_mutex);
-    CHECK_RETURN(pthread_cond_wait(&_cond, _mutex.getRawMutex()))
+    CHECK_RETURN(pthread_cond_wait(&_cond, _mutex.getRawMutex()));
   }
 
   void Condition::notify()
   {
-    CHECK_RETURN(pthread_cond_signal(&_cond))
+    CHECK_RETURN(pthread_cond_signal(&_cond));
   }
 
   void Condition::notifyAll()
   {
-    CHECK_RETURN(pthread_cond_broadcast(&_cond))
+    CHECK_RETURN(pthread_cond_broadcast(&_cond));
   }
 
   Condition::~Condition()

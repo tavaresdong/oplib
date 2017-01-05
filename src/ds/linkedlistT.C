@@ -1,4 +1,4 @@
-template <typename T, template <typename> typename Alloc>
+template <typename T, template <typename> class Alloc>
 Linkedlist<T, Alloc>::~Linkedlist()
 {
     clear();
@@ -6,7 +6,7 @@ Linkedlist<T, Alloc>::~Linkedlist()
     put_node(sentinel);
 }
 
-template <typename T, template <typename> typename Alloc>
+template <typename T, template <typename> class Alloc>
 typename Linkedlist<T, Alloc>::iterator
 Linkedlist<T, Alloc>::insert(iterator position, const value_type& x)
 {
@@ -18,7 +18,7 @@ Linkedlist<T, Alloc>::insert(iterator position, const value_type& x)
     return node;
 }
 
-template <typename T, template <typename> typename Alloc>
+template <typename T, template <typename> class Alloc>
 typename Linkedlist<T, Alloc>::iterator
 Linkedlist<T, Alloc>::erase(iterator position)
 {
@@ -30,7 +30,7 @@ Linkedlist<T, Alloc>::erase(iterator position)
     return prev;
 }
 
-template <typename T, template <typename> typename Alloc>
+template <typename T, template <typename> class Alloc>
 void
 Linkedlist<T, Alloc>::clear()
 {
@@ -43,7 +43,7 @@ Linkedlist<T, Alloc>::clear()
 /**
  * Remove all elements with value x
  */
-template <typename T, template <typename> typename Alloc>
+template <typename T, template <typename> class Alloc>
 void
 Linkedlist<T, Alloc>::remove(const value_type& x)
 {
@@ -58,7 +58,7 @@ Linkedlist<T, Alloc>::remove(const value_type& x)
     }
 }
 
-template <typename T, template <typename> typename Alloc>
+template <typename T, template <typename> class Alloc>
 template <typename UnaryPredicate>
 void
 Linkedlist<T, Alloc>::remove_if(UnaryPredicate up)
@@ -77,7 +77,7 @@ Linkedlist<T, Alloc>::remove_if(UnaryPredicate up)
 /**
  * Remove duplicated adjacent elements
  */
-template <typename T, template <typename> typename Alloc>
+template <typename T, template <typename> class Alloc>
 void
 Linkedlist<T, Alloc>::unique()
 {
@@ -97,7 +97,7 @@ Linkedlist<T, Alloc>::unique()
     }
 }
 
-template <typename T, template <typename> typename Alloc>
+template <typename T, template <typename> class Alloc>
 void
 Linkedlist<T, Alloc>::transfer(iterator position, iterator first, iterator last)
 {
@@ -115,14 +115,14 @@ Linkedlist<T, Alloc>::transfer(iterator position, iterator first, iterator last)
     }
 }
 
-template <typename T, template <typename> typename Alloc>
+template <typename T, template <typename> class Alloc>
 void
 Linkedlist<T, Alloc>::splice(iterator position, Linkedlist<T, Alloc>& x)
 {
     transfer(position, x.begin(), x.end());
 } 
 
-template <typename T, template <typename> typename Alloc>
+template <typename T, template <typename> class Alloc>
 void
 Linkedlist<T, Alloc>::splice(iterator position, Linkedlist<T, Alloc>& nomatter, iterator i)
 {
@@ -135,7 +135,7 @@ Linkedlist<T, Alloc>::splice(iterator position, Linkedlist<T, Alloc>& nomatter, 
     transfer(position, i, next);
 } 
 
-template <typename T, template <typename> typename Alloc>
+template <typename T, template <typename> class Alloc>
 void
 Linkedlist<T, Alloc>::splice(iterator position, iterator first, iterator last)
 {
@@ -143,7 +143,7 @@ Linkedlist<T, Alloc>::splice(iterator position, iterator first, iterator last)
         transfer(position, first, last);
 } 
 
-template <typename T, template <typename> typename Alloc>
+template <typename T, template <typename> class Alloc>
 void
 Linkedlist<T, Alloc>::reverse()
 {
@@ -161,7 +161,7 @@ Linkedlist<T, Alloc>::reverse()
     }
 }
 
-template <typename T, template <typename> typename Alloc>
+template <typename T, template <typename> class Alloc>
 void
 Linkedlist<T, Alloc>::merge(Linkedlist<T, Alloc>& list)
 {
@@ -188,7 +188,7 @@ Linkedlist<T, Alloc>::merge(Linkedlist<T, Alloc>& list)
         transfer(last1, first2, last2);
 }
 
-template <typename T, template <typename> typename Alloc>
+template <typename T, template <typename> class Alloc>
 void
 Linkedlist<T, Alloc>::sort()
 {
@@ -224,7 +224,7 @@ Linkedlist<T, Alloc>::sort()
 }
 
 // A function to output a list
-template <typename T, template <typename> typename Alloc>
+template <typename T, template <typename> class Alloc>
 std::ostream&
 operator << (std::ostream& os, const Linkedlist<T, Alloc>& l)
 {

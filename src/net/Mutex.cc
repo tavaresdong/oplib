@@ -5,14 +5,14 @@ namespace oplib
 {
   void Mutex::lock()
   {
-    CHECK_RETURN(pthread_mutex_lock(&_mutex))
+    CHECK_RETURN(pthread_mutex_lock(&_mutex));
     setHolder();
   }
 
   void Mutex::unlock()
   {
     unsetHolder();
-    CHECK_RETURN(pthread_mutex_unlock(&_mutex))
+    CHECK_RETURN(pthread_mutex_unlock(&_mutex));
   }
 
   bool Mutex::lockedByCurrentThread() const
