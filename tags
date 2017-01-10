@@ -1,0 +1,1388 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+AllSnakesCreatedEqual	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^        def AllSnakesCreatedEqual(a, b, msg=None):$/;"	kind:function	line:559
+BIN	bin/opnetd/demos/liso/proj1_cp2/grader1cp2.py	/^BIN = ".\/lisod"$/;"	kind:variable	line:15
+BUFFEROUTPUT	bin/opnetd/demos/liso/proj1_cp2/unittest2/main.py	/^BUFFEROUTPUT = "  -b, --buffer     Buffer stdout and stderr during test runs\\n"$/;"	kind:variable	line:17
+BadCase	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^        class BadCase(int):$/;"	kind:class	line:969
+BadStatusLine	bin/opnetd/demos/liso/proj1_cp2/http_parser/http.py	/^class BadStatusLine(Exception):$/;"	kind:class	line:28
+Bar	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^    class Bar(Foo):$/;"	kind:class	line:28
+BaseTestSuite	bin/opnetd/demos/liso/proj1_cp2/unittest2/suite.py	/^class BaseTestSuite(unittest.TestSuite):$/;"	kind:class	line:10
+BrokenTest	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^        class BrokenTest(unittest2.TestCase):$/;"	kind:class	line:97
+CATCHBREAK	bin/opnetd/demos/liso/proj1_cp2/unittest2/main.py	/^CATCHBREAK   = "  -c, --catch      Catch control-C and display results\\n"$/;"	kind:variable	line:16
+DIFF_OMITTED	bin/opnetd/demos/liso/proj1_cp2/unittest2/case.py	/^DIFF_OMITTED = ('\\nDiff is %s characters long. '$/;"	kind:variable	line:24
+EqualityMixin	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/support.py	/^class EqualityMixin(object):$/;"	kind:class	line:86
+ExceptionMock	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^        class ExceptionMock(Exception):$/;"	kind:class	line:998
+ExceptionMock	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_unittest2_with.py	/^        class ExceptionMock(Exception):$/;"	kind:class	line:27
+FAILFAST	bin/opnetd/demos/liso/proj1_cp2/unittest2/main.py	/^FAILFAST     = "  -f, --failfast   Stop on first failure\\n"$/;"	kind:variable	line:15
+FakeRunner	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_break.py	/^        class FakeRunner(object):$/;"	kind:class	line:188
+FakeRunner	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_program.py	/^        class FakeRunner(object):$/;"	kind:class	line:15
+FakeRunner	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_program.py	/^class FakeRunner(object):$/;"	kind:class	line:93
+Foo	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^        class Foo(Test.LoggingTestCase):$/;"	kind:class	line:272
+Foo	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^        class Foo(Test.LoggingTestCase):$/;"	kind:class	line:285
+Foo	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^        class Foo(Test.LoggingTestCase):$/;"	kind:class	line:309
+Foo	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^        class Foo(Test.LoggingTestCase):$/;"	kind:class	line:324
+Foo	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^        class Foo(Test.LoggingTestCase):$/;"	kind:class	line:348
+Foo	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^        class Foo(Test.LoggingTestCase):$/;"	kind:class	line:361
+Foo	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^        class Foo(Test.LoggingTestCase):$/;"	kind:class	line:385
+Foo	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^        class Foo(Test.LoggingTestCase):$/;"	kind:class	line:398
+Foo	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^        class Foo(unittest2.TestCase):$/;"	kind:class	line:244
+Foo	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^        class Foo(unittest2.TestCase):$/;"	kind:class	line:254
+Foo	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^        class Foo(unittest2.TestCase):$/;"	kind:class	line:415
+Foo	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^        class Foo(unittest2.TestCase):$/;"	kind:class	line:429
+Foo	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^        class Foo(unittest2.TestCase):$/;"	kind:class	line:445
+Foo	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^        class Foo(unittest2.TestCase):$/;"	kind:class	line:468
+Foo	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^        class Foo(unittest2.TestCase):$/;"	kind:class	line:483
+Foo	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^        class Foo(unittest2.TestCase):$/;"	kind:class	line:492
+Foo	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^        class Foo(unittest2.TestCase):$/;"	kind:class	line:506
+Foo	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^        class Foo(unittest2.TestCase):$/;"	kind:class	line:519
+Foo	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^    class Foo(unittest2.TestCase):$/;"	kind:class	line:24
+Foo	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^        class Foo(unittest2.TestCase):$/;"	kind:class	line:1011
+Foo	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^        class Foo(unittest2.TestCase):$/;"	kind:class	line:1033
+Foo	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^        class Foo(unittest2.TestCase):$/;"	kind:class	line:1056
+Foo	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^        class Foo(unittest2.TestCase):$/;"	kind:class	line:1079
+Foo	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^        class Foo(unittest2.TestCase):$/;"	kind:class	line:1113
+Foo	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^        class Foo(unittest2.TestCase):$/;"	kind:class	line:1130
+Foo	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^        class Foo(unittest2.TestCase):$/;"	kind:class	line:1148
+Foo	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^        class Foo(unittest2.TestCase):$/;"	kind:class	line:1166
+Foo	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^        class Foo(unittest2.TestCase):$/;"	kind:class	line:1185
+Foo	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^        class Foo(unittest2.TestCase):$/;"	kind:class	line:1205
+Foo	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^        class Foo(unittest2.TestCase):$/;"	kind:class	line:1223
+Foo	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^        class Foo(unittest2.TestCase):$/;"	kind:class	line:1238
+Foo	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^        class Foo(unittest2.TestCase):$/;"	kind:class	line:1254
+Foo	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^        class Foo(unittest2.TestCase):$/;"	kind:class	line:1270
+Foo	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^        class Foo(unittest2.TestCase):$/;"	kind:class	line:18
+Foo	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^        class Foo(unittest2.TestCase):$/;"	kind:class	line:33
+Foo	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^        class Foo(unittest2.TestCase):$/;"	kind:class	line:69
+Foo	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^        class Foo(unittest2.TestCase):$/;"	kind:class	line:876
+Foo	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_result.py	/^        class Foo(unittest2.TestCase):$/;"	kind:class	line:114
+Foo	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_result.py	/^        class Foo(unittest2.TestCase):$/;"	kind:class	line:153
+Foo	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_result.py	/^        class Foo(unittest2.TestCase):$/;"	kind:class	line:201
+Foo	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_result.py	/^        class Foo(unittest2.TestCase):$/;"	kind:class	line:42
+Foo	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_result.py	/^        class Foo(unittest2.TestCase):$/;"	kind:class	line:63
+Foo	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_skipping.py	/^            class Foo(unittest2.TestCase):$/;"	kind:class	line:36
+Foo	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_skipping.py	/^        class Foo(unittest2.TestCase):$/;"	kind:class	line:104
+Foo	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_skipping.py	/^        class Foo(unittest2.TestCase):$/;"	kind:class	line:129
+Foo	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_skipping.py	/^        class Foo(unittest2.TestCase):$/;"	kind:class	line:20
+Foo	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_skipping.py	/^        class Foo(unittest2.TestCase):$/;"	kind:class	line:60
+Foo	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_skipping.py	/^        class Foo(unittest2.TestCase):$/;"	kind:class	line:75
+Foo	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_skipping.py	/^        class Foo(unittest2.TestCase):$/;"	kind:class	line:89
+Foo	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_skipping.py	/^        class Foo(unittest2.TestCase):$/;"	kind:class	line:9
+Foo	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_suite.py	/^        class Foo(unittest2.TestCase):$/;"	kind:class	line:209
+Foo	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_suite.py	/^        class Foo(unittest2.TestCase):$/;"	kind:class	line:222
+Foo	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_suite.py	/^        class Foo(unittest2.TestCase):$/;"	kind:class	line:239
+Foo	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_suite.py	/^    class Foo(unittest2.TestCase):$/;"	kind:class	line:11
+FooBar	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_program.py	/^    class FooBar(unittest2.TestCase):$/;"	kind:class	line:39
+FooBarLoader	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_program.py	/^    class FooBarLoader(unittest2.TestLoader):$/;"	kind:class	line:45
+Frame	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_result.py	/^        class Frame(object):$/;"	kind:class	line:256
+FunctionTestCase	bin/opnetd/demos/liso/proj1_cp2/unittest2/case.py	/^class FunctionTestCase(TestCase):$/;"	kind:class	line:1037
+HTTP_BOTH	bin/opnetd/demos/liso/proj1_cp2/http_parser/http.py	/^HTTP_BOTH = 2$/;"	kind:variable	line:16
+HTTP_REQUEST	bin/opnetd/demos/liso/proj1_cp2/http_parser/http.py	/^HTTP_REQUEST = 0$/;"	kind:variable	line:18
+HTTP_RESPONSE	bin/opnetd/demos/liso/proj1_cp2/http_parser/http.py	/^HTTP_RESPONSE = 1$/;"	kind:variable	line:17
+HashingMixin	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/support.py	/^class HashingMixin(object):$/;"	kind:class	line:101
+HttpStream	bin/opnetd/demos/liso/proj1_cp2/http_parser/http.py	/^class HttpStream(object):$/;"	kind:class	line:31
+InitialisableProgram	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_program.py	/^class InitialisableProgram(unittest2.TestProgram):$/;"	kind:class	line:79
+K	bin/opnetd/demos/liso/proj1_cp2/unittest2/loader.py	/^    class K(object):$/;"	kind:class	line:24
+Loader	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_discovery.py	/^        class Loader(object):$/;"	kind:class	line:234
+LoggingCase	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_suite.py	/^        class LoggingCase(unittest2.TestCase):$/;"	kind:class	line:194
+LoggingResult	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/support.py	/^class LoggingResult(unittest2.TestResult):$/;"	kind:class	line:40
+LoggingRunner	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_runner.py	/^        class LoggingRunner(unittest2.TextTestRunner):$/;"	kind:class	line:76
+LoggingTestCase	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^    class LoggingTestCase(unittest2.TestCase):$/;"	kind:class	line:31
+LoggingTextResult	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_runner.py	/^        class LoggingTextResult(LoggingResult):$/;"	kind:class	line:71
+MIME	bin/opnetd/demos/liso/proj1_cp2/grader1cp2.py	/^MIME = {$/;"	kind:variable	line:17
+MockResult	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^        class MockResult(object):$/;"	kind:class	line:84
+MockResultClass	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_runner.py	/^        def MockResultClass(*args):$/;"	kind:function	line:104
+Module	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_discovery.py	/^        class Module(object):$/;"	kind:class	line:313
+Module	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_discovery.py	/^        class Module(object):$/;"	kind:class	line:93
+Module	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^        class Module(object):$/;"	kind:class	line:264
+Module	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^        class Module(object):$/;"	kind:class	line:284
+Module	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^        class Module(object):$/;"	kind:class	line:341
+Module	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^        class Module(object):$/;"	kind:class	line:361
+Module	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^        class Module(object):$/;"	kind:class	line:424
+Module	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^        class Module(object):$/;"	kind:class	line:442
+Module	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^        class Module(object):$/;"	kind:class	line:469
+Module	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_suite.py	/^        class Module(object):$/;"	kind:class	line:316
+Module1	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^        class Module1(object):$/;"	kind:class	line:184
+Module2	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^        class Module2(object):$/;"	kind:class	line:192
+MyException	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^class MyException(Exception):$/;"	kind:class	line:17
+MyTestCase	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^        class MyTestCase(unittest2.TestCase):$/;"	kind:class	line:118
+MyTestCase	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^        class MyTestCase(unittest2.TestCase):$/;"	kind:class	line:139
+MyTestCase	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^        class MyTestCase(unittest2.TestCase):$/;"	kind:class	line:157
+MyTestCase	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^        class MyTestCase(unittest2.TestCase):$/;"	kind:class	line:335
+MyTestCase	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^        class MyTestCase(unittest2.TestCase):$/;"	kind:class	line:371
+MyTestCase	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^        class MyTestCase(unittest2.TestCase):$/;"	kind:class	line:387
+MyTestCase	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^        class MyTestCase(unittest2.TestCase):$/;"	kind:class	line:402
+MyTestCase	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^        class MyTestCase(unittest2.TestCase):$/;"	kind:class	line:423
+MyTestCase	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^        class MyTestCase(unittest2.TestCase):$/;"	kind:class	line:494
+MyTestCase	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^        class MyTestCase(unittest2.TestCase):$/;"	kind:class	line:733
+MyTestCase	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^        class MyTestCase(unittest2.TestCase):$/;"	kind:class	line:769
+MyTestCase	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^        class MyTestCase(unittest2.TestCase):$/;"	kind:class	line:785
+MyTestCase	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^        class MyTestCase(unittest2.TestCase):$/;"	kind:class	line:800
+MyTestCase	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^        class MyTestCase(unittest2.TestCase):$/;"	kind:class	line:819
+MyTestCase	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^        class MyTestCase(unittest2.TestCase):$/;"	kind:class	line:90
+NoMoreData	bin/opnetd/demos/liso/proj1_cp2/http_parser/http.py	/^class NoMoreData(Exception):$/;"	kind:class	line:20
+NotAModule	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^        class NotAModule(object):$/;"	kind:class	line:143
+NotAModule	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^        class NotAModule(object):$/;"	kind:class	line:339
+NotAModule	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^        class NotAModule(object):$/;"	kind:class	line:737
+NotATestCase	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^        class NotATestCase(unittest2.TestSuite):$/;"	kind:class	line:51
+OldTestResult	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/support.py	/^class OldTestResult(object):$/;"	kind:class	line:10
+OldTextResult	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_runner.py	/^        class OldTextResult(OldTestResult):$/;"	kind:class	line:59
+ParserError	bin/opnetd/demos/liso/proj1_cp2/http_parser/http.py	/^class ParserError(Exception):$/;"	kind:class	line:25
+Program	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_break.py	/^        class Program(unittest2.TestProgram):$/;"	kind:class	line:197
+RECV_EACH_TIMEOUT	bin/opnetd/demos/liso/cp1_checker.py	/^RECV_EACH_TIMEOUT = 0.05$/;"	kind:variable	line:29
+RECV_TOTAL_TIMEOUT	bin/opnetd/demos/liso/cp1_checker.py	/^RECV_TOTAL_TIMEOUT = 0.1$/;"	kind:variable	line:28
+RESULT	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_program.py	/^RESULT = object()$/;"	kind:variable	line:91
+STDERR_LINE	bin/opnetd/demos/liso/proj1_cp2/unittest2/result.py	/^STDERR_LINE = '\\nStderr:\\n%s'$/;"	kind:variable	line:24
+STDOUT_LINE	bin/opnetd/demos/liso/proj1_cp2/unittest2/result.py	/^STDOUT_LINE = '\\nStdout:\\n%s'$/;"	kind:variable	line:23
+SadSnake	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^        class SadSnake(object):$/;"	kind:class	line:555
+SkipTest	bin/opnetd/demos/liso/proj1_cp2/unittest2/case.py	/^class SkipTest(Exception):$/;"	kind:class	line:27
+SocketIO	bin/opnetd/demos/liso/proj1_cp2/http_parser/_socketio.py	/^class SocketIO(io.RawIOBase):$/;"	kind:class	line:27
+Stop	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_discovery.py	/^        class Stop(Exception):$/;"	kind:class	line:218
+Stub	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^        def Stub():$/;"	kind:function	line:1001
+Stub	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^        def Stub():$/;"	kind:function	line:1023
+Stub	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_unittest2_with.py	/^        def Stub(foo):$/;"	kind:function	line:30
+SubTestSuite	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^        class SubTestSuite(unittest2.TestSuite):$/;"	kind:class	line:471
+SubTestSuite	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^        class SubTestSuite(unittest2.TestSuite):$/;"	kind:class	line:491
+Test	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^        class Test(unittest2.TestCase):$/;"	kind:class	line:208
+Test	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^        class Test(unittest2.TestCase):$/;"	kind:class	line:219
+Test	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^        class Test(unittest2.TestCase):$/;"	kind:class	line:230
+Test	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^class Test(object):$/;"	kind:class	line:21
+Test	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^        class Test(unittest2.TestCase):$/;"	kind:class	line:940
+Test	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^        class Test(unittest2.TestCase):$/;"	kind:class	line:953
+Test	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_new_tests.py	/^        class Test(unittest.TestCase):$/;"	kind:class	line:25
+Test	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_new_tests.py	/^        class Test(unittest2.TestCase):$/;"	kind:class	line:35
+Test	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_runner.py	/^        class Test(unittest2.TestCase):$/;"	kind:class	line:118
+Test	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_runner.py	/^        class Test(unittest2.TestCase):$/;"	kind:class	line:22
+Test	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_runner.py	/^        class Test(unittest2.TestCase):$/;"	kind:class	line:36
+Test	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^        class Test(unittest2.TestCase):$/;"	kind:class	line:115
+Test	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^        class Test(unittest2.TestCase):$/;"	kind:class	line:148
+Test	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^        class Test(unittest2.TestCase):$/;"	kind:class	line:164
+Test	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^        class Test(unittest2.TestCase):$/;"	kind:class	line:270
+Test	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^        class Test(unittest2.TestCase):$/;"	kind:class	line:295
+Test	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^        class Test(unittest2.TestCase):$/;"	kind:class	line:31
+Test	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^        class Test(unittest2.TestCase):$/;"	kind:class	line:329
+Test	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^        class Test(unittest2.TestCase):$/;"	kind:class	line:347
+Test	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^        class Test(unittest2.TestCase):$/;"	kind:class	line:368
+Test	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^        class Test(unittest2.TestCase):$/;"	kind:class	line:401
+Test	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^        class Test(unittest2.TestCase):$/;"	kind:class	line:418
+Test	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^        class Test(unittest2.TestCase):$/;"	kind:class	line:450
+Test	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^        class Test(unittest2.TestCase):$/;"	kind:class	line:479
+Test	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^        class Test(unittest2.TestCase):$/;"	kind:class	line:49
+Test	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^        class Test(unittest2.TestCase):$/;"	kind:class	line:67
+Test	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_suite.py	/^        class Test(unittest2.TestCase):$/;"	kind:class	line:303
+Test	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_suite.py	/^class Test(object):$/;"	kind:class	line:10
+Test	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_unittest2_with.py	/^        class Test(unittest2.TestCase):$/;"	kind:class	line:71
+Test	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_unittest2_with.py	/^        class Test(unittest2.TestCase):$/;"	kind:class	line:88
+Test	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_unittest2_with.py	/^        class Test(unittest2.TestCase):$/;"	kind:class	line:96
+Test1	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^        class Test1(unittest2.TestCase):$/;"	kind:class	line:871
+Test1	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^        class Test1(unittest2.TestCase):$/;"	kind:class	line:200
+Test1	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_suite.py	/^        class Test1(unittest2.TestCase):$/;"	kind:class	line:127
+Test1	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_suite.py	/^        class Test1(unittest2.TestCase):$/;"	kind:class	line:151
+Test2	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^        class Test2(unittest2.TestCase):$/;"	kind:class	line:126
+Test2	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^        class Test2(unittest2.TestCase):$/;"	kind:class	line:212
+Test2	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^        class Test2(unittest2.TestCase):$/;"	kind:class	line:309
+Test2	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^        class Test2(unittest2.TestCase):$/;"	kind:class	line:382
+Test2	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^        class Test2(unittest2.TestCase):$/;"	kind:class	line:78
+Test3	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^        class Test3(unittest2.TestCase):$/;"	kind:class	line:224
+TestBreak	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_break.py	/^TestBreak = skipper(TestBreak)$/;"	kind:variable	line:257
+TestBreak	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_break.py	/^class TestBreak(unittest2.TestCase):$/;"	kind:class	line:15
+TestC	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^        class TestC(TestP):$/;"	kind:class	line:990
+TestCase	bin/opnetd/demos/liso/proj1_cp2/unittest2/case.py	/^class TestCase(unittest.TestCase):$/;"	kind:class	line:155
+TestCleanUp	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^class TestCleanUp(unittest2.TestCase):$/;"	kind:class	line:49
+TestCommandLineArgs	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_program.py	/^class TestCommandLineArgs(unittest2.TestCase):$/;"	kind:class	line:108
+TestDiscovery	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_discovery.py	/^class TestDiscovery(unittest2.TestCase):$/;"	kind:class	line:8
+TestLoader	bin/opnetd/demos/liso/proj1_cp2/unittest2/loader.py	/^class TestLoader(unittest.TestLoader):$/;"	kind:class	line:58
+TestLongMessage	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_assertions.py	/^class TestLongMessage(unittest2.TestCase):$/;"	kind:class	line:77
+TestOutputBuffering	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_result.py	/^class TestOutputBuffering(unittest2.TestCase):$/;"	kind:class	line:294
+TestP	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^        class TestP(unittest2.TestCase):$/;"	kind:class	line:985
+TestProgram	bin/opnetd/demos/liso/proj1_cp2/unittest2/main.py	/^class TestProgram(object):$/;"	kind:class	line:66
+TestResult	bin/opnetd/demos/liso/proj1_cp2/unittest2/result.py	/^class TestResult(unittest.TestResult):$/;"	kind:class	line:26
+TestSetups	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^class TestSetups(unittest2.TestCase):$/;"	kind:class	line:9
+TestSuite	bin/opnetd/demos/liso/proj1_cp2/unittest2/suite.py	/^class TestSuite(BaseTestSuite):$/;"	kind:class	line:72
+TestUnittest	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_new_tests.py	/^class TestUnittest(unittest2.TestCase):$/;"	kind:class	line:9
+TestWith	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_unittest2_with.py	/^class TestWith(unittest2.TestCase):$/;"	kind:class	line:11
+Test_Assertions	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_assertions.py	/^class Test_Assertions(unittest2.TestCase):$/;"	kind:class	line:11
+Test_FunctionTestCase	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_functiontestcase.py	/^class Test_FunctionTestCase(unittest2.TestCase):$/;"	kind:class	line:6
+Test_TestCase	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^class Test_TestCase(unittest2.TestCase, EqualityMixin, HashingMixin):$/;"	kind:class	line:181
+Test_TestLoader	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^class Test_TestLoader(unittest2.TestCase):$/;"	kind:class	line:10
+Test_TestProgram	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_program.py	/^class Test_TestProgram(unittest2.TestCase):$/;"	kind:class	line:8
+Test_TestResult	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_result.py	/^class Test_TestResult(unittest2.TestCase):$/;"	kind:class	line:8
+Test_TestSkipping	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_skipping.py	/^class Test_TestSkipping(unittest2.TestCase):$/;"	kind:class	line:6
+Test_TestSuite	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_suite.py	/^class Test_TestSuite(unittest2.TestCase, EqualityMixin):$/;"	kind:class	line:21
+Test_TextTestRunner	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_runner.py	/^class Test_TextTestRunner(unittest2.TestCase):$/;"	kind:class	line:9
+TestableTest	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^        class TestableTest(unittest2.TestCase):$/;"	kind:class	line:1059
+TestableTest	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^        class TestableTest(unittest2.TestCase):$/;"	kind:class	line:116
+TestableTest	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^        class TestableTest(unittest2.TestCase):$/;"	kind:class	line:158
+TestableTest	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^        class TestableTest(unittest2.TestCase):$/;"	kind:class	line:52
+TestableTest	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^        class TestableTest(unittest2.TestCase):$/;"	kind:class	line:80
+TestableTestFalse	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_assertions.py	/^        class TestableTestFalse(unittest2.TestCase):$/;"	kind:class	line:83
+TestableTestTrue	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_assertions.py	/^        class TestableTestTrue(unittest2.TestCase):$/;"	kind:class	line:90
+TextTestResult	bin/opnetd/demos/liso/proj1_cp2/unittest2/runner.py	/^class TextTestResult(result.TestResult):$/;"	kind:class	line:34
+TextTestRunner	bin/opnetd/demos/liso/proj1_cp2/unittest2/runner.py	/^class TextTestRunner(unittest.TextTestRunner):$/;"	kind:class	line:129
+USAGE	bin/opnetd/demos/liso/proj1_cp2/unittest2/main.py	/^    USAGE = USAGE_FROM_MODULE$/;"	kind:variable	line:70
+VALID_MODULE_NAME	bin/opnetd/demos/liso/proj1_cp2/unittest2/loader.py	/^VALID_MODULE_NAME = re.compile(r'[_a-z]\\w*\\.py$', re.IGNORECASE)$/;"	kind:variable	line:35
+WarningMessage	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/support.py	/^    class WarningMessage(object):$/;"	kind:class	line:166
+_AssertRaisesContext	bin/opnetd/demos/liso/proj1_cp2/unittest2/case.py	/^class _AssertRaisesContext(object):$/;"	kind:class	line:99
+_CmpToKey	bin/opnetd/demos/liso/proj1_cp2/unittest2/loader.py	/^def _CmpToKey(mycmp):$/;"	kind:function	line:22
+_DebugResult	bin/opnetd/demos/liso/proj1_cp2/unittest2/suite.py	/^class _DebugResult(object):$/;"	kind:class	line:283
+_ErrorHolder	bin/opnetd/demos/liso/proj1_cp2/unittest2/suite.py	/^class _ErrorHolder(object):$/;"	kind:class	line:236
+_ExpectedFailure	bin/opnetd/demos/liso/proj1_cp2/unittest2/case.py	/^class _ExpectedFailure(Exception):$/;"	kind:class	line:35
+_InterruptHandler	bin/opnetd/demos/liso/proj1_cp2/unittest2/signals.py	/^class _InterruptHandler(object):$/;"	kind:class	line:9
+_MAX_LENGTH	bin/opnetd/demos/liso/proj1_cp2/unittest2/util.py	/^_MAX_LENGTH = 80$/;"	kind:variable	line:6
+_TextTestResult	bin/opnetd/demos/liso/proj1_cp2/unittest2/__init__.py	/^_TextTestResult = TextTestResult$/;"	kind:variable	line:65
+_TypeEqualityDict	bin/opnetd/demos/liso/proj1_cp2/unittest2/case.py	/^class _TypeEqualityDict(object):$/;"	kind:class	line:134
+_UnexpectedSuccess	bin/opnetd/demos/liso/proj1_cp2/unittest2/case.py	/^class _UnexpectedSuccess(Exception):$/;"	kind:class	line:47
+_WARNING_DETAILS	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/support.py	/^        _WARNING_DETAILS = ("message", "category", "filename", "lineno", "file",$/;"	kind:variable	line:167
+_WritelnDecorator	bin/opnetd/demos/liso/proj1_cp2/unittest2/runner.py	/^class _WritelnDecorator(object):$/;"	kind:class	line:18
+__all__	bin/opnetd/demos/liso/proj1_cp2/unittest2/__init__.py	/^__all__ = ['TestResult', 'TestCase', 'TestSuite',$/;"	kind:variable	line:29
+__call__	bin/opnetd/demos/liso/proj1_cp2/unittest2/case.py	/^    def __call__(self, *args, **kwds):$/;"	kind:member	line:400
+__call__	bin/opnetd/demos/liso/proj1_cp2/unittest2/signals.py	/^    def __call__(self, signum, frame):$/;"	kind:member	line:14
+__call__	bin/opnetd/demos/liso/proj1_cp2/unittest2/suite.py	/^    def __call__(self, *args, **kwds):$/;"	kind:member	line:63
+__call__	bin/opnetd/demos/liso/proj1_cp2/unittest2/suite.py	/^    def __call__(self, result):$/;"	kind:member	line:268
+__enter__	bin/opnetd/demos/liso/proj1_cp2/unittest2/case.py	/^    def __enter__(self):$/;"	kind:member	line:107
+__enter__	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/support.py	/^        def __enter__(self):$/;"	kind:member	line:144
+__eq__	bin/opnetd/demos/liso/proj1_cp2/unittest2/case.py	/^    def __eq__(self, other):$/;"	kind:member	line:1067
+__eq__	bin/opnetd/demos/liso/proj1_cp2/unittest2/case.py	/^    def __eq__(self, other):$/;"	kind:member	line:282
+__eq__	bin/opnetd/demos/liso/proj1_cp2/unittest2/suite.py	/^    def __eq__(self, other):$/;"	kind:member	line:20
+__eq__	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_discovery.py	/^            def __eq__(self, other):$/;"	kind:member	line:106
+__exit__	bin/opnetd/demos/liso/proj1_cp2/unittest2/case.py	/^    def __exit__(self, exc_type, exc_value, tb):$/;"	kind:member	line:110
+__exit__	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/support.py	/^        def __exit__(self, *exc_info):$/;"	kind:member	line:160
+__file__	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_discovery.py	/^            __file__ = 'bar\/foo.py'$/;"	kind:variable	line:314
+__getattr__	bin/opnetd/demos/liso/proj1_cp2/unittest2/runner.py	/^    def __getattr__(self, attr):$/;"	kind:member	line:23
+__getitem__	bin/opnetd/demos/liso/proj1_cp2/unittest2/case.py	/^    def __getitem__(self, key):$/;"	kind:member	line:143
+__hash__	bin/opnetd/demos/liso/proj1_cp2/unittest2/case.py	/^    def __hash__(self):$/;"	kind:member	line:1079
+__hash__	bin/opnetd/demos/liso/proj1_cp2/unittest2/case.py	/^    def __hash__(self):$/;"	kind:member	line:291
+__hash__	bin/opnetd/demos/liso/proj1_cp2/unittest2/suite.py	/^    __hash__ = None$/;"	kind:variable	line:29
+__hash__	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_discovery.py	/^            __hash__ = None$/;"	kind:variable	line:110
+__init__	bin/opnetd/demos/liso/proj1_cp2/grader.py	/^    def __init__(self):$/;"	kind:member	line:30
+__init__	bin/opnetd/demos/liso/proj1_cp2/grader.py	/^    def __init__(self, test_name, testsuite):$/;"	kind:member	line:9
+__init__	bin/opnetd/demos/liso/proj1_cp2/grader1cp2.py	/^    def __init__(self, checkpoint):$/;"	kind:member	line:150
+__init__	bin/opnetd/demos/liso/proj1_cp2/grader1cp2.py	/^    def __init__(self, test_name, testsuit):$/;"	kind:member	line:29
+__init__	bin/opnetd/demos/liso/proj1_cp2/http_parser/_socketio.py	/^    def __init__(self, sock, mode):$/;"	kind:member	line:44
+__init__	bin/opnetd/demos/liso/proj1_cp2/http_parser/http.py	/^    def __init__(self, stream, kind=HTTP_BOTH, decompress=False,$/;"	kind:member	line:38
+__init__	bin/opnetd/demos/liso/proj1_cp2/unittest2/case.py	/^    def __init__(self, exc_info):$/;"	kind:member	line:42
+__init__	bin/opnetd/demos/liso/proj1_cp2/unittest2/case.py	/^    def __init__(self, expected, test_case, expected_regexp=None):$/;"	kind:member	line:102
+__init__	bin/opnetd/demos/liso/proj1_cp2/unittest2/case.py	/^    def __init__(self, methodName='runTest'):$/;"	kind:member	line:199
+__init__	bin/opnetd/demos/liso/proj1_cp2/unittest2/case.py	/^    def __init__(self, testFunc, setUp=None, tearDown=None, description=None):$/;"	kind:member	line:1046
+__init__	bin/opnetd/demos/liso/proj1_cp2/unittest2/case.py	/^    def __init__(self, testcase):$/;"	kind:member	line:136
+__init__	bin/opnetd/demos/liso/proj1_cp2/unittest2/loader.py	/^        def __init__(self, obj):$/;"	kind:member	line:25
+__init__	bin/opnetd/demos/liso/proj1_cp2/unittest2/main.py	/^    def __init__(self, module='__main__', defaultTest=None,$/;"	kind:member	line:75
+__init__	bin/opnetd/demos/liso/proj1_cp2/unittest2/result.py	/^    def __init__(self):$/;"	kind:member	line:40
+__init__	bin/opnetd/demos/liso/proj1_cp2/unittest2/runner.py	/^    def __init__(self, stream, descriptions, verbosity):$/;"	kind:member	line:42
+__init__	bin/opnetd/demos/liso/proj1_cp2/unittest2/runner.py	/^    def __init__(self, stream=sys.stderr, descriptions=True, verbosity=1,$/;"	kind:member	line:137
+__init__	bin/opnetd/demos/liso/proj1_cp2/unittest2/runner.py	/^    def __init__(self,stream):$/;"	kind:member	line:20
+__init__	bin/opnetd/demos/liso/proj1_cp2/unittest2/signals.py	/^    def __init__(self, default_handler):$/;"	kind:member	line:10
+__init__	bin/opnetd/demos/liso/proj1_cp2/unittest2/suite.py	/^    def __init__(self, description):$/;"	kind:member	line:248
+__init__	bin/opnetd/demos/liso/proj1_cp2/unittest2/suite.py	/^    def __init__(self, tests=()):$/;"	kind:member	line:13
+__init__	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/support.py	/^        def __init__(self, message, category, filename, lineno, file=None,$/;"	kind:member	line:169
+__init__	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/support.py	/^        def __init__(self, record=False, module=None):$/;"	kind:member	line:132
+__init__	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/support.py	/^    def __init__(self, *_):$/;"	kind:member	line:13
+__init__	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/support.py	/^    def __init__(self, log):$/;"	kind:member	line:41
+__init__	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_break.py	/^            def __init__(self, *args, **kwargs):$/;"	kind:member	line:191
+__init__	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_break.py	/^            def __init__(self, catchbreak): $/;"	kind:member	line:198
+__init__	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^        def __init__(self, events):$/;"	kind:member	line:34
+__init__	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_discovery.py	/^            def __init__(self, path):$/;"	kind:member	line:97
+__init__	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_program.py	/^    def __init__(self, **kwargs):$/;"	kind:member	line:98
+__init__	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_program.py	/^    def __init__(self, *args):$/;"	kind:member	line:88
+__init__	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_runner.py	/^            def __init__(self, *_):$/;"	kind:member	line:60
+__init__	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_runner.py	/^            def __init__(self, events):$/;"	kind:member	line:77
+__init__.py	bin/opnetd/demos/liso/proj1_cp2/http_parser/__init__.py	1;"	kind:file	line:1
+__init__.py	bin/opnetd/demos/liso/proj1_cp2/unittest2/__init__.py	1;"	kind:file	line:1
+__init__.py	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/__init__.py	1;"	kind:file	line:1
+__iter__	bin/opnetd/demos/liso/proj1_cp2/http_parser/http.py	/^    def __iter__(self):$/;"	kind:member	line:188
+__iter__	bin/opnetd/demos/liso/proj1_cp2/unittest2/suite.py	/^    def __iter__(self):$/;"	kind:member	line:31
+__lt__	bin/opnetd/demos/liso/proj1_cp2/unittest2/loader.py	/^        def __lt__(self, other):$/;"	kind:member	line:27
+__main__.py	bin/opnetd/demos/liso/proj1_cp2/unittest2/__main__.py	1;"	kind:file	line:1
+__ne__	bin/opnetd/demos/liso/proj1_cp2/unittest2/case.py	/^    def __ne__(self, other):$/;"	kind:member	line:1076
+__ne__	bin/opnetd/demos/liso/proj1_cp2/unittest2/case.py	/^    def __ne__(self, other):$/;"	kind:member	line:288
+__ne__	bin/opnetd/demos/liso/proj1_cp2/unittest2/suite.py	/^    def __ne__(self, other):$/;"	kind:member	line:25
+__next__	bin/opnetd/demos/liso/proj1_cp2/http_parser/http.py	/^    def __next__(self):$/;"	kind:member	line:191
+__repr__	bin/opnetd/demos/liso/proj1_cp2/unittest2/case.py	/^    def __repr__(self):$/;"	kind:member	line:1087
+__repr__	bin/opnetd/demos/liso/proj1_cp2/unittest2/case.py	/^    def __repr__(self):$/;"	kind:member	line:297
+__repr__	bin/opnetd/demos/liso/proj1_cp2/unittest2/result.py	/^    def __repr__(self):$/;"	kind:member	line:181
+__repr__	bin/opnetd/demos/liso/proj1_cp2/unittest2/suite.py	/^    def __repr__(self):$/;"	kind:member	line:17
+__repr__	bin/opnetd/demos/liso/proj1_cp2/unittest2/suite.py	/^    def __repr__(self):$/;"	kind:member	line:257
+__repr__	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/support.py	/^        def __repr__(self):$/;"	kind:member	line:137
+__setitem__	bin/opnetd/demos/liso/proj1_cp2/unittest2/case.py	/^    def __setitem__(self, key, value):$/;"	kind:member	line:140
+__str__	bin/opnetd/demos/liso/proj1_cp2/unittest2/case.py	/^    def __str__(self):$/;"	kind:member	line:1083
+__str__	bin/opnetd/demos/liso/proj1_cp2/unittest2/case.py	/^    def __str__(self):$/;"	kind:member	line:294
+__str__	bin/opnetd/demos/liso/proj1_cp2/unittest2/suite.py	/^    def __str__(self):$/;"	kind:member	line:260
+__unittest	bin/opnetd/demos/liso/proj1_cp2/unittest2/__init__.py	/^__unittest = True$/;"	kind:variable	line:67
+__unittest	bin/opnetd/demos/liso/proj1_cp2/unittest2/__main__.py	/^__unittest = True$/;"	kind:variable	line:7
+__unittest	bin/opnetd/demos/liso/proj1_cp2/unittest2/case.py	/^__unittest = True$/;"	kind:variable	line:21
+__unittest	bin/opnetd/demos/liso/proj1_cp2/unittest2/compatibility.py	/^__unittest = True$/;"	kind:variable	line:13
+__unittest	bin/opnetd/demos/liso/proj1_cp2/unittest2/loader.py	/^__unittest = True$/;"	kind:variable	line:19
+__unittest	bin/opnetd/demos/liso/proj1_cp2/unittest2/main.py	/^__unittest = True$/;"	kind:variable	line:13
+__unittest	bin/opnetd/demos/liso/proj1_cp2/unittest2/result.py	/^__unittest = True$/;"	kind:variable	line:12
+__unittest	bin/opnetd/demos/liso/proj1_cp2/unittest2/runner.py	/^__unittest = True$/;"	kind:variable	line:15
+__unittest	bin/opnetd/demos/liso/proj1_cp2/unittest2/signals.py	/^__unittest = True$/;"	kind:variable	line:6
+__unittest	bin/opnetd/demos/liso/proj1_cp2/unittest2/suite.py	/^__unittest = True$/;"	kind:variable	line:7
+__unittest	bin/opnetd/demos/liso/proj1_cp2/unittest2/util.py	/^__unittest = True$/;"	kind:variable	line:3
+__version__	bin/opnetd/demos/liso/proj1_cp2/http_parser/__init__.py	/^__version__ = ".".join(map(str, version_info))$/;"	kind:variable	line:7
+__version__	bin/opnetd/demos/liso/proj1_cp2/unittest2/__init__.py	/^__version__ = '0.5.1'$/;"	kind:variable	line:34
+_addClassOrModuleLevelException	bin/opnetd/demos/liso/proj1_cp2/unittest2/suite.py	/^    def _addClassOrModuleLevelException(self, result, exception, errorName):$/;"	kind:member	line:182
+_addSkip	bin/opnetd/demos/liso/proj1_cp2/unittest2/case.py	/^    def _addSkip(self, result, reason):$/;"	kind:member	line:301
+_baseAssertEqual	bin/opnetd/demos/liso/proj1_cp2/unittest2/case.py	/^    def _baseAssertEqual(self, first, second, msg=None):$/;"	kind:member	line:512
+_blocking_errnos	bin/opnetd/demos/liso/proj1_cp2/http_parser/_socketio.py	/^_blocking_errnos = EAGAIN, EWOULDBLOCK$/;"	kind:variable	line:9
+_checkClosed	bin/opnetd/demos/liso/proj1_cp2/http_parser/_socketio.py	/^    def _checkClosed(self, msg=None):$/;"	kind:member	line:134
+_check_headers_complete	bin/opnetd/demos/liso/proj1_cp2/http_parser/http.py	/^    def _check_headers_complete(self):$/;"	kind:member	line:50
+_classSetupFailed	bin/opnetd/demos/liso/proj1_cp2/unittest2/case.py	/^    _classSetupFailed = False$/;"	kind:variable	line:197
+_count_relevant_tb_levels	bin/opnetd/demos/liso/proj1_cp2/unittest2/result.py	/^    def _count_relevant_tb_levels(self, tb):$/;"	kind:member	line:174
+_deprecate	bin/opnetd/demos/liso/proj1_cp2/unittest2/case.py	/^    def _deprecate(original_func):$/;"	kind:member	line:617
+_do_discovery	bin/opnetd/demos/liso/proj1_cp2/unittest2/main.py	/^    def _do_discovery(self, argv, Loader=loader.TestLoader):$/;"	kind:member	line:163
+_exc_info_to_string	bin/opnetd/demos/liso/proj1_cp2/unittest2/result.py	/^    def _exc_info_to_string(self, err, test):$/;"	kind:member	line:145
+_find_tests	bin/opnetd/demos/liso/proj1_cp2/unittest2/loader.py	/^    def _find_tests(self, start_dir, pattern):$/;"	kind:member	line:246
+_find_tests	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_discovery.py	/^        def _find_tests(start_dir, pattern):$/;"	kind:function	line:166
+_find_tests	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_discovery.py	/^        def _find_tests(start_dir, pattern):$/;"	kind:function	line:361
+_formatMessage	bin/opnetd/demos/liso/proj1_cp2/unittest2/case.py	/^    def _formatMessage(self, msg, standardMsg):$/;"	kind:member	line:432
+_getAssertEqualityFunc	bin/opnetd/demos/liso/proj1_cp2/unittest2/case.py	/^    def _getAssertEqualityFunc(self, first, second):$/;"	kind:member	line:488
+_get_module_from_name	bin/opnetd/demos/liso/proj1_cp2/unittest2/loader.py	/^    def _get_module_from_name(self, name):$/;"	kind:member	line:238
+_get_name_from_path	bin/opnetd/demos/liso/proj1_cp2/unittest2/loader.py	/^    def _get_name_from_path(self, path):$/;"	kind:member	line:228
+_get_previous_module	bin/opnetd/demos/liso/proj1_cp2/unittest2/suite.py	/^    def _get_previous_module(self, result):$/;"	kind:member	line:149
+_handleClassSetUp	bin/opnetd/demos/liso/proj1_cp2/unittest2/suite.py	/^    def _handleClassSetUp(self, test, result):$/;"	kind:member	line:120
+_handleModuleFixture	bin/opnetd/demos/liso/proj1_cp2/unittest2/suite.py	/^    def _handleModuleFixture(self, test, result):$/;"	kind:member	line:157
+_handleModuleTearDown	bin/opnetd/demos/liso/proj1_cp2/unittest2/suite.py	/^    def _handleModuleTearDown(self, result):$/;"	kind:member	line:190
+_id	bin/opnetd/demos/liso/proj1_cp2/unittest2/case.py	/^def _id(obj):$/;"	kind:function	line:52
+_interrupt_handler	bin/opnetd/demos/liso/proj1_cp2/unittest2/signals.py	/^_interrupt_handler = None$/;"	kind:variable	line:34
+_is_relevant_tb_level	bin/opnetd/demos/liso/proj1_cp2/unittest2/result.py	/^    def _is_relevant_tb_level(self, tb):$/;"	kind:member	line:171
+_isnotsuite	bin/opnetd/demos/liso/proj1_cp2/unittest2/suite.py	/^def _isnotsuite(test):$/;"	kind:function	line:274
+_makeLoader	bin/opnetd/demos/liso/proj1_cp2/unittest2/loader.py	/^def _makeLoader(prefix, sortUsing, suiteClass=None):$/;"	kind:function	line:306
+_makeResult	bin/opnetd/demos/liso/proj1_cp2/unittest2/runner.py	/^    def _makeResult(self):$/;"	kind:member	line:147
+_makeResult	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_runner.py	/^            def _makeResult(self):$/;"	kind:member	line:81
+_make_failed_import_test	bin/opnetd/demos/liso/proj1_cp2/unittest2/loader.py	/^def _make_failed_import_test(name, suiteClass):$/;"	kind:function	line:38
+_make_failed_load_tests	bin/opnetd/demos/liso/proj1_cp2/unittest2/loader.py	/^def _make_failed_load_tests(name, exception, suiteClass):$/;"	kind:function	line:47
+_make_failed_test	bin/opnetd/demos/liso/proj1_cp2/unittest2/loader.py	/^def _make_failed_test(classname, methodname, exception, suiteClass):$/;"	kind:function	line:50
+_match_path	bin/opnetd/demos/liso/proj1_cp2/unittest2/loader.py	/^    def _match_path(self, path, full_path, pattern):$/;"	kind:member	line:242
+_mk_TestSuite	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_suite.py	/^def _mk_TestSuite(*names):$/;"	kind:function	line:17
+_moduleSetUpFailed	bin/opnetd/demos/liso/proj1_cp2/unittest2/result.py	/^    _moduleSetUpFailed = False$/;"	kind:variable	line:38
+_moduleSetUpFailed	bin/opnetd/demos/liso/proj1_cp2/unittest2/suite.py	/^    _moduleSetUpFailed = False$/;"	kind:variable	line:286
+_previousTestClass	bin/opnetd/demos/liso/proj1_cp2/unittest2/result.py	/^    _previousTestClass = None$/;"	kind:variable	line:37
+_previousTestClass	bin/opnetd/demos/liso/proj1_cp2/unittest2/suite.py	/^    _previousTestClass = None$/;"	kind:variable	line:285
+_recv_into_sock	bin/opnetd/demos/liso/proj1_cp2/http_parser/_socketio.py	/^    _recv_into_sock = _recv_into_sock_py26$/;"	kind:variable	line:22
+_recv_into_sock	bin/opnetd/demos/liso/proj1_cp2/http_parser/_socketio.py	/^    _recv_into_sock = lambda sock, buf: sock.recv_into(buf)$/;"	kind:variable	line:24
+_recv_into_sock_py26	bin/opnetd/demos/liso/proj1_cp2/http_parser/_socketio.py	/^def _recv_into_sock_py26(sock, buf):$/;"	kind:function	line:14
+_relpath_nt	bin/opnetd/demos/liso/proj1_cp2/unittest2/compatibility.py	/^def _relpath_nt(path, start=os.path.curdir):$/;"	kind:function	line:15
+_relpath_posix	bin/opnetd/demos/liso/proj1_cp2/unittest2/compatibility.py	/^def _relpath_posix(path, start=os.path.curdir):$/;"	kind:function	line:44
+_results	bin/opnetd/demos/liso/proj1_cp2/unittest2/signals.py	/^_results = weakref.WeakKeyDictionary()$/;"	kind:variable	line:27
+_socketio.py	bin/opnetd/demos/liso/proj1_cp2/http_parser/_socketio.py	1;"	kind:file	line:1
+_tearDownPreviousClass	bin/opnetd/demos/liso/proj1_cp2/unittest2/suite.py	/^    def _tearDownPreviousClass(self, test, result):$/;"	kind:member	line:212
+_top_level_dir	bin/opnetd/demos/liso/proj1_cp2/unittest2/loader.py	/^    _top_level_dir = None$/;"	kind:variable	line:66
+_truncateMessage	bin/opnetd/demos/liso/proj1_cp2/unittest2/case.py	/^    def _truncateMessage(self, message, diff):$/;"	kind:member	line:739
+_wait_on_method	bin/opnetd/demos/liso/proj1_cp2/http_parser/http.py	/^    def _wait_on_method(self):$/;"	kind:member	line:90
+_wait_on_status	bin/opnetd/demos/liso/proj1_cp2/http_parser/http.py	/^    def _wait_on_status(self):$/;"	kind:member	line:87
+_wait_on_url	bin/opnetd/demos/liso/proj1_cp2/http_parser/http.py	/^    def _wait_on_url(self):$/;"	kind:member	line:84
+_wait_status_line	bin/opnetd/demos/liso/proj1_cp2/http_parser/http.py	/^    def _wait_status_line(self, cond):$/;"	kind:member	line:66
+_wrapped_run	bin/opnetd/demos/liso/proj1_cp2/unittest2/suite.py	/^    def _wrapped_run(self, result, debug=False):$/;"	kind:member	line:98
+_wraps	bin/opnetd/demos/liso/proj1_cp2/unittest2/compatibility.py	/^        def _wraps(func):$/;"	kind:function	line:9
+addCleanup	bin/opnetd/demos/liso/proj1_cp2/unittest2/case.py	/^    def addCleanup(self, function, *args, **kwargs):$/;"	kind:member	line:240
+addError	bin/opnetd/demos/liso/proj1_cp2/unittest2/result.py	/^    addError = failfast(addError)$/;"	kind:variable	line:110
+addError	bin/opnetd/demos/liso/proj1_cp2/unittest2/result.py	/^    def addError(self, test, err):$/;"	kind:member	line:104
+addError	bin/opnetd/demos/liso/proj1_cp2/unittest2/runner.py	/^    def addError(self, test, err):$/;"	kind:member	line:71
+addError	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/support.py	/^    def addError(self, *args):$/;"	kind:member	line:69
+addError	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/support.py	/^    def addError(self, test, err):$/;"	kind:member	line:25
+addError	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^            def addError(self, test, exc_info):$/;"	kind:member	line:86
+addExpectedFailure	bin/opnetd/demos/liso/proj1_cp2/unittest2/result.py	/^    def addExpectedFailure(self, test, err):$/;"	kind:member	line:127
+addExpectedFailure	bin/opnetd/demos/liso/proj1_cp2/unittest2/runner.py	/^    def addExpectedFailure(self, test, err):$/;"	kind:member	line:95
+addExpectedFailure	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/support.py	/^    def addExpectedFailure(self, *args):$/;"	kind:member	line:77
+addFailure	bin/opnetd/demos/liso/proj1_cp2/unittest2/result.py	/^    addFailure = failfast(addFailure)$/;"	kind:variable	line:117
+addFailure	bin/opnetd/demos/liso/proj1_cp2/unittest2/result.py	/^    def addFailure(self, test, err):$/;"	kind:member	line:112
+addFailure	bin/opnetd/demos/liso/proj1_cp2/unittest2/runner.py	/^    def addFailure(self, test, err):$/;"	kind:member	line:79
+addFailure	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/support.py	/^    def addFailure(self, *args):$/;"	kind:member	line:61
+addFailure	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/support.py	/^    def addFailure(self, test, err):$/;"	kind:member	line:28
+addSkip	bin/opnetd/demos/liso/proj1_cp2/unittest2/result.py	/^    def addSkip(self, test, reason):$/;"	kind:member	line:123
+addSkip	bin/opnetd/demos/liso/proj1_cp2/unittest2/runner.py	/^    def addSkip(self, test, reason):$/;"	kind:member	line:87
+addSkip	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/support.py	/^    def addSkip(self, *args):$/;"	kind:member	line:73
+addSuccess	bin/opnetd/demos/liso/proj1_cp2/unittest2/result.py	/^    def addSuccess(self, test):$/;"	kind:member	line:119
+addSuccess	bin/opnetd/demos/liso/proj1_cp2/unittest2/runner.py	/^    def addSuccess(self, test):$/;"	kind:member	line:63
+addSuccess	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/support.py	/^    def addSuccess(self, *args):$/;"	kind:member	line:65
+addSuccess	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/support.py	/^    def addSuccess(self, test):$/;"	kind:member	line:31
+addTest	bin/opnetd/demos/liso/proj1_cp2/unittest2/suite.py	/^    def addTest(self, test):$/;"	kind:member	line:40
+addTests	bin/opnetd/demos/liso/proj1_cp2/unittest2/suite.py	/^    def addTests(self, tests):$/;"	kind:member	line:50
+addTypeEqualityFunc	bin/opnetd/demos/liso/proj1_cp2/unittest2/case.py	/^    def addTypeEqualityFunc(self, typeobj, function):$/;"	kind:member	line:225
+addUnexpectedSuccess	bin/opnetd/demos/liso/proj1_cp2/unittest2/result.py	/^    addUnexpectedSuccess = failfast(addUnexpectedSuccess)$/;"	kind:variable	line:135
+addUnexpectedSuccess	bin/opnetd/demos/liso/proj1_cp2/unittest2/result.py	/^    def addUnexpectedSuccess(self, test):$/;"	kind:member	line:132
+addUnexpectedSuccess	bin/opnetd/demos/liso/proj1_cp2/unittest2/runner.py	/^    def addUnexpectedSuccess(self, test):$/;"	kind:member	line:103
+addUnexpectedSuccess	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/support.py	/^    def addUnexpectedSuccess(self, *args):$/;"	kind:member	line:81
+args	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_discovery.py	/^            args = []$/;"	kind:variable	line:235
+assertAlmostEqual	bin/opnetd/demos/liso/proj1_cp2/unittest2/case.py	/^    def assertAlmostEqual(self, first, second, places=None, msg=None, delta=None):$/;"	kind:member	line:535
+assertAlmostEquals	bin/opnetd/demos/liso/proj1_cp2/unittest2/case.py	/^    assertAlmostEquals = assertAlmostEqual$/;"	kind:variable	line:611
+assertDictContainsSubset	bin/opnetd/demos/liso/proj1_cp2/unittest2/case.py	/^    def assertDictContainsSubset(self, expected, actual, msg=None):$/;"	kind:member	line:849
+assertDictEqual	bin/opnetd/demos/liso/proj1_cp2/unittest2/case.py	/^    def assertDictEqual(self, d1, d2, msg=None):$/;"	kind:member	line:837
+assertEqual	bin/opnetd/demos/liso/proj1_cp2/unittest2/case.py	/^    def assertEqual(self, first, second, msg=None):$/;"	kind:member	line:519
+assertEquals	bin/opnetd/demos/liso/proj1_cp2/unittest2/case.py	/^    assertEquals = assertEqual$/;"	kind:variable	line:609
+assertFalse	bin/opnetd/demos/liso/proj1_cp2/unittest2/case.py	/^    def assertFalse(self, expr, msg=None):$/;"	kind:member	line:420
+assertGreater	bin/opnetd/demos/liso/proj1_cp2/unittest2/case.py	/^    def assertGreater(self, a, b, msg=None):$/;"	kind:member	line:948
+assertGreaterEqual	bin/opnetd/demos/liso/proj1_cp2/unittest2/case.py	/^    def assertGreaterEqual(self, a, b, msg=None):$/;"	kind:member	line:954
+assertIn	bin/opnetd/demos/liso/proj1_cp2/unittest2/case.py	/^    def assertIn(self, member, container, msg=None):$/;"	kind:member	line:811
+assertIs	bin/opnetd/demos/liso/proj1_cp2/unittest2/case.py	/^    def assertIs(self, expr1, expr2, msg=None):$/;"	kind:member	line:825
+assertIsInstance	bin/opnetd/demos/liso/proj1_cp2/unittest2/case.py	/^    def assertIsInstance(self, obj, cls, msg=None):$/;"	kind:member	line:972
+assertIsNone	bin/opnetd/demos/liso/proj1_cp2/unittest2/case.py	/^    def assertIsNone(self, obj, msg=None):$/;"	kind:member	line:960
+assertIsNot	bin/opnetd/demos/liso/proj1_cp2/unittest2/case.py	/^    def assertIsNot(self, expr1, expr2, msg=None):$/;"	kind:member	line:831
+assertIsNotNone	bin/opnetd/demos/liso/proj1_cp2/unittest2/case.py	/^    def assertIsNotNone(self, obj, msg=None):$/;"	kind:member	line:966
+assertIsSubclass	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_new_tests.py	/^    def assertIsSubclass(self, actual, klass):$/;"	kind:member	line:11
+assertItemsEqual	bin/opnetd/demos/liso/proj1_cp2/unittest2/case.py	/^    def assertItemsEqual(self, expected_seq, actual_seq, msg=None):$/;"	kind:member	line:880
+assertLess	bin/opnetd/demos/liso/proj1_cp2/unittest2/case.py	/^    def assertLess(self, a, b, msg=None):$/;"	kind:member	line:936
+assertLessEqual	bin/opnetd/demos/liso/proj1_cp2/unittest2/case.py	/^    def assertLessEqual(self, a, b, msg=None):$/;"	kind:member	line:942
+assertListEqual	bin/opnetd/demos/liso/proj1_cp2/unittest2/case.py	/^    def assertListEqual(self, list1, list2, msg=None):$/;"	kind:member	line:745
+assertMessages	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_assertions.py	/^    def assertMessages(self, methodName, args, errors):$/;"	kind:member	line:113
+assertMultiLineEqual	bin/opnetd/demos/liso/proj1_cp2/unittest2/case.py	/^    def assertMultiLineEqual(self, first, second, msg=None):$/;"	kind:member	line:922
+assertNotAlmostEqual	bin/opnetd/demos/liso/proj1_cp2/unittest2/case.py	/^    def assertNotAlmostEqual(self, first, second, places=None, msg=None, delta=None):$/;"	kind:member	line:573
+assertNotAlmostEquals	bin/opnetd/demos/liso/proj1_cp2/unittest2/case.py	/^    assertNotAlmostEquals = assertNotAlmostEqual$/;"	kind:variable	line:612
+assertNotEqual	bin/opnetd/demos/liso/proj1_cp2/unittest2/case.py	/^    def assertNotEqual(self, first, second, msg=None):$/;"	kind:member	line:526
+assertNotEquals	bin/opnetd/demos/liso/proj1_cp2/unittest2/case.py	/^    assertNotEquals = assertNotEqual$/;"	kind:variable	line:610
+assertNotIn	bin/opnetd/demos/liso/proj1_cp2/unittest2/case.py	/^    def assertNotIn(self, member, container, msg=None):$/;"	kind:member	line:818
+assertNotIsInstance	bin/opnetd/demos/liso/proj1_cp2/unittest2/case.py	/^    def assertNotIsInstance(self, obj, cls, msg=None):$/;"	kind:member	line:979
+assertNotRegexpMatches	bin/opnetd/demos/liso/proj1_cp2/unittest2/case.py	/^    def assertNotRegexpMatches(self, text, unexpected_regexp, msg=None):$/;"	kind:member	line:1024
+assertOldResultWarning	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_unittest2_with.py	/^    def assertOldResultWarning(self, test, failures):$/;"	kind:member	line:60
+assertRaises	bin/opnetd/demos/liso/proj1_cp2/unittest2/case.py	/^    def assertRaises(self, excClass, callableObj=None, *args, **kwargs):$/;"	kind:member	line:452
+assertRaisesRegexp	bin/opnetd/demos/liso/proj1_cp2/unittest2/case.py	/^    def assertRaisesRegexp(self, expected_exception, expected_regexp,$/;"	kind:member	line:985
+assertRegexpMatches	bin/opnetd/demos/liso/proj1_cp2/unittest2/case.py	/^    def assertRegexpMatches(self, text, expected_regexp, msg=None):$/;"	kind:member	line:1015
+assertSequenceEqual	bin/opnetd/demos/liso/proj1_cp2/unittest2/case.py	/^    def assertSequenceEqual(self, seq1, seq2,$/;"	kind:member	line:633
+assertSetEqual	bin/opnetd/demos/liso/proj1_cp2/unittest2/case.py	/^    def assertSetEqual(self, set1, set2, msg=None):$/;"	kind:member	line:768
+assertTrue	bin/opnetd/demos/liso/proj1_cp2/unittest2/case.py	/^    def assertTrue(self, expr, msg=None):$/;"	kind:member	line:426
+assertTupleEqual	bin/opnetd/demos/liso/proj1_cp2/unittest2/case.py	/^    def assertTupleEqual(self, tuple1, tuple2, msg=None):$/;"	kind:member	line:757
+assert_	bin/opnetd/demos/liso/proj1_cp2/unittest2/case.py	/^    assert_ = assertTrue$/;"	kind:variable	line:613
+body_file	bin/opnetd/demos/liso/proj1_cp2/http_parser/http.py	/^    def body_file(self, buffering=None, binary=True, encoding=None,$/;"	kind:member	line:162
+body_string	bin/opnetd/demos/liso/proj1_cp2/http_parser/http.py	/^    def body_string(self, binary=True, encoding=None, errors=None,$/;"	kind:member	line:182
+case.py	bin/opnetd/demos/liso/proj1_cp2/unittest2/case.py	1;"	kind:file	line:1
+catch_warnings	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/support.py	/^    class catch_warnings(object):$/;"	kind:class	line:131
+check_both	bin/opnetd/demos/liso/proj1_cp2/plcommon.py	/^def check_both(args, shouldPrint=True, check=True):$/;"	kind:function	line:9
+check_correct_GET	bin/opnetd/demos/liso/proj1_cp2/lowlevelhttptests.py	/^def check_correct_GET(host, port):$/;"	kind:function	line:41
+check_correct_HEAD	bin/opnetd/demos/liso/proj1_cp2/lowlevelhttptests.py	/^def check_correct_HEAD(host, port):$/;"	kind:function	line:5
+check_headers	bin/opnetd/demos/liso/proj1_cp2/grader1cp2.py	/^    def check_headers(self, response_type, headers, length_content, ext):$/;"	kind:member	line:32
+check_output	bin/opnetd/demos/liso/proj1_cp2/plcommon.py	/^def check_output(args, shouldPrint=True):$/;"	kind:function	line:6
+classSetUp	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            classSetUp = False$/;"	kind:variable	line:165
+classSetUp	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            classSetUp = False$/;"	kind:variable	line:296
+classSetUp	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            classSetUp = False$/;"	kind:variable	line:369
+classTornDown	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            classTornDown = False$/;"	kind:variable	line:297
+classTornDown	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            classTornDown = False$/;"	kind:variable	line:370
+cleanup	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_discovery.py	/^        def cleanup():$/;"	kind:function	line:321
+cleanup	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_runner.py	/^        def cleanup():$/;"	kind:function	line:40
+cleanup1	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^        def cleanup1():$/;"	kind:function	line:130
+cleanup1	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^        def cleanup1():$/;"	kind:function	line:171
+cleanup1	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^        def cleanup1():$/;"	kind:function	line:95
+cleanup1	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^        def cleanup1(*args, **kwargs):$/;"	kind:function	line:61
+cleanup2	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^        def cleanup2():$/;"	kind:function	line:132
+cleanup2	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^        def cleanup2():$/;"	kind:function	line:174
+cleanup2	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^        def cleanup2():$/;"	kind:function	line:98
+cleanup2	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^        def cleanup2(*args, **kwargs):$/;"	kind:function	line:64
+close	bin/opnetd/demos/liso/proj1_cp2/http_parser/_socketio.py	/^    def close(self):$/;"	kind:member	line:125
+collector	bin/opnetd/demos/liso/proj1_cp2/unittest2/collector.py	/^def collector():$/;"	kind:function	line:5
+collector.py	bin/opnetd/demos/liso/proj1_cp2/unittest2/collector.py	1;"	kind:file	line:1
+compatibility.py	bin/opnetd/demos/liso/proj1_cp2/unittest2/compatibility.py	1;"	kind:file	line:1
+countTestCases	bin/opnetd/demos/liso/proj1_cp2/unittest2/case.py	/^    def countTestCases(self):$/;"	kind:member	line:262
+countTestCases	bin/opnetd/demos/liso/proj1_cp2/unittest2/suite.py	/^    def countTestCases(self):$/;"	kind:member	line:271
+countTestCases	bin/opnetd/demos/liso/proj1_cp2/unittest2/suite.py	/^    def countTestCases(self):$/;"	kind:member	line:34
+cp1_checker.py	bin/opnetd/demos/liso/cp1_checker.py	1;"	kind:file	line:1
+createTests	bin/opnetd/demos/liso/proj1_cp2/unittest2/main.py	/^    def createTests(self):$/;"	kind:member	line:156
+data	bin/opnetd/demos/liso/cp1_checker.py	/^        data = socketSubset[j].recv(randomLen[j])$/;"	kind:variable	line:51
+debug	bin/opnetd/demos/liso/proj1_cp2/unittest2/case.py	/^    def debug(self):$/;"	kind:member	line:403
+debug	bin/opnetd/demos/liso/proj1_cp2/unittest2/suite.py	/^    def debug(self):$/;"	kind:member	line:66
+debug	bin/opnetd/demos/liso/proj1_cp2/unittest2/suite.py	/^    def debug(self):$/;"	kind:member	line:89
+decorator	bin/opnetd/demos/liso/proj1_cp2/unittest2/case.py	/^    def decorator(test_item):$/;"	kind:function	line:59
+decorator	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_skipping.py	/^        def decorator(func):$/;"	kind:function	line:124
+defaultTest	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_program.py	/^    defaultTest = None$/;"	kind:variable	line:83
+defaultTestLoader	bin/opnetd/demos/liso/proj1_cp2/unittest2/loader.py	/^defaultTestLoader = TestLoader()$/;"	kind:variable	line:303
+defaultTestResult	bin/opnetd/demos/liso/proj1_cp2/unittest2/case.py	/^    def defaultTestResult(self):$/;"	kind:member	line:265
+defaultTestResult	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^            def defaultTestResult(self):$/;"	kind:member	line:286
+defaultTestResult	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^            def defaultTestResult(self):$/;"	kind:member	line:325
+defaultTestResult	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^            def defaultTestResult(self):$/;"	kind:member	line:362
+defaultTestResult	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^            def defaultTestResult(self):$/;"	kind:member	line:399
+defaultTestResult	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^            def defaultTestResult(self):$/;"	kind:member	line:416
+defaultTestResult	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^            def defaultTestResult(self):$/;"	kind:member	line:523
+deprecated_func	bin/opnetd/demos/liso/proj1_cp2/unittest2/case.py	/^        def deprecated_func(*args, **kwargs):$/;"	kind:function	line:618
+discover	bin/opnetd/demos/liso/proj1_cp2/unittest2/loader.py	/^    def discover(self, start_dir, pattern='test*.py', top_level_dir=None):$/;"	kind:member	line:164
+discover	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_discovery.py	/^            def discover(self, start_dir, pattern, top_level_dir):$/;"	kind:member	line:236
+doCleanups	bin/opnetd/demos/liso/proj1_cp2/unittest2/case.py	/^    def doCleanups(self):$/;"	kind:member	line:386
+do_discovery	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_discovery.py	/^        def do_discovery(argv):$/;"	kind:function	line:208
+dummy.py	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/dummy.py	1;"	kind:file	line:1
+eq_pairs	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^    eq_pairs = [(Test.Foo('test1'), Test.Foo('test1'))]$/;"	kind:variable	line:187
+eq_pairs	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_suite.py	/^    eq_pairs = [(unittest2.TestSuite(), unittest2.TestSuite()),$/;"	kind:variable	line:27
+errors	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^            errors = []$/;"	kind:variable	line:85
+exc_info_tuple	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_result.py	/^            exc_info_tuple = sys.exc_info()$/;"	kind:variable	line:161
+exc_info_tuple	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_result.py	/^            exc_info_tuple = sys.exc_info()$/;"	kind:variable	line:209
+exit	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_program.py	/^    exit = False$/;"	kind:variable	line:80
+expectedFailure	bin/opnetd/demos/liso/proj1_cp2/unittest2/case.py	/^def expectedFailure(func):$/;"	kind:function	line:88
+f	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_suite.py	/^        def f(_):$/;"	kind:function	line:293
+f_globals	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_result.py	/^                f_globals = {}$/;"	kind:variable	line:258
+fail	bin/opnetd/demos/liso/proj1_cp2/unittest2/case.py	/^    def fail(self, msg=None):$/;"	kind:member	line:416
+failIf	bin/opnetd/demos/liso/proj1_cp2/unittest2/case.py	/^    failIf = _deprecate(assertFalse)$/;"	kind:variable	line:631
+failIfAlmostEqual	bin/opnetd/demos/liso/proj1_cp2/unittest2/case.py	/^    failIfAlmostEqual = _deprecate(assertNotAlmostEqual)$/;"	kind:variable	line:628
+failIfEqual	bin/opnetd/demos/liso/proj1_cp2/unittest2/case.py	/^    failIfEqual = _deprecate(assertNotEqual)$/;"	kind:variable	line:626
+failUnless	bin/opnetd/demos/liso/proj1_cp2/unittest2/case.py	/^    failUnless = _deprecate(assertTrue)$/;"	kind:variable	line:629
+failUnlessAlmostEqual	bin/opnetd/demos/liso/proj1_cp2/unittest2/case.py	/^    failUnlessAlmostEqual = _deprecate(assertAlmostEqual)$/;"	kind:variable	line:627
+failUnlessEqual	bin/opnetd/demos/liso/proj1_cp2/unittest2/case.py	/^    failUnlessEqual = _deprecate(assertEqual)$/;"	kind:variable	line:625
+failUnlessRaises	bin/opnetd/demos/liso/proj1_cp2/unittest2/case.py	/^    failUnlessRaises = _deprecate(assertRaises)$/;"	kind:variable	line:630
+failfast	bin/opnetd/demos/liso/proj1_cp2/unittest2/result.py	/^def failfast(method):$/;"	kind:function	line:14
+failureException	bin/opnetd/demos/liso/proj1_cp2/unittest2/case.py	/^    failureException = AssertionError$/;"	kind:variable	line:181
+failureException	bin/opnetd/demos/liso/proj1_cp2/unittest2/suite.py	/^    failureException = None$/;"	kind:variable	line:246
+failureException	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_assertions.py	/^            failureException = self.failureException$/;"	kind:variable	line:85
+failureException	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_assertions.py	/^            failureException = self.failureException$/;"	kind:variable	line:92
+failureException	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^            failureException = RuntimeError$/;"	kind:variable	line:449
+failureException	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^            failureException = RuntimeError$/;"	kind:variable	line:472
+fakeRegisterResult	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_runner.py	/^        def fakeRegisterResult(thisResult):$/;"	kind:function	line:50
+fileno	bin/opnetd/demos/liso/proj1_cp2/http_parser/_socketio.py	/^    def fileno(self):$/;"	kind:member	line:108
+findTestCases	bin/opnetd/demos/liso/proj1_cp2/unittest2/loader.py	/^def findTestCases(module, prefix='test', sortUsing=cmp,$/;"	kind:function	line:321
+foo	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^            def foo():$/;"	kind:member	line:877
+foo	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^            foo = staticmethod(foo)$/;"	kind:variable	line:879
+foo_bar	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^            def foo_bar(self): pass$/;"	kind:member	line:1014
+foo_bar	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^            def foo_bar(self): pass$/;"	kind:member	line:1036
+foo_bar	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^            def foo_bar(self): pass$/;"	kind:member	line:1059
+foo_bar	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^            def foo_bar(self): pass$/;"	kind:member	line:1082
+foo_bar	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^            def foo_bar(self): pass$/;"	kind:member	line:1226
+foo_bar	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^            def foo_bar(self): pass$/;"	kind:member	line:1241
+foo_bar	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^            def foo_bar(self): pass$/;"	kind:member	line:1257
+foo_bar	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^            def foo_bar(self): pass$/;"	kind:member	line:1273
+foo_bar	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^            def foo_bar(self): pass$/;"	kind:member	line:21
+foo_bar	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^            def foo_bar(self): pass$/;"	kind:member	line:34
+foobar	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^            def foobar(self): pass$/;"	kind:member	line:943
+foobar	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^            def foobar(self): pass$/;"	kind:member	line:954
+foobar	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^            def foobar(self): pass$/;"	kind:member	line:988
+fragment	bin/opnetd/demos/liso/proj1_cp2/http_parser/http.py	/^    def fragment(self):$/;"	kind:member	line:109
+gen	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_suite.py	/^        def gen():$/;"	kind:function	line:247
+get	bin/opnetd/demos/liso/proj1_cp2/unittest2/case.py	/^    def get(self, key, default=None):$/;"	kind:member	line:149
+getDescription	bin/opnetd/demos/liso/proj1_cp2/unittest2/runner.py	/^    def getDescription(self, test):$/;"	kind:member	line:49
+getMethod	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_assertions.py	/^        def getMethod(i):$/;"	kind:function	line:114
+getRunner	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^    def getRunner(self):$/;"	kind:member	line:11
+getStartedResult	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_result.py	/^    def getStartedResult(self):$/;"	kind:member	line:367
+getTestCaseNames	bin/opnetd/demos/liso/proj1_cp2/unittest2/loader.py	/^    def getTestCaseNames(self, testCaseClass):$/;"	kind:member	line:151
+getTestCaseNames	bin/opnetd/demos/liso/proj1_cp2/unittest2/loader.py	/^def getTestCaseNames(testCaseClass, prefix, sortUsing=cmp):$/;"	kind:function	line:314
+grader	bin/opnetd/demos/liso/proj1_cp2/grader.py	/^class grader(object):$/;"	kind:class	line:28
+grader.py	bin/opnetd/demos/liso/proj1_cp2/grader.py	1;"	kind:file	line:1
+grader1cp2.py	bin/opnetd/demos/liso/proj1_cp2/grader1cp2.py	1;"	kind:file	line:1
+hasInstallHandler	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_program.py	/^hasInstallHandler = hasattr(unittest2, 'installHandler')$/;"	kind:variable	line:6
+headers	bin/opnetd/demos/liso/proj1_cp2/http_parser/http.py	/^    def headers(self):$/;"	kind:member	line:135
+http.py	bin/opnetd/demos/liso/proj1_cp2/http_parser/http.py	1;"	kind:file	line:1
+id	bin/opnetd/demos/liso/proj1_cp2/unittest2/case.py	/^    def id(self):$/;"	kind:member	line:1064
+id	bin/opnetd/demos/liso/proj1_cp2/unittest2/case.py	/^    def id(self):$/;"	kind:member	line:279
+id	bin/opnetd/demos/liso/proj1_cp2/unittest2/suite.py	/^    def id(self):$/;"	kind:member	line:251
+initArgs	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_break.py	/^            initArgs = []$/;"	kind:variable	line:189
+initArgs	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_program.py	/^    initArgs = None$/;"	kind:variable	line:94
+inner	bin/opnetd/demos/liso/proj1_cp2/unittest2/result.py	/^    def inner(self, *args, **kw):$/;"	kind:function	line:15
+inner	bin/opnetd/demos/liso/proj1_cp2/unittest2/signals.py	/^        def inner(*args, **kwargs):$/;"	kind:function	line:45
+inner	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_skipping.py	/^            def inner(*a):$/;"	kind:function	line:125
+installHandler	bin/opnetd/demos/liso/proj1_cp2/unittest2/main.py	/^    installHandler = None$/;"	kind:variable	line:11
+installHandler	bin/opnetd/demos/liso/proj1_cp2/unittest2/signals.py	/^def installHandler():$/;"	kind:function	line:35
+isTestMethod	bin/opnetd/demos/liso/proj1_cp2/unittest2/loader.py	/^        def isTestMethod(attrname, testCaseClass=testCaseClass,$/;"	kind:function	line:154
+is_chunked	bin/opnetd/demos/liso/proj1_cp2/http_parser/http.py	/^    def is_chunked(self):$/;"	kind:member	line:149
+isdir	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_discovery.py	/^        def isdir(_):$/;"	kind:function	line:334
+isdir	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_discovery.py	/^        def isdir(path):$/;"	kind:function	line:45
+isfile	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_discovery.py	/^        def isfile(_):$/;"	kind:function	line:332
+isfile	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_discovery.py	/^        def isfile(path):$/;"	kind:function	line:50
+listdir	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_discovery.py	/^        def listdir(_):$/;"	kind:function	line:330
+loadTestsFromModule	bin/opnetd/demos/liso/proj1_cp2/unittest2/loader.py	/^    def loadTestsFromModule(self, module, use_load_tests=True):$/;"	kind:member	line:79
+loadTestsFromModule	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_discovery.py	/^        def loadTestsFromModule(module, use_load_tests):$/;"	kind:function	line:113
+loadTestsFromModule	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_program.py	/^        def loadTestsFromModule(self, module):$/;"	kind:member	line:47
+loadTestsFromName	bin/opnetd/demos/liso/proj1_cp2/unittest2/loader.py	/^    def loadTestsFromName(self, name, module=None):$/;"	kind:member	line:97
+loadTestsFromNames	bin/opnetd/demos/liso/proj1_cp2/unittest2/loader.py	/^    def loadTestsFromNames(self, names, module=None):$/;"	kind:member	line:144
+loadTestsFromTestCase	bin/opnetd/demos/liso/proj1_cp2/unittest2/loader.py	/^    def loadTestsFromTestCase(self, testCaseClass):$/;"	kind:member	line:68
+load_tests	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_discovery.py	/^                    def load_tests(loader, tests, pattern):$/;"	kind:function	line:101
+load_tests	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^        def load_tests(loader, tests, pattern):$/;"	kind:function	line:163
+load_tests	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^        def load_tests(loader, tests, pattern):$/;"	kind:function	line:181
+load_tests_args	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_discovery.py	/^            load_tests_args = []$/;"	kind:variable	line:95
+loader.py	bin/opnetd/demos/liso/proj1_cp2/unittest2/loader.py	1;"	kind:file	line:1
+longMessage	bin/opnetd/demos/liso/proj1_cp2/unittest2/case.py	/^    longMessage = True$/;"	kind:variable	line:193
+longMessage	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_assertions.py	/^            longMessage = False$/;"	kind:variable	line:84
+longMessage	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_assertions.py	/^            longMessage = True$/;"	kind:variable	line:91
+lowlevelhttptests.py	bin/opnetd/demos/liso/proj1_cp2/lowlevelhttptests.py	1;"	kind:file	line:1
+main	bin/opnetd/demos/liso/proj1_cp2/unittest2/main.py	/^main = TestProgram$/;"	kind:variable	line:236
+main.py	bin/opnetd/demos/liso/proj1_cp2/unittest2/main.py	1;"	kind:file	line:1
+main_	bin/opnetd/demos/liso/proj1_cp2/unittest2/main.py	/^def main_():$/;"	kind:function	line:238
+makeSuite	bin/opnetd/demos/liso/proj1_cp2/unittest2/loader.py	/^def makeSuite(testCaseClass, prefix='test', sortUsing=cmp,$/;"	kind:function	line:317
+maxDiff	bin/opnetd/demos/liso/proj1_cp2/unittest2/case.py	/^    maxDiff = 80*8$/;"	kind:variable	line:187
+method	bin/opnetd/demos/liso/proj1_cp2/http_parser/http.py	/^    def method(self):$/;"	kind:member	line:130
+mode	bin/opnetd/demos/liso/proj1_cp2/http_parser/_socketio.py	/^    def mode(self):$/;"	kind:member	line:122
+moduleSetup	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            moduleSetup = 0$/;"	kind:variable	line:265
+moduleSetup	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            moduleSetup = 0$/;"	kind:variable	line:285
+moduleTornDown	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            moduleTornDown = 0$/;"	kind:variable	line:286
+moduleTornDown	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            moduleTornDown = 0$/;"	kind:variable	line:342
+moduleTornDown	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            moduleTornDown = 0$/;"	kind:variable	line:362
+name	bin/opnetd/demos/liso/proj1_cp2/http_parser/_socketio.py	/^    def name(self):$/;"	kind:member	line:115
+ne_pairs	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^    ne_pairs = [(Test.Foo('test1'), Test.Foo('runTest')),$/;"	kind:variable	line:190
+ne_pairs	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_suite.py	/^    ne_pairs = [(unittest2.TestSuite(), _mk_TestSuite('test_1')),$/;"	kind:variable	line:32
+new_handler	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_break.py	/^        def new_handler(frame, signum):$/;"	kind:function	line:130
+next	bin/opnetd/demos/liso/proj1_cp2/http_parser/http.py	/^    next = __next__$/;"	kind:variable	line:217
+numBytes	bin/opnetd/demos/liso/cp1_checker.py	/^numBytes = int(sys.argv[5])$/;"	kind:variable	line:19
+numConnections	bin/opnetd/demos/liso/cp1_checker.py	/^numConnections = int(sys.argv[6])$/;"	kind:variable	line:20
+numTrials	bin/opnetd/demos/liso/cp1_checker.py	/^numTrials = int(sys.argv[3])$/;"	kind:variable	line:17
+numWritesReads	bin/opnetd/demos/liso/cp1_checker.py	/^numWritesReads = int(sys.argv[4])$/;"	kind:variable	line:18
+p1cp2grader	bin/opnetd/demos/liso/proj1_cp2/grader1cp2.py	/^    p1cp2grader = project1cp2grader("checkpoint-2")$/;"	kind:variable	line:196
+pAssertEqual	bin/opnetd/demos/liso/proj1_cp2/grader.py	/^    def pAssertEqual(self, arg1, arg2):$/;"	kind:member	line:13
+pAssertTrue	bin/opnetd/demos/liso/proj1_cp2/grader.py	/^    def pAssertTrue(self, test):$/;"	kind:member	line:20
+parseArgs	bin/opnetd/demos/liso/proj1_cp2/unittest2/main.py	/^    def parseArgs(self, argv):$/;"	kind:member	line:114
+path	bin/opnetd/demos/liso/proj1_cp2/http_parser/http.py	/^    def path(self):$/;"	kind:member	line:98
+paths	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_discovery.py	/^            paths = []$/;"	kind:variable	line:94
+plcommon.py	bin/opnetd/demos/liso/proj1_cp2/plcommon.py	1;"	kind:file	line:1
+prepareTestSuite	bin/opnetd/demos/liso/proj1_cp2/grader1cp2.py	/^    def prepareTestSuite(self):$/;"	kind:member	line:167
+printErrorList	bin/opnetd/demos/liso/proj1_cp2/unittest2/runner.py	/^    def printErrorList(self, flavour, errors):$/;"	kind:member	line:117
+printErrors	bin/opnetd/demos/liso/proj1_cp2/unittest2/runner.py	/^    def printErrors(self):$/;"	kind:member	line:111
+printErrors	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/support.py	/^    def printErrors(self):$/;"	kind:member	line:37
+printErrors	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_runner.py	/^            def printErrors(self):$/;"	kind:member	line:63
+printErrors	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_runner.py	/^            def printErrors(self):$/;"	kind:member	line:73
+progName	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_program.py	/^    progName = 'test'$/;"	kind:variable	line:86
+project1cp2grader	bin/opnetd/demos/liso/proj1_cp2/grader1cp2.py	/^class project1cp2grader(grader):$/;"	kind:class	line:148
+project1cp2tester	bin/opnetd/demos/liso/proj1_cp2/grader1cp2.py	/^class project1cp2tester(tester):$/;"	kind:class	line:27
+query_string	bin/opnetd/demos/liso/proj1_cp2/http_parser/http.py	/^    def query_string(self):$/;"	kind:member	line:104
+raiseError	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_program.py	/^    raiseError = False$/;"	kind:variable	line:96
+randomData	bin/opnetd/demos/liso/cp1_checker.py	/^    randomData = []$/;"	kind:variable	line:40
+randomLen	bin/opnetd/demos/liso/cp1_checker.py	/^    randomLen = []$/;"	kind:variable	line:41
+random_len	bin/opnetd/demos/liso/cp1_checker.py	/^        random_len = random.randrange(1, numBytes)$/;"	kind:variable	line:44
+random_string	bin/opnetd/demos/liso/cp1_checker.py	/^        random_string = os.urandom(random_len)$/;"	kind:variable	line:45
+readable	bin/opnetd/demos/liso/proj1_cp2/http_parser/_socketio.py	/^    def readable(self):$/;"	kind:member	line:98
+readinto	bin/opnetd/demos/liso/proj1_cp2/http_parser/_socketio.py	/^    def readinto(self, b):$/;"	kind:member	line:56
+registerResult	bin/opnetd/demos/liso/proj1_cp2/unittest2/runner.py	/^    def registerResult(_):$/;"	kind:function	line:12
+registerResult	bin/opnetd/demos/liso/proj1_cp2/unittest2/signals.py	/^def registerResult(result):$/;"	kind:function	line:28
+relpath	bin/opnetd/demos/liso/proj1_cp2/unittest2/compatibility.py	/^    relpath = _relpath_nt$/;"	kind:variable	line:62
+relpath	bin/opnetd/demos/liso/proj1_cp2/unittest2/compatibility.py	/^    relpath = _relpath_posix$/;"	kind:variable	line:64
+removeHandler	bin/opnetd/demos/liso/proj1_cp2/unittest2/signals.py	/^def removeHandler(method=None):$/;"	kind:function	line:43
+removeResult	bin/opnetd/demos/liso/proj1_cp2/unittest2/signals.py	/^def removeResult(result):$/;"	kind:function	line:31
+removeTest	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_program.py	/^        def removeTest():$/;"	kind:function	line:28
+reportScores	bin/opnetd/demos/liso/proj1_cp2/grader.py	/^    def reportScores(self):$/;"	kind:member	line:39
+restore	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_discovery.py	/^        def restore():$/;"	kind:function	line:189
+restoreParseArgs	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_program.py	/^        def restoreParseArgs():$/;"	kind:function	line:23
+restore_isdir	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_discovery.py	/^        def restore_isdir():$/;"	kind:function	line:161
+restore_isdir	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_discovery.py	/^        def restore_isdir():$/;"	kind:function	line:36
+restore_isdir	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_discovery.py	/^        def restore_isdir():$/;"	kind:function	line:79
+restore_isfile	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_discovery.py	/^        def restore_isfile():$/;"	kind:function	line:139
+restore_isfile	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_discovery.py	/^        def restore_isfile():$/;"	kind:function	line:33
+restore_isfile	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_discovery.py	/^        def restore_isfile():$/;"	kind:function	line:76
+restore_listdir	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_discovery.py	/^        def restore_listdir():$/;"	kind:function	line:30
+restore_listdir	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_discovery.py	/^        def restore_listdir():$/;"	kind:function	line:73
+restore_path	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_discovery.py	/^        def restore_path():$/;"	kind:function	line:146
+result	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_program.py	/^    result = None$/;"	kind:variable	line:81
+result.py	bin/opnetd/demos/liso/proj1_cp2/unittest2/result.py	1;"	kind:file	line:1
+resultFactory	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/support.py	/^def resultFactory(*_):$/;"	kind:function	line:7
+resultclass	bin/opnetd/demos/liso/proj1_cp2/unittest2/runner.py	/^    resultclass = TextTestResult$/;"	kind:variable	line:135
+results	bin/opnetd/demos/liso/proj1_cp2/grader1cp2.py	/^    results = p1cp2grader.runTests()$/;"	kind:variable	line:199
+return_TestCase	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^        def return_TestCase():$/;"	kind:function	line:456
+return_TestCase	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^        def return_TestCase():$/;"	kind:function	line:475
+return_TestCase	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^        def return_TestCase():$/;"	kind:function	line:854
+return_TestSuite	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^        def return_TestSuite():$/;"	kind:function	line:442
+return_TestSuite	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^        def return_TestSuite():$/;"	kind:function	line:838
+return_wrong	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^        def return_wrong():$/;"	kind:function	line:512
+return_wrong	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^        def return_wrong():$/;"	kind:function	line:895
+reversed_cmp	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^        def reversed_cmp(x, y):$/;"	kind:function	line:1110
+reversed_cmp	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^        def reversed_cmp(x, y):$/;"	kind:function	line:1126
+reversed_cmp	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^        def reversed_cmp(x, y):$/;"	kind:function	line:1144
+reversed_cmp	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^        def reversed_cmp(x, y):$/;"	kind:function	line:1162
+reversed_cmp	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^        def reversed_cmp(x, y):$/;"	kind:function	line:1182
+run	bin/opnetd/demos/liso/proj1_cp2/unittest2/case.py	/^    def run(self, result=None):$/;"	kind:member	line:310
+run	bin/opnetd/demos/liso/proj1_cp2/unittest2/runner.py	/^    def run(self, test):$/;"	kind:member	line:150
+run	bin/opnetd/demos/liso/proj1_cp2/unittest2/suite.py	/^    def run(self, result):$/;"	kind:member	line:263
+run	bin/opnetd/demos/liso/proj1_cp2/unittest2/suite.py	/^    def run(self, result):$/;"	kind:member	line:56
+run	bin/opnetd/demos/liso/proj1_cp2/unittest2/suite.py	/^    def run(self, result):$/;"	kind:member	line:83
+run	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_break.py	/^            def run(self, test):$/;"	kind:member	line:193
+run	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_program.py	/^            def run(self, test):$/;"	kind:member	line:16
+run	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_program.py	/^    def run(self, test):$/;"	kind:member	line:104
+run	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_suite.py	/^            def run(self, result):$/;"	kind:member	line:195
+run	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_unittest2_with.py	/^        def run(cm):$/;"	kind:function	line:107
+run	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_unittest2_with.py	/^        def run(cm):$/;"	kind:function	line:119
+run	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_unittest2_with.py	/^        def run(cm):$/;"	kind:function	line:41
+run	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_unittest2_with.py	/^        def run(cm):$/;"	kind:function	line:52
+run	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_unittest2_with.py	/^        def run(log):$/;"	kind:function	line:61
+runArgs	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_break.py	/^            runArgs = []$/;"	kind:variable	line:190
+runContext	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_unittest2_with.py	/^    def runContext(self, ctxobj, func, *funcargs, **funckwargs):$/;"	kind:member	line:16
+runTest	bin/opnetd/demos/liso/proj1_cp2/unittest2/case.py	/^    def runTest(self):$/;"	kind:member	line:1061
+runTest	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^            def runTest(self): raise MyException()$/;"	kind:member	line:209
+runTest	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^            def runTest(self): raise MyException()$/;"	kind:member	line:220
+runTest	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^            def runTest(self): raise MyException()$/;"	kind:member	line:231
+runTest	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^            def runTest(self):$/;"	kind:member	line:255
+runTest	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^            def runTest(self):$/;"	kind:member	line:484
+runTest	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^            def runTest(self):$/;"	kind:member	line:493
+runTest	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^            def runTest(self):$/;"	kind:member	line:507
+runTest	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^        def runTest(self): pass$/;"	kind:member	line:25
+runTest	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^            def runTest(self):$/;"	kind:member	line:70
+runTest	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_suite.py	/^        def runTest(self): pass$/;"	kind:member	line:15
+runTests	bin/opnetd/demos/liso/proj1_cp2/grader.py	/^    def runTests(self):$/;"	kind:member	line:35
+runTests	bin/opnetd/demos/liso/proj1_cp2/unittest2/main.py	/^    def runTests(self):$/;"	kind:member	line:216
+runTests	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^    def runTests(self, *cases):$/;"	kind:member	line:14
+runner.py	bin/opnetd/demos/liso/proj1_cp2/unittest2/runner.py	1;"	kind:file	line:1
+s	bin/opnetd/demos/liso/cp1_checker.py	/^    s = socket(AF_INET, SOCK_STREAM)$/;"	kind:variable	line:33
+safe_repr	bin/opnetd/demos/liso/proj1_cp2/unittest2/util.py	/^def safe_repr(obj, short=False):$/;"	kind:function	line:7
+safe_str	bin/opnetd/demos/liso/proj1_cp2/unittest2/util.py	/^def safe_str(obj):$/;"	kind:function	line:16
+separator2	bin/opnetd/demos/liso/proj1_cp2/unittest2/runner.py	/^    separator2 = '-' * 70$/;"	kind:variable	line:40
+separator2	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_runner.py	/^            separator2 = ''$/;"	kind:variable	line:62
+separator2	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_runner.py	/^            separator2 = ''$/;"	kind:variable	line:72
+serverHost	bin/opnetd/demos/liso/cp1_checker.py	/^serverHost = gethostbyname(sys.argv[1])$/;"	kind:variable	line:15
+serverPort	bin/opnetd/demos/liso/cp1_checker.py	/^serverPort = int(sys.argv[2])$/;"	kind:variable	line:16
+setUp	bin/opnetd/demos/liso/proj1_cp2/grader1cp2.py	/^    def setUp(self, argv):$/;"	kind:member	line:180
+setUp	bin/opnetd/demos/liso/proj1_cp2/unittest2/case.py	/^    def setUp(self):$/;"	kind:member	line:1053
+setUp	bin/opnetd/demos/liso/proj1_cp2/unittest2/case.py	/^    def setUp(self):$/;"	kind:member	line:248
+setUp	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_assertions.py	/^    def setUp(self):$/;"	kind:member	line:82
+setUp	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_break.py	/^    def setUp(self):$/;"	kind:member	line:17
+setUp	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^            def setUp(self):$/;"	kind:member	line:117
+setUp	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^            def setUp(self):$/;"	kind:member	line:159
+setUp	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^            def setUp(self):$/;"	kind:member	line:273
+setUp	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^            def setUp(self):$/;"	kind:member	line:289
+setUp	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^        def setUp(self):$/;"	kind:member	line:38
+setUp	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_functiontestcase.py	/^        def setUp():$/;"	kind:function	line:103
+setUp	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_functiontestcase.py	/^        def setUp():$/;"	kind:function	line:26
+setUp	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_functiontestcase.py	/^        def setUp():$/;"	kind:function	line:51
+setUp	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_functiontestcase.py	/^        def setUp():$/;"	kind:function	line:77
+setUp	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_program.py	/^    def setUp(self):$/;"	kind:member	line:110
+setUp	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_result.py	/^    def setUp(self):$/;"	kind:member	line:296
+setUp	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_skipping.py	/^            def setUp(self):$/;"	kind:member	line:107
+setUp	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_skipping.py	/^            def setUp(self):$/;"	kind:member	line:21
+setUp	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_unittest2_with.py	/^            def setUp(self):$/;"	kind:member	line:89
+setUpCalled	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            setUpCalled = 0$/;"	kind:variable	line:32
+setUpClass	bin/opnetd/demos/liso/proj1_cp2/unittest2/case.py	/^    def setUpClass(cls):$/;"	kind:member	line:251
+setUpClass	bin/opnetd/demos/liso/proj1_cp2/unittest2/case.py	/^    setUpClass = classmethod(setUpClass)$/;"	kind:variable	line:253
+setUpClass	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            def setUpClass(cls):$/;"	kind:member	line:150
+setUpClass	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            def setUpClass(cls):$/;"	kind:member	line:167
+setUpClass	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            def setUpClass(cls):$/;"	kind:member	line:201
+setUpClass	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            def setUpClass(cls):$/;"	kind:member	line:213
+setUpClass	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            def setUpClass(cls):$/;"	kind:member	line:225
+setUpClass	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            def setUpClass(cls):$/;"	kind:member	line:298
+setUpClass	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            def setUpClass(cls):$/;"	kind:member	line:33
+setUpClass	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            def setUpClass(cls):$/;"	kind:member	line:371
+setUpClass	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            def setUpClass(cls):$/;"	kind:member	line:402
+setUpClass	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            def setUpClass(cls):$/;"	kind:member	line:451
+setUpClass	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            def setUpClass(cls):$/;"	kind:member	line:480
+setUpClass	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            def setUpClass(cls):$/;"	kind:member	line:98
+setUpClass	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            setUpClass = classmethod(setUpClass)$/;"	kind:variable	line:100
+setUpClass	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            setUpClass = classmethod(setUpClass)$/;"	kind:variable	line:152
+setUpClass	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            setUpClass = classmethod(setUpClass)$/;"	kind:variable	line:169
+setUpClass	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            setUpClass = classmethod(setUpClass)$/;"	kind:variable	line:203
+setUpClass	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            setUpClass = classmethod(setUpClass)$/;"	kind:variable	line:215
+setUpClass	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            setUpClass = classmethod(setUpClass)$/;"	kind:variable	line:227
+setUpClass	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            setUpClass = classmethod(setUpClass)$/;"	kind:variable	line:300
+setUpClass	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            setUpClass = classmethod(setUpClass)$/;"	kind:variable	line:36
+setUpClass	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            setUpClass = classmethod(setUpClass)$/;"	kind:variable	line:373
+setUpClass	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            setUpClass = classmethod(setUpClass)$/;"	kind:variable	line:404
+setUpClass	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            setUpClass = classmethod(setUpClass)$/;"	kind:variable	line:453
+setUpClass	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            setUpClass = classmethod(setUpClass)$/;"	kind:variable	line:483
+setUpClass	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_suite.py	/^            def setUpClass(cls):$/;"	kind:member	line:306
+setUpClass	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_suite.py	/^            setUpClass = classmethod(setUpClass)$/;"	kind:variable	line:308
+setUpModule	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            def setUpModule():$/;"	kind:member	line:185
+setUpModule	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            def setUpModule():$/;"	kind:member	line:193
+setUpModule	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            def setUpModule():$/;"	kind:member	line:266
+setUpModule	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            def setUpModule():$/;"	kind:member	line:287
+setUpModule	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            def setUpModule():$/;"	kind:member	line:425
+setUpModule	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            def setUpModule():$/;"	kind:member	line:443
+setUpModule	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            def setUpModule():$/;"	kind:member	line:470
+setUpModule	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            setUpModule = staticmethod(setUpModule)$/;"	kind:variable	line:187
+setUpModule	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            setUpModule = staticmethod(setUpModule)$/;"	kind:variable	line:195
+setUpModule	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            setUpModule = staticmethod(setUpModule)$/;"	kind:variable	line:268
+setUpModule	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            setUpModule = staticmethod(setUpModule)$/;"	kind:variable	line:290
+setUpModule	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            setUpModule = staticmethod(setUpModule)$/;"	kind:variable	line:427
+setUpModule	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            setUpModule = staticmethod(setUpModule)$/;"	kind:variable	line:445
+setUpModule	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            setUpModule = staticmethod(setUpModule)$/;"	kind:variable	line:473
+setUpModule	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_suite.py	/^            def setUpModule():$/;"	kind:member	line:319
+setUpModule	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_suite.py	/^            setUpModule = classmethod(setUpModule)$/;"	kind:variable	line:321
+setUpModule	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_suite.py	/^            setUpModule = classmethod(tearDownModule)$/;"	kind:variable	line:324
+shortDescription	bin/opnetd/demos/liso/proj1_cp2/unittest2/case.py	/^    def shortDescription(self):$/;"	kind:member	line:1091
+shortDescription	bin/opnetd/demos/liso/proj1_cp2/unittest2/case.py	/^    def shortDescription(self):$/;"	kind:member	line:268
+shortDescription	bin/opnetd/demos/liso/proj1_cp2/unittest2/suite.py	/^    def shortDescription(self):$/;"	kind:member	line:254
+shouldStop	bin/opnetd/demos/liso/proj1_cp2/unittest2/suite.py	/^    shouldStop = False$/;"	kind:variable	line:287
+should_keep_alive	bin/opnetd/demos/liso/proj1_cp2/http_parser/http.py	/^    def should_keep_alive(self):$/;"	kind:member	line:143
+showwarning	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/support.py	/^                def showwarning(*args, **kwargs):$/;"	kind:function	line:153
+signal	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_break.py	/^    signal = None$/;"	kind:variable	line:10
+signal	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_discovery.py	/^            signal = None$/;"	kind:variable	line:299
+signals.py	bin/opnetd/demos/liso/proj1_cp2/unittest2/signals.py	1;"	kind:file	line:1
+skip	bin/opnetd/demos/liso/proj1_cp2/unittest2/case.py	/^def skip(reason):$/;"	kind:function	line:55
+skipIf	bin/opnetd/demos/liso/proj1_cp2/unittest2/case.py	/^def skipIf(condition, reason):$/;"	kind:function	line:71
+skipTest	bin/opnetd/demos/liso/proj1_cp2/unittest2/case.py	/^    def skipTest(self, reason):$/;"	kind:member	line:412
+skipUnless	bin/opnetd/demos/liso/proj1_cp2/unittest2/case.py	/^def skipUnless(condition, reason):$/;"	kind:function	line:79
+skip_wrapper	bin/opnetd/demos/liso/proj1_cp2/unittest2/case.py	/^            def skip_wrapper(*args, **kwargs):$/;"	kind:function	line:61
+skipper	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_break.py	/^skipper = unittest2.skipUnless(hasattr(os, 'kill') and signal is not None, $/;"	kind:variable	line:255
+socketList	bin/opnetd/demos/liso/cp1_checker.py	/^socketList = []$/;"	kind:variable	line:26
+socketSubset	bin/opnetd/demos/liso/cp1_checker.py	/^    socketSubset = []$/;"	kind:variable	line:39
+socketSubset	bin/opnetd/demos/liso/cp1_checker.py	/^    socketSubset = random.sample(socketList, numConnections)$/;"	kind:variable	line:42
+sortTestMethodsUsing	bin/opnetd/demos/liso/proj1_cp2/unittest2/loader.py	/^    sortTestMethodsUsing = cmp$/;"	kind:variable	line:64
+sorted_list_difference	bin/opnetd/demos/liso/proj1_cp2/unittest2/util.py	/^def sorted_list_difference(expected, actual):$/;"	kind:function	line:25
+startTest	bin/opnetd/demos/liso/proj1_cp2/unittest2/result.py	/^    def startTest(self, test):$/;"	kind:member	line:56
+startTest	bin/opnetd/demos/liso/proj1_cp2/unittest2/runner.py	/^    def startTest(self, test):$/;"	kind:member	line:56
+startTest	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/support.py	/^    def startTest(self, test):$/;"	kind:member	line:19
+startTest	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/support.py	/^    def startTest(self, test):$/;"	kind:member	line:45
+startTestRun	bin/opnetd/demos/liso/proj1_cp2/unittest2/result.py	/^    def startTestRun(self):$/;"	kind:member	line:67
+startTestRun	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/support.py	/^    def startTestRun(self):$/;"	kind:member	line:49
+start_time	bin/opnetd/demos/liso/cp1_checker.py	/^        start_time = time.time()$/;"	kind:variable	line:52
+status	bin/opnetd/demos/liso/proj1_cp2/http_parser/http.py	/^    def status(self):$/;"	kind:member	line:123
+status_code	bin/opnetd/demos/liso/proj1_cp2/http_parser/http.py	/^    def status_code(self):$/;"	kind:member	line:118
+stop	bin/opnetd/demos/liso/proj1_cp2/unittest2/result.py	/^    def stop(self):$/;"	kind:member	line:141
+stopTest	bin/opnetd/demos/liso/proj1_cp2/unittest2/result.py	/^    def stopTest(self, test):$/;"	kind:member	line:73
+stopTest	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/support.py	/^    def stopTest(self, test):$/;"	kind:member	line:22
+stopTest	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/support.py	/^    def stopTest(self, test):$/;"	kind:member	line:53
+stopTestRun	bin/opnetd/demos/liso/proj1_cp2/unittest2/result.py	/^    def stopTestRun(self):$/;"	kind:member	line:97
+stopTestRun	bin/opnetd/demos/liso/proj1_cp2/unittest2/runner.py	/^    def stopTestRun(self):$/;"	kind:member	line:124
+stopTestRun	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/support.py	/^    def stopTestRun(self):$/;"	kind:member	line:57
+strclass	bin/opnetd/demos/liso/proj1_cp2/unittest2/util.py	/^def strclass(cls):$/;"	kind:function	line:22
+success	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^        def success(some_test):$/;"	kind:function	line:137
+suite.py	bin/opnetd/demos/liso/proj1_cp2/unittest2/suite.py	1;"	kind:file	line:1
+suiteClass	bin/opnetd/demos/liso/proj1_cp2/unittest2/loader.py	/^    suiteClass = suite.TestSuite$/;"	kind:variable	line:65
+support.py	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/support.py	1;"	kind:file	line:1
+tb_frame	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_result.py	/^            class tb_frame(object):$/;"	kind:class	line:257
+tearDown	bin/opnetd/demos/liso/proj1_cp2/unittest2/case.py	/^    def tearDown(self):$/;"	kind:member	line:1057
+tearDown	bin/opnetd/demos/liso/proj1_cp2/unittest2/case.py	/^    def tearDown(self):$/;"	kind:member	line:259
+tearDown	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_break.py	/^    def tearDown(self):$/;"	kind:member	line:20
+tearDown	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^            def tearDown(self):$/;"	kind:member	line:125
+tearDown	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^            def tearDown(self):$/;"	kind:member	line:166
+tearDown	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^            def tearDown(self):$/;"	kind:member	line:386
+tearDown	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^            def tearDown(self):$/;"	kind:member	line:401
+tearDown	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^        def tearDown(self):$/;"	kind:member	line:44
+tearDown	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_functiontestcase.py	/^        def tearDown():$/;"	kind:function	line:109
+tearDown	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_functiontestcase.py	/^        def tearDown():$/;"	kind:function	line:33
+tearDown	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_functiontestcase.py	/^        def tearDown():$/;"	kind:function	line:58
+tearDown	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_functiontestcase.py	/^        def tearDown():$/;"	kind:function	line:84
+tearDown	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_result.py	/^    def tearDown(self):$/;"	kind:member	line:300
+tearDownCalled	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            tearDownCalled = 0$/;"	kind:variable	line:50
+tearDownCalled	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            tearDownCalled = 0$/;"	kind:variable	line:68
+tearDownCalled	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            tearDownCalled = 0$/;"	kind:variable	line:79
+tearDownClass	bin/opnetd/demos/liso/proj1_cp2/unittest2/case.py	/^    def tearDownClass(cls):$/;"	kind:member	line:255
+tearDownClass	bin/opnetd/demos/liso/proj1_cp2/unittest2/case.py	/^    tearDownClass = classmethod(tearDownClass)$/;"	kind:variable	line:257
+tearDownClass	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            def tearDownClass(cls):$/;"	kind:member	line:117
+tearDownClass	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            def tearDownClass(cls):$/;"	kind:member	line:128
+tearDownClass	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            def tearDownClass(cls):$/;"	kind:member	line:153
+tearDownClass	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            def tearDownClass(cls):$/;"	kind:member	line:170
+tearDownClass	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            def tearDownClass(cls):$/;"	kind:member	line:204
+tearDownClass	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            def tearDownClass(cls):$/;"	kind:member	line:216
+tearDownClass	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            def tearDownClass(cls):$/;"	kind:member	line:228
+tearDownClass	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            def tearDownClass(cls):$/;"	kind:member	line:301
+tearDownClass	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            def tearDownClass(cls):$/;"	kind:member	line:374
+tearDownClass	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            def tearDownClass(cls):$/;"	kind:member	line:454
+tearDownClass	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            def tearDownClass(cls):$/;"	kind:member	line:484
+tearDownClass	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            def tearDownClass(cls):$/;"	kind:member	line:51
+tearDownClass	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            def tearDownClass(cls):$/;"	kind:member	line:69
+tearDownClass	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            def tearDownClass(cls):$/;"	kind:member	line:80
+tearDownClass	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            tearDownClass = classmethod(tearDownClass)$/;"	kind:variable	line:120
+tearDownClass	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            tearDownClass = classmethod(tearDownClass)$/;"	kind:variable	line:131
+tearDownClass	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            tearDownClass = classmethod(tearDownClass)$/;"	kind:variable	line:156
+tearDownClass	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            tearDownClass = classmethod(tearDownClass)$/;"	kind:variable	line:172
+tearDownClass	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            tearDownClass = classmethod(tearDownClass)$/;"	kind:variable	line:206
+tearDownClass	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            tearDownClass = classmethod(tearDownClass)$/;"	kind:variable	line:218
+tearDownClass	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            tearDownClass = classmethod(tearDownClass)$/;"	kind:variable	line:230
+tearDownClass	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            tearDownClass = classmethod(tearDownClass)$/;"	kind:variable	line:303
+tearDownClass	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            tearDownClass = classmethod(tearDownClass)$/;"	kind:variable	line:376
+tearDownClass	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            tearDownClass = classmethod(tearDownClass)$/;"	kind:variable	line:456
+tearDownClass	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            tearDownClass = classmethod(tearDownClass)$/;"	kind:variable	line:487
+tearDownClass	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            tearDownClass = classmethod(tearDownClass)$/;"	kind:variable	line:54
+tearDownClass	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            tearDownClass = classmethod(tearDownClass)$/;"	kind:variable	line:72
+tearDownClass	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            tearDownClass = classmethod(tearDownClass)$/;"	kind:variable	line:83
+tearDownClass	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_suite.py	/^            def tearDownClass(cls):$/;"	kind:member	line:309
+tearDownClass	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_suite.py	/^            tearDownClass = classmethod(tearDownClass)$/;"	kind:variable	line:311
+tearDownModule	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            def tearDownModule():$/;"	kind:member	line:188
+tearDownModule	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            def tearDownModule():$/;"	kind:member	line:196
+tearDownModule	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            def tearDownModule():$/;"	kind:member	line:291
+tearDownModule	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            def tearDownModule():$/;"	kind:member	line:343
+tearDownModule	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            def tearDownModule():$/;"	kind:member	line:363
+tearDownModule	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            def tearDownModule():$/;"	kind:member	line:446
+tearDownModule	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            def tearDownModule():$/;"	kind:member	line:474
+tearDownModule	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            tearDownModule = staticmethod(tearDownModule)$/;"	kind:variable	line:190
+tearDownModule	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            tearDownModule = staticmethod(tearDownModule)$/;"	kind:variable	line:198
+tearDownModule	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            tearDownModule = staticmethod(tearDownModule)$/;"	kind:variable	line:293
+tearDownModule	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            tearDownModule = staticmethod(tearDownModule)$/;"	kind:variable	line:345
+tearDownModule	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            tearDownModule = staticmethod(tearDownModule)$/;"	kind:variable	line:366
+tearDownModule	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            tearDownModule = staticmethod(tearDownModule)$/;"	kind:variable	line:448
+tearDownModule	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            tearDownModule = staticmethod(tearDownModule)$/;"	kind:variable	line:477
+tearDownModule	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_suite.py	/^            def tearDownModule():$/;"	kind:member	line:322
+test	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_break.py	/^        def test():$/;"	kind:function	line:246
+test	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_break.py	/^        def test(result):$/;"	kind:function	line:109
+test	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_break.py	/^        def test(result):$/;"	kind:function	line:61
+test	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_break.py	/^        def test(result):$/;"	kind:function	line:79
+test	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^            def test(self): pass$/;"	kind:member	line:210
+test	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^            def test(self): pass$/;"	kind:member	line:221
+test	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^            def test(self): pass$/;"	kind:member	line:232
+test	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^            def test(self): pass$/;"	kind:member	line:245
+test	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^            def test(self):$/;"	kind:member	line:310
+test	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^            def test(self):$/;"	kind:member	line:328
+test	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^            def test(self):$/;"	kind:member	line:349
+test	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^            def test(self):$/;"	kind:member	line:364
+test	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^            def test(self):$/;"	kind:member	line:418
+test	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^            def test(self):$/;"	kind:member	line:430
+test	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^            def test(self):$/;"	kind:member	line:446
+test	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^            def test(self):$/;"	kind:member	line:469
+test	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^            def test(self):$/;"	kind:member	line:520
+test	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^        def test(self):$/;"	kind:member	line:41
+test	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_functiontestcase.py	/^        def test():$/;"	kind:function	line:106
+test	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_functiontestcase.py	/^        def test():$/;"	kind:function	line:30
+test	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_functiontestcase.py	/^        def test():$/;"	kind:function	line:54
+test	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_functiontestcase.py	/^        def test():$/;"	kind:function	line:80
+test	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^            def test(self):$/;"	kind:member	line:140
+test	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^            def test(self):$/;"	kind:member	line:158
+test	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^            def test(self):$/;"	kind:member	line:336
+test	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^            def test(self):$/;"	kind:member	line:372
+test	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^            def test(self):$/;"	kind:member	line:388
+test	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^            def test(self):$/;"	kind:member	line:403
+test	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^            def test(self):$/;"	kind:member	line:424
+test	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^            def test(self):$/;"	kind:member	line:495
+test	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^            def test(self):$/;"	kind:member	line:734
+test	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^            def test(self):$/;"	kind:member	line:770
+test	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^            def test(self):$/;"	kind:member	line:786
+test	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^            def test(self):$/;"	kind:member	line:801
+test	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^            def test(self):$/;"	kind:member	line:820
+test	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^            def test(self):$/;"	kind:member	line:872
+test	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^            def test(self):$/;"	kind:member	line:91
+test	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_program.py	/^    test = 'test'$/;"	kind:variable	line:87
+test	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_program.py	/^    test = None$/;"	kind:variable	line:95
+test	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_result.py	/^        def test(result):$/;"	kind:function	line:287
+test	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_suite.py	/^            def test(self): pass$/;"	kind:member	line:210
+test	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_suite.py	/^            def test(self): pass$/;"	kind:member	line:223
+test	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_suite.py	/^            def test(self):$/;"	kind:member	line:128
+test	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_unittest2_with.py	/^            test = Test(test_name)$/;"	kind:variable	line:84
+test1	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^        def test1(self): pass$/;"	kind:member	line:26
+test1	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_suite.py	/^            def test1(self): pass$/;"	kind:member	line:152
+test1	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_suite.py	/^            def test1(self): pass$/;"	kind:member	line:198
+test2	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^        def test2(self): pass$/;"	kind:member	line:29
+test2	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_suite.py	/^            def test2(self): pass$/;"	kind:member	line:153
+test2	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_suite.py	/^            def test2(self): pass$/;"	kind:member	line:199
+testAddTypeEqualityFunc	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^    def testAddTypeEqualityFunc(self):$/;"	kind:member	line:554
+testAlmostEqual	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_assertions.py	/^    def testAlmostEqual(self):$/;"	kind:member	line:148
+testAssertDictContainsSubset	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_assertions.py	/^    def testAssertDictContainsSubset(self):$/;"	kind:member	line:192
+testAssertDictContainsSubset	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^    def testAssertDictContainsSubset(self):$/;"	kind:member	line:610
+testAssertDictContainsSubset_UnicodeVsStrValues	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_unittest2_with.py	/^    def testAssertDictContainsSubset_UnicodeVsStrValues(self):$/;"	kind:member	line:118
+testAssertDictEqual	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_assertions.py	/^    def testAssertDictEqual(self):$/;"	kind:member	line:186
+testAssertDictEqualTruncates	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^    def testAssertDictEqualTruncates(self):$/;"	kind:function	line:962
+testAssertEqual	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^    def testAssertEqual(self):$/;"	kind:member	line:636
+testAssertFalse	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_assertions.py	/^    def testAssertFalse(self):$/;"	kind:member	line:138
+testAssertGreater	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_assertions.py	/^    def testAssertGreater(self):$/;"	kind:member	line:221
+testAssertGreaterEqual	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_assertions.py	/^    def testAssertGreaterEqual(self):$/;"	kind:member	line:227
+testAssertIn	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_assertions.py	/^    def testAssertIn(self):$/;"	kind:member	line:174
+testAssertIn	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^    def testAssertIn(self):$/;"	kind:member	line:589
+testAssertIs	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_assertions.py	/^    def testAssertIs(self):$/;"	kind:member	line:245
+testAssertIs	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^    def testAssertIs(self):$/;"	kind:member	line:567
+testAssertIsInstance	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^    def testAssertIsInstance(self):$/;"	kind:member	line:577
+testAssertIsNone	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_assertions.py	/^    def testAssertIsNone(self):$/;"	kind:member	line:233
+testAssertIsNone	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^    def testAssertIsNone(self):$/;"	kind:function	line:986
+testAssertIsNot	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_assertions.py	/^    def testAssertIsNot(self):$/;"	kind:member	line:251
+testAssertIsNot	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^    def testAssertIsNot(self):$/;"	kind:member	line:572
+testAssertIsNotNone	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_assertions.py	/^    def testAssertIsNotNone(self):$/;"	kind:member	line:239
+testAssertItemsEqual	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_assertions.py	/^    def testAssertItemsEqual(self):$/;"	kind:member	line:198
+testAssertItemsEqual	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^    def testAssertItemsEqual(self):$/;"	kind:member	line:725
+testAssertLess	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_assertions.py	/^    def testAssertLess(self):$/;"	kind:member	line:210
+testAssertLessEqual	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_assertions.py	/^    def testAssertLessEqual(self):$/;"	kind:member	line:215
+testAssertMultiLineEqual	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_assertions.py	/^    def testAssertMultiLineEqual(self):$/;"	kind:member	line:204
+testAssertMultiLineEqual	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^    def testAssertMultiLineEqual(self):$/;"	kind:member	line:873
+testAssertMultiLineEqualTruncates	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^    def testAssertMultiLineEqualTruncates(self):$/;"	kind:function	line:974
+testAssertNotIn	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_assertions.py	/^    def testAssertNotIn(self):$/;"	kind:member	line:180
+testAssertNotIsInstance	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^    def testAssertNotIsInstance(self):$/;"	kind:member	line:583
+testAssertNotRaisesRegexp	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^    def testAssertNotRaisesRegexp(self):$/;"	kind:function	line:1008
+testAssertNotRegexpMatches	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_assertions.py	/^    def testAssertNotRegexpMatches(self):$/;"	kind:member	line:66
+testAssertRaisesExcValue	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_unittest2_with.py	/^    def testAssertRaisesExcValue(self):$/;"	kind:member	line:26
+testAssertRaisesRegexp	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^    def testAssertRaisesRegexp(self):$/;"	kind:function	line:997
+testAssertRaisesRegexpMismatch	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^    def testAssertRaisesRegexpMismatch(self):$/;"	kind:function	line:1022
+testAssertRegexpMatches	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^    def testAssertRegexpMatches(self):$/;"	kind:function	line:992
+testAssertSequenceEqual	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_assertions.py	/^    def testAssertSequenceEqual(self):$/;"	kind:member	line:162
+testAssertSequenceEqualMaxDiff	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^    def testAssertSequenceEqualMaxDiff(self):$/;"	kind:function	line:909
+testAssertSetEqual	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_assertions.py	/^    def testAssertSetEqual(self):$/;"	kind:member	line:169
+testAssertSetEqual	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^    def testAssertSetEqual(self):$/;"	kind:member	line:747
+testAssertTrue	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_assertions.py	/^    def testAssertTrue(self):$/;"	kind:member	line:133
+testBufferAndFailfast	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_runner.py	/^    def testBufferAndFailfast(self):$/;"	kind:member	line:21
+testBufferCatchFailfast	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_program.py	/^    def testBufferCatchFailfast(self):$/;"	kind:member	line:147
+testBufferOutputAddErrorOrFailure	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_result.py	/^    def testBufferOutputAddErrorOrFailure(self):$/;"	kind:member	line:373
+testBufferOutputOff	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_result.py	/^    def testBufferOutputOff(self):$/;"	kind:member	line:304
+testBufferOutputStartTestAddSuccess	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_result.py	/^    def testBufferOutputStartTestAddSuccess(self):$/;"	kind:member	line:319
+testCleanUp	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^    def testCleanUp(self):$/;"	kind:member	line:51
+testCleanUpWithErrors	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^    def testCleanUpWithErrors(self):$/;"	kind:member	line:79
+testCleanupInRun	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^    def testCleanupInRun(self):$/;"	kind:member	line:112
+testDeepcopy	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^    def testDeepcopy(self):$/;"	kind:function	line:1057
+testDefault	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_assertions.py	/^    def testDefault(self):$/;"	kind:member	line:100
+testEquality	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^    def testEquality(self):$/;"	kind:member	line:673
+testExpectedFail	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_unittest2_with.py	/^            def testExpectedFail(self):$/;"	kind:member	line:74
+testExpectedFail	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_unittest2_with.py	/^            testExpectedFail = unittest2.expectedFailure(testExpectedFail)$/;"	kind:variable	line:76
+testFail	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_program.py	/^        def testFail(self):$/;"	kind:member	line:42
+testFail	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_suite.py	/^            def testFail(self):$/;"	kind:member	line:314
+testFailFast	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_result.py	/^    def testFailFast(self):$/;"	kind:member	line:265
+testFailFastSetByRunner	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_result.py	/^    def testFailFastSetByRunner(self):$/;"	kind:member	line:284
+testFailure	bin/opnetd/demos/liso/proj1_cp2/unittest2/loader.py	/^    def testFailure(self):$/;"	kind:function	line:51
+testFoo	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_runner.py	/^            def testFoo(self):$/;"	kind:member	line:119
+testFoo	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_runner.py	/^            def testFoo(self):$/;"	kind:member	line:23
+testFoo	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_runner.py	/^            def testFoo(self):$/;"	kind:member	line:37
+testFoo	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_unittest2_with.py	/^            def testFoo(self):$/;"	kind:member	line:91
+testFoo	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_unittest2_with.py	/^            def testFoo(self):$/;"	kind:member	line:97
+testGetDescriptionWithMultiLineDocstring	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_result.py	/^    def testGetDescriptionWithMultiLineDocstring(self):$/;"	kind:member	line:243
+testGetDescriptionWithOneLineDocstring	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_result.py	/^    def testGetDescriptionWithOneLineDocstring(self):$/;"	kind:member	line:234
+testGetDescriptionWithoutDocstring	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_result.py	/^    def testGetDescriptionWithoutDocstring(self):$/;"	kind:member	line:227
+testHandlerReplacedButCalled	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_break.py	/^    def testHandlerReplacedButCalled(self):$/;"	kind:member	line:123
+testHelpAndUnknown	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_program.py	/^    def testHelpAndUnknown(self):$/;"	kind:member	line:117
+testInequality	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^    def testInequality(self):$/;"	kind:member	line:787
+testInheritance	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_new_tests.py	/^    def testInheritance(self):$/;"	kind:member	line:14
+testInstallHandler	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_break.py	/^    def testInstallHandler(self):$/;"	kind:member	line:26
+testInterruptCaught	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_break.py	/^    def testInterruptCaught(self):$/;"	kind:member	line:52
+testLoader	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_program.py	/^    testLoader = unittest2.defaultTestLoader$/;"	kind:variable	line:85
+testMainInstallsHandler	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_break.py	/^    def testMainInstallsHandler(self):$/;"	kind:member	line:181
+testMethodPrefix	bin/opnetd/demos/liso/proj1_cp2/unittest2/loader.py	/^    testMethodPrefix = 'test'$/;"	kind:variable	line:63
+testNoExit	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_program.py	/^    def testNoExit(self):$/;"	kind:member	line:11
+testNotAlmostEqual	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_assertions.py	/^    def testNotAlmostEqual(self):$/;"	kind:member	line:153
+testNotEqual	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_assertions.py	/^    def testNotEqual(self):$/;"	kind:member	line:143
+testNothing	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^            def testNothing(self):$/;"	kind:member	line:1060
+testNothing	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^            def testNothing(self):$/;"	kind:member	line:122
+testNothing	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^            def testNothing(self):$/;"	kind:member	line:163
+testNothing	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^            def testNothing(self):$/;"	kind:member	line:53
+testNothing	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^            def testNothing(self):$/;"	kind:member	line:81
+testOne	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_new_tests.py	/^            def testOne(self):$/;"	kind:member	line:26
+testOne	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_new_tests.py	/^            def testOne(self):$/;"	kind:member	line:36
+testOne	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            def testOne(self):$/;"	kind:member	line:207
+testOne	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            def testOne(self):$/;"	kind:member	line:219
+testOne	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            def testOne(self):$/;"	kind:member	line:231
+testPass	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_program.py	/^        def testPass(self):$/;"	kind:member	line:40
+testPass	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_suite.py	/^            def testPass(self):$/;"	kind:member	line:312
+testPendingDeprecationMethodNames	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_unittest2_with.py	/^    def testPendingDeprecationMethodNames(self):$/;"	kind:member	line:102
+testRegisterResult	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_break.py	/^    def testRegisterResult(self):$/;"	kind:member	line:39
+testRemoveHandler	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_break.py	/^    def testRemoveHandler(self):$/;"	kind:member	line:232
+testRemoveHandlerAsDecorator	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_break.py	/^    def testRemoveHandlerAsDecorator(self):$/;"	kind:member	line:242
+testRemoveResult	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_break.py	/^    def testRemoveResult(self):$/;"	kind:member	line:163
+testRunTestsRunnerClass	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_program.py	/^    def testRunTestsRunnerClass(self):$/;"	kind:member	line:169
+testRunner	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_break.py	/^    def testRunner(self):$/;"	kind:member	line:142
+testRunner	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_program.py	/^    testRunner = None$/;"	kind:variable	line:84
+testRunnerRegistersResult	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_runner.py	/^    def testRunnerRegistersResult(self):$/;"	kind:member	line:35
+testSecondInterrupt	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_break.py	/^    def testSecondInterrupt(self):$/;"	kind:member	line:74
+testShortDescriptionWithMultiLineDocstring	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^    def testShortDescriptionWithMultiLineDocstring(self):$/;"	kind:member	line:542
+testShortDescriptionWithOneLineDocstring	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^    def testShortDescriptionWithOneLineDocstring(self):$/;"	kind:member	line:536
+testShortDescriptionWithoutDocstring	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^    def testShortDescriptionWithoutDocstring(self):$/;"	kind:member	line:533
+testSkip	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_unittest2_with.py	/^            def testSkip(self):$/;"	kind:member	line:72
+testStackFrameTrimming	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_result.py	/^    def testStackFrameTrimming(self):$/;"	kind:member	line:255
+testSynonymAssertMethodNames	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^    def testSynonymAssertMethodNames(self):$/;"	kind:function	line:1043
+testTest	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_assertions.py	/^            def testTest(self):$/;"	kind:member	line:87
+testTest	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_assertions.py	/^            def testTest(self):$/;"	kind:member	line:94
+testTestCaseDebugExecutesCleanups	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^    def testTestCaseDebugExecutesCleanups(self):$/;"	kind:member	line:155
+testTruncateMessage	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^    def testTruncateMessage(self):$/;"	kind:function	line:948
+testTwo	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            def testTwo(self):$/;"	kind:member	line:209
+testTwo	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            def testTwo(self):$/;"	kind:member	line:221
+testTwo	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            def testTwo(self):$/;"	kind:member	line:233
+testTwoResults	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_break.py	/^    def testTwoResults(self):$/;"	kind:member	line:96
+testUnexpectedSuccess	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_unittest2_with.py	/^            def testUnexpectedSuccess(self):$/;"	kind:member	line:77
+testUnexpectedSuccess	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_unittest2_with.py	/^            testUnexpectedSuccess = unittest2.expectedFailure(testUnexpectedSuccess)$/;"	kind:variable	line:79
+testVerbosity	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_program.py	/^    def testVerbosity(self):$/;"	kind:member	line:134
+testWeakReferences	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_break.py	/^    def testWeakReferences(self):$/;"	kind:member	line:150
+test_1	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^            def test_1(self): pass$/;"	kind:member	line:1012
+test_1	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^            def test_1(self): pass$/;"	kind:member	line:1034
+test_1	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^            def test_1(self): pass$/;"	kind:member	line:1057
+test_1	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^            def test_1(self): pass$/;"	kind:member	line:1080
+test_1	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^            def test_1(self): pass$/;"	kind:member	line:1114
+test_1	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^            def test_1(self): pass$/;"	kind:member	line:1131
+test_1	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^            def test_1(self): pass$/;"	kind:member	line:1149
+test_1	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^            def test_1(self): pass$/;"	kind:member	line:1167
+test_1	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^            def test_1(self): pass$/;"	kind:member	line:1186
+test_1	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^            def test_1(self): pass$/;"	kind:member	line:1206
+test_1	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^            def test_1(self): pass$/;"	kind:member	line:1224
+test_1	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^            def test_1(self): pass$/;"	kind:member	line:1239
+test_1	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^            def test_1(self): pass$/;"	kind:member	line:1255
+test_1	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^            def test_1(self): pass$/;"	kind:member	line:1271
+test_1	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^            def test_1(self): pass$/;"	kind:member	line:19
+test_1	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^            def test_1(self): pass$/;"	kind:member	line:941
+test_1	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^            def test_1(self): pass$/;"	kind:member	line:986
+test_1	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^            def test_1(self): pass$/;"	kind:member	line:991
+test_1	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_result.py	/^            def test_1(self):$/;"	kind:member	line:115
+test_1	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_result.py	/^            def test_1(self):$/;"	kind:member	line:154
+test_1	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_result.py	/^            def test_1(self):$/;"	kind:member	line:202
+test_1	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_result.py	/^            def test_1(self):$/;"	kind:member	line:43
+test_1	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_result.py	/^            def test_1(self):$/;"	kind:member	line:64
+test_1	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_skipping.py	/^            def test_1(self):$/;"	kind:member	line:111
+test_1	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_skipping.py	/^            def test_1(self):$/;"	kind:member	line:130
+test_1	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_skipping.py	/^            def test_1(self):$/;"	kind:member	line:61
+test_1	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_skipping.py	/^            test_1 = decorator(unittest2.skip('testing')(test_1))$/;"	kind:variable	line:132
+test_1	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_skipping.py	/^            test_1 = unittest2.skip('testing')(test_1)$/;"	kind:variable	line:113
+test_1	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_suite.py	/^            def test_1(self): pass$/;"	kind:member	line:240
+test_1	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_suite.py	/^        def test_1(self): pass$/;"	kind:member	line:12
+test_2	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^            def test_2(self): pass$/;"	kind:member	line:1013
+test_2	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^            def test_2(self): pass$/;"	kind:member	line:1035
+test_2	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^            def test_2(self): pass$/;"	kind:member	line:1058
+test_2	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^            def test_2(self): pass$/;"	kind:member	line:1081
+test_2	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^            def test_2(self): pass$/;"	kind:member	line:1115
+test_2	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^            def test_2(self): pass$/;"	kind:member	line:1132
+test_2	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^            def test_2(self): pass$/;"	kind:member	line:1150
+test_2	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^            def test_2(self): pass$/;"	kind:member	line:1168
+test_2	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^            def test_2(self): pass$/;"	kind:member	line:1187
+test_2	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^            def test_2(self): pass$/;"	kind:member	line:1207
+test_2	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^            def test_2(self): pass$/;"	kind:member	line:1225
+test_2	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^            def test_2(self): pass$/;"	kind:member	line:1240
+test_2	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^            def test_2(self): pass$/;"	kind:member	line:1256
+test_2	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^            def test_2(self): pass$/;"	kind:member	line:1272
+test_2	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^            def test_2(self): pass$/;"	kind:member	line:20
+test_2	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^            def test_2(self): pass$/;"	kind:member	line:942
+test_2	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^            def test_2(self): pass$/;"	kind:member	line:987
+test_2	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^            test_2 = MyTestCase$/;"	kind:variable	line:144
+test_2	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^            test_2 = MyTestCase$/;"	kind:variable	line:340
+test_2	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^            test_2 = MyTestCase$/;"	kind:variable	line:738
+test_2	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_suite.py	/^            def test_2(self): pass$/;"	kind:member	line:241
+test_2	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_suite.py	/^        def test_2(self): pass$/;"	kind:member	line:13
+test_3	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^            def test_3(self): pass$/;"	kind:member	line:992
+test_3	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_suite.py	/^        def test_3(self): pass$/;"	kind:member	line:14
+test_AlmostEqual	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_assertions.py	/^    def test_AlmostEqual(self):$/;"	kind:member	line:12
+test_AmostEqualWithDelta	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_assertions.py	/^    def test_AmostEqualWithDelta(self):$/;"	kind:member	line:43
+test_Exit	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_program.py	/^    def test_Exit(self):$/;"	kind:member	line:60
+test_ExitAsDefault	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_program.py	/^    def test_ExitAsDefault(self):$/;"	kind:member	line:70
+test_GET	bin/opnetd/demos/liso/proj1_cp2/grader1cp2.py	/^    def test_GET(self):$/;"	kind:member	line:97
+test_HEAD	bin/opnetd/demos/liso/proj1_cp2/grader1cp2.py	/^    def test_HEAD(self):$/;"	kind:member	line:83
+test_HEAD_headers	bin/opnetd/demos/liso/proj1_cp2/grader1cp2.py	/^    def test_HEAD_headers(self):$/;"	kind:member	line:69
+test_NonExit	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_program.py	/^    def test_NonExit(self):$/;"	kind:member	line:52
+test_POST	bin/opnetd/demos/liso/proj1_cp2/grader1cp2.py	/^    def test_POST(self):$/;"	kind:member	line:116
+test_addError	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_result.py	/^    def test_addError(self):$/;"	kind:member	line:200
+test_addFailure	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_result.py	/^    def test_addFailure(self):$/;"	kind:member	line:152
+test_addSuccess	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_result.py	/^    def test_addSuccess(self):$/;"	kind:member	line:113
+test_addTest__TestCase	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_suite.py	/^    def test_addTest__TestCase(self):$/;"	kind:member	line:208
+test_addTest__TestSuite	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_suite.py	/^    def test_addTest__TestSuite(self):$/;"	kind:member	line:221
+test_addTest__casesuiteclass	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_suite.py	/^    def test_addTest__casesuiteclass(self):$/;"	kind:member	line:283
+test_addTest__noncallable	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_suite.py	/^    def test_addTest__noncallable(self):$/;"	kind:member	line:279
+test_addTest__noniterable	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_suite.py	/^    def test_addTest__noniterable(self):$/;"	kind:member	line:269
+test_addTests	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_suite.py	/^    def test_addTests(self):$/;"	kind:member	line:238
+test_addTests__string	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_suite.py	/^    def test_addTests__string(self):$/;"	kind:member	line:288
+test_assert_dict_unicode_error	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_unittest2_with.py	/^    def test_assert_dict_unicode_error(self):$/;"	kind:member	line:40
+test_assertions.py	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_assertions.py	1;"	kind:file	line:1
+test_bad	bin/opnetd/demos/liso/proj1_cp2/grader1cp2.py	/^    def test_bad(self):$/;"	kind:member	line:138
+test_baseAssertEqual	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_assertions.py	/^    def test_baseAssertEqual(self):$/;"	kind:member	line:158
+test_basetestsuite	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_suite.py	/^    def test_basetestsuite(self):$/;"	kind:member	line:302
+test_break.py	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_break.py	1;"	kind:file	line:1
+test_case.py	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	1;"	kind:file	line:1
+test_class_not_setup_or_torndown_when_skipped	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^    def test_class_not_setup_or_torndown_when_skipped(self):$/;"	kind:member	line:163
+test_class_not_torndown_when_setup_fails	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^    def test_class_not_torndown_when_setup_fails(self):$/;"	kind:member	line:147
+test_command_line_handling_do_discovery_calls_loader	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_discovery.py	/^    def test_command_line_handling_do_discovery_calls_loader(self):$/;"	kind:member	line:231
+test_command_line_handling_do_discovery_too_many_arguments	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_discovery.py	/^    def test_command_line_handling_do_discovery_too_many_arguments(self):$/;"	kind:member	line:217
+test_command_line_handling_parseArgs	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_discovery.py	/^    def test_command_line_handling_parseArgs(self):$/;"	kind:member	line:203
+test_countTestCases	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^    def test_countTestCases(self):$/;"	kind:member	line:243
+test_countTestCases	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_functiontestcase.py	/^    def test_countTestCases(self):$/;"	kind:member	line:10
+test_countTestCases_nested	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_suite.py	/^    def test_countTestCases_nested(self):$/;"	kind:member	line:150
+test_countTestCases_simple	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_suite.py	/^    def test_countTestCases_simple(self):$/;"	kind:member	line:138
+test_countTestCases_zero_nested	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_suite.py	/^    def test_countTestCases_zero_nested(self):$/;"	kind:member	line:126
+test_countTestCases_zero_simple	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_suite.py	/^    def test_countTestCases_zero_simple(self):$/;"	kind:member	line:115
+test_decorated_skip	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_skipping.py	/^    def test_decorated_skip(self):$/;"	kind:member	line:123
+test_defaultTestResult	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^    def test_defaultTestResult(self):$/;"	kind:member	line:253
+test_detect_module_clash	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_discovery.py	/^    def test_detect_module_clash(self):$/;"	kind:member	line:312
+test_die	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_skipping.py	/^            def test_die(self):$/;"	kind:member	line:76
+test_die	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_skipping.py	/^            def test_die(self):$/;"	kind:member	line:90
+test_die	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_skipping.py	/^            test_die = unittest2.expectedFailure(test_die)$/;"	kind:variable	line:78
+test_die	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_skipping.py	/^            test_die = unittest2.expectedFailure(test_die)$/;"	kind:variable	line:92
+test_discover	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_discovery.py	/^    def test_discover(self):$/;"	kind:member	line:134
+test_discover_with_modules_that_fail_to_import	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_discovery.py	/^    def test_discover_with_modules_that_fail_to_import(self):$/;"	kind:member	line:181
+test_discovery.py	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_discovery.py	1;"	kind:file	line:1
+test_discovery_from_dotted_path	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_discovery.py	/^    def test_discovery_from_dotted_path(self):$/;"	kind:member	line:353
+test_dont_skip	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_skipping.py	/^                def test_dont_skip(self): $/;"	kind:member	line:41
+test_dont_skip	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_skipping.py	/^                test_dont_skip = deco(dont_skip, "testing")(test_dont_skip)$/;"	kind:variable	line:43
+test_eq	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/support.py	/^    def test_eq(self):$/;"	kind:member	line:90
+test_error_in_setup_module	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^    def test_error_in_setup_module(self):$/;"	kind:member	line:283
+test_error_in_setupclass	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^    def test_error_in_setupclass(self):$/;"	kind:member	line:96
+test_error_in_teardown_class	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^    def test_error_in_teardown_class(self):$/;"	kind:member	line:114
+test_error_in_teardown_module	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^    def test_error_in_teardown_module(self):$/;"	kind:member	line:360
+test_expected_failure	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_skipping.py	/^    def test_expected_failure(self):$/;"	kind:member	line:74
+test_failureException__default	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^    def test_failureException__default(self):$/;"	kind:member	line:428
+test_failureException__subclassing__explicit_raise	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^    def test_failureException__subclassing__explicit_raise(self):$/;"	kind:member	line:441
+test_failureException__subclassing__implicit_raise	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^    def test_failureException__subclassing__implicit_raise(self):$/;"	kind:member	line:464
+test_find_tests	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_discovery.py	/^    def test_find_tests(self):$/;"	kind:member	line:26
+test_find_tests_with_package	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_discovery.py	/^    def test_find_tests_with_package(self):$/;"	kind:member	line:69
+test_foo	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^            def test_foo(self):$/;"	kind:member	line:970
+test_formatMessage_unicode_error	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_unittest2_with.py	/^    def test_formatMessage_unicode_error(self):$/;"	kind:member	line:51
+test_formatMsg	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_assertions.py	/^    def test_formatMsg(self):$/;"	kind:member	line:103
+test_function_in_suite	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_suite.py	/^    def test_function_in_suite(self):$/;"	kind:member	line:292
+test_functiontestcase.py	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_functiontestcase.py	1;"	kind:file	line:1
+test_getTestCaseNames	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^    def test_getTestCaseNames(self):$/;"	kind:member	line:939
+test_getTestCaseNames__inheritance	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^    def test_getTestCaseNames__inheritance(self):$/;"	kind:member	line:984
+test_getTestCaseNames__no_tests	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^    def test_getTestCaseNames__no_tests(self):$/;"	kind:member	line:952
+test_getTestCaseNames__not_a_TestCase	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^    def test_getTestCaseNames__not_a_TestCase(self):$/;"	kind:member	line:968
+test_get_name_from_path	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_discovery.py	/^    def test_get_name_from_path(self):$/;"	kind:member	line:11
+test_hash	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/support.py	/^    def test_hash(self):$/;"	kind:member	line:105
+test_id	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^    def test_id(self):$/;"	kind:member	line:505
+test_id	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_functiontestcase.py	/^    def test_id(self):$/;"	kind:member	line:124
+test_init	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_result.py	/^    def test_init(self):$/;"	kind:member	line:18
+test_init	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_runner.py	/^    def test_init(self):$/;"	kind:member	line:12
+test_init__TestSuite_instances_in_tests	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_suite.py	/^    def test_init__TestSuite_instances_in_tests(self):$/;"	kind:member	line:90
+test_init__empty_tests	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_suite.py	/^    def test_init__empty_tests(self):$/;"	kind:member	line:58
+test_init__no_test_name	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^    def test_init__no_test_name(self):$/;"	kind:member	line:207
+test_init__test_name__invalid	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^    def test_init__test_name__invalid(self):$/;"	kind:member	line:229
+test_init__test_name__valid	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^    def test_init__test_name__valid(self):$/;"	kind:member	line:218
+test_init__tests_from_any_iterable	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_suite.py	/^    def test_init__tests_from_any_iterable(self):$/;"	kind:member	line:69
+test_init__tests_optional	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_suite.py	/^    def test_init__tests_optional(self):$/;"	kind:member	line:46
+test_iter	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_suite.py	/^    def test_iter(self):$/;"	kind:member	line:103
+test_loadTestsFromModule__TestCase_subclass	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^    def test_loadTestsFromModule__TestCase_subclass(self):$/;"	kind:member	line:88
+test_loadTestsFromModule__faulty_load_tests	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^    def test_loadTestsFromModule__faulty_load_tests(self):$/;"	kind:member	line:178
+test_loadTestsFromModule__load_tests	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^    def test_loadTestsFromModule__load_tests(self):$/;"	kind:member	line:155
+test_loadTestsFromModule__no_TestCase_instances	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^    def test_loadTestsFromModule__no_TestCase_instances(self):$/;"	kind:member	line:105
+test_loadTestsFromModule__no_TestCase_tests	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^    def test_loadTestsFromModule__no_TestCase_tests(self):$/;"	kind:member	line:116
+test_loadTestsFromModule__not_a_module	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^    def test_loadTestsFromModule__not_a_module(self):$/;"	kind:member	line:138
+test_loadTestsFromName__callable__TestCase_instance	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^    def test_loadTestsFromName__callable__TestCase_instance(self):$/;"	kind:member	line:453
+test_loadTestsFromName__callable__TestCase_instance_ProperSuiteClass	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^    def test_loadTestsFromName__callable__TestCase_instance_ProperSuiteClass(self):$/;"	kind:member	line:470
+test_loadTestsFromName__callable__TestSuite	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^    def test_loadTestsFromName__callable__TestSuite(self):$/;"	kind:member	line:438
+test_loadTestsFromName__callable__wrong_type	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^    def test_loadTestsFromName__callable__wrong_type(self):$/;"	kind:member	line:510
+test_loadTestsFromName__empty_name	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^    def test_loadTestsFromName__empty_name(self):$/;"	kind:member	line:206
+test_loadTestsFromName__malformed_name	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^    def test_loadTestsFromName__malformed_name(self):$/;"	kind:member	line:222
+test_loadTestsFromName__module_not_loaded	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^    def test_loadTestsFromName__module_not_loaded(self):$/;"	kind:member	line:526
+test_loadTestsFromName__relative_TestCase_subclass	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^    def test_loadTestsFromName__relative_TestCase_subclass(self):$/;"	kind:member	line:369
+test_loadTestsFromName__relative_TestSuite	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^    def test_loadTestsFromName__relative_TestSuite(self):$/;"	kind:member	line:385
+test_loadTestsFromName__relative_bad_object	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^    def test_loadTestsFromName__relative_bad_object(self):$/;"	kind:member	line:355
+test_loadTestsFromName__relative_empty_name	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^    def test_loadTestsFromName__relative_empty_name(self):$/;"	kind:member	line:293
+test_loadTestsFromName__relative_invalid_testmethod	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^    def test_loadTestsFromName__relative_invalid_testmethod(self):$/;"	kind:member	line:421
+test_loadTestsFromName__relative_malformed_name	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^    def test_loadTestsFromName__relative_malformed_name(self):$/;"	kind:member	line:312
+test_loadTestsFromName__relative_not_a_module	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^    def test_loadTestsFromName__relative_not_a_module(self):$/;"	kind:member	line:334
+test_loadTestsFromName__relative_testmethod	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^    def test_loadTestsFromName__relative_testmethod(self):$/;"	kind:member	line:400
+test_loadTestsFromName__relative_testmethod_ProperSuiteClass	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^    def test_loadTestsFromName__relative_testmethod_ProperSuiteClass(self):$/;"	kind:member	line:490
+test_loadTestsFromName__relative_unknown_name	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^    def test_loadTestsFromName__relative_unknown_name(self):$/;"	kind:member	line:272
+test_loadTestsFromName__unknown_attr_name	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^    def test_loadTestsFromName__unknown_attr_name(self):$/;"	kind:member	line:255
+test_loadTestsFromName__unknown_module_name	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^    def test_loadTestsFromName__unknown_module_name(self):$/;"	kind:member	line:239
+test_loadTestsFromNames__callable__TestCase_instance	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^    def test_loadTestsFromNames__callable__TestCase_instance(self):$/;"	kind:member	line:851
+test_loadTestsFromNames__callable__TestSuite	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^    def test_loadTestsFromNames__callable__TestSuite(self):$/;"	kind:member	line:834
+test_loadTestsFromNames__callable__call_staticmethod	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^    def test_loadTestsFromNames__callable__call_staticmethod(self):$/;"	kind:member	line:869
+test_loadTestsFromNames__callable__wrong_type	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^    def test_loadTestsFromNames__callable__wrong_type(self):$/;"	kind:member	line:893
+test_loadTestsFromNames__empty_name	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^    def test_loadTestsFromNames__empty_name(self):$/;"	kind:member	line:584
+test_loadTestsFromNames__empty_name_list	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^    def test_loadTestsFromNames__empty_name_list(self):$/;"	kind:member	line:556
+test_loadTestsFromNames__malformed_name	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^    def test_loadTestsFromNames__malformed_name(self):$/;"	kind:member	line:600
+test_loadTestsFromNames__module_not_loaded	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^    def test_loadTestsFromNames__module_not_loaded(self):$/;"	kind:member	line:909
+test_loadTestsFromNames__relative_TestCase_subclass	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^    def test_loadTestsFromNames__relative_TestCase_subclass(self):$/;"	kind:member	line:767
+test_loadTestsFromNames__relative_TestSuite	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^    def test_loadTestsFromNames__relative_TestSuite(self):$/;"	kind:member	line:783
+test_loadTestsFromNames__relative_bad_object	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^    def test_loadTestsFromNames__relative_bad_object(self):$/;"	kind:member	line:753
+test_loadTestsFromNames__relative_empty_name	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^    def test_loadTestsFromNames__relative_empty_name(self):$/;"	kind:member	line:694
+test_loadTestsFromNames__relative_empty_name_list	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^    def test_loadTestsFromNames__relative_empty_name_list(self):$/;"	kind:member	line:571
+test_loadTestsFromNames__relative_invalid_testmethod	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^    def test_loadTestsFromNames__relative_invalid_testmethod(self):$/;"	kind:member	line:817
+test_loadTestsFromNames__relative_malformed_name	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^    def test_loadTestsFromNames__relative_malformed_name(self):$/;"	kind:member	line:712
+test_loadTestsFromNames__relative_not_a_module	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^    def test_loadTestsFromNames__relative_not_a_module(self):$/;"	kind:member	line:732
+test_loadTestsFromNames__relative_testmethod	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^    def test_loadTestsFromNames__relative_testmethod(self):$/;"	kind:member	line:798
+test_loadTestsFromNames__unknown_attr_name	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^    def test_loadTestsFromNames__unknown_attr_name(self):$/;"	kind:member	line:635
+test_loadTestsFromNames__unknown_module_name	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^    def test_loadTestsFromNames__unknown_module_name(self):$/;"	kind:member	line:619
+test_loadTestsFromNames__unknown_name_relative_1	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^    def test_loadTestsFromNames__unknown_name_relative_1(self):$/;"	kind:member	line:654
+test_loadTestsFromNames__unknown_name_relative_2	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^    def test_loadTestsFromNames__unknown_name_relative_2(self):$/;"	kind:member	line:673
+test_loadTestsFromTestCase	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^    def test_loadTestsFromTestCase(self):$/;"	kind:member	line:17
+test_loadTestsFromTestCase__TestSuite_subclass	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^    def test_loadTestsFromTestCase__TestSuite_subclass(self):$/;"	kind:member	line:50
+test_loadTestsFromTestCase__default_method_name	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^    def test_loadTestsFromTestCase__default_method_name(self):$/;"	kind:member	line:68
+test_loadTestsFromTestCase__no_matches	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^    def test_loadTestsFromTestCase__no_matches(self):$/;"	kind:member	line:32
+test_loader.py	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	1;"	kind:file	line:1
+test_ne	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/support.py	/^    def test_ne(self):$/;"	kind:member	line:96
+test_new_runner_old_case	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_new_tests.py	/^    def test_new_runner_old_case(self):$/;"	kind:member	line:22
+test_new_tests.py	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_new_tests.py	1;"	kind:file	line:1
+test_nothing	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_skipping.py	/^            def test_nothing(self): pass$/;"	kind:member	line:23
+test_old_runner_new_case	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_new_tests.py	/^    def test_old_runner_new_case(self):$/;"	kind:member	line:33
+test_old_testresult	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_unittest2_with.py	/^    def test_old_testresult(self):$/;"	kind:member	line:70
+test_old_testresult_class	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_unittest2_with.py	/^    def test_old_testresult_class(self):$/;"	kind:member	line:95
+test_old_testresult_setup	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_unittest2_with.py	/^    def test_old_testresult_setup(self):$/;"	kind:member	line:87
+test_oldresult	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_runner.py	/^    def test_oldresult(self):$/;"	kind:member	line:117
+test_one	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            def test_one(self):$/;"	kind:member	line:101
+test_one	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            def test_one(self):$/;"	kind:member	line:121
+test_one	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            def test_one(self):$/;"	kind:member	line:132
+test_one	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            def test_one(self):$/;"	kind:member	line:157
+test_one	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            def test_one(self):$/;"	kind:member	line:173
+test_one	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            def test_one(self):$/;"	kind:member	line:271
+test_one	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            def test_one(self):$/;"	kind:member	line:304
+test_one	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            def test_one(self):$/;"	kind:member	line:310
+test_one	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            def test_one(self):$/;"	kind:member	line:330
+test_one	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            def test_one(self):$/;"	kind:member	line:348
+test_one	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            def test_one(self):$/;"	kind:member	line:37
+test_one	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            def test_one(self):$/;"	kind:member	line:377
+test_one	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            def test_one(self):$/;"	kind:member	line:383
+test_one	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            def test_one(self):$/;"	kind:member	line:405
+test_one	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            def test_one(self):$/;"	kind:member	line:419
+test_one	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            def test_one(self):$/;"	kind:member	line:55
+test_one	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            def test_one(self):$/;"	kind:member	line:73
+test_one	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            def test_one(self):$/;"	kind:member	line:84
+test_pickle_unpickle	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_runner.py	/^    def test_pickle_unpickle(self):$/;"	kind:member	line:90
+test_program.py	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_program.py	1;"	kind:file	line:1
+test_result.py	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_result.py	1;"	kind:file	line:1
+test_resultclass	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_runner.py	/^    def test_resultclass(self):$/;"	kind:member	line:103
+test_run	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_suite.py	/^    def test_run(self):$/;"	kind:member	line:190
+test_run__empty_suite	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_suite.py	/^    def test_run__empty_suite(self):$/;"	kind:member	line:166
+test_run__requires_result	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_suite.py	/^    def test_run__requires_result(self):$/;"	kind:member	line:178
+test_run__uses_defaultTestResult	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^    def test_run__uses_defaultTestResult(self):$/;"	kind:member	line:516
+test_run_call_order__error_in_setUp	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^    def test_run_call_order__error_in_setUp(self):$/;"	kind:member	line:268
+test_run_call_order__error_in_setUp	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_functiontestcase.py	/^    def test_run_call_order__error_in_setUp(self):$/;"	kind:member	line:22
+test_run_call_order__error_in_setUp_default_result	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^    def test_run_call_order__error_in_setUp_default_result(self):$/;"	kind:member	line:282
+test_run_call_order__error_in_tearDown	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^    def test_run_call_order__error_in_tearDown(self):$/;"	kind:member	line:381
+test_run_call_order__error_in_tearDown	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_functiontestcase.py	/^    def test_run_call_order__error_in_tearDown(self):$/;"	kind:member	line:99
+test_run_call_order__error_in_tearDown_default_result	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^    def test_run_call_order__error_in_tearDown_default_result(self):$/;"	kind:member	line:396
+test_run_call_order__error_in_test	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^    def test_run_call_order__error_in_test(self):$/;"	kind:member	line:305
+test_run_call_order__error_in_test	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_functiontestcase.py	/^    def test_run_call_order__error_in_test(self):$/;"	kind:member	line:47
+test_run_call_order__error_in_test_default_result	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^    def test_run_call_order__error_in_test_default_result(self):$/;"	kind:member	line:321
+test_run_call_order__failure_in_test	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^    def test_run_call_order__failure_in_test(self):$/;"	kind:member	line:344
+test_run_call_order__failure_in_test	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_functiontestcase.py	/^    def test_run_call_order__failure_in_test(self):$/;"	kind:member	line:73
+test_run_call_order__failure_in_test_default_result	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^    def test_run_call_order__failure_in_test_default_result(self):$/;"	kind:member	line:359
+test_run_call_order_default_result	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^    def test_run_call_order_default_result(self):$/;"	kind:member	line:413
+test_runner.py	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_runner.py	1;"	kind:file	line:1
+test_setUp	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^    def test_setUp(self):$/;"	kind:member	line:482
+test_setup_class	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^    def test_setup_class(self):$/;"	kind:member	line:30
+test_setup_module	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^    def test_setup_module(self):$/;"	kind:member	line:263
+test_setup_teardown_order_with_pathological_suite	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^    def test_setup_teardown_order_with_pathological_suite(self):$/;"	kind:member	line:181
+test_setups.py	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	1;"	kind:file	line:1
+test_shortDescription__no_docstring	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_functiontestcase.py	/^    def test_shortDescription__no_docstring(self):$/;"	kind:member	line:132
+test_shortDescription__singleline_docstring	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_functiontestcase.py	/^    def test_shortDescription__singleline_docstring(self):$/;"	kind:member	line:140
+test_skip	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_skipping.py	/^                def test_skip(self): $/;"	kind:member	line:37
+test_skip	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_skipping.py	/^                test_skip = deco(do_skip, "testing")(test_skip)$/;"	kind:variable	line:39
+test_skip_class	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_skipping.py	/^    def test_skip_class(self):$/;"	kind:member	line:59
+test_skip_doesnt_run_setup	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_skipping.py	/^    def test_skip_doesnt_run_setup(self):$/;"	kind:member	line:103
+test_skip_me	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_skipping.py	/^            def test_skip_me(self):$/;"	kind:member	line:10
+test_skipping	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_skipping.py	/^    def test_skipping(self):$/;"	kind:member	line:8
+test_skipping.py	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_skipping.py	1;"	kind:file	line:1
+test_skipping_decorators	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_skipping.py	/^    def test_skipping_decorators(self):$/;"	kind:member	line:32
+test_skiptest_in_setupclass	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^    def test_skiptest_in_setupclass(self):$/;"	kind:member	line:400
+test_skiptest_in_setupmodule	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^    def test_skiptest_in_setupmodule(self):$/;"	kind:member	line:417
+test_something	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            def test_something(self):$/;"	kind:member	line:457
+test_something	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            def test_something(self):$/;"	kind:member	line:488
+test_sortTestMethodsUsing__None	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^    def test_sortTestMethodsUsing__None(self):$/;"	kind:member	line:1204
+test_sortTestMethodsUsing__default_value	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^    def test_sortTestMethodsUsing__default_value(self):$/;"	kind:member	line:1196
+test_sortTestMethodsUsing__getTestCaseNames	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^    def test_sortTestMethodsUsing__getTestCaseNames(self):$/;"	kind:member	line:1181
+test_sortTestMethodsUsing__loadTestsFromModule	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^    def test_sortTestMethodsUsing__loadTestsFromModule(self):$/;"	kind:member	line:1125
+test_sortTestMethodsUsing__loadTestsFromName	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^    def test_sortTestMethodsUsing__loadTestsFromName(self):$/;"	kind:member	line:1143
+test_sortTestMethodsUsing__loadTestsFromNames	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^    def test_sortTestMethodsUsing__loadTestsFromNames(self):$/;"	kind:member	line:1161
+test_sortTestMethodsUsing__loadTestsFromTestCase	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^    def test_sortTestMethodsUsing__loadTestsFromTestCase(self):$/;"	kind:member	line:1109
+test_startTest	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_result.py	/^    def test_startTest(self):$/;"	kind:member	line:41
+test_startTestRun_stopTestRun	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_result.py	/^    def test_startTestRun_stopTestRun(self):$/;"	kind:member	line:89
+test_startTestRun_stopTestRun_called	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_runner.py	/^    def test_startTestRun_stopTestRun_called(self):$/;"	kind:member	line:70
+test_stop	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_result.py	/^    def test_stop(self):$/;"	kind:member	line:32
+test_stopTest	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_result.py	/^    def test_stopTest(self):$/;"	kind:member	line:62
+test_suite.py	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_suite.py	1;"	kind:file	line:1
+test_suiteClass__default_value	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^    def test_suiteClass__default_value(self):$/;"	kind:member	line:1283
+test_suiteClass__loadTestsFromModule	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^    def test_suiteClass__loadTestsFromModule(self):$/;"	kind:member	line:1236
+test_suiteClass__loadTestsFromName	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^    def test_suiteClass__loadTestsFromName(self):$/;"	kind:member	line:1252
+test_suiteClass__loadTestsFromNames	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^    def test_suiteClass__loadTestsFromNames(self):$/;"	kind:member	line:1268
+test_suiteClass__loadTestsFromTestCase	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^    def test_suiteClass__loadTestsFromTestCase(self):$/;"	kind:member	line:1222
+test_suite_debug_executes_setups_and_teardowns	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^    def test_suite_debug_executes_setups_and_teardowns(self):$/;"	kind:member	line:439
+test_suite_debug_propagates_exceptions	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^    def test_suite_debug_propagates_exceptions(self):$/;"	kind:member	line:468
+test_tearDown	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^    def test_tearDown(self):$/;"	kind:member	line:491
+test_teardown_class	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^    def test_teardown_class(self):$/;"	kind:member	line:48
+test_teardown_class_two_classes	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^    def test_teardown_class_two_classes(self):$/;"	kind:member	line:66
+test_teardown_module	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^    def test_teardown_module(self):$/;"	kind:member	line:340
+test_testMethodPrefix__default_value	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^    def test_testMethodPrefix__default_value(self):$/;"	kind:member	line:1097
+test_testMethodPrefix__loadTestsFromModule	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^    def test_testMethodPrefix__loadTestsFromModule(self):$/;"	kind:member	line:1031
+test_testMethodPrefix__loadTestsFromName	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^    def test_testMethodPrefix__loadTestsFromName(self):$/;"	kind:member	line:1054
+test_testMethodPrefix__loadTestsFromNames	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^    def test_testMethodPrefix__loadTestsFromNames(self):$/;"	kind:member	line:1077
+test_testMethodPrefix__loadTestsFromTestCase	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_loader.py	/^    def test_testMethodPrefix__loadTestsFromTestCase(self):$/;"	kind:member	line:1010
+test_testcase_with_missing_module	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^    def test_testcase_with_missing_module(self):$/;"	kind:member	line:328
+test_two	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            def test_two(self):$/;"	kind:member	line:103
+test_two	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            def test_two(self):$/;"	kind:member	line:123
+test_two	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            def test_two(self):$/;"	kind:member	line:134
+test_two	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            def test_two(self):$/;"	kind:member	line:273
+test_two	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            def test_two(self):$/;"	kind:member	line:306
+test_two	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            def test_two(self):$/;"	kind:member	line:312
+test_two	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            def test_two(self):$/;"	kind:member	line:332
+test_two	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            def test_two(self):$/;"	kind:member	line:350
+test_two	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            def test_two(self):$/;"	kind:member	line:379
+test_two	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            def test_two(self):$/;"	kind:member	line:385
+test_two	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            def test_two(self):$/;"	kind:member	line:39
+test_two	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            def test_two(self):$/;"	kind:member	line:407
+test_two	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            def test_two(self):$/;"	kind:member	line:421
+test_two	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            def test_two(self):$/;"	kind:member	line:57
+test_two	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            def test_two(self):$/;"	kind:member	line:75
+test_two	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            def test_two(self):$/;"	kind:member	line:86
+test_unexpected_success	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_skipping.py	/^    def test_unexpected_success(self):$/;"	kind:member	line:88
+test_unittest2_with.py	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_unittest2_with.py	1;"	kind:file	line:1
+test_works_with_result_without_startTestRun_stopTestRun	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_runner.py	/^    def test_works_with_result_without_startTestRun_stopTestRun(self):$/;"	kind:member	line:58
+tester	bin/opnetd/demos/liso/proj1_cp2/grader.py	/^class tester(unittest2.TestCase):$/;"	kind:class	line:7
+tests	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_suite.py	/^        def tests():$/;"	kind:function	line:70
+tests	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_suite.py	/^        def tests():$/;"	kind:function	line:91
+tornDown	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            tornDown = 0$/;"	kind:variable	line:116
+tornDown	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            tornDown = 0$/;"	kind:variable	line:127
+tornDown	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            tornDown = False$/;"	kind:variable	line:149
+tornDown	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_setups.py	/^            tornDown = False$/;"	kind:variable	line:166
+tornDown	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_skipping.py	/^            def tornDown(self):$/;"	kind:member	line:109
+truncate	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^        def truncate(msg, diff):$/;"	kind:function	line:964
+truncate	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_case.py	/^        def truncate(msg, diff):$/;"	kind:function	line:976
+unorderable_list_difference	bin/opnetd/demos/liso/proj1_cp2/unittest2/util.py	/^def unorderable_list_difference(expected, actual, ignore_duplicate=False):$/;"	kind:function	line:65
+url	bin/opnetd/demos/liso/proj1_cp2/http_parser/http.py	/^    def url(self):$/;"	kind:member	line:93
+usageExit	bin/opnetd/demos/liso/proj1_cp2/unittest2/main.py	/^    def usageExit(self, msg=None):$/;"	kind:member	line:100
+usageExit	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_discovery.py	/^        def usageExit():$/;"	kind:function	line:220
+usageExit	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_program.py	/^        def usageExit(msg=None):$/;"	kind:function	line:119
+util.py	bin/opnetd/demos/liso/proj1_cp2/unittest2/util.py	1;"	kind:file	line:1
+verbosity	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_program.py	/^    verbosity = 1$/;"	kind:variable	line:82
+version	bin/opnetd/demos/liso/proj1_cp2/http_parser/http.py	/^    def version(self):$/;"	kind:member	line:114
+version_info	bin/opnetd/demos/liso/proj1_cp2/http_parser/__init__.py	/^version_info = (0, 8, 3)$/;"	kind:variable	line:6
+wasSetUp	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_skipping.py	/^            wasSetUp = False$/;"	kind:variable	line:105
+wasSetUp	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_suite.py	/^            wasSetUp = False$/;"	kind:variable	line:304
+wasSetUp	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_suite.py	/^            wasSetUp = False$/;"	kind:variable	line:317
+wasSuccessful	bin/opnetd/demos/liso/proj1_cp2/unittest2/result.py	/^    def wasSuccessful(self):$/;"	kind:member	line:137
+wasSuccessful	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/support.py	/^    def wasSuccessful(self):$/;"	kind:member	line:34
+wasTornDown	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_skipping.py	/^            wasTornDown = False$/;"	kind:variable	line:106
+wasTornDown	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_suite.py	/^            wasTornDown = False$/;"	kind:variable	line:305
+wasTornDown	bin/opnetd/demos/liso/proj1_cp2/unittest2/test/test_suite.py	/^            wasTornDown = False$/;"	kind:variable	line:318
+wrapper	bin/opnetd/demos/liso/proj1_cp2/unittest2/case.py	/^    def wrapper(*args, **kwargs):$/;"	kind:function	line:89
+wraps	bin/opnetd/demos/liso/proj1_cp2/unittest2/compatibility.py	/^    def wraps(_):$/;"	kind:function	line:8
+writable	bin/opnetd/demos/liso/proj1_cp2/http_parser/_socketio.py	/^    def writable(self):$/;"	kind:member	line:103
+write	bin/opnetd/demos/liso/proj1_cp2/http_parser/_socketio.py	/^    def write(self, b):$/;"	kind:member	line:82
+writeln	bin/opnetd/demos/liso/proj1_cp2/unittest2/runner.py	/^    def writeln(self, arg=None):$/;"	kind:member	line:28
+wsgi_environ	bin/opnetd/demos/liso/proj1_cp2/http_parser/http.py	/^    def wsgi_environ(self, initial=None):$/;"	kind:member	line:154

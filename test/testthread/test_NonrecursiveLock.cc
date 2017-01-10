@@ -1,5 +1,5 @@
 #include <thread/Mutex.h>
-#include <thread/BlockingQueue.h>
+#include <thread/Channel.h>
 #include <vector>
 #include <iostream>
 
@@ -40,7 +40,7 @@ void traverse()
 
 int main(int argc, char **argv)
 {
-  oplib::BlockingQueue<int> bqint;
+  oplib::Channel<int> bqint;
   std::cout << "In main" << std::endl;
   gvec.push_back(Foo(2));
   gvec.push_back(Foo(3));

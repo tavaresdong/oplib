@@ -7,7 +7,7 @@ set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} --std=c++14 -g -Wall -Werror -pedantic 
 
 enable_testing()
 
-include_directories(${PROJECT_SOURCE_DIR}/src)
+include_directories(${PROJECT_SOURCE_DIR}/lib)
 
 add_subdirectory(test)
-add_subdirectory(src)
+add_subdirectory(lib)

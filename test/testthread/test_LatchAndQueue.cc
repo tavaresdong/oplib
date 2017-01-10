@@ -1,4 +1,4 @@
-#include <thread/BlockingQueue.h>
+#include <thread/Channel.h>
 #include <thread/CountdownLatch.h>
 #include <thread/Thread.h>
 
@@ -44,7 +44,9 @@ class Test
     {
       std::string buf { "hello" };
       buf += std::to_string(i);
-      _queue.put(buf);
+
+      // Try to put something into the _queue
+      _queue << buf;
       printf("tid=%d, put data = %s, size = %zd\n",
              CurrentThread::tid(), buf.data(), _queue.size());
     }
@@ -76,7 +78,8 @@ class Test
     while (running)
     {
       // take() will block if there are no elements
-      std::string d(_queue.take());
+      std::string d;
+      _queue >> d;
       printf("tid=%d, get data = %s, size = %zd\n", CurrentThread::tid(), d.c_str(),
             _queue.size());
       running = (d != "stop");
@@ -87,7 +90,7 @@ class Test
            CurrentThread::threadName());
   }
 
-  BlockingQueue<std::string> _queue;
+  Channel<std::string> _queue;
   CountdownLatch _latch;
   std::vector<std::shared_ptr<Thread> > _threads;
 };

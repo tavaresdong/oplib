@@ -3,7 +3,7 @@ set(libop_thread_SRCS
   Thread.cc
   Condition.cc
   CountdownLatch.cc
-  BlockingQueue.h
+  Channel.h
   Singleton.h
 )
 

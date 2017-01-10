@@ -1,31 +1,30 @@
 /*
- * BlockingQueue.H
+ * Channel.H
  *
  *  Created on: Dec 25, 2016
  *      Author: yuchend
+ * An implementation of the Golang's Channel
  */
 
-#ifndef OPLIB_NET_BLOCKINGQUEUE_H_
-#define OPLIB_NET_BLOCKINGQUEUE_H_
+#ifndef OPLIB_NET_CHANNEL_H
+#define OPLIB_NET_CHANNEL_H
 
 #include <thread/Condition.h>
 #include <thread/Mutex.h>
 #include <deque>
 
-// TODO chage deque to oplib::deque
-
 namespace oplib
 {
 
 template <typename T>
-class BlockingQueue
+class Channel
 {
 public:
-  BlockingQueue(const BlockingQueue& rhs_) = delete;
-  BlockingQueue& operator = (const BlockingQueue& rhs_) = delete;
+  Channel(const Channel& rhs_) = delete;
+  Channel& operator = (const Channel& rhs_) = delete;
 
-  BlockingQueue();
-  virtual ~BlockingQueue();
+  Channel();
+  virtual ~Channel();
 
   void enqueue(T&& value_);
   void enqueue(const T& value_);
@@ -36,6 +35,18 @@ public:
   void put(const T& value_) { enqueue(value_); }
   void put(T&& value_) { enqueue(std::move(value_)); }
 
+  Channel& operator << (const T& value_)
+  {
+    put(value_);
+    return *this;
+  }
+
+  Channel& operator >> (T& sink_)
+  {
+    sink_ = take();
+    return *this;
+  }
+
   size_t size();
 
 private:
@@ -45,12 +56,12 @@ private:
 };
 
 template <typename T>
-BlockingQueue<T>::BlockingQueue()
+Channel<T>::Channel()
 : _notEmpty(_mutex)
 {}
 
 template <typename T>
-void BlockingQueue<T>::enqueue(T&& value_)
+void Channel<T>::enqueue(T&& value_)
 {
   {
     MutexLockGuard guard(_mutex);
@@ -60,14 +71,14 @@ void BlockingQueue<T>::enqueue(T&& value_)
 }
 
 template <typename T>
-size_t BlockingQueue<T>::size()
+size_t Channel<T>::size()
 {
   MutexLockGuard guard(_mutex);
   return _queue.size();
 }
 
 template <typename T>
-void BlockingQueue<T>::enqueue(const T& value_)
+void Channel<T>::enqueue(const T& value_)
 {
   {
     MutexLockGuard guard(_mutex);
@@ -81,7 +92,7 @@ void BlockingQueue<T>::enqueue(const T& value_)
 }
 
 template <typename T>
-T BlockingQueue<T>::dequeue()
+T Channel<T>::dequeue()
 {
   MutexLockGuard guard(_mutex);
   while (_queue.empty())
@@ -96,8 +107,8 @@ T BlockingQueue<T>::dequeue()
 }
 
 template <typename T>
-BlockingQueue<T>::~BlockingQueue()
+Channel<T>::~Channel()
 {}
 
 }
-#endif /* NET_BLOCKINGQUEUE_H_ */
+#endif /* NET_Channel_H_ */
