@@ -3,7 +3,7 @@ set(libop_ds_SRCS
     traits.H
     memutil.H
     vector.H
-    linkedlist.H
+    Linkedlist.H
 )
 
 # Declare the library
