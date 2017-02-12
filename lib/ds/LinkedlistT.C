@@ -40,9 +40,6 @@ Linkedlist<T, Alloc>::clear()
   }
 }
 
-/**
- * Remove all elements with value x
- */
 template <typename T, template <typename> class Alloc>
 void
 Linkedlist<T, Alloc>::remove(const value_type& x)
@@ -161,7 +158,7 @@ Linkedlist<T, Alloc>::reverse()
   }
 }
 
-template<typename T, template <typename> class Alloc>
+template <typename T, template <typename> class Alloc>
 void
 Linkedlist<T, Alloc>::reverse(iterator first, iterator last)
 {
@@ -171,6 +168,20 @@ Linkedlist<T, Alloc>::reverse(iterator first, iterator last)
     --toRev;
     transfer(first, toRev, last);
   }
+}
+
+template <typename T, template <typename> class Alloc>
+void
+Linkedlist<T, Alloc>::rotate(size_t k)
+{
+  size_t sz = size();
+  k %= sz; 
+  if (k == 0) return;
+
+  k = sz - k;
+  auto pos = begin();
+  std::advance(pos, k);
+  transfer(begin(), pos, end());
 }
 
 template <typename T, template <typename> class Alloc>

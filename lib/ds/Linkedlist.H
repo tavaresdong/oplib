@@ -135,6 +135,10 @@ namespace oplib
     // Reverse a range of elemens: [first. last)
     void reverse(iterator first, iterator last);
 
+    // Rotate a list k positions:
+    // 1 2 3 4 5 rotate(2) -> 4 5 1 2 3
+    void rotate(size_t k);
+
     // x and *this list should all be sorted!
     void merge(Linkedlist<T, Alloc>& x);
     void sort();

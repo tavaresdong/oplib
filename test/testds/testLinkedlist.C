@@ -103,6 +103,27 @@ TEST_F(LinkedlistTest, testElementManipulation)
   ASSERT_EQ(v.back(), 1);
 }
 
+TEST_F(LinkedlistTest, testRotate)
+{
+  oplib::Linkedlist<int> v;
+  v.push_back(1);
+  v.push_back(2);
+  v.push_back(3);
+  v.push_back(4);
+  v.push_back(5);
+
+  v.rotate(7);
+  auto iter = v.begin();
+  ASSERT_EQ(*iter, 4);
+  ++iter;
+  ASSERT_EQ(*iter, 5);
+  ++iter;
+  ASSERT_EQ(*iter, 1);
+
+  v.rotate(3);
+  ASSERT_EQ(*v.begin(), 1);
+}
+
 TEST_F(LinkedlistTest, testComplexOperation)
 {
   oplib::Linkedlist<int> v;
