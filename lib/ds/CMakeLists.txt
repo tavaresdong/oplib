@@ -4,6 +4,7 @@ set(libop_ds_SRCS
     memutil.H
     vector.H
     Linkedlist.H
+    TSTTrie.h
 )
 
 # Declare the library
