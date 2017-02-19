@@ -91,6 +91,11 @@ namespace oplib
 
     TSTTrie& operator = (const TSTTrie& rhs_);
 
+    /**
+     * Get the value of an associated key,
+     * if the key does not exist, return a default value
+     * and false
+     */
     ReturnType get(const std::string& key_) const
     {
       if (key_.empty()) return std::make_pair(ValueType(), false);
@@ -104,15 +109,45 @@ namespace oplib
         return std::make_pair(ValueType(), false);
     }
 
+    /**
+     * Return true if the key is stored in this Trie
+     */
     bool contains(const std::string& key_) const
     {
       return get(key_).second;
     }
 
+    /**
+     * Put a key and an associated value to this Trie,
+     * if the key already exists, we will overwrite the value
+     */
     void put(const std::string& key_, const ValueType& val_)
     {
       if (key_.empty()) return;
       put(_header, key_, val_, 0);
+    }
+
+    /**
+     * Remove a key and an associated value from
+     * the Trie, If the key does not exist, return false
+     */
+    bool remove(const std::string& key_)
+    {
+      auto nodep = get(_header, key_, 0);     
+
+      // The key does not exist
+      if (nodep == nullptr) return false;
+      else
+      {
+        // If the key exist, delete it by delete the value pointer
+        if (keyExist(nodep))
+        {
+          delete nodep->_value;
+          nodep->_value = nullptr;
+          return true; 
+        }
+        return false;
+      }
     }
 
     /**

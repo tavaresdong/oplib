@@ -92,6 +92,24 @@ TEST_F(TSTTrieTest, TrieCopyAndSearchTest)
   EXPECT_TRUE(trie2.contains("jam"));
 }
 
+TEST_F(TSTTrieTest, TrieRemoveTest)
+{
+  oplib::TSTTrie<int> trie { getTrie() };
+ 
+  EXPECT_TRUE(trie.contains("goo"));
+  EXPECT_EQ(trie.get("goo").first, 2);
+
+  EXPECT_TRUE(trie.remove("goo"));
+  EXPECT_FALSE(trie.contains("goo"));
+
+  // Remove "goo" won't affect "good"
+  EXPECT_TRUE(trie.contains("good"));
+
+  // Fail to remove an non-exist key
+  EXPECT_FALSE(trie.remove("xxd"));
+  EXPECT_TRUE(trie.remove("good"));
+  EXPECT_FALSE(trie.contains("good"));
+}
 
 TEST_F(TSTTrieTest, TrieKeyWithPrefixTest)
 {
