@@ -3,6 +3,7 @@
 
 #include <utility>
 #include <string>
+#include <vector>
 
 #include "alloc.H"
 #include "memutil.H"
@@ -66,6 +67,8 @@ namespace oplib
 
     void put(NodePtr& cur_, const std::string& key_, const ValueType& val_, size_t pos_);
 
+    void collect(NodePtr node_, std::string pre_, std::vector<std::string>& ret_) const;
+
    public:
     TSTTrie() : _header(nullptr) {}
 
@@ -93,6 +96,32 @@ namespace oplib
       put(_header, key_, val_, 0);
     }
 
+    std::vector<std::string> keys() const
+    {
+      std::vector<std::string> ret;
+      collect(_header, "", ret);
+
+      return ret;
+    }
+
+    std::vector<std::string> keysWithPrefix(const std::string& prefix_) const
+    {
+      std::vector<std::string> ret;
+      auto node = get(_header, prefix_, 0);
+
+      // This node match exactly prefix_
+      if (node != nullptr)
+      {
+        if (node->_value != nullptr)
+          ret.push_back(prefix_);
+
+        // Three-way collect of all keys with prefix_
+        collect(node->_mid, prefix_, ret);
+      }
+
+      return ret;
+    }
+
    private:
     NodePtr _header;
   };
@@ -102,7 +131,7 @@ namespace oplib
   TSTTrie<Value, Alloc>::get(NodePtr ptr_, const std::string& key_, size_t pos) const
   {
     if (ptr_ == nullptr) return nullptr;
-    if (pos == key_.length() - 1) return ptr_;
+    if (key_.length() == 0 || pos == key_.length() - 1) return ptr_;
 
     char c = key_.at(pos);
     if (c == ptr_->_c) 
@@ -153,6 +182,21 @@ namespace oplib
     }
   }
 
+  template <typename Value, template <typename> class Alloc>
+  void TSTTrie<Value, Alloc>::collect(NodePtr node_, std::string pre, std::vector<std::string>& ret_) const
+  {
+    if (node_ == nullptr) return;
+
+    auto curKey = pre + node_->_c;
+    if (node_->_value != nullptr)
+    {
+      ret_.push_back(curKey);
+    }
+
+    collect(node_->_left, curKey, ret_);
+    collect(node_->_mid, curKey, ret_);
+    collect(node_->_right, curKey, ret_);
+  }
 }
 
 #endif
