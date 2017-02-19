@@ -4,6 +4,7 @@
 #include <utility>
 #include <string>
 #include <vector>
+#include <memory>
 
 #include "alloc.H"
 #include "memutil.H"
@@ -28,7 +29,7 @@ namespace oplib
    protected:
     using NodeType = TSTNode<ValueType>;
     using NodePtr = NodeType*;
-    using NodeAlloc = opallocator<NodeType>;
+    using NodeAlloc = Alloc<NodeType>;
 
     NodeAlloc _allocator;
 
@@ -56,6 +57,7 @@ namespace oplib
     {
       if (np_->_value != nullptr)
         delete np_->_value; 
+      np_->_value = nullptr;
 
       putNode(np_);
     }
@@ -78,10 +80,16 @@ namespace oplib
 
     void destroy(NodePtr ptr);
 
+    NodePtr copyNode(const NodePtr node_);
+
    public:
     TSTTrie() : _header(nullptr) {}
 
     ~TSTTrie() { destroy(_header); }
+
+    TSTTrie(const TSTTrie& rhs_);
+
+    TSTTrie& operator = (const TSTTrie& rhs_);
 
     ReturnType get(const std::string& key_) const
     {
@@ -163,13 +171,16 @@ namespace oplib
   TSTTrie<Value, Alloc>::get(NodePtr ptr_, const std::string& key_, size_t pos) const
   {
     if (ptr_ == nullptr) return nullptr;
-    if (key_.length() == 0 || pos == key_.length() - 1) return ptr_;
+    if (key_.length() == 0) return ptr_;
 
     char c = key_.at(pos);
     if (c == ptr_->_c) 
     {
       // Character matched, go the middle path
-      return get(ptr_->_mid, key_, pos + 1);
+      if (pos == key_.length() - 1)
+        return ptr_;
+      else
+        return get(ptr_->_mid, key_, pos + 1);
     }
     else if (c < ptr_->_c)
     {
@@ -272,6 +283,39 @@ namespace oplib
     destroy(ptr_->_mid);
     destroy(ptr_->_right);
     destroyNode(ptr_);
+  }
+
+  template <typename Value, template <typename> class Alloc>
+  typename TSTTrie<Value, Alloc>::NodePtr
+  TSTTrie<Value, Alloc>::copyNode(const NodePtr node_)
+  {
+    if (node_ == nullptr) return nullptr;
+
+    NodePtr nd = createNode(node_->_c);
+    if (node_->_value != nullptr)
+      nd->_value = new ValueType(*(node_->_value));
+
+    nd->_left = copyNode(node_->_left);
+    nd->_mid = copyNode(node_->_mid);
+    nd->_right = copyNode(node_->_right);
+
+    return nd;
+  }
+
+  template <typename Value, template <typename> class Alloc>
+  TSTTrie<Value, Alloc>::TSTTrie(const TSTTrie& rhs_)
+  {
+    _header = copyNode(rhs_._header);
+  }
+
+  template <typename Value, template <typename> class Alloc>
+  TSTTrie<Value, Alloc>& TSTTrie<Value, Alloc>::operator = (const TSTTrie& rhs_)
+  {
+    if (this == &rhs_) return *this;
+
+    TSTTrie tmp(rhs_);
+    std::swap(_header, tmp._header);
+    return *this;
   }
 }
 

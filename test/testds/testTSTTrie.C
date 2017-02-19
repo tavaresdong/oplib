@@ -37,6 +37,19 @@ protected:
     trie.put("xx", 3);
     return trie;
   }
+
+  oplib::TSTTrie<bool> getTrieComplex()
+  {
+    oplib::TSTTrie<bool> trie;
+    trie.put("app", true);
+    trie.put("apple", true);
+    trie.put("beer", true);
+    trie.put("add", true);
+    trie.put("jam", true);
+    trie.put("rental", true);
+
+    return trie;
+  }
 };
 
 TSTTrieTest::TSTTrieTest() {}
@@ -52,18 +65,37 @@ TEST_F(TSTTrieTest, TriePutGetContainsTest)
 {
   oplib::TSTTrie<int> trie { getTrie() };
  
-  ASSERT_TRUE(trie.contains("good"));
-  ASSERT_EQ(trie.get("good").first, 3);
-  ASSERT_TRUE(trie.contains("xx"));
-  ASSERT_EQ(trie.get("xx").first, 3);
-
-  ASSERT_FALSE(trie.contains("delete"));
-  ASSERT_FALSE(trie.contains("go"));
+  EXPECT_TRUE(trie.contains("good"));
+  EXPECT_EQ(trie.get("good").first, 3);
+  EXPECT_TRUE(trie.contains("xx"));
+  EXPECT_EQ(trie.get("xx").first, 3);
+ 
+  EXPECT_FALSE(trie.contains("delete"));
+  EXPECT_FALSE(trie.contains("go"));
 }
+
+TEST_F(TSTTrieTest, TrieCopyAndSearchTest)
+{
+  oplib::TSTTrie<bool> trie { getTrieComplex() };
+
+  // Copy ctor
+  oplib::TSTTrie<bool> copiedTrie(trie);
+  oplib::TSTTrie<bool> trie2;
+  trie2.put("jan", true);
+
+  // Assign
+  trie2 = trie;
+
+  EXPECT_FALSE(copiedTrie.contains("jan"));
+  EXPECT_TRUE(copiedTrie.contains("jam"));
+  EXPECT_FALSE(trie2.contains("jan"));
+  EXPECT_TRUE(trie2.contains("jam"));
+}
+
 
 TEST_F(TSTTrieTest, TrieKeyWithPrefixTest)
 {
-  oplib::TSTTrie<int> trie { getTrie() };
+  auto trie { getTrie() };
 
   EXPECT_EQ(trie.keysWithPrefix("go").size(), (size_t) 4);
   EXPECT_EQ(trie.keysWithPrefix("g").size(), (size_t) 5);
