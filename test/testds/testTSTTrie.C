@@ -61,7 +61,7 @@ TEST_F(TSTTrieTest, TriePutGetContainsTest)
   ASSERT_FALSE(trie.contains("go"));
 }
 
-TEST_F(TSTTrieTest, TriePrefixTest)
+TEST_F(TSTTrieTest, TrieKeyWithPrefixTest)
 {
   oplib::TSTTrie<int> trie { getTrie() };
 
@@ -75,4 +75,14 @@ TEST_F(TSTTrieTest, TriePrefixTest)
   EXPECT_TRUE(std::find(ret.begin(), ret.end(), "good") != ret.end());
   EXPECT_TRUE(std::find(ret.begin(), ret.end(), "goo") != ret.end());
   EXPECT_TRUE(std::find(ret.begin(), ret.end(), "gas") == ret.end());
+}
+
+TEST_F(TSTTrieTest, TrieLongestPrefixTest)
+{
+  oplib::TSTTrie<int> trie { getTrie() };
+  
+  EXPECT_EQ(trie.longestPrefixOf("goody"), std::string("good"));
+  EXPECT_EQ(trie.longestPrefixOf("goose"), std::string("goo"));
+  EXPECT_EQ(trie.longestPrefixOf("delete"), std::string("del"));
+  EXPECT_EQ(trie.longestPrefixOf("xt"), std::string(""));
 }

@@ -56,6 +56,8 @@ namespace oplib
     {
       if (np_->_value != nullptr)
         delete np_->_value; 
+
+      putNode(np_);
     }
 
     void putNode(NodePtr np_) 
@@ -69,8 +71,17 @@ namespace oplib
 
     void collect(NodePtr node_, std::string pre_, std::vector<std::string>& ret_) const;
 
+    void search(NodePtr node_, const std::string& key_, std::string& curChars,
+                std::string& prefix_, size_t pos_) const;
+
+    bool keyExist(NodePtr ptr) const { return ptr->_value != nullptr; }
+
+    void destroy(NodePtr ptr);
+
    public:
     TSTTrie() : _header(nullptr) {}
+
+    ~TSTTrie() { destroy(_header); }
 
     ReturnType get(const std::string& key_) const
     {
@@ -79,7 +90,7 @@ namespace oplib
       auto nodep = get(_header, key_, 0);
       if (nodep == nullptr) return std::make_pair(ValueType(), false);
 
-      if (nodep->_value != nullptr)
+      if (keyExist(nodep))
         return std::make_pair(ValueType(*(nodep->_value)), true);
       else
         return std::make_pair(ValueType(), false);
@@ -96,6 +107,10 @@ namespace oplib
       put(_header, key_, val_, 0);
     }
 
+    /**
+     * Return all keys() stored in this Trie
+     * as a vector<string>
+     */
     std::vector<std::string> keys() const
     {
       std::vector<std::string> ret;
@@ -104,6 +119,23 @@ namespace oplib
       return ret;
     }
 
+    /**
+     * Return the longest prefix of the key_ that 
+     * is stored in this Trie.
+     * e.g Goo and Good are stored, then longestPrefixOf("Goody") is "Good"
+     */
+    std::string longestPrefixOf(const std::string& key_) const
+    {
+      std::string lpre;
+      std::string charsAllAlong;
+      search(_header, key_, charsAllAlong, lpre, 0);
+      return lpre;
+    }
+
+    /**
+     * Return all keys stored in this Trie that has prefix_
+     * as its prefix
+     */
     std::vector<std::string> keysWithPrefix(const std::string& prefix_) const
     {
       std::vector<std::string> ret;
@@ -112,7 +144,7 @@ namespace oplib
       // This node match exactly prefix_
       if (node != nullptr)
       {
-        if (node->_value != nullptr)
+        if (keyExist(node))
           ret.push_back(prefix_);
 
         // Three-way collect of all keys with prefix_
@@ -151,7 +183,10 @@ namespace oplib
   }
 
   template <typename Value, template <typename> class Alloc>
-  void TSTTrie<Value, Alloc>::put(NodePtr& cur_, const std::string& key_, const ValueType& val_, size_t pos_)
+  void TSTTrie<Value, Alloc>::put(NodePtr& cur_,
+                                  const std::string& key_,
+                                  const ValueType& val_,
+                                  size_t pos_)
   {
     char c = key_.at(pos_);
     if (cur_ == nullptr)
@@ -183,12 +218,14 @@ namespace oplib
   }
 
   template <typename Value, template <typename> class Alloc>
-  void TSTTrie<Value, Alloc>::collect(NodePtr node_, std::string pre, std::vector<std::string>& ret_) const
+  void TSTTrie<Value, Alloc>::collect(NodePtr node_,
+                                      std::string pre,
+                                      std::vector<std::string>& ret_) const
   {
     if (node_ == nullptr) return;
 
     auto curKey = pre + node_->_c;
-    if (node_->_value != nullptr)
+    if (keyExist(node_))
     {
       ret_.push_back(curKey);
     }
@@ -196,6 +233,45 @@ namespace oplib
     collect(node_->_left, curKey, ret_);
     collect(node_->_mid, curKey, ret_);
     collect(node_->_right, curKey, ret_);
+  }
+
+  template <typename Value, template <typename> class Alloc>
+  void TSTTrie<Value, Alloc>::search(NodePtr node_,
+                                     const std::string& key_,
+                                     std::string& curChars_,
+                                     std::string& prefix_,
+                                     size_t pos_) const
+  {
+    if (node_ == nullptr) return;
+    char c = key_.at(pos_);
+    if (c == node_->_c) 
+    {
+      // Matched, go to mid
+      // If this node exists, then record the prefix
+      curChars_.push_back(c);
+      if (keyExist(node_))
+        prefix_ = curChars_;
+
+      search(node_->_mid, key_, curChars_, prefix_, pos_ + 1);
+    }
+    else if (c < node_->_c)
+    {
+      search(node_->_left, key_, curChars_, prefix_, pos_);
+    }
+    else
+    {
+      search(node_->_right, key_, curChars_, prefix_, pos_);
+    }
+  }
+
+  template <typename Value, template <typename> class Alloc>
+  void TSTTrie<Value, Alloc>::destroy(NodePtr ptr_)
+  {
+    if (ptr_ == nullptr) return;
+    destroy(ptr_->_left);
+    destroy(ptr_->_mid);
+    destroy(ptr_->_right);
+    destroyNode(ptr_);
   }
 }
 
