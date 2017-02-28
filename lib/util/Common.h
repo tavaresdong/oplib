@@ -15,5 +15,16 @@
 #define CHECK_RETURN(ret) do {__typeof__(ret) rc = (ret);\
 												      if(rc != 0) exit(rc); } while(0)
 
+namespace oplib
+{
+  class Noncopyable
+  {
+   public:
+    Noncopyable() {}
+    ~Noncopyable() {}
+    Noncopyable(const Noncopyable&) = delete;
+    Noncopyable& operator = (const Noncopyable&) = delete;
+  };
+}
 
 #endif /* OPLIB_NET_COMMON_H_ */

@@ -5,7 +5,6 @@ set(libop_thread_SRCS
   CountdownLatch.cc
   Channel.h
   Singleton.h
-  Timestamp.cc
 )
 
 # Declare the library

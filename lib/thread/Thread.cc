@@ -1,5 +1,5 @@
 #include <thread/Thread.h>
-#include <thread/Common.h>
+#include <util/Common.h>
 
 #include <sys/prctl.h>
 #include <stdio.h>
@@ -20,7 +20,6 @@ namespace CurrentThread
     CurrentThread::tl_tid = 0;
     CurrentThread::tl_tstatus = "main";
     CurrentThread::tid();
-
   }
 
   // Use a static variable's constructor to call pthread_atfork

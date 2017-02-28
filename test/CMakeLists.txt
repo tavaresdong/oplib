@@ -41,3 +41,4 @@ include_directories("${source_dir}/googletest/include"
 
 add_subdirectory(testds)
 add_subdirectory(testthread)
+add_subdirectory(testnet)
