@@ -1,6 +1,7 @@
 #include "EventLoop.h"
 #include "EventDispatcher.h"
 #include "Poller.h"
+#include "TimerManager.h"
 
 #include <util/Timestamp.h>
 
@@ -15,7 +16,8 @@ namespace oplib
 
   EventLoop::EventLoop()
   : _threadId(CurrentThread::tid()),
-    _poller(std::make_unique<Poller>(this))
+    _poller(std::make_unique<Poller>(this)),
+    _timerMgr(std::make_unique<TimerManager>(this))
   {
     if (gLoopInThread != nullptr)
     {
@@ -69,5 +71,24 @@ namespace oplib
     }
 
     _looping.exchange(false);
+  }
+
+  void EventLoop::runAt(const Timestamp& when_, const TimerCallback& cb_)
+  {
+    _timerMgr->addTimer(cb_, when_, 0.0);
+  }
+
+  void EventLoop::runEvery(double interval_, const TimerCallback& cb_)
+  {
+    Timestamp fire { Timestamp::now() };
+    fire += interval_;
+    _timerMgr->addTimer(cb_, fire, interval_);
+  }
+
+  void EventLoop::runAfter(double delay_, const TimerCallback& cb_)
+  {
+    Timestamp fire { Timestamp::now() };
+    fire += delay_; 
+    _timerMgr->addTimer(cb_, fire, 0.0);
   }
 }

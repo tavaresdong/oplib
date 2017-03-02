@@ -2,6 +2,7 @@ set(libop_net_SRCS
     EventDispatcher.cc
     Poller.cc
     EventLoop.cc
+    TimerManager.cc
 )
 
 # Declare the library
@@ -11,8 +12,9 @@ add_library(libop_net STATIC
 
 target_link_libraries(libop_net pthread)
 
-# Net lib depends on thread lib
+# Net lib depends on thread lib and util
 target_link_libraries(libop_net libop_thread)
+target_link_libraries(libop_net libop_util)
 
 set_target_properties(libop_net PROPERTIES LINKER_LANGUAGE CXX)
 

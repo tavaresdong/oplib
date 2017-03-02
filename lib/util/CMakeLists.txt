@@ -1,6 +1,6 @@
 set(libop_util_SRCS_
-    Timestamp.cc
     Common.h
+    Timestamp.h
 )
 
 # Declare the library

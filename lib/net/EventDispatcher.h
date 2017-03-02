@@ -13,7 +13,6 @@ namespace oplib
   class EventDispatcher : Noncopyable
   {
    public:
-    using EventCallback = std::function<void()>;
 
     EventDispatcher(EventLoop *loop_, int fd_);
 

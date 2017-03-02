@@ -2,6 +2,7 @@
 #define OPLIB_EVENTLOOP_H
 
 #include <util/Common.h>
+#include <util/Timestamp.h>
 #include <thread/Thread.h>
 
 #include <sys/types.h>
@@ -12,6 +13,7 @@ namespace oplib
 {
   class EventDispatcher;
   class Poller;
+  class TimerManager;
 
   class EventLoop : public Noncopyable
   {
@@ -34,12 +36,22 @@ namespace oplib
     // TODO
     void updateEventDispatcher(EventDispatcher* dp_);
 
+    // Run at a time
+    void runAt(const Timestamp& when_, const TimerCallback& cb_);
+
+    // Run every time interval
+    void runEvery(double interval_, const TimerCallback& cb_);
+
+    // Run after a period of time
+    void runAfter(double delay_, const TimerCallback& cb_);
+
    private:
     std::atomic_bool _looping { false };
     int _timeout { 5 * 1000 };
     bool _done { false };
     const pid_t _threadId;
     std::unique_ptr<Poller> _poller;
+    std::unique_ptr<TimerManager> _timerMgr;
   };
 }
 

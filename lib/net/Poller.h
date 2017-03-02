@@ -17,7 +17,6 @@ namespace oplib
 
   class EventLoop;
 
-
   // Poller calls the ::poll method
   // and fill the EventDispatchers for all active 
   // events.

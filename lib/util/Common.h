@@ -8,6 +8,8 @@
 #ifndef OPLIB_NET_COMMON_H_
 #define OPLIB_NET_COMMON_H_
 
+#include <functional>
+
 #define LIKELY(exp) __builtin_expect(!!(exp), 1)
 #define UNLIKELY(exp) __builtin_expect(!!(exp), 0)
 
@@ -17,6 +19,9 @@
 
 namespace oplib
 {
+  typedef std::function<void()> TimerCallback;
+  typedef std::function<void()> EventCallback;
+
   class Noncopyable
   {
    public:
