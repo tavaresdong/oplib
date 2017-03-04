@@ -1,4 +1,4 @@
-// transplanted from muduo/net/tests/TimerQueue_unittest.cc
+// transplanted from muduo: muduo/net/tests/TimerQueue_unittest.cc
 
 #include <net/EventLoop.h>
 #include <thread/Thread.h>

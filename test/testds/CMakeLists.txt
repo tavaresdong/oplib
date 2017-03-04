@@ -1,4 +1,4 @@
-file(GLOB SRCS *.C)
+file(GLOB SRCS *.cc)
 
 ADD_EXECUTABLE(testds ${SRCS})
 

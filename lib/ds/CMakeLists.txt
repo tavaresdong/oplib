@@ -5,6 +5,7 @@ set(libop_ds_SRCS
     vector.H
     Linkedlist.H
     TSTTrie.h
+    MinHeap.h
 )
 
 # Declare the library
