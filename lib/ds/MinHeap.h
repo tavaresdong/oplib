@@ -15,11 +15,8 @@ namespace oplib
   {
    public:
     using value_type = T;
-    using key_type = T;
 
     MinHeap() {}
-    ~MinHeap() {}
-    
     MinHeap(std::initializer_list<value_type> il_);
 
     size_t size() const { return _elements.size(); }
@@ -28,14 +25,33 @@ namespace oplib
     // Throw out_of_range if no element is in the heap
     const T& top() const { return _elements.at(0); }
     void pop();
+    bool insert(const value_type& val_);
 
    private:
 
-    void minHeapify(size_t index_);
+    void siftDown(size_t index_);
+    void siftUp(size_t index_);
+
     void buildHeap();
+    void buildIndex();
 
     value_type& elemAt(size_t index_)
     { return _elements.at(index_); }
+
+    void swapKey(size_t i, size_t j)
+    {
+      assert(i < _elements.size());
+      assert(j < _elements.size());
+      assert(_keyIndex[_elements[j]] == j);
+      assert(_keyIndex[_elements[i]] == i);
+
+      std::swap(_elements[i], _elements[j]);
+      _keyIndex[_elements[i]] = i;
+      _keyIndex[_elements[j]] = j;
+
+      assert(_keyIndex[_elements[j]] == j);
+      assert(_keyIndex[_elements[i]] == i);
+    }
 
     static size_t parent(size_t i)
     { return (i - 1) / 2; }
@@ -51,7 +67,7 @@ namespace oplib
   };
 
   template <typename T, typename Equal, typename Comp>
-  void MinHeap<T, Equal, Comp>::minHeapify(size_t index_)
+  void MinHeap<T, Equal, Comp>::siftDown(size_t index_)
   {
     if (index_ >= size()) return;
     size_t smallest = index_;
@@ -66,19 +82,48 @@ namespace oplib
 
     if (smallest != index_)
     {
-      std::swap(_elements[index_], _elements[smallest]);
-      minHeapify(smallest);
+      swapKey(index_, smallest);
+      siftDown(smallest);
     }
   }
 
-  // Run in O(n) time
+  template <typename T, typename Equal, typename Comp>
+  void MinHeap<T, Equal, Comp>::siftUp(size_t index_)
+  {
+    if (index_ == 0) return;
+    size_t parent = MinHeap::parent(index_);
+    if (_elements[parent] > _elements[index_])
+    {
+      swapKey(index_, parent);
+      siftUp(parent);
+    }
+  }
+
+  // Run in O(nlogn) time
+  template <typename T, typename Equal, typename Comp> 
+  void MinHeap<T, Equal, Comp>::buildIndex()
+  {
+    for (size_t ind = 0; ind < _elements.size(); ++ind)
+    {
+      _keyIndex[_elements[ind]] = ind;
+    }
+  }
+
+  // Run in O(nlogn) time
   template <typename T, typename Equal, typename Comp> 
   void MinHeap<T, Equal, Comp>::buildHeap()
   {
-    for (int index = _elements.size() / 2 - 1; index >= 0; --index)
-    {
-      minHeapify(index);
-    }
+    // for (int index = _elements.size() / 2 - 1; index >= 0; --index)
+    // {
+    //   siftDown(index);
+    // }
+    // Here we need to remove duplicates, so instead of 
+    // the traditional O(n) algorithm, we will simply sort the array,
+    // and remove duplicates
+    std::sort(_elements.begin(), _elements.end(), Comp());
+    _elements.erase(std::unique(_elements.begin(), _elements.end(), Equal()),
+                   _elements.end());
+    buildIndex(); 
   }
 
   template <typename T, typename Equal, typename Comp> 
@@ -92,9 +137,28 @@ namespace oplib
   void MinHeap<T, Equal, Comp>::pop()
   {
     if (empty()) return;
-    std::swap(elemAt(0), elemAt(size() - 1));
+    swapKey(0, _elements.size() - 1);
+    _keyIndex.erase(_elements.back());
     _elements.pop_back();
-    minHeapify(0);
+    siftDown(0);
+  }
+
+  template <typename T, typename Equal, typename Comp> 
+  bool MinHeap<T, Equal, Comp>::insert(const value_type& val_)
+  {
+    if (_keyIndex.count(val_))
+    {
+      // This value already exist in the heap,
+      // you can only increase/decrease it
+      // or delete it
+      return false;
+    }
+
+    _elements.push_back(val_);
+    _keyIndex[val_] = _elements.size() - 1;
+
+    siftUp(_elements.size() - 1);
+    return true;
   }
 }
 
