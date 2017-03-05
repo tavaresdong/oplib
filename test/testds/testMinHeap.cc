@@ -66,3 +66,14 @@ TEST_F(MinHeapTest, testErase)
   EXPECT_EQ(heap.top(), 5);
 }
 
+TEST_F(MinHeapTest, testChangeKey)
+{
+  oplib::MinHeap<int> heap{10, 20, 5, 2, 0, 18, 24, 3};
+  EXPECT_TRUE(heap.heapified());
+  EXPECT_EQ(heap.top(), 0);
+
+  EXPECT_TRUE(heap.changeKey(3, -1));
+  EXPECT_TRUE(heap.heapified());
+  EXPECT_EQ(heap.size(), 8u);
+  EXPECT_EQ(heap.top(), -1);
+}

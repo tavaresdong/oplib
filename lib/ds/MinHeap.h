@@ -10,14 +10,13 @@
 
 namespace oplib
 {
-  // TODO: question: do we only need one of Equal and Comp?
-  template <typename T, typename Equal = std::equal_to<T>, typename Comp = std::less<T>>
+  template <typename T, typename Comp = std::less<T>>
   class MinHeap
   {
    public:
     using value_type = T;
 
-    MinHeap() {}
+    MinHeap() : _comp(Comp()) {}
     MinHeap(std::initializer_list<value_type> il_);
 
     size_t size() const { return _elements.size(); }
@@ -30,7 +29,9 @@ namespace oplib
     bool insert(const value_type& val_);
     bool erase(const value_type& val_);
 
-    // For debug use: the heap property is kept
+    bool changeKey(const value_type& oldKey_, const value_type& newKey_);
+
+    // For debugging purpose: Test whether the heap property is kept
     bool heapified() const
     { return minHeapPropertyKept(0); }
 
@@ -44,7 +45,7 @@ namespace oplib
     void buildHeap();
     void buildIndex();
 
-    value_type& elemAt(size_t index_)
+    value_type& elemAt(size_t index_) const
     { return _elements.at(index_); }
 
     void swapKey(size_t i, size_t j)
@@ -79,20 +80,21 @@ namespace oplib
 
     std::vector<T> _elements;
     std::unordered_map<T, size_t> _keyIndex;
+    const Comp _comp;
   };
 
-  template <typename T, typename Equal, typename Comp>
-  void MinHeap<T, Equal, Comp>::siftDown(size_t index_)
+  template <typename T, typename Comp>
+  void MinHeap<T, Comp>::siftDown(size_t index_)
   {
     if (index_ >= size()) return;
     size_t smallest = index_;
 
     size_t left = MinHeap::left(index_);
-    if (left < size() && Comp()(_elements[left], _elements[smallest]))
+    if (left < size() && _comp(_elements[left], _elements[smallest]))
       smallest = left;
 
     size_t right = MinHeap::right(index_);
-    if (right < size() && Comp()(_elements[right], _elements[smallest]))
+    if (right < size() && _comp(_elements[right], _elements[smallest]))
       smallest = right;
 
     if (smallest != index_)
@@ -102,12 +104,12 @@ namespace oplib
     }
   }
 
-  template <typename T, typename Equal, typename Comp>
-  void MinHeap<T, Equal, Comp>::siftUp(size_t index_)
+  template <typename T, typename Comp>
+  void MinHeap<T, Comp>::siftUp(size_t index_)
   {
     if (index_ == 0) return;
     size_t parent = MinHeap::parent(index_);
-    if (!Comp()(_elements[parent], _elements[index_]))
+    if (!_comp(_elements[parent], _elements[index_]))
     {
       swapKey(index_, parent);
       siftUp(parent);
@@ -115,8 +117,8 @@ namespace oplib
   }
 
   // Run in O(nlogn) time
-  template <typename T, typename Equal, typename Comp> 
-  void MinHeap<T, Equal, Comp>::buildIndex()
+  template <typename T, typename Comp> 
+  void MinHeap<T, Comp>::buildIndex()
   {
     for (size_t ind = 0; ind < _elements.size(); ++ind)
     {
@@ -125,8 +127,8 @@ namespace oplib
   }
 
   // Run in O(nlogn) time
-  template <typename T, typename Equal, typename Comp> 
-  void MinHeap<T, Equal, Comp>::buildHeap()
+  template <typename T, typename Comp> 
+  void MinHeap<T, Comp>::buildHeap()
   {
     // for (int index = _elements.size() / 2 - 1; index >= 0; --index)
     // {
@@ -135,21 +137,28 @@ namespace oplib
     // Here we need to remove duplicates, so instead of 
     // the traditional O(n) algorithm, we will simply sort the array,
     // and remove duplicates
-    std::sort(_elements.begin(), _elements.end(), Comp());
-    _elements.erase(std::unique(_elements.begin(), _elements.end(), Equal()),
+    std::sort(_elements.begin(), _elements.end(), _comp);
+
+    // Two elements are considered equal if neither of them is
+    // smaller than the other
+    _elements.erase(std::unique(_elements.begin(), _elements.end(),
+                    [&](const value_type& v1, const value_type& v2)
+                    {
+                      return !_comp(v1, v2) && !_comp(v2, v1);
+                    }),
                    _elements.end());
     buildIndex(); 
   }
 
-  template <typename T, typename Equal, typename Comp> 
-  MinHeap<T, Equal, Comp>::MinHeap(std::initializer_list<value_type> il_)
-  : _elements(il_)
+  template <typename T, typename Comp> 
+  MinHeap<T, Comp>::MinHeap(std::initializer_list<value_type> il_)
+  : _elements(il_), _comp(Comp())
   {
      buildHeap();
   }
 
-  template <typename T, typename Equal, typename Comp> 
-  void MinHeap<T, Equal, Comp>::pop()
+  template <typename T, typename Comp> 
+  void MinHeap<T, Comp>::pop()
   {
     if (empty()) return;
     swapKey(0, _elements.size() - 1);
@@ -157,8 +166,8 @@ namespace oplib
     siftDown(0);
   }
 
-  template <typename T, typename Equal, typename Comp> 
-  bool MinHeap<T, Equal, Comp>::insert(const value_type& val_)
+  template <typename T, typename Comp> 
+  bool MinHeap<T, Comp>::insert(const value_type& val_)
   {
     if (_keyIndex.count(val_))
     {
@@ -175,8 +184,8 @@ namespace oplib
     return true;
   }
 
-  template <typename T, typename Equal, typename Comp> 
-  bool MinHeap<T, Equal, Comp>::erase(const value_type& val_)
+  template <typename T, typename Comp> 
+  bool MinHeap<T, Comp>::erase(const value_type& val_)
   {
     if (!_keyIndex.count(val_))
     {
@@ -195,8 +204,8 @@ namespace oplib
     return true;
   }
 
-  template <typename T, typename Equal, typename Comp> 
-  bool MinHeap<T, Equal, Comp>::minHeapPropertyKept(size_t ind_) const
+  template <typename T, typename Comp> 
+  bool MinHeap<T, Comp>::minHeapPropertyKept(size_t ind_) const
   {
     assert(ind_ < _elements.size());
     auto left = MinHeap::left(ind_);
@@ -205,12 +214,12 @@ namespace oplib
     if (left >= size() && right >= size()) return true;
 
     bool kept = true;
-    if (!Comp()(_elements[ind_], _elements[left]))
+    if (!_comp(_elements[ind_], _elements[left]))
       kept = false;
 
     if (right < size())
     {
-      if (!Comp()(_elements[ind_], _elements[right]))
+      if (!_comp(_elements[ind_], _elements[right]))
         kept = false;
     }
 
@@ -222,6 +231,29 @@ namespace oplib
                minHeapPropertyKept(right);
       else
         return minHeapPropertyKept(left);
+    }
+  }
+
+  template <typename T, typename Comp> 
+  bool MinHeap<T, Comp>::changeKey(const value_type& oldKey_, const value_type& newKey_)
+  {
+    if (_keyIndex.count(newKey_)) return false;
+    auto iter = _keyIndex.find(oldKey_);
+    if (iter == _keyIndex.end())
+    {
+      return false;
+    }
+    else
+    {
+      int ind = iter->second;
+      _keyIndex.erase(iter);
+      auto ret = _keyIndex.insert({newKey_, ind});
+      assert(ret.second);
+      assert(_elements[ind] == oldKey_);
+      _elements[ind] = newKey_;
+      siftUp(ind);
+      siftDown(ind);
+      return true;
     }
   }
 }
