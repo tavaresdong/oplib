@@ -10,6 +10,7 @@
 
 namespace oplib
 {
+  // TODO: question: do we only need one of Equal and Comp?
   template <typename T, typename Equal = std::equal_to<T>, typename Comp = std::less<T>>
   class MinHeap
   {
@@ -25,9 +26,17 @@ namespace oplib
     // Throw out_of_range if no element is in the heap
     const T& top() const { return _elements.at(0); }
     void pop();
+
     bool insert(const value_type& val_);
+    bool erase(const value_type& val_);
+
+    // For debug use: the heap property is kept
+    bool heapified() const
+    { return minHeapPropertyKept(0); }
 
    private:
+
+    bool minHeapPropertyKept(size_t ind_) const;
 
     void siftDown(size_t index_);
     void siftUp(size_t index_);
@@ -53,6 +62,12 @@ namespace oplib
       assert(_keyIndex[_elements[i]] == i);
     }
 
+    void removeLast()
+    {
+      _keyIndex.erase(_elements.back());
+      _elements.pop_back();
+    }
+
     static size_t parent(size_t i)
     { return (i - 1) / 2; }
 
@@ -73,11 +88,11 @@ namespace oplib
     size_t smallest = index_;
 
     size_t left = MinHeap::left(index_);
-    if (left < size() && _elements[left] < _elements[smallest])
+    if (left < size() && Comp()(_elements[left], _elements[smallest]))
       smallest = left;
 
     size_t right = MinHeap::right(index_);
-    if (right < size() && _elements[right] < _elements[smallest])
+    if (right < size() && Comp()(_elements[right], _elements[smallest]))
       smallest = right;
 
     if (smallest != index_)
@@ -92,7 +107,7 @@ namespace oplib
   {
     if (index_ == 0) return;
     size_t parent = MinHeap::parent(index_);
-    if (_elements[parent] > _elements[index_])
+    if (!Comp()(_elements[parent], _elements[index_]))
     {
       swapKey(index_, parent);
       siftUp(parent);
@@ -138,8 +153,7 @@ namespace oplib
   {
     if (empty()) return;
     swapKey(0, _elements.size() - 1);
-    _keyIndex.erase(_elements.back());
-    _elements.pop_back();
+    removeLast();
     siftDown(0);
   }
 
@@ -159,6 +173,56 @@ namespace oplib
 
     siftUp(_elements.size() - 1);
     return true;
+  }
+
+  template <typename T, typename Equal, typename Comp> 
+  bool MinHeap<T, Equal, Comp>::erase(const value_type& val_)
+  {
+    if (!_keyIndex.count(val_))
+    {
+      // The key does not exist
+      return false;
+    }
+
+    size_t index = _keyIndex[val_];
+    swapKey(index, size() - 1);
+    removeLast();
+
+    // The swapped value could be either smaller than its parent
+    // or bigger than its child.
+    siftUp(index);
+    siftDown(index);
+    return true;
+  }
+
+  template <typename T, typename Equal, typename Comp> 
+  bool MinHeap<T, Equal, Comp>::minHeapPropertyKept(size_t ind_) const
+  {
+    assert(ind_ < _elements.size());
+    auto left = MinHeap::left(ind_);
+    auto right = MinHeap::right(ind_);
+
+    if (left >= size() && right >= size()) return true;
+
+    bool kept = true;
+    if (!Comp()(_elements[ind_], _elements[left]))
+      kept = false;
+
+    if (right < size())
+    {
+      if (!Comp()(_elements[ind_], _elements[right]))
+        kept = false;
+    }
+
+    if (!kept) return false;
+    else
+    {
+      if (right < size())
+        return minHeapPropertyKept(left) && 
+               minHeapPropertyKept(right);
+      else
+        return minHeapPropertyKept(left);
+    }
   }
 }
 

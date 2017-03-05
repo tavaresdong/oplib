@@ -55,3 +55,14 @@ TEST_F(MinHeapTest, testInsert)
   EXPECT_FALSE(heap.insert(1));
 }
 
+TEST_F(MinHeapTest, testErase)
+{
+  oplib::MinHeap<int> heap{10, 20, 5, 2, 0, 18, 24, 3};
+  EXPECT_EQ(heap.top(), 0);
+  EXPECT_TRUE(heap.erase(3));
+  EXPECT_TRUE(heap.heapified());
+  heap.pop();
+  heap.pop();
+  EXPECT_EQ(heap.top(), 5);
+}
+
