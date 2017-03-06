@@ -164,7 +164,7 @@ namespace oplib
 
   void EventLoop::wakeup()
   {
-    uint64_t buffer = 0;
+    uint64_t buffer = 1;
     ssize_t numWrite = ::write(_wakeupfd, &buffer, sizeof(buffer));  
 
     assert(numWrite == sizeof(buffer));

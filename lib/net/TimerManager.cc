@@ -126,15 +126,22 @@ namespace oplib
     assert(ret == 0);
   }
 
+  void TimerManager::addTimerInLoop(const std::shared_ptr<Timer>& timer_)
+  {
+    // Only executed in loop thread
+    _loop->inLoopThreadOrDie();
+    bool needReset = insert(timer_);
+    if (needReset)
+    {
+      resetTimerfd();
+    }
+  }
+
   void TimerManager::addTimer(const TimerCallback& cb_, Timestamp when_, double interval_)
   {
     // This method can only be called from EventLoop
     // TODO: make it more thread-safe_loop->inLoopThreadOrDie();
     auto timerptr = std::make_shared<Timer>(cb_, when_, interval_);
-    bool needReset = insert(timerptr);
-    if (needReset)
-    {
-      resetTimerfd();
-    }
+    _loop->runInLoop(std::bind(&TimerManager::addTimerInLoop, this, timerptr)); 
   }
 }

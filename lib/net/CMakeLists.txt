@@ -2,6 +2,7 @@ set(libop_net_SRCS
     EventDispatcher.cc
     Poller.cc
     EventLoop.cc
+    EventLoopThread.cc
     TimerManager.cc
 )
 

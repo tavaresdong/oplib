@@ -69,6 +69,8 @@ namespace oplib
    private:
     using TimerMap = std::multimap<Timestamp, std::shared_ptr<Timer>>;
 
+    void addTimerInLoop(const std::shared_ptr<Timer>& timer_);
+
     void reset(const TimerList& timerlist_);
 
     // Reset timerfd to watch the most recently triggered timer in the future
