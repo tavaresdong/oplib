@@ -6,6 +6,9 @@
 #include <util/Timestamp.h>
 
 #include <assert.h>
+#include <unistd.h>
+#include <sys/eventfd.h>
+#include <algorithm>
 
 namespace oplib
 {
@@ -17,7 +20,9 @@ namespace oplib
   EventLoop::EventLoop()
   : _threadId(CurrentThread::tid()),
     _poller(std::make_unique<Poller>(this)),
-    _timerMgr(std::make_unique<TimerManager>(this))
+    _timerMgr(std::make_unique<TimerManager>(this)),
+    _wakeupfd( ::eventfd(0, EFD_CLOEXEC | EFD_NONBLOCK)),
+    _wakeupDispatcher(std::make_unique<EventDispatcher>(this, _wakeupfd))
   {
     if (gLoopInThread != nullptr)
     {
@@ -25,6 +30,12 @@ namespace oplib
       abort();
     }
     gLoopInThread = this;
+
+    // When this eventfd is readable: execute all pending functors
+    // bind: take the address of a function
+    _wakeupDispatcher->setReadCallback(
+      std::bind(&EventLoop::handleRead, this));
+    _wakeupDispatcher->enableReading();
   }
 
   void EventLoop::inLoopThreadOrDie()
@@ -68,6 +79,9 @@ namespace oplib
         // call handleEvent on all the dispatchers
         dispatcher->handleEvent();
       }
+
+      // Execute pending functors here
+      executePendingFunctors();
     }
 
     _looping.exchange(false);
@@ -90,5 +104,69 @@ namespace oplib
     Timestamp fire { Timestamp::now() };
     fire += delay_; 
     _timerMgr->addTimer(cb_, fire, 0.0);
+  }
+
+  void EventLoop::runInLoop(const Functor& func_)
+  {
+    // If in loop thread, call this functor directly
+    if (inLoopThread())
+      func_();
+    else
+    {
+      enqueue(func_);
+    }
+  }
+
+  void EventLoop::enqueue(const Functor& func_)
+  {
+    {
+      oplib::MutexLockGuard guard(_mutex);
+      _pendingFunctors.push_back(func_);
+    }
+
+    // (1) currently not in loop thread, must wake up or the functor
+    // won't get executed in time
+    // (2) Currently executing functors, need to wakeup
+    // so the functors newly added could get executed in time
+    if (!inLoopThread() || _executingFunctors)
+    {
+      wakeup();
+    }
+  }
+
+  void EventLoop::handleRead()
+  {
+    // Read the eventfd : we are level-trigger
+    // Sucessful read will return an 8-byte integer
+    uint64_t buf;
+    ssize_t numRead = ::read(_wakeupfd, &buf, sizeof(buf));
+    assert(numRead == sizeof(buf));
+  }
+
+  void EventLoop::executePendingFunctors()
+  {
+    _executingFunctors.exchange(true);
+    std::vector<Functor> toExecute;
+    {
+      // Minimize the critical section
+      MutexLockGuard guard(_mutex);
+      toExecute.swap(_pendingFunctors);
+    }
+
+    // Execute the functors sequentially
+    for (auto& func : toExecute)
+    {
+      func();
+    }
+
+    _executingFunctors.exchange(false);
+  }
+
+  void EventLoop::wakeup()
+  {
+    uint64_t buffer = 0;
+    ssize_t numWrite = ::write(_wakeupfd, &buffer, sizeof(buffer));  
+
+    assert(numWrite == sizeof(buffer));
   }
 }
