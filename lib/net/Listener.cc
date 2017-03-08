@@ -1,9 +1,11 @@
 #include "Listener.h"
+#include "InetAddress.h"
+#include "SocketUtils.h"
 
 namespace oplib
 {
   Listener::Listener(EventLoop* loop_, const InetAddress& listenAddr_)
-  : _loop(loop_), _listening(false), _listenSock(/* TODO */),
+  : _loop(loop_), _listening(false), _listenSock(socketutils::createOrDie()),
     _dispatcher(_loop, _listenSock.fd())
   {
     // Reuse the address

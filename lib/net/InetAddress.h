@@ -3,6 +3,7 @@
 
 #include <netinet/in.h>
 
+struct sockaddr;
 namespace oplib
 {
   class InetAddress
@@ -15,16 +16,19 @@ namespace oplib
 
     explicit InetAddress(const struct sockaddr_in6& addr6_) : _addr6(addr6_) {}
 
+    void setSocketAddrInet6(const struct socketaddr_in6& addr6_) { _addr6 = addr6_; }
     sa_family_t sin_family() const
     { return _addr.sin_family; }
 
-    std::string toIp() const;
-    std::string toPort() const;
-    std::string toIpPort() const;
+    // TOOD: more functions
+   // std::string toIp() const;
+   // std::string toPort() const;
+   // std::string toIpPort() const;
+
+    const struct sockaddr* sockaddr() const;
 
     static bool resolve(const std::string& host_, InetAddress* result_);
 
-    static uint16_t hostToNetwork16(uint16_t hostaddr_);
    private:
 
     // Anonymous union

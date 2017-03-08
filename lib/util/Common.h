@@ -17,6 +17,12 @@
 #define CHECK_RETURN(ret) do {__typeof__(ret) rc = (ret);\
 												      if(rc != 0) exit(rc); } while(0)
 
+template <typename To, typename From>
+To implicit_cast(From const &f)
+{
+  return f;
+}
+
 namespace oplib
 {
   typedef std::function<void()> TimerCallback;

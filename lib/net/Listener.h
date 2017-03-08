@@ -2,7 +2,6 @@
 #define OPLIB_LISTENER_H
 
 #include <util/Common.h>
-#include "InetAddress.h"
 #include "Socket.h"
 #include "EventDispatcher.h"
 

@@ -4,6 +4,9 @@ set(libop_net_SRCS
     EventLoop.cc
     EventLoopThread.cc
     TimerManager.cc
+    InetAddress.cc
+    Listener.cc
+    SocketUtils.cc
 )
 
 # Declare the library
