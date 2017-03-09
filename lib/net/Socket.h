@@ -10,7 +10,7 @@ namespace oplib
   class Socket : Noncopyable
   {
    public:
-    explicit Socket(int fd_) : _sockfd(fd) {}
+    explicit Socket(int fd_) : _sockfd(fd_) {}
 
     ~Socket();
 

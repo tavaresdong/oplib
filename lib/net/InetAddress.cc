@@ -1,15 +1,19 @@
 #include "InetAddress.h"
-#include "SockeUtils.h"
+#include "SocketUtils.h"
 #include <strings.h>
 #include <assert.h>
 #include <netdb.h>
 #include <sys/socket.h>
 
-InetAddress::InetAddress(uin16_t port_, bool loopbackOnly_ = false, bool ipv6_ = false)
+#include <util/Common.h>
+
+using namespace oplib;
+
+InetAddress::InetAddress(uint16_t port_, bool loopbackOnly_, bool ipv6_)
 {
   if (ipv6_)
   {
-    ::bzero(_addr6, sizeof(_addr6));
+    ::bzero(&_addr6, sizeof(_addr6));
     _addr6.sin6_family = AF_INET6;
     in6_addr ip = loopbackOnly_ ? in6addr_loopback : in6addr_any;
     _addr6.sin6_addr = ip;
@@ -19,7 +23,7 @@ InetAddress::InetAddress(uin16_t port_, bool loopbackOnly_ = false, bool ipv6_ =
   }
   else
   {
-    ::bzero(_addr, sizeof(_addr));
+    ::bzero(&_addr, sizeof(_addr));
     _addr.sin_family = AF_INET;
     in_addr_t ip = loopbackOnly_ ? INADDR_LOOPBACK : INADDR_ANY;
     _addr.sin_addr.s_addr = socketutils::hostToNetwork32(ip);
@@ -29,7 +33,7 @@ InetAddress::InetAddress(uin16_t port_, bool loopbackOnly_ = false, bool ipv6_ =
   } 
 }
 
-InetAddress::InetAddress(const std::string& ip_, uint16_t port_, bool ipv6_ = false)
+InetAddress::InetAddress(const std::string& ip_, uint16_t port_, bool ipv6_)
 {
   if (ipv6_)
   {
@@ -43,9 +47,14 @@ InetAddress::InetAddress(const std::string& ip_, uint16_t port_, bool ipv6_ = fa
   }
 }
 
-const struct sockaddr* sockaddr() const
+std::string InetAddress::toHostPort() const
 {
-  return static_cast<const struct sockaddr*>(implicit_cast<void*>(_addr6));
+  return socketutils::toHostPort(&_addr);
+}
+
+const struct sockaddr* InetAddress::sockaddr() const
+{
+  return static_cast<const struct sockaddr*>(implicit_cast<const void*>(&_addr6));
 }
 
 static __thread char gResolveBuf[64 * 1024];
@@ -56,12 +65,12 @@ bool InetAddress::resolve(const std::string& host_, InetAddress* result_)
   struct hostent hent;
   struct hostent *he = nullptr;
   int herrno = 0;
-  ::bzero(hent, sizeof(hent));
+  ::bzero(&hent, sizeof(hent));
 
   int ret = ::gethostbyname_r(host_.c_str(), &hent, gResolveBuf, sizeof(gResolveBuf), &he, &herrno);
   if (ret == 0 && he != nullptr)
   {
-    out_->sin_addr = *reinterpret_cast<struct in_addr*>(he->h_addr);
+    result_->_addr.sin_addr = *reinterpret_cast<struct in_addr*>(he->h_addr);
     return true;
   }
   else

@@ -2,6 +2,7 @@
 #include "InetAddress.h"
 #include "SocketUtils.h"
 
+#include <strings.h>
 #include <unistd.h>
 #include <sys/types.h>
 #include <sys/socket.h>
@@ -10,9 +11,7 @@ using namespace oplib;
 
 Socket::~Socket()
 {
-  int ret = ::close(_sockfd);
-  // TODO error log
-  assert(ret == 0);
+  socketutils::close(_sockfd);
 }
 
 void Socket::bindAddress(const InetAddress& listenAddr_)

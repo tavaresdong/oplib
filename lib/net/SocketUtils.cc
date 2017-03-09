@@ -4,12 +4,23 @@
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <stdlib.h>
-
+#include <unistd.h>
+#include <stdio.h>
 
 namespace oplib
 {
 namespace socketutils
 {
+
+void close(int sockfd_)
+{
+  int ret = ::close(sockfd_);
+  if (ret < 0)
+  {
+    // TODO: error log
+    abort();
+  }
+}
 
 int createOrDie()
 {
@@ -47,7 +58,7 @@ void listenOrDie(int sockfd_)
 void setReuseAddrOrDie(int sockfd_, bool on_)
 {
   int optval = on_ ? 1 : 0;
-  int ret = ::setsockopt(sockfd_, SOL_SOCKET, SO_REUSEADDR, &optval);
+  int ret = ::setsockopt(sockfd_, SOL_SOCKET, SO_REUSEADDR, &optval, sizeof(optval));
   if (ret < 0)
   {
     // TODO error log
@@ -57,15 +68,25 @@ void setReuseAddrOrDie(int sockfd_, bool on_)
 
 const struct sockaddr* sockaddr_cast(const struct sockaddr_in* addr_)
 {
-  return static_cast<const struct sockaddr*>(implicit_cast<void*>(addr_));
+  return static_cast<const struct sockaddr*>(implicit_cast<const void*>(addr_));
 }
 
 const struct sockaddr* sockaddr_cast(const struct sockaddr_in6* addr6_)
 {
-  return static_cast<const struct sockaddr*>(implicit_cast<void*>(addr6_));
+  return static_cast<const struct sockaddr*>(implicit_cast<const void*>(addr6_));
 }
 
-int accept(int sockfd_, struct socketaddr_in* addr_)
+struct sockaddr* sockaddr_cast(struct sockaddr_in* addr_)
+{
+  return static_cast<struct sockaddr*>(implicit_cast<void*>(addr_));
+}
+
+struct sockaddr* sockaddr_cast(struct sockaddr_in6* addr6_)
+{
+  return static_cast<struct sockaddr*>(implicit_cast<void*>(addr6_));
+}
+
+int accept(int sockfd_, struct sockaddr_in6* addr_)
 {
   socklen_t len = sizeof(*addr_);
   int connfd = ::accept4(sockfd_, sockaddr_cast(addr_),
@@ -84,11 +105,23 @@ int accept(int sockfd_, struct socketaddr_in* addr_)
         break;
       default:
         // TODO error log
+        // TODO check other error codes
         abort();
     }
   }
 
   return connfd;
+}
+
+std::string toHostPort(const struct sockaddr_in* addr_)
+{
+  char host[INET_ADDRSTRLEN] = "INVALID";
+  ::inet_ntop(AF_INET, &addr_->sin_addr, host, sizeof(host));
+  int port = networkToHost16(addr_->sin_port);
+
+  char buf[32];
+  snprintf(buf, sizeof(buf), "%s:%d", host, port);
+  return buf;
 }
 
 }

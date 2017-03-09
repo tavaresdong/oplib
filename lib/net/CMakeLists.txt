@@ -6,6 +6,7 @@ set(libop_net_SRCS
     TimerManager.cc
     InetAddress.cc
     Listener.cc
+    Socket.cc
     SocketUtils.cc
 )
 

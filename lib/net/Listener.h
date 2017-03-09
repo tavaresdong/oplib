@@ -5,6 +5,8 @@
 #include "Socket.h"
 #include "EventDispatcher.h"
 
+#include <memory>
+
 namespace oplib
 {
   class EventLoop;
@@ -33,7 +35,7 @@ namespace oplib
     NewConnectionCallback _newConnectionCb;
     Socket _listenSock;
     EventDispatcher _dispatcher;
-  }
+  };
 }
 
 #endif

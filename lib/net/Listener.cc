@@ -1,6 +1,7 @@
 #include "Listener.h"
 #include "InetAddress.h"
 #include "SocketUtils.h"
+#include "EventLoop.h"
 
 namespace oplib
 {
@@ -39,9 +40,7 @@ namespace oplib
     {
       _newConnectionCb(std::move(peerSock), peer);
     }
-    else
-    {
-      sockets::close(connfd);
-    }
+    // As the connfd is managed by unique_ptr, we don't need 
+    // to release it manually
   }
 }
