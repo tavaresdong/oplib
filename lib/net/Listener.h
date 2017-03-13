@@ -4,6 +4,7 @@
 #include <util/Common.h>
 #include "Socket.h"
 #include "EventDispatcher.h"
+#include "Types.h"
 
 #include <memory>
 
@@ -14,7 +15,6 @@ namespace oplib
   class Listener : Noncopyable
   {
    public:
-    using NewConnectionCallback = std::function<void (std::unique_ptr<Socket>, const InetAddress&)>;
 
     Listener(EventLoop* loop_, const InetAddress& listenAddr_);
 

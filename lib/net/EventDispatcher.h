@@ -4,6 +4,7 @@
 #include <functional>
 
 #include <util/Common.h>
+#include "Types.h"
 
 namespace oplib
 {

@@ -25,10 +25,6 @@ To implicit_cast(From const &f)
 
 namespace oplib
 {
-  typedef std::function<void()> TimerCallback;
-  typedef std::function<void()> EventCallback;
-  typedef std::function<void()> Functor;
-
   class Noncopyable
   {
    public:

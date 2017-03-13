@@ -8,6 +8,8 @@ set(libop_net_SRCS
     Listener.cc
     Socket.cc
     SocketUtils.cc
+    TCPServer.cc
+    TCPConnection.cc
 )
 
 # Declare the library

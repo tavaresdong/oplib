@@ -4,6 +4,7 @@
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <stdlib.h>
+#include <strings.h>
 #include <unistd.h>
 #include <stdio.h>
 
@@ -122,6 +123,20 @@ std::string toHostPort(const struct sockaddr_in* addr_)
   char buf[32];
   snprintf(buf, sizeof(buf), "%s:%d", host, port);
   return buf;
+}
+
+struct sockaddr_in getLocalAddr(int sockfd_)
+{
+  struct sockaddr_in localaddr;
+  ::bzero(&localaddr, sizeof(localaddr));
+  socklen_t addrlen = sizeof(localaddr);
+  if (::getsockname(sockfd_, sockaddr_cast(&localaddr), &addrlen) < 0)
+  {
+    // TODO error log
+    abort();
+  }
+
+  return localaddr;
 }
 
 }

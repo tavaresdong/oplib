@@ -78,6 +78,7 @@ namespace socketutils
 
   std::string toHostPort(const struct sockaddr_in* addr_);
 
+  struct sockaddr_in getLocalAddr(int sockfd_);
 }
 }
 

@@ -5,6 +5,7 @@
 #include <util/Timestamp.h>
 #include <thread/Thread.h>
 #include <thread/Mutex.h>
+#include "Types.h"
 
 #include <sys/types.h>
 #include <atomic>
