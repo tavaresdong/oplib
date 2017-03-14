@@ -59,6 +59,11 @@ namespace oplib
     _poller->updateEventDispatcher(dp_);
   }
 
+  void EventLoop::removeEventDispatcher(EventDispatcher* dp_)
+  {
+    _poller->removeEventDispatcher(dp_);
+  }
+
   void EventLoop::loop()
   {
     // Only called from the loop thread

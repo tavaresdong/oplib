@@ -21,10 +21,14 @@ TCPConnection::TCPConnection(EventLoop *loop_,
 {
   // TODO log
   _dispatcher->setReadCallback(std::bind(&TCPConnection::handleRead, this));
+  _dispatcher->setCloseCallback(std::bind(&TCPConnection::handleClose, this));
+  _dispatcher->setErrorCallback(std::bind(&TCPConnection::handleError, this));
 }
 
 TCPConnection::~TCPConnection()
-{}
+{
+  // TODO log here
+}
 
 void TCPConnection::connectionEstablished()
 {
@@ -44,12 +48,59 @@ void TCPConnection::connectionEstablished()
   }
 }
 
+void TCPConnection::connectionClosed()
+{
+  _loop->inLoopThreadOrDie();
+  assert(_state == State::CONNECTED);
+  setState(State::DISCONNECTED);
+
+  // Sometimes we need to call connectionClosed
+  // directly without handleClose
+  _dispatcher->disable();
+  _connectionCallback(shared_from_this());
+
+  // Changes internal data of loop
+  // Must be called from loop thread, else
+  // not thread-safe
+  _loop->removeEventDispatcher(_dispatcher.get());
+
+  // TODO log here
+}
+
 void TCPConnection::handleRead()
 {
   // Simple version, TODO: use buffer
+  // We need to check for read 0 situation in handleRead
   char buf[65536];
   ssize_t nread = ::read(_sock->fd(), buf, sizeof(buf));
-  _messageCallback(shared_from_this(), buf, nread);
+  if (nread > 0)
+  {
+    _messageCallback(shared_from_this(), buf, nread);
+  }
+  else if (nread == 0)
+  {
+    std::cout << "TCPConnection: read 0, handleClose() called\n";
+    handleClose();
+  }
+  else
+  {
+    handleError();
+  }
+}
 
-  // TODO: close socket if n == 0?
+void TCPConnection::handleClose()
+{
+  _loop->inLoopThreadOrDie();
+  assert(_state == State::CONNECTED);
+  _dispatcher->disable();
+
+  // This CloseCallback binds to TCPServer/TCPClient's removeConnection
+  // method
+  _closeCallback(shared_from_this());
+}
+
+void TCPConnection::handleError()
+{
+  // TODO: log error info
+  abort();
 }

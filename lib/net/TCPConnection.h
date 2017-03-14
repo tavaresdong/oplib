@@ -41,16 +41,26 @@ namespace oplib
     void setMessageCallback(const MessageCallback& cb_)
     { _messageCallback = cb_; }   
 
+    void setCloseCallback(const CloseCallback& cb_)
+    { _closeCallback = cb_; }
+
     // Called by the TCPServer in loop thread
     void connectionEstablished();
-
+    void connectionClosed(); 
    private:
 
     // Register to EventDispatcher
     // for handling reading event
     void handleRead();
+    void handleClose();
+    void handleError();
 
-    enum class State { CONNECTING, CONNECTED };
+    enum class State 
+    { 
+      CONNECTING,
+      CONNECTED,
+      DISCONNECTED
+    };
 
     void setState(State s_) { _state = s_; }
     
@@ -66,6 +76,7 @@ namespace oplib
     InetAddress _localAddr;
     InetAddress _peerAddr;
     ConnectionCallback _connectionCallback;
+    CloseCallback _closeCallback;
     MessageCallback _messageCallback;
     std::unique_ptr<EventDispatcher> _dispatcher;
   };

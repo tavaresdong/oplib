@@ -18,6 +18,7 @@ namespace oplib
   typedef std::function<void (std::unique_ptr<Socket>, const InetAddress&)> NewConnectionCallback;
   typedef std::function<void (const TCPConnectionPtr&)> ConnectionCallback;
   typedef std::function<void (const TCPConnectionPtr&, const char *data_, ssize_t)> MessageCallback;
+  typedef std::function<void (const TCPConnectionPtr&)> CloseCallback;
 }
 
 #endif

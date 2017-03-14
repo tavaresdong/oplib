@@ -16,6 +16,7 @@ namespace oplib
    public:
 
     EventDispatcher(EventLoop *loop_, int fd_);
+    ~EventDispatcher();
 
     void setReadCallback(const EventCallback& cb_)
     {
@@ -32,6 +33,11 @@ namespace oplib
       _errorCallback = cb_;
     }
 
+    void setCloseCallback(const EventCallback& cb_)
+    {
+      _closeCallback = cb_;
+    }
+
     int fd() const { return _fd; }
     int events() const { return _events; }
     int revents() const { return _revents; }
@@ -42,7 +48,12 @@ namespace oplib
       _events |= kReadEvent; 
       updateLoop();
     }
-    // TODO enable writing...
+
+    void disable()
+    {
+      _events = kNoEvent;
+      updateLoop();
+    }
 
     EventLoop* ownerLoop() { return _loop; }
 
@@ -61,6 +72,9 @@ namespace oplib
     static const int kReadEvent;
     static const int kWriteEvent;
 
+    bool _handlingEvent;
+
+    // EventDispatcher does not own the fd
     const int _fd;
     EventLoop* _loop;
 
@@ -71,6 +85,7 @@ namespace oplib
     EventCallback _readCallback;
     EventCallback _writeCallback;
     EventCallback _errorCallback;
+    EventCallback _closeCallback;
   };
 }
 

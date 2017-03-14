@@ -54,7 +54,20 @@ void TCPServer::newConnection(std::unique_ptr<Socket> sock_, const InetAddress& 
   _connections[connName] = conn;
   conn->setConnectionCallback(_connectionCallback);
   conn->setMessageCallback(_messageCallback);
+  conn->setCloseCallback(std::bind(&TCPServer::removeConnection, this, std::placeholders::_1));
 
   // This will call the _connectionCallback
   conn->connectionEstablished();
 } 
+
+void TCPServer::removeConnection(const TCPConnectionPtr& conn_)
+{
+  _loop->inLoopThreadOrDie();
+  auto n = _connections.erase(conn_->name());
+  assert(n == 1);
+  UNUSED(n);
+
+  // Extend the lifetime of conn_ to connectionClosed is called
+  _loop->enqueue(std::bind(&TCPConnection::connectionClosed, conn_));
+}
+

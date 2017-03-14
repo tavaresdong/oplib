@@ -4,7 +4,8 @@
 
 #include <poll.h>
 #include <stdlib.h>
-
+#include <algorithm>
+#include <assert.h>
 
 namespace oplib
 {
@@ -82,6 +83,42 @@ namespace oplib
       if (dispatcher_->isIgnored())
       {
         pfd.events = -static_cast<short>(dispatcher_->events()) - 1;
+      }
+    }
+  }
+
+  void Poller::removeEventDispatcher(EventDispatcher* dispatcher_)
+  {
+    // Update the eventDispatcher in _dispatchers
+    // especially the events they are interested in
+    if (dispatcher_->index() < 0)
+    {
+      // TODO log error
+      //
+      abort();
+    }
+    else
+    {
+      assert(_dispatchers.find(dispatcher_->fd()) != _dispatchers.end());
+      assert(_dispatchers[dispatcher_->fd()] == dispatcher_);
+      int index = dispatcher_->index();
+      auto n = _dispatchers.erase(dispatcher_->fd());
+      assert(n == 1);
+      UNUSED(n);
+      if (implicit_cast<size_t>(index) == _pollfds.size() - 1)
+      {
+        _pollfds.pop_back();
+      }
+      else
+      {
+        int endDispatcherFd = _pollfds.back().fd;
+        std::iter_swap(_pollfds.begin() + index, _pollfds.end() - 1);
+        if (endDispatcherFd < 0)
+        {
+          endDispatcherFd = -endDispatcherFd - 1;
+        }
+        _dispatchers[endDispatcherFd]->setIndex(index);
+        _pollfds.pop_back();
       }
     }
   }

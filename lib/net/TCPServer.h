@@ -36,6 +36,8 @@ namespace oplib
     // sock_ is the created socket, address_ is the peer address
     void newConnection(std::unique_ptr<Socket> sock_, const InetAddress& address_);
 
+    void removeConnection(const TCPConnectionPtr& conn_);
+
     // Store connections
     using ConnectionMap = std::map<std::string, TCPConnectionPtr>;
 

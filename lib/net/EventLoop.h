@@ -45,8 +45,11 @@ namespace oplib
       }
     }
 
-    // TODO
+    // Update the status of EventDispatcher dp_
     void updateEventDispatcher(EventDispatcher* dp_);
+
+    // Remove a dispatcher from EventLoop
+    void removeEventDispatcher(EventDispatcher* dp_);
 
     // Run at a time
     void runAt(const Timestamp& when_, const TimerCallback& cb_);

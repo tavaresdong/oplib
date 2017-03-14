@@ -2,6 +2,7 @@
 #include "EventLoop.h"
 
 #include <poll.h>
+#include <assert.h>
 
 namespace oplib
 {
@@ -10,19 +11,33 @@ namespace oplib
   const int EventDispatcher::kWriteEvent = POLLOUT;
 
   EventDispatcher::EventDispatcher(EventLoop* loop_, int fd_)
-  : _fd(fd_), _loop(loop_), _events(0), _revents(0), _index(-1)
+  : _handlingEvent(false), _fd(fd_), _loop(loop_), _events(0), _revents(0), _index(-1)
   {}
+
+  EventDispatcher::~EventDispatcher()
+  {
+    assert(!_handlingEvent);
+  }
 
   void EventDispatcher::updateLoop()
   {
+    _loop->inLoopThreadOrDie();
     _loop->updateEventDispatcher(this);
   }
 
   void EventDispatcher::handleEvent()
   {
+    _handlingEvent = true;
     if (_revents & POLLNVAL)
     {
       // TODO log warning
+    }
+
+    if ((_revents & POLLHUP) && (!_revents & POLLIN))
+    {
+      // Peer closed, bust stil data to read, read
+      // will return 0 only after all data in the channel are read
+      _closeCallback();
     }
 
     if (_revents & (POLLERR | POLLNVAL))
@@ -39,5 +54,7 @@ namespace oplib
     {
       _writeCallback();
     }
+
+    _handlingEvent = false;
   }
 }

@@ -29,6 +29,8 @@ namespace oplib
 
     void updateEventDispatcher(EventDispatcher* dispatcher_);
 
+    void removeEventDispatcher(EventDispatcher* dispatcher_);
+
     void inLoopThreadOrDie();
 
     Timestamp poll(int timeout_ /*in ms*/, EventDispatcherList *activeDispatchers_);
