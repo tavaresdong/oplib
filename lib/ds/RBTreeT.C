@@ -1,10 +1,7 @@
-
-/**
- * There is a header guard: red, root's parent is header 
- * and header's parent is root. header's left is the leftmost node,
- * header's right is the rightmost node
- * Note it is undefined behaviour if your --begin() or ++end()
- **/
+// There is a header guard: red, root's parent is header 
+// and header's parent is root. header's left is the leftmost node,
+// header's right is the rightmost node
+// Note it is undefined behaviour if your --begin() or ++end()
 template <typename Value, typename Ref, typename Ptr>
 void RBIterator<Value, Ref, Ptr>::increment()
 {
@@ -47,9 +44,26 @@ void RBIterator<Value, Ref, Ptr>::decrement()
     while (p->_left == _pnode)
     {
       _pnode = p;
-      p = _pnode->parent;
+      p = _pnode->_parent;
     }
 
     _pnode = p;
   }
+}
+
+template <typename Key, typename Value, class KeyOfValue,
+          typename Comp, template <typename> class Alloc>
+void RBTree<Key, Value, KeyOfValue, Comp, Alloc>::clear()
+{
+  //TODO
+}
+
+template <typename Key, typename Value, class KeyOfValue,
+          typename Comp, template <typename> class Alloc>
+RBTree<Key, Value, KeyOfValue, Comp, Alloc>::RBTree(const Comp& comp_)
+: _allocator(NodeAlloc()),
+  _nodeCount(0),
+  _comparator(comp_)
+{
+  init();
 }

@@ -79,7 +79,6 @@ void TCPConnection::handleRead()
   }
   else if (nread == 0)
   {
-    std::cout << "TCPConnection: read 0, handleClose() called\n";
     handleClose();
   }
   else
