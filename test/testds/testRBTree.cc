@@ -78,3 +78,11 @@ TEST_F(RBTreeTest, testFind)
   EXPECT_EQ(5, *(rbtree.find(5)));
 }
 
+TEST_F(RBTreeTest, testErase)
+{
+  auto p = rbtree.erase(5);
+  EXPECT_TRUE(p.second);
+  EXPECT_EQ(*(p.first), 6);
+  EXPECT_EQ(rbtree.size(), 8u);
+  EXPECT_TRUE(rbtree.rbPropertyKept());
+}

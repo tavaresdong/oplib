@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cassert>
 
 // There is a header guard: red, root's parent is header 
 // and header's parent is root. header's left is the leftmost node,
@@ -334,6 +335,9 @@ namespace detail
   bool hasRight(RBNodeBase* node_)
   { return node_->_right != nullptr; }
 
+  bool hasBothChildren(RBNodeBase* node_)
+  { return hasLeft(node_) && hasRight(node_); }
+
   void calculateBlackDepth(RBNodeBase* node_, std::vector<int>& depths_, int curDepth)
   {
     if (node_ == nullptr) return;
@@ -425,4 +429,67 @@ RBTree<Key, Value, KeyOfValue, Comp, Alloc>::find(const key_type& key_) const
   }
   if (cur != nullptr) return cur;
   return _header;
+}
+
+template <typename Key, typename Value, class KeyOfValue,
+          typename Comp, template <typename> class Alloc>
+std::pair<typename RBTree<Key, Value, KeyOfValue, Comp, Alloc>::iterator, bool>
+RBTree<Key, Value, KeyOfValue, Comp, Alloc>::erase(iterator iter_)
+{
+  // If this node has two children, then switch position with 
+  // the next smallest one and erase it there
+  assert(iter_ != end());
+
+  iterator next = iter_;
+  ++next;
+  if (detail::hasBothChildren(iter_._pnode))
+  {
+    // Switch position of iter_ and next_
+    NodePtr node = static_cast<NodePtr>(iter_._pnode);
+    NodePtr nnode = static_cast<NodePtr>(next._pnode);
+
+    // TODO move if possible
+    node->_value = nnode->_value;
+    
+    // TODO erase node with one child
+    eraseOneChild(next._pnode);
+    return std::make_pair(iterator(node), true);
+  }
+  else
+  {
+    eraseOneChild(iter_._pnode);
+    return std::make_pair(next, true);
+  }
+}
+
+template <typename Key, typename Value, class KeyOfValue,
+          typename Comp, template <typename> class Alloc>
+void RBTree<Key, Value, KeyOfValue, Comp, Alloc>::eraseOneChild(RBNodeBase* node_)
+{
+  assert(!detail::hasBothChildren(node_));
+  
+  auto child = (detail::hasLeft(node_)) ? node_->_left : node_->_right; 
+
+  if (node_->_color == RBTreeNodeColor::Red)
+  {
+    // Cannot be root
+    assert(node_ != root());
+
+    // Remove directly
+    // No need to rotate
+    auto parent = node_->_parent;
+    if (node_ == parent->_left) 
+      parent->_left = child;
+    else 
+      parent->_right = child;
+
+    if (child != nullptr)     child->_parent = parent;
+    if (node_ == leftmost())  _header->_left = child;
+    if (node_ == rightmost()) _header->_right = child;
+  }
+  else
+  {
+    // TODO the node to be deleted is Black
+  }
+  --_nodeCount;
 }

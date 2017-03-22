@@ -216,6 +216,7 @@ namespace ds
     void clear(NodePtr ptr_);
 
     iterator insert(NodePtr child_, NodePtr parent_, const value_type& val_);
+    void eraseOneChild(RBNodeBase* node_);
     void rebalance(RBNodeBase* toInsert_, RBNodeBase*& root_);
     void leftRotate(RBNodeBase* node_, RBNodeBase*& root_);
     void rightRotate(RBNodeBase* node_, RBNodeBase*& root_);
@@ -229,7 +230,6 @@ namespace ds
       putNode(_header);
     }
 
-    // Access methods
     iterator begin() { return leftmost(); }
     iterator end() { return _header; }
     iterator find(const key_type& key_) const;
@@ -240,8 +240,8 @@ namespace ds
     size_type max_size() const { return size_type(-1); }
 
     // Used for debugging: whether the Red-Black tree
-    // Property is kept: header is red/no two consecutive red nodes in a path/
-    // all paths have same black height
+    // Property is kept: header is (red/no two consecutive red nodes in a path/
+    // all paths have same black height)
     bool rbPropertyKept() const;
 
     // Modify methods
@@ -255,6 +255,18 @@ namespace ds
 
     iterator insertEqual(const value_type& val_);
     std::pair<iterator, bool> insertUnique(const value_type& val_);
+
+    // Erase an element by position
+    std::pair<iterator, bool> erase(iterator iter);
+
+    // Erase an element by value, if there are multiple values, erase the first one
+    // encountered
+    std::pair<iterator, bool> erase(const value_type& val_)
+    {
+      auto pos = find(val_);
+      if (pos != end()) return erase(pos);
+      return std::make_pair(end(), false);
+    }
   };
 
   #include "RBTreeT.C"
