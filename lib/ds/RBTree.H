@@ -3,6 +3,7 @@
 
 #include <iterator>
 #include <memory>
+#include <utility>
 
 namespace oplib
 {
@@ -24,7 +25,7 @@ namespace ds
 
     static Ptr minnode(Ptr ptr_)
     {
-      while (ptr_ != nullptr)
+      while (ptr_->_left != nullptr)
         ptr_ = ptr_->_left;
 
       return ptr_;
@@ -32,7 +33,7 @@ namespace ds
 
     static Ptr maxnode(Ptr ptr_)
     {
-      while (ptr_ != nullptr)
+      while (ptr_->_right != nullptr)
         ptr_ = ptr_->_right;
 
       return ptr_;
@@ -44,6 +45,7 @@ namespace ds
   {
     using Ptr = RBNode<T>*;
     T _value;
+    RBNode(T val_) : _value(val_) {}
   };
 
   struct RBIteratorBase
@@ -70,13 +72,18 @@ namespace ds
     RBIterator(RBNodePtr ptr_) { _pnode = ptr_; }
     RBIterator(const iterator& it_) { _pnode = it_._pnode; }
 
-    reference operator * () { return (static_cast<RBNodePtr>(_pnode))->_value; }
-    pointer   operator -> () { return &(operator *()); }
+    reference operator * () 
+    { return (static_cast<RBNodePtr>(_pnode))->_value; }
+
+    pointer   operator -> () 
+    { return &(operator *()); }
 
     void increment();
     void decrement();
 
-    self& operator ++ () { increment(); return *this; }
+    self& operator ++ () 
+    { increment(); return *this; }
+
     self  operator ++ (int) 
     {
       self tmp = *this;
@@ -91,6 +98,13 @@ namespace ds
       decrement();
       return tmp;
     }
+
+    bool operator == (RBIterator rhs_)
+    { return _pnode == rhs_._pnode; }
+
+    bool operator != (RBIterator rhs_)
+    { return !operator ==(rhs_); }
+
   };
 
   template <typename Key, typename Value, class KeyOfValue,
@@ -118,6 +132,7 @@ namespace ds
     size_type _nodeCount;
     NodePtr _header;
     Comp _comparator;
+    KeyOfValue _keyExtractor;
 
     // Allocate/Deallocate nodes
     // create/destroy nodes
@@ -138,6 +153,7 @@ namespace ds
       {
         putNode(nd);
       }
+      return nd;
     }
 
     void destroyNode(NodePtr ptr_)
@@ -147,7 +163,6 @@ namespace ds
     }
 
     // Convenient functions
-    // TODO question: why do we need a RBNodeBase?
     NodePtr root() const
     { return static_cast<NodePtr>(_header->_parent); }
 
@@ -158,22 +173,22 @@ namespace ds
     { return static_cast<NodePtr>(_header->_right); }
 
     // Convenient functions to retrive members of a node
-    static NodePtr left(NodePtr node_)
+    static NodePtr left(RBNodeBase* node_)
     { return static_cast<NodePtr>(node_->_left); }
 
-    static NodePtr right(NodePtr node_)
+    static NodePtr right(RBNodeBase* node_)
     { return static_cast<NodePtr>(node_->_right); }
 
-    static NodePtr parent(NodePtr node_)
+    static NodePtr parent(RBNodeBase* node_)
     { return static_cast<NodePtr>(node_->_parent); }
 
     static reference value(NodePtr node_)
     { return node_->_value; }
 
-    static const Key& key(NodePtr node_)
-    { return KeyOfValue(value(node_)); }
+    static Key key(NodePtr node_)
+    { return KeyOfValue()(value(node_)); }
 
-    static RBTreeNodeColor color(NodePtr node_)
+    static RBTreeNodeColor color(RBNodeBase* node_)
     { return node_->_color; }
 
     static NodePtr min(NodePtr node_)
@@ -197,6 +212,11 @@ namespace ds
       _header->_right = _header;
     }
 
+    iterator insert(NodePtr child_, NodePtr parent_, const value_type& val_);
+    void rebalance(RBNodeBase* toInsert_, RBNodeBase*& root_);
+    void leftRotate(RBNodeBase* node_, RBNodeBase*& root_);
+    void rightRotate(RBNodeBase* node_, RBNodeBase*& root_);
+
    public:
 
     RBTree(const Comp& comp_ = Comp());
@@ -215,8 +235,15 @@ namespace ds
     size_type size() const { return _nodeCount; }
     size_type max_size() const { return size_type(-1); }
 
+    // Used for debugging: whether the Red-Black tree
+    // Property is kept: header is red/no two consecutive red nodes in a path/
+    // all paths have same black height
+    bool rbPropertyKept() const;
+
     // Modify methods
     void clear();
+    iterator insertEqual(const value_type& val_);
+    std::pair<iterator, bool> insertUnique(const value_type& val_);
   };
 
   #include "RBTreeT.C"
