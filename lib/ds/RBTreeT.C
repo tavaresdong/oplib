@@ -56,9 +56,14 @@ void RBIterator<Value, Ref, Ptr>::decrement()
 
 template <typename Key, typename Value, class KeyOfValue,
           typename Comp, template <typename> class Alloc>
-void RBTree<Key, Value, KeyOfValue, Comp, Alloc>::clear()
+void RBTree<Key, Value, KeyOfValue, Comp, Alloc>::clear(NodePtr ptr_)
 {
-  //TODO
+  if (ptr_ != nullptr)
+  {
+    clear(static_cast<NodePtr>(ptr_->_left));
+    clear(static_cast<NodePtr>(ptr_->_right));
+    destroyNode(ptr_);
+  }
 }
 
 template <typename Key, typename Value, class KeyOfValue,
@@ -365,6 +370,14 @@ template <typename Key, typename Value, class KeyOfValue,
           typename Comp, template <typename> class Alloc>
 bool RBTree<Key, Value, KeyOfValue, Comp, Alloc>::rbPropertyKept() const
 {
+  // (0) When tree is empty
+  if (_header->_parent == nullptr)
+  {
+    if (_header->_left != _header ||
+        _header->_right != _header)
+      return false;
+  }
+
   // (1) Header color: red
   if (_header->_color != RBTreeNodeColor::Red)
   {
@@ -395,4 +408,21 @@ bool RBTree<Key, Value, KeyOfValue, Comp, Alloc>::rbPropertyKept() const
 
   // (4) No two consecutive (parent/child) node are all red
   return detail::noConsecutiveReds(_header->_parent);
+}
+
+template <typename Key, typename Value, class KeyOfValue,
+          typename Comp, template <typename> class Alloc>
+typename RBTree<Key, Value, KeyOfValue, Comp, Alloc>::iterator
+RBTree<Key, Value, KeyOfValue, Comp, Alloc>::find(const key_type& key_) const
+{
+  auto cur = root();
+  while (cur != nullptr && key(cur) != key_)
+  {
+    if (_comparator(key_, key(cur)))
+      cur = static_cast<NodePtr>(cur->_left);
+    else
+      cur = static_cast<NodePtr>(cur->_right);
+  }
+  if (cur != nullptr) return cur;
+  return _header;
 }

@@ -99,13 +99,14 @@ namespace ds
       return tmp;
     }
 
-    bool operator == (RBIterator rhs_)
+    bool operator == (const RBIterator& rhs_)
     { return _pnode == rhs_._pnode; }
-
-    bool operator != (RBIterator rhs_)
+   
+    bool operator != (const RBIterator& rhs_)
     { return !operator ==(rhs_); }
 
   };
+
 
   template <typename Key, typename Value, class KeyOfValue,
             typename Comp, template <typename> class Alloc = std::allocator>
@@ -149,7 +150,7 @@ namespace ds
       {
         _allocator.construct(nd, val_);
       }
-      catch(...)
+      catch (...)
       {
         putNode(nd);
       }
@@ -212,6 +213,8 @@ namespace ds
       _header->_right = _header;
     }
 
+    void clear(NodePtr ptr_);
+
     iterator insert(NodePtr child_, NodePtr parent_, const value_type& val_);
     void rebalance(RBNodeBase* toInsert_, RBNodeBase*& root_);
     void leftRotate(RBNodeBase* node_, RBNodeBase*& root_);
@@ -229,6 +232,7 @@ namespace ds
     // Access methods
     iterator begin() { return leftmost(); }
     iterator end() { return _header; }
+    iterator find(const key_type& key_) const;
     const_iterator cbegin() const { return leftmost(); }
     const_iterator cend() const { return _header; }
     bool empty() const { return _nodeCount == 0; }
@@ -241,7 +245,14 @@ namespace ds
     bool rbPropertyKept() const;
 
     // Modify methods
-    void clear();
+    void clear()
+    {
+      clear(root()); 
+      _header->_parent = nullptr;
+      _header->_left = _header;
+      _header->_right = _header;
+    }
+
     iterator insertEqual(const value_type& val_);
     std::pair<iterator, bool> insertUnique(const value_type& val_);
   };

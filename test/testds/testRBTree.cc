@@ -8,13 +8,6 @@
 
 namespace 
 {
-class Comparator
-{
-public:
-  bool operator() (int v1, int v2)
-  { return v1 < v2; };
-};
-
 class KeyOfValue
 {
 public:
@@ -30,27 +23,18 @@ protected:
   virtual ~RBTreeTest();
   virtual void SetUp();
   virtual void TearDown();
+
+  oplib::ds::RBTree<int, int, KeyOfValue, std::less<int>> rbtree;
 };
 
 RBTreeTest::RBTreeTest() {}
 
 RBTreeTest::~RBTreeTest() {}
 
-void RBTreeTest::SetUp() {}
-
-void RBTreeTest::TearDown() {}
-
-TEST_F(RBTreeTest, testCreation)
+void RBTreeTest::SetUp() 
 {
-  oplib::ds::RBTree<int, int, KeyOfValue, Comparator> rbtree;
   EXPECT_TRUE(rbtree.empty());
-  EXPECT_EQ(rbtree.size(), 0u);
-}
-
-TEST_F(RBTreeTest, testInsertion)
-{
-  oplib::ds::RBTree<int, int, KeyOfValue, std::less<int>> rbtree;
-  EXPECT_TRUE(rbtree.empty());
+  EXPECT_TRUE(rbtree.rbPropertyKept());
   EXPECT_EQ(rbtree.size(), 0u);
 
   rbtree.insertUnique(10); EXPECT_TRUE(rbtree.rbPropertyKept());
@@ -62,9 +46,19 @@ TEST_F(RBTreeTest, testInsertion)
   rbtree.insertUnique(11); EXPECT_TRUE(rbtree.rbPropertyKept());
   rbtree.insertUnique(13); EXPECT_TRUE(rbtree.rbPropertyKept());
   rbtree.insertUnique(12); EXPECT_TRUE(rbtree.rbPropertyKept());
+}
 
+void RBTreeTest::TearDown() 
+{
+  rbtree.clear();
+  EXPECT_TRUE(rbtree.rbPropertyKept());
+}
+
+TEST_F(RBTreeTest, testInsertion)
+{
   EXPECT_FALSE(rbtree.insertUnique(12).second);
-  EXPECT_EQ(rbtree.size(), 9u);
+  EXPECT_TRUE(rbtree.insertUnique(16).second);
+  EXPECT_EQ(rbtree.size(), 10u);
 
   auto first = rbtree.begin();
   auto second = first;
@@ -73,5 +67,14 @@ TEST_F(RBTreeTest, testInsertion)
   {
     EXPECT_TRUE(*first < *second);
   }
+}
+
+TEST_F(RBTreeTest, testFind)
+{
+  EXPECT_TRUE(rbtree.find(-1) == rbtree.end());
+  EXPECT_TRUE(rbtree.find(9) == rbtree.end());
+  EXPECT_TRUE(rbtree.find(19) == rbtree.end());
+  EXPECT_TRUE(rbtree.find(5) != rbtree.end());
+  EXPECT_EQ(5, *(rbtree.find(5)));
 }
 
