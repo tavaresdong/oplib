@@ -258,6 +258,7 @@ namespace ds
       _header->_parent = nullptr;
       _header->_left = _header;
       _header->_right = _header;
+      _nodeCount = 0;
     }
 
     iterator insertEqual(const value_type& val_);

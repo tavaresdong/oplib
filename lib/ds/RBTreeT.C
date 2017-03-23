@@ -379,11 +379,22 @@ template <typename Key, typename Value, class KeyOfValue,
           typename Comp, template <typename> class Alloc>
 bool RBTree<Key, Value, KeyOfValue, Comp, Alloc>::rbPropertyKept() const
 {
-  // (0) When tree is empty
+  // (0.0) When tree is empty, _header' _left and _right points
+  // to _header itself
   if (_header->_parent == nullptr)
   {
     if (_header->_left != _header ||
         _header->_right != _header)
+      return false;
+  }
+
+  // (0.1) _header->_left points to the smallest node of the tree
+  // _header->_right points to the largest node of the tree
+  if (_header->_parent != nullptr)
+  {
+    std::cout << "0.1" << std::endl;
+    if (_header->_left != RBNodeBase::minnode(_header->_parent) ||
+        _header->_right != RBNodeBase::maxnode(_header->_parent))
       return false;
   }
 
@@ -456,7 +467,6 @@ RBTree<Key, Value, KeyOfValue, Comp, Alloc>::erase(iterator iter_)
     // TODO move if possible
     node->_value = nnode->_value;
     
-    // TODO erase node with one child
     eraseOneChild(next._pnode);
     return std::make_pair(iterator(node), true);
   }
@@ -472,23 +482,26 @@ template <typename Key, typename Value, class KeyOfValue,
 void RBTree<Key, Value, KeyOfValue, Comp, Alloc>::switchNode(RBNodeBase* parent_, RBNodeBase* child_)
 {
   auto grandpa = parent_->_parent;
-  if (parent_ == grandpa->_parent)
-    grandpa->_parent = child_;
 
   if (parent_ == grandpa->_left)
-  {
-    if (grandpa != _header)
-      grandpa->_left = child_;
-    else
-      grandpa->_left = (child_ == nullptr) ? child_ : RBNodeBase::minnode(child_);
-  }
+    grandpa->_left = child_;
+  else if (parent_ == grandpa->_right) // This check is intended for root case
+    grandpa->_right = child_;
 
-  if (parent_ == grandpa->_right)
+  if (parent_ == grandpa->_parent) // parent_(node to be erased) is root node
+    grandpa->_parent = child_;
+  else
   {
-    if (grandpa != _header)
-      grandpa->_right = child_;
-    else
-      grandpa->_right = (child_ == nullptr) ? grandpa : RBNodeBase::maxnode(child_);
+    // Non-root case, leftmost and rightmost may need to be changed
+    if (parent_ == leftmost())
+    {
+      _header->_left = (child_ == nullptr) ? grandpa : RBNodeBase::minnode(child_);
+    }
+
+    if (parent_ == rightmost())
+    {
+      _header->_right = (child_ == nullptr) ? grandpa : RBNodeBase::maxnode(child_);
+    }
   }
 
   if (child_ != nullptr) child_->_parent = grandpa;
