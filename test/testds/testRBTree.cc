@@ -85,4 +85,16 @@ TEST_F(RBTreeTest, testErase)
   EXPECT_EQ(*(p.first), 6);
   EXPECT_EQ(rbtree.size(), 8u);
   EXPECT_TRUE(rbtree.rbPropertyKept());
+
+  p = rbtree.erase(6);
+  EXPECT_TRUE(p.second);
+  EXPECT_EQ(*(p.first), 7);
+  EXPECT_EQ(rbtree.size(), 7u);
+  EXPECT_TRUE(rbtree.rbPropertyKept());
+
+  p = rbtree.erase(7);
+  EXPECT_TRUE(p.second);
+  EXPECT_EQ(*(p.first), 8);
+  EXPECT_EQ(rbtree.size(), 6u);
+  EXPECT_TRUE(rbtree.rbPropertyKept());
 }

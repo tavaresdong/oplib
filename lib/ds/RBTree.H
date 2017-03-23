@@ -220,6 +220,13 @@ namespace ds
     void rebalance(RBNodeBase* toInsert_, RBNodeBase*& root_);
     void leftRotate(RBNodeBase* node_, RBNodeBase*& root_);
     void rightRotate(RBNodeBase* node_, RBNodeBase*& root_);
+    void switchNode(RBNodeBase* parent_, RBNodeBase* child_);
+    void eraseCase1(RBNodeBase* node_, RBNodeBase* parent_);
+    void eraseCase2(RBNodeBase* node_, RBNodeBase* parent_);
+    void eraseCase3(RBNodeBase* node_, RBNodeBase* parent_);
+    void eraseCase4(RBNodeBase* node_, RBNodeBase* parent_);
+    void eraseCase5(RBNodeBase* node_, RBNodeBase* parent_);
+    void eraseCase6(RBNodeBase* node_, RBNodeBase* parent_);
 
    public:
 

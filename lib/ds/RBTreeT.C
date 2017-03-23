@@ -338,6 +338,11 @@ namespace detail
   bool hasBothChildren(RBNodeBase* node_)
   { return hasLeft(node_) && hasRight(node_); }
 
+  RBNodeBase* sibling(RBNodeBase* node_, RBNodeBase* parent_)
+  {
+    return (node_ == parent_->_left) ? parent_->_right : parent_->_left;
+  }
+
   void calculateBlackDepth(RBNodeBase* node_, std::vector<int>& depths_, int curDepth)
   {
     if (node_ == nullptr) return;
@@ -464,32 +469,182 @@ RBTree<Key, Value, KeyOfValue, Comp, Alloc>::erase(iterator iter_)
 
 template <typename Key, typename Value, class KeyOfValue,
           typename Comp, template <typename> class Alloc>
+void RBTree<Key, Value, KeyOfValue, Comp, Alloc>::switchNode(RBNodeBase* parent_, RBNodeBase* child_)
+{
+  auto grandpa = parent_->_parent;
+  if (parent_ == grandpa->_parent)
+    grandpa->_parent = child_;
+
+  if (parent_ == grandpa->_left)
+  {
+    if (grandpa != _header)
+      grandpa->_left = child_;
+    else
+      grandpa->_left = (child_ == nullptr) ? child_ : RBNodeBase::minnode(child_);
+  }
+
+  if (parent_ == grandpa->_right)
+  {
+    if (grandpa != _header)
+      grandpa->_right = child_;
+    else
+      grandpa->_right = (child_ == nullptr) ? grandpa : RBNodeBase::maxnode(child_);
+  }
+
+  if (child_ != nullptr) child_->_parent = grandpa;
+}
+
+template <typename Key, typename Value, class KeyOfValue,
+          typename Comp, template <typename> class Alloc>
+void RBTree<Key, Value, KeyOfValue, Comp, Alloc>::eraseCase1(RBNodeBase* node_, RBNodeBase* parent_)
+{
+  // Case1: child is now root and is black
+  // Nothing needs to be changed
+  if (parent_ == _header)
+  {
+    assert(node_ == nullptr || node_->_color == RBTreeNodeColor::Black);
+  }
+  else
+  {
+    eraseCase2(node_, parent_);
+  }
+}
+
+template <typename Key, typename Value, class KeyOfValue,
+          typename Comp, template <typename> class Alloc>
+void RBTree<Key, Value, KeyOfValue, Comp, Alloc>::eraseCase2(RBNodeBase* node_, RBNodeBase* parent_)
+{
+  assert(parent_ != _header);
+  RBNodeBase* sibling = detail::sibling(node_, parent_);
+  assert(sibling != nullptr);
+  if (sibling != nullptr && sibling->_color == RBTreeNodeColor::Red)
+  {
+    assert(parent_->_color == RBTreeNodeColor::Black);
+    sibling->_color = RBTreeNodeColor::Black;
+    parent_->_color = RBTreeNodeColor::Red;
+    leftRotate(parent_, _header->_parent);
+  }
+  eraseCase3(node_, parent_);
+}
+
+template <typename Key, typename Value, class KeyOfValue,
+          typename Comp, template <typename> class Alloc>
+void RBTree<Key, Value, KeyOfValue, Comp, Alloc>::eraseCase3(RBNodeBase* node_, RBNodeBase* parent_)
+{
+  RBNodeBase* sibling = detail::sibling(node_, parent_);
+  assert(sibling != nullptr);
+  if (parent_->_color == RBTreeNodeColor::Black &&
+      sibling->_color == RBTreeNodeColor::Black &&
+      (sibling->_left == nullptr || sibling->_left->_color == RBTreeNodeColor::Black) &&
+      (sibling->_right == nullptr || sibling->_right->_color == RBTreeNodeColor::Black))
+  {
+    sibling->_color = RBTreeNodeColor::Red;
+    eraseCase1(parent_, parent_->_parent);
+  }
+  else
+    eraseCase4(node_, parent_);
+}
+
+template <typename Key, typename Value, class KeyOfValue,
+          typename Comp, template <typename> class Alloc>
+void RBTree<Key, Value, KeyOfValue, Comp, Alloc>::eraseCase4(RBNodeBase* node_, RBNodeBase* parent_)
+{
+  RBNodeBase* sibling = detail::sibling(node_, parent_);
+  assert(sibling != nullptr);
+  if (parent_->_color == RBTreeNodeColor::Red &&
+      sibling->_color == RBTreeNodeColor::Black &&
+      (sibling->_left == nullptr || sibling->_left->_color == RBTreeNodeColor::Black) &&
+      (sibling->_right == nullptr || sibling->_right->_color == RBTreeNodeColor::Black))
+  {
+    parent_->_color = RBTreeNodeColor::Black;
+    sibling->_color = RBTreeNodeColor::Red;
+  }
+  else
+    eraseCase5(node_, parent_);
+}
+
+template <typename Key, typename Value, class KeyOfValue,
+          typename Comp, template <typename> class Alloc>
+void RBTree<Key, Value, KeyOfValue, Comp, Alloc>::eraseCase5(RBNodeBase* node_, RBNodeBase* parent_)
+{
+  RBNodeBase* sibling = detail::sibling(node_, parent_);
+  assert(sibling != nullptr);
+  if (node_ == parent_->_left &&
+      sibling->_color == RBTreeNodeColor::Black &&
+      (sibling->_left != nullptr && sibling->_left->_color == RBTreeNodeColor::Red) &&
+      (sibling->_right == nullptr || sibling->_right->_color == RBTreeNodeColor::Black))
+  {
+    auto newSibling = sibling->_left;
+    rightRotate(sibling, _header->_parent);
+    sibling->_color = RBTreeNodeColor::Red;
+    newSibling->_color = RBTreeNodeColor::Black;
+  }
+  else if (node_ == parent_->_right &&
+           sibling->_color == RBTreeNodeColor::Black &&
+           (sibling->_left == nullptr || sibling->_left->_color == RBTreeNodeColor::Black) &&
+           (sibling->_right != nullptr && sibling->_right->_color == RBTreeNodeColor::Red))
+  {
+    auto newSibling = sibling->_right;
+    leftRotate(sibling, _header->_parent);
+    sibling->_color = RBTreeNodeColor::Red;
+    newSibling->_color = RBTreeNodeColor::Black;
+  }
+  eraseCase6(node_, parent_);
+}
+
+template <typename Key, typename Value, class KeyOfValue,
+          typename Comp, template <typename> class Alloc>
+void RBTree<Key, Value, KeyOfValue, Comp, Alloc>::eraseCase6(RBNodeBase* node_, RBNodeBase* parent_)
+{
+  RBNodeBase* sibling = detail::sibling(node_, parent_);
+  assert(sibling != nullptr);
+  assert(sibling->_color == RBTreeNodeColor::Black);
+  sibling->_color = parent_->_color;
+  parent_->_color = RBTreeNodeColor::Black;
+
+  if (node_ == parent_->_left)
+  {
+    if (sibling->_right != nullptr)
+    {
+      assert(sibling->_right->_color == RBTreeNodeColor::Red);
+      sibling->_right->_color = RBTreeNodeColor::Black;
+    }
+    leftRotate(parent_, _header->_parent);
+  }
+  else
+  {
+    if (sibling->_left != nullptr)
+    {
+      assert(sibling->_right->_color == RBTreeNodeColor::Red);
+      sibling->_left->_color = RBTreeNodeColor::Black;
+    }
+    rightRotate(parent_, _header->_parent);
+  }
+}
+
+template <typename Key, typename Value, class KeyOfValue,
+          typename Comp, template <typename> class Alloc>
 void RBTree<Key, Value, KeyOfValue, Comp, Alloc>::eraseOneChild(RBNodeBase* node_)
 {
   assert(!detail::hasBothChildren(node_));
   
   auto child = (detail::hasLeft(node_)) ? node_->_left : node_->_right; 
+  auto parent = node_->_parent;
 
-  if (node_->_color == RBTreeNodeColor::Red)
+  switchNode(node_, child);
+  if (node_->_color == RBTreeNodeColor::Black)
   {
-    // Cannot be root
-    assert(node_ != root());
-
-    // Remove directly
-    // No need to rotate
-    auto parent = node_->_parent;
-    if (node_ == parent->_left) 
-      parent->_left = child;
-    else 
-      parent->_right = child;
-
-    if (child != nullptr)     child->_parent = parent;
-    if (node_ == leftmost())  _header->_left = child;
-    if (node_ == rightmost()) _header->_right = child;
+    // the node to be deleted is Black
+    if (child != nullptr && child->_color == RBTreeNodeColor::Red)
+    {
+      child->_color = RBTreeNodeColor::Black;
+    }
+    else
+    {
+      eraseCase1(child, parent);
+    }
   }
-  else
-  {
-    // TODO the node to be deleted is Black
-  }
+
+  destroyNode(static_cast<NodePtr>(node_));
   --_nodeCount;
 }
