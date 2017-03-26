@@ -1,4 +1,75 @@
 template <typename T, typename Alloc>
+Vector<T, Alloc>& Vector<T, Alloc>::operator = (Vector<T, Alloc>&& rhs)
+{
+  if (this != &rhs)
+  {
+    destroy(start, finish);
+    deallocate();
+    start = rhs.start;
+    finish = rhs.finish;
+    cp_ = std::move(rhs.cp_);
+
+    rhs.start = nullptr;
+    rhs.finish = nullptr;
+    rhs.cp_.first() = nullptr;
+  }
+  return *this;
+}
+
+template <typename T, typename Alloc>
+Vector<T, Alloc>::Vector(Vector<T, Alloc>&& v)
+: start(v.start), finish(v.finish), cp_(std::move(v.cp_))
+{
+  // Reset member of v, so it can be 
+  // safely freed.
+  v.start = nullptr;
+  v.finish = nullptr;
+  v.cp_.first() = nullptr;
+}
+
+template <typename T, typename Alloc>
+template <typename InputIter>
+Vector<T, Alloc>::Vector(InputIter first, InputIter last, const Alloc& alloc)
+: cp_(nullptr, alloc)
+{
+  using IterTag = typename std::iterator_traits<InputIter>::iterator_category;
+  constructIterDispatch(first, last, IterTag());
+}
+
+template <typename T, typename Alloc>
+template <typename Iter>
+void Vector<T, Alloc>::constructIterDispatch(Iter first,
+                                             Iter last, 
+                                             std::random_access_iterator_tag)
+{
+  size_t sz = std::distance(first, last);
+  start = getAllocator().allocate(sz);
+  std::uninitialized_copy_n(first, sz, start);
+  finish = start + sz;
+  cp_.first() = finish;
+}
+
+template <typename T, typename Alloc>
+template <typename Iter>
+void Vector<T, Alloc>::constructIterDispatch(Iter first,
+                                             Iter last, 
+                                             std::input_iterator_tag)
+{
+  for (; first != last; ++first) push_back(*first);
+}
+
+template <typename T, typename Alloc>
+Vector<T, Alloc>::Vector(std::initializer_list<value_type> il, const Alloc& alloc)
+: cp_(nullptr, alloc)
+{
+  auto sz = il.size();
+  start = getAllocator().allocate(sz);
+  std::uninitialized_copy_n(il.begin(), sz, start);
+  finish = start + sz;
+  cp_.first() = finish;
+}
+
+template <typename T, typename Alloc>
 void Vector<T, Alloc>::swap(Vector& v)
 {
   std::swap(start, v.start);

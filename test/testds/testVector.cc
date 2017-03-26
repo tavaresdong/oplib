@@ -4,6 +4,8 @@
 #include <string>
 #include <iostream>
 #include <utility>
+#include <list>
+#include <vector>
 
 // The fixture for testing class Foo.
 class VectorTest : public ::testing::Test {
@@ -140,4 +142,61 @@ TEST_F(VectorTest, testShrinkToFit)
   v.shrink_to_fit();
   EXPECT_EQ(v.size(), 2u);
   EXPECT_EQ(v.capacity(), 2u);
+}
+
+TEST_F(VectorTest, testMove)
+{
+  oplib::ds::Vector<int> v { 1, 2 };
+  oplib::ds::Vector<int> vm(std::move(v));
+  EXPECT_EQ(vm.size(), 2u);
+  EXPECT_EQ(v.size(), 0u);
+  EXPECT_EQ(vm[0], 1);
+  EXPECT_EQ(vm[1], 2);
+
+  v = std::move(vm);
+  EXPECT_EQ(v.size(), 2u);
+  EXPECT_EQ(vm.size(), 0u);
+}
+
+TEST_F(VectorTest, testRangeConstruction)
+{
+  {
+    std::list<int> l { 1, 2, 3 };
+    oplib::ds::Vector<int> v(l.begin(), l.end());
+    EXPECT_EQ(v.size(), 3u);
+  }
+
+  {
+    std::vector<int> stdv { 1, 2, 3 };
+    oplib::ds::Vector<int> v(stdv.begin(), stdv.end());
+    EXPECT_EQ(v.size(), 3u);
+  }
+}
+
+TEST_F(VectorTest, testReverseIterator)
+{
+  {
+    oplib::ds::Vector<int> v;
+
+    v.push_back(1);
+    v.push_back(2);
+    auto ri = v.rbegin();
+    EXPECT_EQ(*ri, 2);
+    ++ri;
+    EXPECT_EQ(*ri, 1);
+    ++ri;
+    EXPECT_EQ(ri, v.rend());
+  }
+
+  {
+    // Also tested initializer_list-construction
+    const oplib::ds::Vector<int> v { 1, 2 };
+
+    auto ri = v.crbegin();
+    EXPECT_EQ(*ri, 2);
+    ++ri;
+    EXPECT_EQ(*ri, 1);
+    ++ri;
+    EXPECT_EQ(ri, v.crend());
+  }
 }

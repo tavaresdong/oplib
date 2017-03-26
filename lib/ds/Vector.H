@@ -2,10 +2,11 @@
 #define VECTOR_H_
 
 #include <algorithm>
-#include <algorithm>
+#include <iterator>
 #include <utility>
 #include <boost/compressed_pair.hpp>
 #include <iostream>
+#include <memory>
 
 namespace oplib
 {
@@ -23,11 +24,13 @@ namespace ds
     typedef ptrdiff_t difference_type;
     typedef const value_type& const_reference;
     typedef const value_type* const_iterator;
+    typedef std::reverse_iterator<iterator> reverse_iterator;
+    typedef std::reverse_iterator<const_iterator> const_reverse_iterator;
 
    protected:
     //Alloc allocator;
-    iterator start = nullptr;
-    iterator finish = nullptr;
+    iterator start { nullptr };
+    iterator finish { nullptr };
     boost::compressed_pair<iterator, Alloc> cp_;
 
     decltype(auto) getAllocator() { return cp_.second(); }
@@ -43,41 +46,66 @@ namespace ds
       start = getAllocator().allocate(n_);
       std::uninitialized_fill_n(start, n_, value_);
       finish = start + n_;
-      //cp_.first() = finish;
       cp_.first() = finish;
     }
 
     void insertAux(iterator position_, const value_type& x_);
+   
+    template <typename Iter>
+    void constructIterDispatch(Iter first, Iter last, std::input_iterator_tag);
+
+    template <typename Iter>
+    void constructIterDispatch(Iter first, Iter last, std::random_access_iterator_tag);
 
    public:
     iterator begin() const { return start;  }
     iterator end() const { return finish; }
     const_iterator cbegin() const { return start; }
     const_iterator cend() const { return finish; }
+
+    // Reverse iterator will call -- on the passed iterator
+    reverse_iterator rbegin() const 
+    { return reverse_iterator(end()); }
+    reverse_iterator rend() const 
+    { return reverse_iterator(begin()); }
+    const_reverse_iterator crbegin() const
+    { return const_reverse_iterator(cend()); }
+    const_reverse_iterator crend() const
+    { return const_reverse_iterator(cbegin()); }
+
+    reference front() { return *begin(); }
+    reference back() { return *(end() - 1); }
+
     size_type size() const { return size_type(cend() - cbegin()); }
     size_type capacity() const { return size_type(cp_.first() - begin()); }
     bool empty() const { return start == finish; }
-    reference operator[] (size_type n) { return *(begin() + n); }
 
-    // ctor and dtors
+    reference operator[] (size_type n) { return *(begin() + n); }
+    const_reference operator[] (size_type n) const { return *(begin() + n); }
+
+    // Constructors
     Vector(const Alloc& alloc = Alloc()) : cp_(nullptr, alloc) { }
     Vector(size_type n, const T& value, const Alloc& alloc = Alloc())
     : cp_(nullptr, alloc) { fillInitialize(n, value); }
     explicit Vector(size_type n, const Alloc& alloc = Alloc())
     : cp_(nullptr, alloc) { fillInitialize(n, T()); }
-  
-    // Copy and assign
-    Vector(const Vector<T, Alloc>& v);
-    Vector<T, Alloc>& operator = (const Vector<T, Alloc>& rhs);
+    Vector(std::initializer_list<value_type> il, const Alloc& alloc = Alloc());
 
+    // TODO ambiguity between this and vector v(1, 2) (two ints)
+    // use SFINAE to de-initialize iterator-based constructors
+    template <typename InputIter>
+    Vector(InputIter first, InputIter last, const Alloc& alloc = Alloc());
+  
+    // Copy/dtor/assign/move rule of five
     ~Vector()
     {
       destroy(begin(), end());
       deallocate();
     }
-
-    reference front() { return *begin(); }
-    reference back() { return *(end() - 1); }
+    Vector(const Vector<T, Alloc>& v);
+    Vector<T, Alloc>& operator = (const Vector<T, Alloc>& rhs);
+    Vector(Vector<T, Alloc>&& v);
+    Vector<T, Alloc>& operator = (Vector<T, Alloc>&& rhs);
 
     void pop_back()
     {
