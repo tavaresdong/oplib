@@ -121,7 +121,7 @@ namespace ds
     using pointer = value_type*;
     using const_pointer = const value_type*;
     using iterator = RBIterator<value_type, reference, pointer>;
-    using const_iterator = RBIterator<const value_type, const_reference, const_pointer>;
+    using const_iterator = const RBIterator<value_type, reference, pointer>; 
 
    protected:
     using NodeType = RBNode<Value>;

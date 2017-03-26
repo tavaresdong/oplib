@@ -2,7 +2,7 @@ set(libop_ds_SRCS
     alloc.H
     traits.H
     memutil.H
-    vector.H
+    Vector.H
     Linkedlist.H
     TSTTrie.h
     MinHeap.h
