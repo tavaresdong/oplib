@@ -1,4 +1,3 @@
-#include "alloc.H"
 #include "gtest/gtest.h"
 #include <ds/Vector.H>
 #include <string>
@@ -6,6 +5,8 @@
 #include <utility>
 #include <list>
 #include <vector>
+#include <stdexcept>
+#include <limits>
 
 // The fixture for testing class Foo.
 class VectorTest : public ::testing::Test {
@@ -199,4 +200,68 @@ TEST_F(VectorTest, testReverseIterator)
     ++ri;
     EXPECT_EQ(ri, v.crend());
   }
+}
+
+TEST_F(VectorTest, testAt)
+{
+  oplib::ds::Vector<int> v { 1, 2 };
+  EXPECT_THROW(v.at(5), std::range_error);
+}
+
+TEST_F(VectorTest, testMaxSize)
+{
+  oplib::ds::Vector<int> v;
+  EXPECT_EQ(v.max_size(), std::numeric_limits<size_t>::max());
+}
+
+namespace
+{
+  class Movable
+  {
+   public:
+    Movable(int a, int b) : i(a * b) {}
+    Movable() {}
+    ~Movable() {}
+    Movable(const Movable& m) : i(m.i)
+    {
+      std::cout << "Copy ctor called" << std::endl;
+    }
+
+    Movable& operator = (const Movable& m)
+    {
+      i = m.i;
+      return *this;
+    }
+
+    Movable(Movable&& m) : i(m.i) 
+    { 
+      std::cout << "Move ctor called" << std::endl;
+      m.i = 0; 
+    }
+    Movable& operator = (Movable&& m)
+    {
+      i = m.i;
+      m.i = 0;
+      return *this;
+    }
+    
+    int get() { return i; }
+   private:
+    int i = 1;
+  };
+}
+
+TEST_F(VectorTest, testEmplaceBack)
+{
+  oplib::ds::Vector<Movable> v;
+  Movable m;
+  EXPECT_EQ(m.get(), 1);
+  v.emplace_back(std::move(m));
+  EXPECT_EQ(v.size(), 1u);
+  EXPECT_EQ(m.get(), 0);
+  EXPECT_EQ(v.front().get(), 1);
+
+  v.emplace_back(3, 4);
+  EXPECT_EQ(v.size(), 2u);
+  EXPECT_EQ(v.back().get(), 12);
 }

@@ -1,5 +1,5 @@
-#ifndef VECTOR_H_
-#define VECTOR_H_
+#ifndef OPLIB_DS_VECTOR_H_
+#define OPLIB_DS_VECTOR_H_
 
 #include <algorithm>
 #include <iterator>
@@ -7,6 +7,9 @@
 #include <boost/compressed_pair.hpp>
 #include <iostream>
 #include <memory>
+#include <type_traits>
+#include <stdexcept>
+#include <limits>
 
 namespace oplib
 {
@@ -50,12 +53,23 @@ namespace ds
     }
 
     void insertAux(iterator position_, const value_type& x_);
+
+    template<typename... Args>
+    void emplaceAux(iterator position_, Args&&... args);
    
     template <typename Iter>
     void constructIterDispatch(Iter first, Iter last, std::input_iterator_tag);
 
     template <typename Iter>
     void constructIterDispatch(Iter first, Iter last, std::random_access_iterator_tag);
+
+    void rangeCheck(size_type n)
+    { 
+      if (n >= size())
+      {
+        throw std::range_error("Invalid index");
+      }
+    }
 
    public:
     iterator begin() const { return start;  }
@@ -77,11 +91,15 @@ namespace ds
     reference back() { return *(end() - 1); }
 
     size_type size() const { return size_type(cend() - cbegin()); }
+    size_type max_size() const { return std::numeric_limits<size_type>::max(); }
     size_type capacity() const { return size_type(cp_.first() - begin()); }
     bool empty() const { return start == finish; }
 
     reference operator[] (size_type n) { return *(begin() + n); }
     const_reference operator[] (size_type n) const { return *(begin() + n); }
+
+    reference at (size_type n) { rangeCheck(n); return *(begin() + n); }
+    const_reference at (size_type n) const { rangeCheck(n); return *(begin() + n); }
 
     // Constructors
     Vector(const Alloc& alloc = Alloc()) : cp_(nullptr, alloc) { }
@@ -91,10 +109,23 @@ namespace ds
     : cp_(nullptr, alloc) { fillInitialize(n, T()); }
     Vector(std::initializer_list<value_type> il, const Alloc& alloc = Alloc());
 
-    // TODO ambiguity between this and vector v(1, 2) (two ints)
     // use SFINAE to de-initialize iterator-based constructors
-    template <typename InputIter>
-    Vector(InputIter first, InputIter last, const Alloc& alloc = Alloc());
+    // when parameter passed in are integers template <typename InputIter, std::enable_if_t<
+    template <
+              typename InputIter, 
+              std::enable_if_t<
+               std::is_base_of<
+                 std::input_iterator_tag, 
+                 typename std::iterator_traits<InputIter>::iterator_category
+                              >::value, 
+              int> = 0
+             >
+    Vector(InputIter first, InputIter last, const Alloc& alloc = Alloc())
+    : cp_(nullptr, alloc)
+    {
+      using IterTag = typename std::iterator_traits<InputIter>::iterator_category;
+      constructIterDispatch(first, last, IterTag());
+    }
   
     // Copy/dtor/assign/move rule of five
     ~Vector()
@@ -123,6 +154,21 @@ namespace ds
       else
       {
         insertAux(end(), x);
+      }
+    }
+
+    template <typename... Args>
+    void emplace_back(Args&&... args)
+    {
+      if (finish != cp_.first())
+      {
+        getAllocator().construct(finish, std::forward<Args>(args)...);
+        ++finish;
+      }
+      else
+      {
+        // Remember to call std::forward<Args>(args)...!  
+        emplaceAux(end(), std::forward<Args>(args)...); 
       }
     }
 

@@ -28,15 +28,6 @@ Vector<T, Alloc>::Vector(Vector<T, Alloc>&& v)
 }
 
 template <typename T, typename Alloc>
-template <typename InputIter>
-Vector<T, Alloc>::Vector(InputIter first, InputIter last, const Alloc& alloc)
-: cp_(nullptr, alloc)
-{
-  using IterTag = typename std::iterator_traits<InputIter>::iterator_category;
-  constructIterDispatch(first, last, IterTag());
-}
-
-template <typename T, typename Alloc>
 template <typename Iter>
 void Vector<T, Alloc>::constructIterDispatch(Iter first,
                                              Iter last, 
@@ -54,9 +45,7 @@ template <typename Iter>
 void Vector<T, Alloc>::constructIterDispatch(Iter first,
                                              Iter last, 
                                              std::input_iterator_tag)
-{
-  for (; first != last; ++first) push_back(*first);
-}
+{ for (; first != last; ++first) push_back(*first); }
 
 template <typename T, typename Alloc>
 Vector<T, Alloc>::Vector(std::initializer_list<value_type> il, const Alloc& alloc)
@@ -78,6 +67,52 @@ void Vector<T, Alloc>::swap(Vector& v)
 }
 
 template <typename T, typename Alloc>
+template<typename... Args>
+void Vector<T, Alloc>::emplaceAux(iterator position_, Args&&... args)
+{
+  if (finish != cp_.first())
+  {
+    std::cout << "Emplace 1" << std::endl;
+    getAllocator().construct(finish, *(finish - 1));
+    ++finish;
+    std::copy_backward(position_, finish - 2, finish - 1);
+    getAllocator().destroy(position_);
+    getAllocator().construct(position_, std::forward<Args>(args)...);
+  }
+  else
+  {
+    std::cout << "Emplace 2" << std::endl;
+    const size_type old_size = size();
+    const size_type new_size = old_size == 0 ? 2 : old_size * 1.5;
+
+    iterator new_start = getAllocator().allocate(new_size);
+    iterator new_finish = new_start;
+
+    try 
+    {
+      new_finish = std::uninitialized_copy(start, position_, new_start);
+      getAllocator().construct(new_finish, std::forward<Args>(args)...);
+      ++new_finish;
+      new_finish = std::uninitialized_copy(position_, finish, new_finish);
+    }
+    catch (...)
+    {
+      destroy(new_start, new_finish);
+      for (; new_start < new_finish; ) getAllocator().destroy(++new_start);
+      getAllocator().deallocate(new_start, new_size);
+      throw;
+    }
+
+    destroy(start, finish);
+    deallocate();
+
+    start = new_start;
+    finish = new_finish;
+    cp_.first() = new_start + new_size;
+  }
+}
+
+template <typename T, typename Alloc>
 void Vector<T, Alloc>::insertAux(iterator position_, const value_type& x_)
 {
   if (finish != cp_.first())
@@ -91,7 +126,7 @@ void Vector<T, Alloc>::insertAux(iterator position_, const value_type& x_)
   else
   {
     const size_type old_size = size();
-    const size_type new_size = old_size == 0 ? 1 : old_size * 2;
+    const size_type new_size = old_size == 0 ? 2 : old_size * 1.5;
 
     iterator new_start = getAllocator().allocate(new_size);
     iterator new_finish = new_start;
