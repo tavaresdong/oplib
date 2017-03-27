@@ -7,6 +7,7 @@
 #include <vector>
 #include <stdexcept>
 #include <limits>
+#include <iterator>
 
 // The fixture for testing class Foo.
 class VectorTest : public ::testing::Test {
@@ -251,7 +252,7 @@ namespace
   };
 }
 
-TEST_F(VectorTest, testEmplaceBack)
+TEST_F(VectorTest, testEmplace)
 {
   oplib::ds::Vector<Movable> v;
   Movable m;
@@ -264,4 +265,42 @@ TEST_F(VectorTest, testEmplaceBack)
   v.emplace_back(3, 4);
   EXPECT_EQ(v.size(), 2u);
   EXPECT_EQ(v.back().get(), 12);
+
+  // test push_back(T&&)
+  Movable m2;
+  v.push_back(std::move(m2));
+  EXPECT_EQ(v.size(), 3u);
+  EXPECT_EQ(m2.get(), 0);
+
+  // test emplace
+  v.emplace(std::next(v.begin()), 2, 3);
+  EXPECT_EQ(v.size(), 4u);
+  EXPECT_EQ(v[1].get(), 6);
+}
+
+TEST_F(VectorTest, testData)
+{
+  oplib::ds::Vector<char> vc;
+  vc.push_back('a');
+  vc.push_back('b');
+  auto data = vc.data();
+  EXPECT_EQ(*data, 'a');
+}
+
+TEST_F(VectorTest, testAssign)
+{
+  oplib::ds::Vector<int> vc { 4, 5 };
+  std::list<int> l { 1, 2, 3 };
+
+  vc.assign(l.begin(), l.end());
+  EXPECT_EQ(vc.size(), 3u);
+  EXPECT_EQ(vc.front(), 1);
+
+  vc.assign(4, 3);
+  EXPECT_EQ(vc.size(), 4u);
+  EXPECT_EQ(vc.front(), 3);
+
+  // assign an initializer_list
+  vc.assign({ 1, 2, 3, 4 });
+  EXPECT_EQ(vc.size(), 4u);
 }

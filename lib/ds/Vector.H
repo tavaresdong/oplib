@@ -29,6 +29,7 @@ namespace ds
     typedef const value_type* const_iterator;
     typedef std::reverse_iterator<iterator> reverse_iterator;
     typedef std::reverse_iterator<const_iterator> const_reverse_iterator;
+    typedef Alloc allocator_type;
 
    protected:
     //Alloc allocator;
@@ -48,6 +49,7 @@ namespace ds
     {
       start = getAllocator().allocate(n_);
       std::uninitialized_fill_n(start, n_, value_);
+
       finish = start + n_;
       cp_.first() = finish;
     }
@@ -58,11 +60,44 @@ namespace ds
     void insertAux(iterator position_, const value_type& x_)
     { emplaceAux(position_, x_); }
 
+    // These two constructIterDispatch methods
+    // needs to guarantee exception safety: commit-or-rollback
     template <typename Iter>
-    void constructIterDispatch(Iter first, Iter last, std::input_iterator_tag);
+    void
+    constructIterDispatch(Iter first, Iter last, std::input_iterator_tag)
+    {
+      size_t sz = std::distance(first, last);
+      auto ps = getAllocator().allocate(sz);
+      auto pf = ps;
+      try {
+        // If exception thrown, we need to do cleanup
+        pf = std::uninitialized_copy_n(first, sz, ps);
+      }
+      catch (...)
+      {
+        destroy(ps, pf);
+        getAllocator().deallocate(pf, sz);
+        throw;
+      }
+
+      destroy(begin(), end());
+      deallocate();
+
+      start = ps;
+      finish = pf;
+      cp_.first() = finish;
+    }
 
     template <typename Iter>
-    void constructIterDispatch(Iter first, Iter last, std::random_access_iterator_tag);
+    void
+    constructIterDispatch(Iter first, Iter last, std::random_access_iterator_tag)
+    {
+      Vector vtmp;
+      for (; first != last; ++first) vtmp.push_back(*first); 
+
+      // The swap idiom: for exception safety
+      vtmp.swap(*this);
+    }
 
     void rangeCheck(size_type n)
     { 
@@ -73,6 +108,10 @@ namespace ds
     }
 
    public:
+
+    allocator_type get_allocator() const
+    { return cp_.second(); }
+
     iterator begin() const { return start;  }
     iterator end() const { return finish; }
     const_iterator cbegin() const { return start; }
@@ -95,6 +134,8 @@ namespace ds
     size_type max_size() const { return std::numeric_limits<size_type>::max(); }
     size_type capacity() const { return size_type(cp_.first() - begin()); }
     bool empty() const { return start == finish; }
+    value_type* data() noexcept { return start; }
+    const value_type* data() const noexcept { return start; }
 
     reference operator[] (size_type n) { return *(begin() + n); }
     const_reference operator[] (size_type n) const { return *(begin() + n); }
@@ -108,7 +149,8 @@ namespace ds
     : cp_(nullptr, alloc) { fillInitialize(n, value); }
     explicit Vector(size_type n, const Alloc& alloc = Alloc())
     : cp_(nullptr, alloc) { fillInitialize(n, T()); }
-    Vector(std::initializer_list<value_type> il, const Alloc& alloc = Alloc());
+    Vector(std::initializer_list<value_type> il, const Alloc& alloc = Alloc())
+    : Vector(il.begin(), il.end()) {}
 
     // use SFINAE to de-initialize iterator-based constructors
     // when parameter passed in are integers template <typename InputIter, std::enable_if_t<
@@ -125,8 +167,39 @@ namespace ds
     : cp_(nullptr, alloc)
     {
       using IterTag = typename std::iterator_traits<InputIter>::iterator_category;
+      std::pair<iterator, iterator> p { nullptr, nullptr };
+
+      // constructIterDispatch() is exception-safe:
+      // conforms to the commit-or-rollback semantic
       constructIterDispatch(first, last, IterTag());
     }
+
+    // Assign: similar to ctors
+    template <
+              typename InputIter, 
+              std::enable_if_t<
+               std::is_base_of<
+                 std::input_iterator_tag, 
+                 typename std::iterator_traits<InputIter>::iterator_category
+                              >::value, 
+              int> = 0
+             >
+    void assign(InputIter first, InputIter last)
+    {
+      // For exception safety:
+      // if exception happend, the vector is kept unchanged
+      using IterTag = typename std::iterator_traits<InputIter>::iterator_category;
+      constructIterDispatch(first, last, IterTag());
+    }
+
+    void assign(size_type n, const T& value)
+    {
+      Vector vtmp(n, value);
+      vtmp.swap(*this);
+    }
+
+    void assign(std::initializer_list<value_type> il)
+    { assign(il.begin(), il.end()); }
   
     // Copy/dtor/assign/move rule of five
     ~Vector()
@@ -134,6 +207,7 @@ namespace ds
       destroy(begin(), end());
       deallocate();
     }
+
     Vector(const Vector<T, Alloc>& v);
     Vector<T, Alloc>& operator = (const Vector<T, Alloc>& rhs);
     Vector(Vector<T, Alloc>&& v);
@@ -158,6 +232,9 @@ namespace ds
       }
     }
 
+    void push_back(T&& x)
+    { emplace_back(std::move(x)); }
+
     template <typename... Args>
     void emplace_back(Args&&... args)
     {
@@ -172,6 +249,10 @@ namespace ds
         emplaceAux(end(), std::forward<Args>(args)...); 
       }
     }
+
+    template <typename... Args>
+    void emplace(iterator position_, Args&&... args)
+    { emplaceAux(position_, std::forward<Args>(args)...); }
 
     iterator erase(iterator first, iterator last)
     {

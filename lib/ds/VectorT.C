@@ -28,37 +28,6 @@ Vector<T, Alloc>::Vector(Vector<T, Alloc>&& v)
 }
 
 template <typename T, typename Alloc>
-template <typename Iter>
-void Vector<T, Alloc>::constructIterDispatch(Iter first,
-                                             Iter last, 
-                                             std::random_access_iterator_tag)
-{
-  size_t sz = std::distance(first, last);
-  start = getAllocator().allocate(sz);
-  std::uninitialized_copy_n(first, sz, start);
-  finish = start + sz;
-  cp_.first() = finish;
-}
-
-template <typename T, typename Alloc>
-template <typename Iter>
-void Vector<T, Alloc>::constructIterDispatch(Iter first,
-                                             Iter last, 
-                                             std::input_iterator_tag)
-{ for (; first != last; ++first) push_back(*first); }
-
-template <typename T, typename Alloc>
-Vector<T, Alloc>::Vector(std::initializer_list<value_type> il, const Alloc& alloc)
-: cp_(nullptr, alloc)
-{
-  auto sz = il.size();
-  start = getAllocator().allocate(sz);
-  std::uninitialized_copy_n(il.begin(), sz, start);
-  finish = start + sz;
-  cp_.first() = finish;
-}
-
-template <typename T, typename Alloc>
 void Vector<T, Alloc>::swap(Vector& v)
 {
   std::swap(start, v.start);
