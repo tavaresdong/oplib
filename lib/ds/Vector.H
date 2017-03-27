@@ -52,11 +52,12 @@ namespace ds
       cp_.first() = finish;
     }
 
-    void insertAux(iterator position_, const value_type& x_);
-
     template<typename... Args>
     void emplaceAux(iterator position_, Args&&... args);
    
+    void insertAux(iterator position_, const value_type& x_)
+    { emplaceAux(position_, x_); }
+
     template <typename Iter>
     void constructIterDispatch(Iter first, Iter last, std::input_iterator_tag);
 
