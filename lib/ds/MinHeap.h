@@ -3,35 +3,50 @@
 
 #include <vector>
 #include <functional>
-#include <unordered_map>
+#include <map>
 #include <utility>
 
 #include <assert.h>
 
 namespace oplib
 {
-  template <typename T, typename Comp = std::less<T>>
+  // A Heap contains two parts: the key and the score
+  // Keys should be distinct, and two keys are compared with KeyKeyComp.
+  // Scores could be equal, the heap property is kept according to 
+  // scores.
+  template <
+            typename Key,
+            typename Score,
+            typename KeyComp = std::less<Key>,
+            typename ScoreComp = std::less<Score>
+           >
   class MinHeap
   {
    public:
-    using value_type = T;
+    using key_type = Key;
+    using score_type = Score;
+    using value_type = std::pair<key_type, score_type>;
+    using reference = value_type&;
+    using const_reference = const value_type&;
 
-    MinHeap() : _comp(Comp()) {}
-    MinHeap(std::initializer_list<value_type> il_);
+    MinHeap() : _keyComp(KeyComp()), _scoreComp(ScoreComp()) {}
+
+    // TODO fix
+    MinHeap(std::initializer_list<key_type> il_);
 
     size_t size() const { return _elements.size(); }
     bool empty() const { return _elements.empty(); }
 
-    // Throw out_of_range if no element is in the heap
-    const T& top() const { return _elements.at(0); }
+    // Keyhrow out_of_range if no element is in the heap
+    const_reference top() const { return _elements.at(0); }
     void pop();
 
-    bool insert(const value_type& val_);
-    bool erase(const value_type& val_);
+    bool insert(const key_type& val_);
+    bool erase(const key_type& val_);
 
-    bool changeKey(const value_type& oldKey_, const value_type& newKey_);
+    bool changeKey(const key_type& oldKey_, const key_type& newKey_);
 
-    // For debugging purpose: Test whether the heap property is kept
+    // For debugging purpose: Keyest whether the heap property is kept
     bool heapified() const
     { return minHeapPropertyKept(0); }
 
@@ -45,56 +60,63 @@ namespace oplib
     void buildHeap();
     void buildIndex();
 
-    value_type& elemAt(size_t index_) const
+    const key_type& key(size_t index_)
+    { return _elements[index_].first; }
+
+    const score_type& score(size_t index_)
+    { return _elements[index_].second; }
+
+    const_reference elemAt(size_t index_) const
     { return _elements.at(index_); }
 
     void swapKey(size_t i, size_t j)
     {
       assert(i < _elements.size());
       assert(j < _elements.size());
-      assert(_keyIndex[_elements[j]] == j);
-      assert(_keyIndex[_elements[i]] == i);
+      assert(_keyIndex[_elements[j].first] == j);
+      assert(_keyIndex[_elements[i].first] == i);
 
       std::swap(_elements[i], _elements[j]);
-      _keyIndex[_elements[i]] = i;
-      _keyIndex[_elements[j]] = j;
+      _keyIndex[_elements[i].first] = i;
+      _keyIndex[_elements[j].first] = j;
 
-      assert(_keyIndex[_elements[j]] == j);
       assert(_keyIndex[_elements[i]] == i);
+      assert(_keyIndex[_elements[j]] == j);
     }
 
     void removeLast()
     {
-      _keyIndex.erase(_elements.back());
+      _keyIndex.erase(_elements.back().first);
       _elements.pop_back();
     }
 
-    static size_t parent(size_t i)
+    static constexpr size_t parent(size_t i)
     { return (i - 1) / 2; }
 
-    static size_t left(size_t i)
+    static constexpr size_t left(size_t i)
     { return i * 2 + 1; }
 
-    static size_t right(size_t i)
+    static constexpr size_t right(size_t i)
     { return i * 2 + 2; }
 
-    std::vector<T> _elements;
-    std::unordered_map<T, size_t> _keyIndex;
-    const Comp _comp;
+    const KeyComp _keyComp;
+    const ScoreComp _scoreComp;
+    std::vector<std::pair<key_type, score_type>> _elements;
+    std::map<key_type, size_t, KeyComp> _keyIndex;
   };
 
-  template <typename T, typename Comp>
-  void MinHeap<T, Comp>::siftDown(size_t index_)
+  template <typename Key, typename Score, typename KeyComp, typename ScoreComp>
+  void MinHeap<Key, Score, KeyComp, ScoreComp>::siftDown(size_t index_)
   {
     if (index_ >= size()) return;
     size_t smallest = index_;
 
     size_t left = MinHeap::left(index_);
-    if (left < size() && _comp(_elements[left], _elements[smallest]))
+    if (left < size() && _scoreComp(score(left), _score(smallest)))
       smallest = left;
 
     size_t right = MinHeap::right(index_);
-    if (right < size() && _comp(_elements[right], _elements[smallest]))
+    if (right < size() && _scoreComp(score(right), score(smallest)))
       smallest = right;
 
     if (smallest != index_)
@@ -104,12 +126,12 @@ namespace oplib
     }
   }
 
-  template <typename T, typename Comp>
-  void MinHeap<T, Comp>::siftUp(size_t index_)
+  template <typename Key, typename Score, typename KeyComp, typename ScoreComp>
+  void MinHeap<Key, Score, KeyComp, ScoreComp>::siftUp(size_t index_)
   {
     if (index_ == 0) return;
     size_t parent = MinHeap::parent(index_);
-    if (!_comp(_elements[parent], _elements[index_]))
+    if (!_scoreComp(score(parent), score(index_)))
     {
       swapKey(index_, parent);
       siftUp(parent);
@@ -117,18 +139,18 @@ namespace oplib
   }
 
   // Run in O(nlogn) time
-  template <typename T, typename Comp> 
-  void MinHeap<T, Comp>::buildIndex()
+  template <typename Key, typename Score, typename KeyComp, typename ScoreComp>
+  void MinHeap<Key, Score, KeyComp, ScoreComp>::buildIndex()
   {
     for (size_t ind = 0; ind < _elements.size(); ++ind)
     {
-      _keyIndex[_elements[ind]] = ind;
+      _keyIndex[key(ind)] = ind;
     }
   }
 
   // Run in O(nlogn) time
-  template <typename T, typename Comp> 
-  void MinHeap<T, Comp>::buildHeap()
+  template <typename Key, typename Score, typename KeyComp, typename ScoreComp>
+  void MinHeap<Key, Score, KeyComp, ScoreComp>::buildHeap()
   {
     // for (int index = _elements.size() / 2 - 1; index >= 0; --index)
     // {
@@ -137,28 +159,34 @@ namespace oplib
     // Here we need to remove duplicates, so instead of 
     // the traditional O(n) algorithm, we will simply sort the array,
     // and remove duplicates
-    std::sort(_elements.begin(), _elements.end(), _comp);
+
+    auto CompareFunctor = [] (const_reference p1, const_reference p2) {
+      return _scoreComp(p1.second, p2.second);
+    };
+
+    std::sort(_elements.begin(), _elements.end(), CompareFunctor);
 
     // Two elements are considered equal if neither of them is
-    // smaller than the other
+    // smaller than the other (strict weak ordering)
     _elements.erase(std::unique(_elements.begin(), _elements.end(),
-                    [&](const value_type& v1, const value_type& v2)
+                    [&](const_reference p1, const_reference p2)
                     {
-                      return !_comp(v1, v2) && !_comp(v2, v1);
+                      return !_keyComp(v1.first, v2.first) && 
+                             !_keyComp(v2.first, v1.first);
                     }),
                    _elements.end());
     buildIndex(); 
   }
 
-  template <typename T, typename Comp> 
-  MinHeap<T, Comp>::MinHeap(std::initializer_list<value_type> il_)
-  : _elements(il_), _comp(Comp())
+  template <typename Key, typename Score, typename KeyComp, typename ScoreComp> 
+  MinHeap<Key, Score, KeyComp, ScoreComp>::MinHeap(std::initializer_list<value_type> il_)
+  : _elements(il_), _keyComp(KeyComp()), _scoreComp(
   {
      buildHeap();
   }
 
-  template <typename T, typename Comp> 
-  void MinHeap<T, Comp>::pop()
+  template <typename Key, typename Score, typename KeyComp, typename ScoreComp>
+  void MinHeap<Key, Score, KeyComp, ScoreComp>::pop()
   {
     if (empty()) return;
     swapKey(0, _elements.size() - 1);
@@ -166,46 +194,46 @@ namespace oplib
     siftDown(0);
   }
 
-  template <typename T, typename Comp> 
-  bool MinHeap<T, Comp>::insert(const value_type& val_)
+  template <typename Key, typename Score, typename KeyComp, typename ScoreComp>
+  bool MinHeap<Key, Score, KeyComp, ScoreComp>::insert(const_reference val_)
   {
-    if (_keyIndex.count(val_))
+    if (_keyIndex.count(val_.first))
     {
-      // This value already exist in the heap,
+      // Keyhis value already exist in the heap,
       // you can only increase/decrease it
       // or delete it
       return false;
     }
 
     _elements.push_back(val_);
-    _keyIndex[val_] = _elements.size() - 1;
+    _keyIndex[val_.first] = _elements.size() - 1;
 
     siftUp(_elements.size() - 1);
     return true;
   }
 
-  template <typename T, typename Comp> 
-  bool MinHeap<T, Comp>::erase(const value_type& val_)
+  template <typename Key, typename Score, typename KeyComp, typename ScoreComp> 
+  bool MinHeap<Key, Score, KeyComp, ScoreComp>::erase(const_reference val_)
   {
-    if (!_keyIndex.count(val_))
+    if (!_keyIndex.count(val_.first))
     {
-      // The key does not exist
+      // Keyhe key does not exist
       return false;
     }
 
-    size_t index = _keyIndex[val_];
+    size_t index = _keyIndex[val_.first];
     swapKey(index, size() - 1);
     removeLast();
 
-    // The swapped value could be either smaller than its parent
+    // Keyhe swapped value could be either smaller than its parent
     // or bigger than its child.
     siftUp(index);
     siftDown(index);
     return true;
   }
 
-  template <typename T, typename Comp> 
-  bool MinHeap<T, Comp>::minHeapPropertyKept(size_t ind_) const
+  template <typename Key, typename Score, typename KeyComp, typename ScoreComp> 
+  bool MinHeap<Key, Score, KeyComp, ScoreComp>::minHeapPropertyKept(size_t ind_) const
   {
     assert(ind_ < _elements.size());
     auto left = MinHeap::left(ind_);
@@ -214,12 +242,12 @@ namespace oplib
     if (left >= size() && right >= size()) return true;
 
     bool kept = true;
-    if (!_comp(_elements[ind_], _elements[left]))
+    if (!_scoreComp(score(ind_), score(left)))
       kept = false;
 
     if (right < size())
     {
-      if (!_comp(_elements[ind_], _elements[right]))
+      if (!_scoreComp(score(ind_), score(right)))
         kept = false;
     }
 
@@ -234,23 +262,19 @@ namespace oplib
     }
   }
 
-  template <typename T, typename Comp> 
-  bool MinHeap<T, Comp>::changeKey(const value_type& oldKey_, const value_type& newKey_)
+  template <typename Key, typename Score, typename KeyComp, typename ScoreComp> 
+  bool MinHeap<Key, Score, KeyComp, ScoreComp>::
+  changeScore(const key_type& key_, const score_type& score_)
   {
-    if (_keyIndex.count(newKey_)) return false;
-    auto iter = _keyIndex.find(oldKey_);
+    auto iter = _keyIndex.find(key_);
     if (iter == _keyIndex.end())
     {
-      return false;
+      insert({key_, score_});
     }
     else
     {
       int ind = iter->second;
-      _keyIndex.erase(iter);
-      auto ret = _keyIndex.insert({newKey_, ind});
-      assert(ret.second);
-      assert(_elements[ind] == oldKey_);
-      _elements[ind] = newKey_;
+      _elements[ind] = score_;
       siftUp(ind);
       siftDown(ind);
       return true;
