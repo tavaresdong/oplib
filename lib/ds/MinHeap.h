@@ -31,8 +31,7 @@ namespace oplib
 
     MinHeap() : _keyComp(KeyComp()), _scoreComp(ScoreComp()) {}
 
-    // TODO fix
-    MinHeap(std::initializer_list<key_type> il_);
+    MinHeap(std::initializer_list<value_type> il_);
 
     size_t size() const { return _elements.size(); }
     bool empty() const { return _elements.empty(); }
@@ -41,10 +40,10 @@ namespace oplib
     const_reference top() const { return _elements.at(0); }
     void pop();
 
-    bool insert(const key_type& val_);
+    bool insert(const_reference val_);
     bool erase(const key_type& val_);
 
-    bool changeKey(const key_type& oldKey_, const key_type& newKey_);
+    bool changeScore(const key_type& key_, const score_type& score_);
 
     // For debugging purpose: Keyest whether the heap property is kept
     bool heapified() const
@@ -60,10 +59,10 @@ namespace oplib
     void buildHeap();
     void buildIndex();
 
-    const key_type& key(size_t index_)
+    const key_type& key(size_t index_) const
     { return _elements[index_].first; }
 
-    const score_type& score(size_t index_)
+    const score_type& score(size_t index_) const
     { return _elements[index_].second; }
 
     const_reference elemAt(size_t index_) const
@@ -80,8 +79,8 @@ namespace oplib
       _keyIndex[_elements[i].first] = i;
       _keyIndex[_elements[j].first] = j;
 
-      assert(_keyIndex[_elements[i]] == i);
-      assert(_keyIndex[_elements[j]] == j);
+      assert(_keyIndex[_elements[i].first] == i);
+      assert(_keyIndex[_elements[j].first] == j);
     }
 
     void removeLast()
@@ -99,9 +98,9 @@ namespace oplib
     static constexpr size_t right(size_t i)
     { return i * 2 + 2; }
 
+    std::vector<std::pair<key_type, score_type>> _elements;
     const KeyComp _keyComp;
     const ScoreComp _scoreComp;
-    std::vector<std::pair<key_type, score_type>> _elements;
     std::map<key_type, size_t, KeyComp> _keyIndex;
   };
 
@@ -112,7 +111,7 @@ namespace oplib
     size_t smallest = index_;
 
     size_t left = MinHeap::left(index_);
-    if (left < size() && _scoreComp(score(left), _score(smallest)))
+    if (left < size() && _scoreComp(score(left), score(smallest)))
       smallest = left;
 
     size_t right = MinHeap::right(index_);
@@ -159,9 +158,8 @@ namespace oplib
     // Here we need to remove duplicates, so instead of 
     // the traditional O(n) algorithm, we will simply sort the array,
     // and remove duplicates
-
-    auto CompareFunctor = [] (const_reference p1, const_reference p2) {
-      return _scoreComp(p1.second, p2.second);
+    auto CompareFunctor = [comp=_scoreComp] (const_reference p1, const_reference p2) {
+      return comp(p1.second, p2.second);
     };
 
     std::sort(_elements.begin(), _elements.end(), CompareFunctor);
@@ -171,8 +169,8 @@ namespace oplib
     _elements.erase(std::unique(_elements.begin(), _elements.end(),
                     [&](const_reference p1, const_reference p2)
                     {
-                      return !_keyComp(v1.first, v2.first) && 
-                             !_keyComp(v2.first, v1.first);
+                      return !_keyComp(p1.first, p2.first) && 
+                             !_keyComp(p2.first, p1.first);
                     }),
                    _elements.end());
     buildIndex(); 
@@ -180,7 +178,7 @@ namespace oplib
 
   template <typename Key, typename Score, typename KeyComp, typename ScoreComp> 
   MinHeap<Key, Score, KeyComp, ScoreComp>::MinHeap(std::initializer_list<value_type> il_)
-  : _elements(il_), _keyComp(KeyComp()), _scoreComp(
+  : _elements(il_), _keyComp(KeyComp()), _scoreComp(ScoreComp())
   {
      buildHeap();
   }
@@ -213,15 +211,15 @@ namespace oplib
   }
 
   template <typename Key, typename Score, typename KeyComp, typename ScoreComp> 
-  bool MinHeap<Key, Score, KeyComp, ScoreComp>::erase(const_reference val_)
+  bool MinHeap<Key, Score, KeyComp, ScoreComp>::erase(const key_type& key_)
   {
-    if (!_keyIndex.count(val_.first))
+    if (!_keyIndex.count(key_))
     {
       // Keyhe key does not exist
       return false;
     }
 
-    size_t index = _keyIndex[val_.first];
+    size_t index = _keyIndex[key_];
     swapKey(index, size() - 1);
     removeLast();
 
@@ -269,12 +267,12 @@ namespace oplib
     auto iter = _keyIndex.find(key_);
     if (iter == _keyIndex.end())
     {
-      insert({key_, score_});
+      return insert({key_, score_});
     }
     else
     {
       int ind = iter->second;
-      _elements[ind] = score_;
+      _elements[ind].second = score_;
       siftUp(ind);
       siftDown(ind);
       return true;
