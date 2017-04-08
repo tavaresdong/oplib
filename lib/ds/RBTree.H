@@ -146,7 +146,7 @@ namespace ds
     { return _allocator.allocate(1); }
 
     void putNode(NodePtr ptr_)
-    { _allocator.deallocate(ptr_, 1); }
+    { if (ptr_ != nullptr) _allocator.deallocate(ptr_, 1); }
 
     NodePtr createNode(const value_type& val_)
     {
@@ -218,6 +218,8 @@ namespace ds
       _header->_right = _header;
     }
 
+    NodePtr copy(NodePtr cur_, NodePtr parent_);
+
     void clear(NodePtr ptr_);
 
     iterator insert(NodePtr child_, NodePtr parent_, const value_type& val_);
@@ -238,6 +240,12 @@ namespace ds
 
     explicit RBTree(const Comp& comp_ = Comp(),
                     const allocator_type& alloc_ = allocator_type());
+    RBTree(const RBTree& rhs_);
+    RBTree& operator = (const RBTree& rhs_);
+
+    RBTree(RBTree&& rhs_);
+    RBTree& operator = (RBTree&& rhs_);
+
     ~RBTree()
     {
       clear();
@@ -274,11 +282,14 @@ namespace ds
     // Modify methods
     void clear()
     {
-      clear(root()); 
-      _header->_parent = nullptr;
-      _header->_left = _header;
-      _header->_right = _header;
-      _nodeCount = 0;
+      if (_header != nullptr)
+      {
+        clear(root()); 
+        _header->_parent = nullptr;
+        _header->_left = _header;
+        _header->_right = _header;
+        _nodeCount = 0;
+      }
     }
 
     iterator insertEqual(const value_type& val_);

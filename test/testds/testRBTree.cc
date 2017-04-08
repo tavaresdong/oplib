@@ -54,6 +54,25 @@ void RBTreeTest::TearDown()
   EXPECT_TRUE(rbtree.rbPropertyKept());
 }
 
+TEST_F(RBTreeTest, testCopyCtor)
+{
+  {
+    oplib::ds::RBTree<int, int, KeyOfValue, std::less<int>> rbtree2(rbtree);
+    EXPECT_TRUE(rbtree.rbPropertyKept());
+    EXPECT_TRUE(rbtree2.rbPropertyKept());
+    EXPECT_EQ(rbtree.size(), rbtree2.size());
+    for (auto iter1 = rbtree.begin(), iter2 = rbtree2.begin();
+         iter1 != rbtree.end() && iter2 != rbtree2.end();
+         ++iter1, ++iter2)
+    {
+      EXPECT_EQ(*iter1, *iter2);
+    }
+  }
+
+  EXPECT_EQ(rbtree.size(), 9u);
+  EXPECT_TRUE(rbtree.rbPropertyKept());
+}
+
 TEST_F(RBTreeTest, testInsert)
 {
   EXPECT_FALSE(rbtree.insertUnique(12).second);

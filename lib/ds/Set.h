@@ -54,6 +54,21 @@ namespace detail
     : _impl(comp_, alloc_)
     {}
 
+    // Rule of 5
+    Set(const Set& rhs_) : _impl(rhs_._impl) {}
+    Set& operator = (const Set& rhs_)
+    {
+      _impl.operator = (rhs_._impl);
+      return *this;
+    }
+    Set(Set&& rhs_) : _impl(std::move(rhs_._impl)) {}
+    Set& operator = (Set&& rhs_)
+    {
+      _impl.operator = (std::move(rhs_._impl));
+      return *this;
+    }
+    ~Set() {}
+
     template <typename InputIterator>
     Set(InputIterator first_, InputIterator last_,
         const key_compare& comp_ = key_compare(),
@@ -64,8 +79,6 @@ namespace detail
                                      _impl.insertUnique(val_);
                                    });
     }
-
-    ~Set() {}
 
    public:
 

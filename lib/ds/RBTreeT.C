@@ -432,6 +432,12 @@ template <typename Key, typename Value, class KeyOfValue,
           typename Comp, class Alloc>
 bool RBTree<Key, Value, KeyOfValue, Comp, Alloc>::rbPropertyKept() const
 {
+  if (_header == nullptr)
+  {
+    if (_nodeCount != 0) return false;
+    return true;
+  }
+
   // (0.0) When tree is empty, _header' _left and _right points
   // to _header itself
   if (_header->_parent == nullptr)
@@ -945,4 +951,70 @@ void RBTree<Key, Value, KeyOfValue, Comp, Alloc>::eraseOneChild(RBNodeBase* node
 
   destroyNode(static_cast<NodePtr>(node_));
   --_nodeCount;
+}
+
+template <typename Key, typename Value, class KeyOfValue,
+          typename Comp, class Alloc>
+RBTree<Key, Value, KeyOfValue, Comp, Alloc>::RBTree(const RBTree& rhs_)
+: _allocator(rhs_._allocator),
+  _nodeCount(rhs_._nodeCount),
+  _comparator(rhs_._comparator),
+  _keyExtractor(rhs_._keyExtractor)
+{
+  init();
+  if (rhs_.empty())
+    return;
+  else
+  {
+    _header->_parent = copy(rhs_.root(), _header);
+    _header->_left = RBNodeBase::minnode(_header->_parent);
+    _header->_right = RBNodeBase::maxnode(_header->_parent);
+  }
+}
+
+template <typename Key, typename Value, class KeyOfValue,
+          typename Comp, class Alloc>
+typename RBTree<Key, Value, KeyOfValue, Comp, Alloc>::NodePtr
+RBTree<Key, Value, KeyOfValue, Comp, Alloc>::copy(NodePtr cur_, NodePtr parent_)
+{
+  if (cur_ == nullptr) return nullptr;
+  NodePtr nd = createNode(cur_->_value);
+  nd->_parent = parent_;
+  nd->_color = cur_->_color;
+  nd->_left = copy(static_cast<NodePtr>(cur_->_left), nd);
+  nd->_right = copy(static_cast<NodePtr>(cur_->_right), nd);
+  return nd;
+}
+
+template <typename Key, typename Value, class KeyOfValue,
+          typename Comp, class Alloc>
+RBTree<Key, Value, KeyOfValue, Comp, Alloc>&
+RBTree<Key, Value, KeyOfValue, Comp, Alloc>::operator = (const RBTree<Key, Value, KeyOfValue, Comp, Alloc>& rhs_)
+{
+  RBTree<Key, Value, KeyOfValue, Comp, Alloc> tmp(rhs_);
+  swap(tmp);
+  return *this;
+}
+
+template <typename Key, typename Value, class KeyOfValue,
+          typename Comp, class Alloc>
+RBTree<Key, Value, KeyOfValue, Comp, Alloc>::RBTree(RBTree&& rhs_)
+: _allocator(std::move(rhs_._allocator)),
+  _nodeCount(rhs_._nodeCount),
+  _comparator(std::move(rhs_._comparator)),
+  _keyExtractor(std::move(rhs_._keyExtractor))
+{
+  _header = rhs_._header;
+  rhs_._nodeCount = 0;
+  rhs_._header = nullptr;
+}
+
+template <typename Key, typename Value, class KeyOfValue,
+          typename Comp, class Alloc>
+RBTree<Key, Value, KeyOfValue, Comp, Alloc>&
+RBTree<Key, Value, KeyOfValue, Comp, Alloc>::operator = (RBTree<Key, Value, KeyOfValue, Comp, Alloc>&& rhs_) // Yes, by value
+{
+  RBTree<Key, Value, KeyOfValue, Comp, Alloc> tmp(std::move(rhs_));
+  swap(tmp);
+  return *this;
 }
