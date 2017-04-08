@@ -88,10 +88,10 @@ namespace detail
     value_compare value_comp() const { return _impl.key_comp(); }
 
     // Modifiers
+    // TODO insert an rvalue insert a init-list 
     std::pair<iterator, bool> insert(const value_type& val_)
     { return _impl.insertUnique(val_); }
 
-    // Insert with a hint
     iterator insert(const_iterator position, const value_type& val_)
     { return _impl.insertUnique(position, val_); }
 
@@ -103,10 +103,20 @@ namespace detail
                                    });
     }
 
+    void clear()
+    { _impl.clear(); }
+
+    void swap(Set& rhs_)
+    { _impl.swap(rhs_._impl); }
+
    private:
     imp_type _impl;
   };
 
+  // Oveload swap() for Set 
+  template <typename T, typename Comp, typename Alloc>
+  void swap(Set<T, Comp, Alloc>& v1, Set<T, Comp, Alloc>& v2)
+  { v1.swap(v2); }
 }
 }
 #endif

@@ -4,6 +4,7 @@
 #include <iostream>
 #include <vector>
 #include <iterator>
+#include <utility>
 
 class SetTest : public ::testing::Test 
 {
@@ -86,4 +87,30 @@ TEST_F(SetTest, testHintInsert)
   EXPECT_EQ(*iter, 5);
   iter = set.insert(iter, 4);
   EXPECT_EQ(*iter, 4);
+}
+
+TEST_F(SetTest, testClear)
+{
+  oplib::ds::Set<int> set;
+  std::vector<int> vec { 3, 2, 1, 5};
+  set.insert(vec.begin(), vec.end());
+  EXPECT_EQ(set.size(), 4u);
+  set.clear();
+  EXPECT_TRUE(set.empty());
+}
+
+TEST_F(SetTest, TestSwap)
+{
+  oplib::ds::Set<int> set;
+  std::vector<int> vec { 3, 2, 1, 5 };
+  set.insert(vec.begin(), vec.end());
+
+  oplib::ds::Set<int> set2;
+  set2.insert(3);
+  using std::swap;
+  swap(set, set2);
+  EXPECT_EQ(set.size(), 1u);
+  EXPECT_EQ(set2.size(), 4u);
+  set.clear();
+  EXPECT_EQ(set2.size(), 4u);
 }

@@ -285,6 +285,15 @@ namespace ds
       if (pos != end()) return erase(pos);
       return std::make_pair(end(), false);
     }
+
+    void swap(RBTree& rhs_)
+    {
+      std::swap(_allocator, rhs_._allocator);
+      std::swap(_nodeCount, rhs_._nodeCount);
+      std::swap(_header, rhs_._header);
+      std::swap(_comparator, rhs_._comparator);
+      std::swap(_keyExtractor, rhs_._keyExtractor);
+    }
   };
 
   #include "RBTreeT.C"
