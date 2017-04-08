@@ -1,6 +1,9 @@
 #include "gtest/gtest.h"
 #include <ds/Set.h>
+
+#include <iostream>
 #include <vector>
+#include <iterator>
 
 class SetTest : public ::testing::Test 
 {
@@ -44,4 +47,43 @@ TEST_F(SetTest, testBeginEnd)
     EXPECT_TRUE(pre < *ib);
     pre = *ib;
   }
+}
+
+TEST_F(SetTest, testKeyComp)
+{
+  oplib::ds::Set<int> set;
+  auto keycomp = set.key_comp();
+  EXPECT_TRUE(keycomp(1, 2));
+  EXPECT_FALSE(keycomp(2, 1));
+  EXPECT_FALSE(keycomp(1, 1));
+}
+
+TEST_F(SetTest, testInsert)
+{
+  oplib::ds::Set<int> set;
+  EXPECT_TRUE(set.insert(3).second);
+  EXPECT_TRUE(set.insert(1).second);
+  EXPECT_FALSE(set.insert(1).second);
+}
+
+TEST_F(SetTest, testRangeInsert)
+{
+  oplib::ds::Set<int> set;
+  std::vector<int> vec { 3, 2, 1, 4, 3 };
+  set.insert(vec.begin(), vec.end());
+  for (auto iter = set.begin(); iter != set.end(); ++iter)
+    std::cout << *iter << " ";
+  EXPECT_EQ(set.size(), 4u);
+}
+
+TEST_F(SetTest, testHintInsert)
+{
+  oplib::ds::Set<int> set;
+  std::vector<int> vec { 3, 2, 1, 5};
+  set.insert(vec.begin(), vec.end());
+  auto iter = set.cbegin();
+  std::advance(iter, 3);
+  EXPECT_EQ(*iter, 5);
+  iter = set.insert(iter, 4);
+  EXPECT_EQ(*iter, 4);
 }

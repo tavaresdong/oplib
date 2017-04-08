@@ -54,7 +54,7 @@ void RBTreeTest::TearDown()
   EXPECT_TRUE(rbtree.rbPropertyKept());
 }
 
-TEST_F(RBTreeTest, testInsertion)
+TEST_F(RBTreeTest, testInsert)
 {
   EXPECT_FALSE(rbtree.insertUnique(12).second);
   EXPECT_TRUE(rbtree.insertUnique(16).second);
@@ -67,6 +67,27 @@ TEST_F(RBTreeTest, testInsertion)
   {
     EXPECT_TRUE(*first < *second);
   }
+}
+
+TEST_F(RBTreeTest, testInsertHint)
+{
+  // hint to insert before begin(): current smallest element
+  auto iter = rbtree.insertUnique(rbtree.begin(), 2);
+  EXPECT_TRUE(iter == rbtree.begin());
+  EXPECT_TRUE(rbtree.rbPropertyKept());
+
+  // hint to insert before end: current largest element
+  iter = rbtree.insertUnique(rbtree.end(), 100);
+  EXPECT_TRUE(iter == --rbtree.end());
+  EXPECT_TRUE(rbtree.rbPropertyKept());
+
+  iter = rbtree.begin();
+  std::advance(iter, 5);
+  EXPECT_EQ(*iter, 10);
+
+  iter = rbtree.insertUnique(iter, 9);
+  EXPECT_TRUE(*iter == 9);
+  EXPECT_TRUE(rbtree.rbPropertyKept());
 }
 
 TEST_F(RBTreeTest, testFind)

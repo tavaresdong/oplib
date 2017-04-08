@@ -48,6 +48,7 @@ namespace detail
 
    public:
     // Constructor/Destructors
+    // TODO copy construction move constructor
     explicit Set(const key_compare& comp_ = key_compare(),
                  const allocator_type& alloc_ = allocator_type())
     : _impl(comp_, alloc_)
@@ -64,23 +65,43 @@ namespace detail
                                    });
     }
 
-    // TODO copy construction move constructor
-
-
     ~Set() {}
 
    public:
-    // Accessors
+
+    // Capacity 
     size_type size() const { return _impl.size(); }
     bool empty() const { return _impl.empty(); }
     size_type max_size() const { return _impl.max_size(); }
 
+    // Iterators
+    // TODO rbegin rend crbegin crend
     iterator begin() { return _impl.begin(); }
     iterator end() { return _impl.end(); }
     const_iterator cbegin() const { return _impl.cbegin(); }
     const_iterator cend() const { return _impl.cend(); }
 
-    // TODO rbegin rend crbegin crend
+    // Note: When accessing a member from a const member function,
+    // the member automatically became const, so _impl inside
+    // the method is regarded as const
+    key_compare key_comp() const { return _impl.key_comp(); }
+    value_compare value_comp() const { return _impl.key_comp(); }
+
+    // Modifiers
+    std::pair<iterator, bool> insert(const value_type& val_)
+    { return _impl.insertUnique(val_); }
+
+    // Insert with a hint
+    iterator insert(const_iterator position, const value_type& val_)
+    { return _impl.insertUnique(position, val_); }
+
+    template <typename InputIterator>
+    void insert(InputIterator first_, InputIterator last_)
+    {
+      std::for_each(first_, last_, [&] (const auto& val_) {
+                                     _impl.insertUnique(val_);
+                                   });
+    }
 
    private:
     imp_type _impl;

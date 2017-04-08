@@ -52,7 +52,6 @@ namespace ds
   {
     using RBNodeBasePtr = RBNodeBase::Ptr;
     using iterator_tag = std::bidirectional_iterator_tag;
-    using difference_type = ptrdiff_t;
 
     RBNodeBasePtr _pnode;
   };
@@ -66,6 +65,8 @@ namespace ds
     using iterator = RBIterator<Value, Value&, Value*>;
     using const_iterator = RBIterator<Value, const Value&, const Value*>;
     using self = RBIterator<Value, Ref, Ptr>;
+    using difference_type = ptrdiff_t;
+    using iterator_category = std::bidirectional_iterator_tag;
     using RBNodePtr = typename RBNode<Value>::Ptr;
 
     RBIterator() {}
@@ -123,6 +124,7 @@ namespace ds
     using iterator = RBIterator<value_type, reference, pointer>;
     using const_iterator = const RBIterator<value_type, reference, pointer>; 
     using allocator_type = Alloc;
+    using key_compare = Comp;
 
    protected:
     using NodeType = RBNode<Value>;
@@ -249,6 +251,7 @@ namespace ds
     bool empty() const { return _nodeCount == 0; }
     size_type size() const { return _nodeCount; }
     size_type max_size() const { return size_type(-1); }
+    key_compare key_comp() const { return _comparator; }
     iterator find(const key_type& key_) const;
 
     // Used for debugging: whether the Red-Black tree
@@ -267,7 +270,9 @@ namespace ds
     }
 
     iterator insertEqual(const value_type& val_);
+
     std::pair<iterator, bool> insertUnique(const value_type& val_);
+    iterator insertUnique(const_iterator iter_, const value_type& val_);
 
     // Erase an element by position
     std::pair<iterator, bool> erase(iterator iter);

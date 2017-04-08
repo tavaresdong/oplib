@@ -37,6 +37,7 @@ void RBIterator<Value, Ref, Ptr>::decrement()
     // and root must be black, header is red, so _pnode is end()
     // --end() == the last element
     _pnode = _pnode->_right;
+    return;
   }
   if (_pnode->_left != nullptr)
   {
@@ -107,7 +108,7 @@ RBTree<Key, Value, KeyOfValue, Comp, Alloc>::insertEqual(const value_type& val_)
 template <typename Key, typename Value, class KeyOfValue,
           typename Comp, class Alloc>
 typename RBTree<Key, Value, KeyOfValue, Comp, Alloc>::iterator
-RBTree<Key, Value, KeyOfValue, Comp, Alloc>::insert(NodePtr child_, NodePtr parent_, const value_type& val_)
+RBTree<Key, Value, KeyOfValue, Comp, Alloc>::insert(NodePtr /* child */, NodePtr parent_, const value_type& val_)
 {
   auto newNode = createNode(val_);
 
@@ -206,6 +207,58 @@ RBTree<Key, Value, KeyOfValue, Comp, Alloc>::insertUnique(const value_type& val_
                                  val_), true);
 
   return std::make_pair(it, false);
+}
+
+template <typename Key, typename Value, class KeyOfValue,
+          typename Comp, class Alloc>
+typename RBTree<Key, Value, KeyOfValue, Comp, Alloc>::iterator
+RBTree<Key, Value, KeyOfValue, Comp, Alloc>::insertUnique(const_iterator iter_, const value_type& val_)
+{
+  // Insert with a hint, if hint is valid, constant time insertion is guaranteed
+  if (iter_._pnode == leftmost())
+  {
+    // (1) iter points to begin()
+    if (size() > 0 && _comparator(val_, key(static_cast<NodePtr>(iter_._pnode))))
+    {
+      return insert(static_cast<NodePtr>(iter_._pnode),
+                    static_cast<NodePtr>(iter_._pnode), val_);
+    }
+  }
+  else if (iter_._pnode == _header)
+  {
+    // (2) iter points to end() and val_ is larger than the biggest
+    if (size() > 0 && _comparator(key(static_cast<NodePtr>(rightmost())), val_))
+    {
+      return insert(nullptr,
+                    static_cast<NodePtr>(rightmost()), val_);
+    }
+  }
+  else
+  {
+    auto before = iter_;
+    --before;
+
+    // If before < val_ < iter, then hint is the right place to insert
+    // (1) if iter->left != nullptr then before is the rightmost node of iter->left
+    //     so before's right must be nullptr, we can insert here
+    // (2) otherwise, iter->left is nullptr and before is iter_'s parent
+    //     and we can insert the new node into iter_'s left
+    if (_comparator(key(static_cast<NodePtr>(before._pnode)), val_) &&
+        _comparator(val_, key(static_cast<NodePtr>(iter_._pnode))))
+    {
+      if (right(before._pnode) == nullptr)
+      {
+        return insert(nullptr, static_cast<NodePtr>(before._pnode), val_);
+      }
+      else
+      {
+        return insert(nullptr, static_cast<NodePtr>(iter_._pnode), val_);
+      }
+    }
+  }
+
+  // Fall back to general insert method: O(logn)
+  return insertUnique(val_).first;
 }
 
 template <typename Key, typename Value, class KeyOfValue,
@@ -392,7 +445,6 @@ bool RBTree<Key, Value, KeyOfValue, Comp, Alloc>::rbPropertyKept() const
   // _header->_right points to the largest node of the tree
   if (_header->_parent != nullptr)
   {
-    std::cout << "0.1" << std::endl;
     if (_header->_left != RBNodeBase::minnode(_header->_parent) ||
         _header->_right != RBNodeBase::maxnode(_header->_parent))
       return false;
