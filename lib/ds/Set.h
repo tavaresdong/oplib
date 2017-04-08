@@ -113,6 +113,34 @@ namespace detail
     iterator erase(iterator first_, iterator last_)
     { return _impl.erase(first_, last_); }
 
+    const_iterator find(const value_type& val_) const
+    { return _impl.find(val_); }
+
+    iterator find(const value_type& val_)
+    { return _impl.find(val_); }
+
+    size_type count(const value_type& val_) const
+    { return (_impl.find(val_) == _impl.cend()) ? 0 : 1; }
+
+    const_iterator lower_bound(const value_type& val_) const
+    { return _impl.lower_bound(val_); }
+
+    iterator lower_bound(const value_type& val_)
+    { return _impl.lower_bound(val_); }
+
+    const_iterator upper_bound(const value_type& val_) const
+    { return _impl.upper_bound(val_); }
+
+    iterator upper_bound(const value_type& val_)
+    { return _impl.upper_bound(val_); }
+
+    std::pair<iterator, iterator> equal_range(const value_type& val_) 
+    { return _impl.equal_range(val_); }
+
+    std::pair<const_iterator, const_iterator> equal_range(const value_type& val_) const
+
+    { return _impl.equal_range(val_); }
+
     void clear()
     { _impl.clear(); }
 

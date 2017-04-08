@@ -100,10 +100,10 @@ namespace ds
       return tmp;
     }
 
-    bool operator == (const RBIterator& rhs_)
+    bool operator == (const RBIterator& rhs_) const
     { return _pnode == rhs_._pnode; }
    
-    bool operator != (const RBIterator& rhs_)
+    bool operator != (const RBIterator& rhs_) const
     { return !operator ==(rhs_); }
 
   };
@@ -253,7 +253,18 @@ namespace ds
     size_type size() const { return _nodeCount; }
     size_type max_size() const { return size_type(-1); }
     key_compare key_comp() const { return _comparator; }
-    iterator find(const key_type& key_) const;
+
+    const_iterator find(const key_type& key_) const;
+    iterator find(const key_type& key_);
+
+    const_iterator lower_bound(const key_type& key_) const;
+    iterator lower_bound(const key_type& key_);
+
+    const_iterator upper_bound(const key_type& key_) const;
+    iterator upper_bound(const key_type& key_);
+
+    std::pair<const_iterator, const_iterator> equal_range(const key_type& key_) const;
+    std::pair<iterator, iterator> equal_range(const key_type& key_);
 
     // Used for debugging: whether the Red-Black tree
     // Property is kept: header is (red/no two consecutive red nodes in a path/

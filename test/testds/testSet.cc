@@ -154,3 +154,69 @@ TEST_F(SetTest, TestSwap)
   set.clear();
   EXPECT_EQ(set2.size(), 4u);
 }
+
+TEST_F(SetTest, TestFindCount)
+{
+  oplib::ds::Set<int> set;
+  std::vector<int> vec { 3, 2, 1, 5 };
+  set.insert(vec.begin(), vec.end());
+
+  auto it = set.find(3);
+  EXPECT_EQ(*it, 3);
+
+  it = set.find(10);
+  EXPECT_TRUE(it == set.end());
+
+  auto cnt = set.count(3);
+  EXPECT_EQ(cnt, 1u);
+  
+  cnt = set.count(20);
+  EXPECT_EQ(cnt, 0u);
+}
+
+TEST_F(SetTest, TestLowerBound)
+{
+  oplib::ds::Set<int> set;
+  std::vector<int> vec { 3, 2, 1, 5 };
+  set.insert(vec.begin(), vec.end());
+
+  auto it = set.lower_bound(-1);
+  EXPECT_EQ(*it, 1);
+  it = set.lower_bound(2);
+  EXPECT_EQ(*it, 2);
+  it = set.lower_bound(4);
+  EXPECT_EQ(*it, 5);
+  it = set.lower_bound(6);
+  EXPECT_TRUE(it == set.end());
+}
+
+TEST_F(SetTest, TestUpperBound)
+{
+  oplib::ds::Set<int> set;
+  std::vector<int> vec { 3, 2, 1, 5 };
+  set.insert(vec.begin(), vec.end());
+
+  auto it = set.upper_bound(-1);
+  EXPECT_EQ(*it, 1);
+  it = set.upper_bound(3);
+  EXPECT_EQ(*it, 5);
+  it = set.upper_bound(4);
+  EXPECT_EQ(*it, 5);
+  it = set.upper_bound(5);
+  EXPECT_TRUE(it == set.end());
+}
+
+TEST_F(SetTest, TestEqualRange)
+{
+  oplib::ds::Set<int> set;
+  std::vector<int> vec { 3, 2, 1, 5 };
+  set.insert(vec.begin(), vec.end());
+
+  auto range = set.equal_range(1);
+  EXPECT_EQ(*range.first, 1);
+  EXPECT_EQ(*range.second, 2);
+
+  range = set.equal_range(0);
+  EXPECT_EQ(*range.first, 1);
+  EXPECT_EQ(*range.second, 1);
+}

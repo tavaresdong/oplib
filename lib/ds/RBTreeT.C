@@ -484,7 +484,7 @@ bool RBTree<Key, Value, KeyOfValue, Comp, Alloc>::rbPropertyKept() const
 
 template <typename Key, typename Value, class KeyOfValue,
           typename Comp, class Alloc>
-typename RBTree<Key, Value, KeyOfValue, Comp, Alloc>::iterator
+typename RBTree<Key, Value, KeyOfValue, Comp, Alloc>::const_iterator
 RBTree<Key, Value, KeyOfValue, Comp, Alloc>::find(const key_type& key_) const
 {
   auto cur = root();
@@ -497,6 +497,198 @@ RBTree<Key, Value, KeyOfValue, Comp, Alloc>::find(const key_type& key_) const
   }
   if (cur != nullptr) return cur;
   return _header;
+}
+
+// TODO: not good, duplicate code, need refactor
+template <typename Key, typename Value, class KeyOfValue,
+          typename Comp, class Alloc>
+typename RBTree<Key, Value, KeyOfValue, Comp, Alloc>::iterator
+RBTree<Key, Value, KeyOfValue, Comp, Alloc>::find(const key_type& key_)
+{
+  auto cur = root();
+  while (cur != nullptr && key(cur) != key_)
+  {
+    if (_comparator(key_, key(cur)))
+      cur = static_cast<NodePtr>(cur->_left);
+    else
+      cur = static_cast<NodePtr>(cur->_right);
+  }
+  if (cur != nullptr) return cur;
+  return _header;
+}
+
+template <typename Key, typename Value, class KeyOfValue,
+          typename Comp, class Alloc>
+typename RBTree<Key, Value, KeyOfValue, Comp, Alloc>::iterator
+RBTree<Key, Value, KeyOfValue, Comp, Alloc>::lower_bound(const key_type& key_)
+{
+  auto par = _header;
+  auto cur = root();
+  while (cur != nullptr && key(cur) != key_)
+  {
+    par = cur;
+    if (_comparator(key_, key(cur)))
+      cur = static_cast<NodePtr>(cur->_left);
+    else
+      cur = static_cast<NodePtr>(cur->_right);
+  }
+  if (cur != nullptr) return cur;
+  else if (par == _header) return par;
+  else
+  {
+    iterator iter { par };
+    if (_comparator(key(par), key_)) ++iter;
+    return iter;
+  }
+}
+
+template <typename Key, typename Value, class KeyOfValue,
+          typename Comp, class Alloc>
+typename RBTree<Key, Value, KeyOfValue, Comp, Alloc>::const_iterator
+RBTree<Key, Value, KeyOfValue, Comp, Alloc>::lower_bound(const key_type& key_) const
+{
+  auto par = _header;
+  auto cur = root();
+  while (cur != nullptr && key(cur) != key_)
+  {
+    par = cur;
+    if (_comparator(key_, key(cur)))
+      cur = static_cast<NodePtr>(cur->_left);
+    else
+      cur = static_cast<NodePtr>(cur->_right);
+  }
+  if (cur != nullptr) return cur;
+  else if (par == _header) return par;
+  else
+  {
+    const_iterator iter { par };
+    if (_comparator(key(par), key_)) ++iter;
+    return iter;
+  }
+}
+
+template <typename Key, typename Value, class KeyOfValue,
+          typename Comp, class Alloc>
+typename RBTree<Key, Value, KeyOfValue, Comp, Alloc>::iterator
+RBTree<Key, Value, KeyOfValue, Comp, Alloc>::upper_bound(const key_type& key_)
+{
+  auto par = _header;
+  auto cur = root();
+  while (cur != nullptr && key(cur) != key_)
+  {
+    par = cur;
+    if (_comparator(key_, key(cur)))
+      cur = static_cast<NodePtr>(cur->_left);
+    else
+      cur = static_cast<NodePtr>(cur->_right);
+  }
+  if (cur != nullptr)
+  {
+    iterator iter { cur };
+    while (!_comparator(key_, key(static_cast<NodePtr>(iter._pnode)))) ++iter;
+    return iter;
+  }
+  else if (par == _header) return par;
+  else
+  {
+    iterator iter { par };
+    while (!_comparator(key_, key(static_cast<NodePtr>(iter._pnode)))) ++iter;
+    return iter;
+  }
+}
+
+template <typename Key, typename Value, class KeyOfValue,
+          typename Comp, class Alloc>
+typename RBTree<Key, Value, KeyOfValue, Comp, Alloc>::const_iterator
+RBTree<Key, Value, KeyOfValue, Comp, Alloc>::upper_bound(const key_type& key_) const
+{
+  auto par = _header;
+  auto cur = root();
+  while (cur != nullptr && key(cur) != key_)
+  {
+    par = cur;
+    if (_comparator(key_, key(cur)))
+      cur = static_cast<NodePtr>(cur->_left);
+    else
+      cur = static_cast<NodePtr>(cur->_right);
+  }
+  if (cur != nullptr)
+  {
+    const_iterator iter { cur };
+    while (!_comparator(key_, key(static_cast<NodePtr>(iter._pnode)))) ++iter;
+    return iter;
+  }
+  else if (par == _header) return par;
+  else
+  {
+    const_iterator iter { par };
+    while (!_comparator(key_, key(static_cast<NodePtr>(iter._pnode)))) ++iter;
+    return iter;
+  }
+}
+
+template <typename Key, typename Value, class KeyOfValue,
+          typename Comp, class Alloc>
+std::pair<typename RBTree<Key, Value, KeyOfValue, Comp, Alloc>::iterator,
+          typename RBTree<Key, Value, KeyOfValue, Comp, Alloc>::iterator>
+RBTree<Key, Value, KeyOfValue, Comp, Alloc>::equal_range(const key_type& key_)
+{
+  auto par = _header;
+  auto cur = root();
+  while (cur != nullptr && key(cur) != key_)
+  {
+    par = cur;
+    if (_comparator(key_, key(cur)))
+      cur = static_cast<NodePtr>(cur->_left);
+    else
+      cur = static_cast<NodePtr>(cur->_right);
+  }
+  if (cur != nullptr)
+  {
+    iterator iter { cur }, next { cur };
+    while (!_comparator(key_, key(static_cast<NodePtr>(next._pnode)))) ++next;
+    return std::make_pair(iter, next);
+  }
+  else if (par == _header) 
+    return std::make_pair(iterator(par), iterator(par));
+  else
+  {
+    iterator iter { par };
+    while (!_comparator(key_, key(static_cast<NodePtr>(iter._pnode)))) ++iter;
+    return std::make_pair(iter, iter);
+  }
+}
+
+template <typename Key, typename Value, class KeyOfValue,
+          typename Comp, class Alloc>
+std::pair<typename RBTree<Key, Value, KeyOfValue, Comp, Alloc>::const_iterator,
+          typename RBTree<Key, Value, KeyOfValue, Comp, Alloc>::const_iterator>
+RBTree<Key, Value, KeyOfValue, Comp, Alloc>::equal_range(const key_type& key_) const
+{
+  auto par = _header;
+  auto cur = root();
+  while (cur != nullptr && key(cur) != key_)
+  {
+    par = cur;
+    if (_comparator(key_, key(cur)))
+      cur = static_cast<NodePtr>(cur->_left);
+    else
+      cur = static_cast<NodePtr>(cur->_right);
+  }
+  if (cur != nullptr)
+  {
+    const_iterator iter { cur }, next { cur };
+    while (!_comparator(key_, key(static_cast<NodePtr>(next._pnode)))) ++next;
+    return std::make_pair(iter, next);
+  }
+  else if (par == _header) 
+    return std::make_pair(iterator(par), iterator(par));
+  else
+  {
+    const_iterator iter { par };
+    while (!_comparator(key_, key(static_cast<NodePtr>(iter._pnode)))) ++iter;
+    return std::make_pair(iter, iter);
+  }
 }
 
 template <typename Key, typename Value, class KeyOfValue,
