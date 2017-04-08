@@ -56,7 +56,7 @@ void RBIterator<Value, Ref, Ptr>::decrement()
 }
 
 template <typename Key, typename Value, class KeyOfValue,
-          typename Comp, template <typename> class Alloc>
+          typename Comp, class Alloc>
 void RBTree<Key, Value, KeyOfValue, Comp, Alloc>::clear(NodePtr ptr_)
 {
   if (ptr_ != nullptr)
@@ -68,7 +68,7 @@ void RBTree<Key, Value, KeyOfValue, Comp, Alloc>::clear(NodePtr ptr_)
 }
 
 template <typename Key, typename Value, class KeyOfValue,
-          typename Comp, template <typename> class Alloc>
+          typename Comp, class Alloc>
 RBTree<Key, Value, KeyOfValue, Comp, Alloc>::RBTree(const Comp& comp_)
 : _allocator(NodeAlloc()),
   _nodeCount(0),
@@ -79,7 +79,7 @@ RBTree<Key, Value, KeyOfValue, Comp, Alloc>::RBTree(const Comp& comp_)
 }
 
 template <typename Key, typename Value, class KeyOfValue,
-          typename Comp, template <typename> class Alloc>
+          typename Comp, class Alloc>
 typename RBTree<Key, Value, KeyOfValue, Comp, Alloc>::iterator
 RBTree<Key, Value, KeyOfValue, Comp, Alloc>::insertEqual(const value_type& val_)
 {
@@ -105,7 +105,7 @@ RBTree<Key, Value, KeyOfValue, Comp, Alloc>::insertEqual(const value_type& val_)
 }
 
 template <typename Key, typename Value, class KeyOfValue,
-          typename Comp, template <typename> class Alloc>
+          typename Comp, class Alloc>
 typename RBTree<Key, Value, KeyOfValue, Comp, Alloc>::iterator
 RBTree<Key, Value, KeyOfValue, Comp, Alloc>::insert(NodePtr child_, NodePtr parent_, const value_type& val_)
 {
@@ -147,7 +147,7 @@ RBTree<Key, Value, KeyOfValue, Comp, Alloc>::insert(NodePtr child_, NodePtr pare
 }
 
 template <typename Key, typename Value, class KeyOfValue,
-          typename Comp, template <typename> class Alloc>
+          typename Comp, class Alloc>
 std::pair<typename RBTree<Key, Value, KeyOfValue, Comp, Alloc>::iterator, bool>
 RBTree<Key, Value, KeyOfValue, Comp, Alloc>::insertUnique(const value_type& val_)
 {
@@ -209,7 +209,7 @@ RBTree<Key, Value, KeyOfValue, Comp, Alloc>::insertUnique(const value_type& val_
 }
 
 template <typename Key, typename Value, class KeyOfValue,
-          typename Comp, template <typename> class Alloc>
+          typename Comp, class Alloc>
 void RBTree<Key, Value, KeyOfValue, Comp, Alloc>::rebalance(RBNodeBase* toInsert_, RBNodeBase*& root_)
 {
   // RBTree: the count of black nodes along all paths should be the same,
@@ -276,7 +276,7 @@ void RBTree<Key, Value, KeyOfValue, Comp, Alloc>::rebalance(RBNodeBase* toInsert
 }
 
 template <typename Key, typename Value, class KeyOfValue,
-          typename Comp, template <typename> class Alloc>
+          typename Comp, class Alloc>
 void RBTree<Key, Value, KeyOfValue, Comp, Alloc>::leftRotate(RBNodeBase* node_, RBNodeBase*& root_)
 {
   bool isRoot = (node_ == root_);
@@ -301,7 +301,7 @@ void RBTree<Key, Value, KeyOfValue, Comp, Alloc>::leftRotate(RBNodeBase* node_, 
 }
 
 template <typename Key, typename Value, class KeyOfValue,
-          typename Comp, template <typename> class Alloc>
+          typename Comp, class Alloc>
 void RBTree<Key, Value, KeyOfValue, Comp, Alloc>::rightRotate(RBNodeBase* node_, RBNodeBase*& root_)
 {
   bool isRoot = (node_ == root_);
@@ -326,24 +326,24 @@ void RBTree<Key, Value, KeyOfValue, Comp, Alloc>::rightRotate(RBNodeBase* node_,
 
 namespace detail
 {
-  bool isLeaf(RBNodeBase* node_)
+  inline bool isLeaf(RBNodeBase* node_)
   { return node_->_left == nullptr && node_->_right == nullptr; }
 
-  bool hasLeft(RBNodeBase* node_)
+  inline bool hasLeft(RBNodeBase* node_)
   { return node_->_left != nullptr; }
 
-  bool hasRight(RBNodeBase* node_)
+  inline bool hasRight(RBNodeBase* node_)
   { return node_->_right != nullptr; }
 
-  bool hasBothChildren(RBNodeBase* node_)
+  inline bool hasBothChildren(RBNodeBase* node_)
   { return hasLeft(node_) && hasRight(node_); }
 
-  RBNodeBase* sibling(RBNodeBase* node_, RBNodeBase* parent_)
+  inline RBNodeBase* sibling(RBNodeBase* node_, RBNodeBase* parent_)
   {
     return (node_ == parent_->_left) ? parent_->_right : parent_->_left;
   }
 
-  void calculateBlackDepth(RBNodeBase* node_, std::vector<int>& depths_, int curDepth)
+  inline void calculateBlackDepth(RBNodeBase* node_, std::vector<int>& depths_, int curDepth)
   {
     if (node_ == nullptr) return;
     if (node_->_color == RBTreeNodeColor::Black) ++curDepth;
@@ -352,7 +352,7 @@ namespace detail
     if (hasRight(node_)) calculateBlackDepth(node_->_right, depths_, curDepth);
   }
 
-  bool noConsecutiveReds(RBNodeBase* node_)
+  inline bool noConsecutiveReds(RBNodeBase* node_)
   {
     if (node_ == nullptr) return true;
     if (isLeaf(node_)) return true;
@@ -376,7 +376,7 @@ namespace detail
 }
 
 template <typename Key, typename Value, class KeyOfValue,
-          typename Comp, template <typename> class Alloc>
+          typename Comp, class Alloc>
 bool RBTree<Key, Value, KeyOfValue, Comp, Alloc>::rbPropertyKept() const
 {
   // (0.0) When tree is empty, _header' _left and _right points
@@ -431,7 +431,7 @@ bool RBTree<Key, Value, KeyOfValue, Comp, Alloc>::rbPropertyKept() const
 }
 
 template <typename Key, typename Value, class KeyOfValue,
-          typename Comp, template <typename> class Alloc>
+          typename Comp, class Alloc>
 typename RBTree<Key, Value, KeyOfValue, Comp, Alloc>::iterator
 RBTree<Key, Value, KeyOfValue, Comp, Alloc>::find(const key_type& key_) const
 {
@@ -448,7 +448,7 @@ RBTree<Key, Value, KeyOfValue, Comp, Alloc>::find(const key_type& key_) const
 }
 
 template <typename Key, typename Value, class KeyOfValue,
-          typename Comp, template <typename> class Alloc>
+          typename Comp, class Alloc>
 std::pair<typename RBTree<Key, Value, KeyOfValue, Comp, Alloc>::iterator, bool>
 RBTree<Key, Value, KeyOfValue, Comp, Alloc>::erase(iterator iter_)
 {
@@ -478,7 +478,7 @@ RBTree<Key, Value, KeyOfValue, Comp, Alloc>::erase(iterator iter_)
 }
 
 template <typename Key, typename Value, class KeyOfValue,
-          typename Comp, template <typename> class Alloc>
+          typename Comp, class Alloc>
 void RBTree<Key, Value, KeyOfValue, Comp, Alloc>::switchNode(RBNodeBase* parent_, RBNodeBase* child_)
 {
   auto grandpa = parent_->_parent;
@@ -508,7 +508,7 @@ void RBTree<Key, Value, KeyOfValue, Comp, Alloc>::switchNode(RBNodeBase* parent_
 }
 
 template <typename Key, typename Value, class KeyOfValue,
-          typename Comp, template <typename> class Alloc>
+          typename Comp, class Alloc>
 void RBTree<Key, Value, KeyOfValue, Comp, Alloc>::eraseCase1(RBNodeBase* node_, RBNodeBase* parent_)
 {
   // Case1: child is now root and is black
@@ -524,7 +524,7 @@ void RBTree<Key, Value, KeyOfValue, Comp, Alloc>::eraseCase1(RBNodeBase* node_, 
 }
 
 template <typename Key, typename Value, class KeyOfValue,
-          typename Comp, template <typename> class Alloc>
+          typename Comp, class Alloc>
 void RBTree<Key, Value, KeyOfValue, Comp, Alloc>::eraseCase2(RBNodeBase* node_, RBNodeBase* parent_)
 {
   assert(parent_ != _header);
@@ -541,7 +541,7 @@ void RBTree<Key, Value, KeyOfValue, Comp, Alloc>::eraseCase2(RBNodeBase* node_, 
 }
 
 template <typename Key, typename Value, class KeyOfValue,
-          typename Comp, template <typename> class Alloc>
+          typename Comp, class Alloc>
 void RBTree<Key, Value, KeyOfValue, Comp, Alloc>::eraseCase3(RBNodeBase* node_, RBNodeBase* parent_)
 {
   RBNodeBase* sibling = detail::sibling(node_, parent_);
@@ -559,7 +559,7 @@ void RBTree<Key, Value, KeyOfValue, Comp, Alloc>::eraseCase3(RBNodeBase* node_, 
 }
 
 template <typename Key, typename Value, class KeyOfValue,
-          typename Comp, template <typename> class Alloc>
+          typename Comp, class Alloc>
 void RBTree<Key, Value, KeyOfValue, Comp, Alloc>::eraseCase4(RBNodeBase* node_, RBNodeBase* parent_)
 {
   RBNodeBase* sibling = detail::sibling(node_, parent_);
@@ -577,7 +577,7 @@ void RBTree<Key, Value, KeyOfValue, Comp, Alloc>::eraseCase4(RBNodeBase* node_, 
 }
 
 template <typename Key, typename Value, class KeyOfValue,
-          typename Comp, template <typename> class Alloc>
+          typename Comp, class Alloc>
 void RBTree<Key, Value, KeyOfValue, Comp, Alloc>::eraseCase5(RBNodeBase* node_, RBNodeBase* parent_)
 {
   RBNodeBase* sibling = detail::sibling(node_, parent_);
@@ -606,7 +606,7 @@ void RBTree<Key, Value, KeyOfValue, Comp, Alloc>::eraseCase5(RBNodeBase* node_, 
 }
 
 template <typename Key, typename Value, class KeyOfValue,
-          typename Comp, template <typename> class Alloc>
+          typename Comp, class Alloc>
 void RBTree<Key, Value, KeyOfValue, Comp, Alloc>::eraseCase6(RBNodeBase* node_, RBNodeBase* parent_)
 {
   RBNodeBase* sibling = detail::sibling(node_, parent_);
@@ -636,7 +636,7 @@ void RBTree<Key, Value, KeyOfValue, Comp, Alloc>::eraseCase6(RBNodeBase* node_, 
 }
 
 template <typename Key, typename Value, class KeyOfValue,
-          typename Comp, template <typename> class Alloc>
+          typename Comp, class Alloc>
 void RBTree<Key, Value, KeyOfValue, Comp, Alloc>::eraseOneChild(RBNodeBase* node_)
 {
   assert(!detail::hasBothChildren(node_));

@@ -1,5 +1,5 @@
-#ifndef OPLIB_RBTREE_H
-#define OPLIB_RBTREE_H
+#ifndef OPLIB_DS_RBTREE_H
+#define OPLIB_DS_RBTREE_H
 
 #include <iterator>
 #include <memory>
@@ -109,7 +109,7 @@ namespace ds
 
 
   template <typename Key, typename Value, class KeyOfValue,
-            typename Comp, template <typename> class Alloc = std::allocator>
+            typename Comp, class Alloc = std::allocator<Key> >
   class RBTree
   {
    public:
@@ -126,7 +126,9 @@ namespace ds
    protected:
     using NodeType = RBNode<Value>;
     using NodePtr = NodeType*;
-    using NodeAlloc = Alloc<NodeType>;
+
+    // Using rebind to get member template type, the real allocator type
+    using NodeAlloc = typename Alloc::template rebind<NodeType>::other;
 
     // The implementation of the RBTree
     NodeAlloc _allocator;

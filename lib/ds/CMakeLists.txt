@@ -7,6 +7,7 @@ set(libop_ds_SRCS
     TSTTrie.h
     MinHeap.h
     RBTree.H
+    Set.h
 )
 
 # Declare the library
