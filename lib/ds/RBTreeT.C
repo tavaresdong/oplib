@@ -69,8 +69,8 @@ void RBTree<Key, Value, KeyOfValue, Comp, Alloc>::clear(NodePtr ptr_)
 
 template <typename Key, typename Value, class KeyOfValue,
           typename Comp, class Alloc>
-RBTree<Key, Value, KeyOfValue, Comp, Alloc>::RBTree(const Comp& comp_)
-: _allocator(NodeAlloc()),
+RBTree<Key, Value, KeyOfValue, Comp, Alloc>::RBTree(const Comp& comp_, const allocator_type&)
+: _allocator(typename allocator_type::template rebind<NodeAlloc>::other()),
   _nodeCount(0),
   _comparator(comp_),
   _keyExtractor(KeyOfValue())

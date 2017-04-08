@@ -122,6 +122,7 @@ namespace ds
     using const_pointer = const value_type*;
     using iterator = RBIterator<value_type, reference, pointer>;
     using const_iterator = const RBIterator<value_type, reference, pointer>; 
+    using allocator_type = Alloc;
 
    protected:
     using NodeType = RBNode<Value>;
@@ -232,7 +233,8 @@ namespace ds
 
    public:
 
-    RBTree(const Comp& comp_ = Comp());
+    explicit RBTree(const Comp& comp_ = Comp(),
+                    const allocator_type& alloc_ = allocator_type());
     ~RBTree()
     {
       clear();

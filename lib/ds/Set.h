@@ -2,6 +2,7 @@
 #define OPLIB_DS_SET_H
 
 #include <functional>
+#include <algorithm>
 
 #include "RBTree.H"
 
@@ -44,7 +45,25 @@ namespace detail
     using const_iterator = typename imp_type::const_iterator;
     using size_type = typename imp_type::size_type;
 
-    Set() : _impl(Comp()) {}
+
+   public:
+    // Constructor/Destructors
+    explicit Set(const key_compare& comp_ = key_compare(),
+                 const allocator_type& alloc_ = allocator_type())
+    : _impl(comp_, alloc_)
+    {}
+
+    template <typename InputIterator>
+    Set(InputIterator first_, InputIterator last_,
+        const key_compare& comp_ = key_compare(),
+        const allocator_type& alloc_ = allocator_type())
+    : _impl(comp_, alloc_)
+    {
+      std::for_each(first_, last_, [&] (const auto& val_) {
+                                     _impl.insertUnique(val_);
+                                   });
+    }
+
     ~Set() {}
 
    public:
