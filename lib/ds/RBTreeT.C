@@ -81,6 +81,22 @@ RBTree<Key, Value, KeyOfValue, Comp, Alloc>::RBTree(const Comp& comp_, const all
 
 template <typename Key, typename Value, class KeyOfValue,
           typename Comp, class Alloc>
+RBTree<Key, Value, KeyOfValue, Comp, Alloc>::RBTree(std::initializer_list<value_type> il,
+                                                    const Comp& comp_, 
+                                                    const allocator_type&)
+: _allocator(typename allocator_type::template rebind<NodeAlloc>::other()),
+  _nodeCount(0),
+  _comparator(comp_),
+  _keyExtractor(KeyOfValue())
+{
+  init();
+  std::for_each(il.begin(), il.end(), [&] (const auto& val_) {
+                                        this->insertUnique(val_);
+                                      });
+}
+
+template <typename Key, typename Value, class KeyOfValue,
+          typename Comp, class Alloc>
 typename RBTree<Key, Value, KeyOfValue, Comp, Alloc>::iterator
 RBTree<Key, Value, KeyOfValue, Comp, Alloc>::insertEqual(const value_type& val_)
 {

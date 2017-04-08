@@ -4,6 +4,7 @@
 #include <iterator>
 #include <memory>
 #include <utility>
+#include <initializer_list>
 
 namespace oplib
 {
@@ -240,12 +241,14 @@ namespace ds
 
     explicit RBTree(const Comp& comp_ = Comp(),
                     const allocator_type& alloc_ = allocator_type());
+    RBTree(std::initializer_list<value_type> il,
+           const Comp& comp_ = Comp(),
+           const allocator_type& alloc_ = allocator_type());
+    // Rule of 5
     RBTree(const RBTree& rhs_);
     RBTree& operator = (const RBTree& rhs_);
-
     RBTree(RBTree&& rhs_);
     RBTree& operator = (RBTree&& rhs_);
-
     ~RBTree()
     {
       clear();

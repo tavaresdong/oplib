@@ -79,9 +79,7 @@ TEST_F(SetTest, testRangeInsert)
 
 TEST_F(SetTest, testHintInsert)
 {
-  oplib::ds::Set<int> set;
-  std::vector<int> vec { 3, 2, 1, 5};
-  set.insert(vec.begin(), vec.end());
+  oplib::ds::Set<int> set { 3, 2, 1, 5 };
   auto iter = set.cbegin();
   std::advance(iter, 3);
   EXPECT_EQ(*iter, 5);
@@ -91,9 +89,7 @@ TEST_F(SetTest, testHintInsert)
 
 TEST_F(SetTest, testErase)
 {
-  oplib::ds::Set<int> set;
-  std::vector<int> vec { 3, 2, 1, 5};
-  set.insert(vec.begin(), vec.end());
+  oplib::ds::Set<int> set { 3, 2, 1, 5 };
   EXPECT_TRUE(set.erase(3) == 1);
   EXPECT_EQ(set.size(), 3u);
   EXPECT_TRUE(set.erase(6) == 0);
@@ -101,9 +97,7 @@ TEST_F(SetTest, testErase)
 
 TEST_F(SetTest, testEraseByPos)
 {
-  oplib::ds::Set<int> set;
-  std::vector<int> vec { 3, 2, 1, 5};
-  set.insert(vec.begin(), vec.end());
+  oplib::ds::Set<int> set { 3, 2, 1, 5 };
   auto iter = set.begin();
   std::advance(iter, 2);
   EXPECT_EQ(*iter, 3);
@@ -113,9 +107,7 @@ TEST_F(SetTest, testEraseByPos)
 
 TEST_F(SetTest, testRangeErase)
 {
-  oplib::ds::Set<int> set;
-  std::vector<int> vec { 3, 2, 1, 5};
-  set.insert(vec.begin(), vec.end());
+  oplib::ds::Set<int> set { 3, 2, 1, 5 };
 
   auto first = set.begin();
   auto last = set.begin();
@@ -131,9 +123,7 @@ TEST_F(SetTest, testRangeErase)
 
 TEST_F(SetTest, testClear)
 {
-  oplib::ds::Set<int> set;
-  std::vector<int> vec { 3, 2, 1, 5};
-  set.insert(vec.begin(), vec.end());
+  oplib::ds::Set<int> set { 3, 2, 1, 5 };
   EXPECT_EQ(set.size(), 4u);
   set.clear();
   EXPECT_TRUE(set.empty());
@@ -141,9 +131,7 @@ TEST_F(SetTest, testClear)
 
 TEST_F(SetTest, testSwap)
 {
-  oplib::ds::Set<int> set;
-  std::vector<int> vec { 3, 2, 1, 5 };
-  set.insert(vec.begin(), vec.end());
+  oplib::ds::Set<int> set { 3, 2, 1, 5 };
 
   oplib::ds::Set<int> set2;
   set2.insert(3);
@@ -157,9 +145,7 @@ TEST_F(SetTest, testSwap)
 
 TEST_F(SetTest, testFindCount)
 {
-  oplib::ds::Set<int> set;
-  std::vector<int> vec { 3, 2, 1, 5 };
-  set.insert(vec.begin(), vec.end());
+  oplib::ds::Set<int> set { 3, 2, 1, 5 };
 
   auto it = set.find(3);
   EXPECT_EQ(*it, 3);
@@ -176,9 +162,7 @@ TEST_F(SetTest, testFindCount)
 
 TEST_F(SetTest, testLowerBound)
 {
-  oplib::ds::Set<int> set;
-  std::vector<int> vec { 3, 2, 1, 5 };
-  set.insert(vec.begin(), vec.end());
+  oplib::ds::Set<int> set { 3, 2, 1, 5 };
 
   auto it = set.lower_bound(-1);
   EXPECT_EQ(*it, 1);
@@ -192,10 +176,7 @@ TEST_F(SetTest, testLowerBound)
 
 TEST_F(SetTest, testUpperBound)
 {
-  oplib::ds::Set<int> set;
-  std::vector<int> vec { 3, 2, 1, 5 };
-  set.insert(vec.begin(), vec.end());
-
+  oplib::ds::Set<int> set { 3, 2, 1, 5 };
   auto it = set.upper_bound(-1);
   EXPECT_EQ(*it, 1);
   it = set.upper_bound(3);
@@ -208,9 +189,7 @@ TEST_F(SetTest, testUpperBound)
 
 TEST_F(SetTest, testEqualRange)
 {
-  oplib::ds::Set<int> set;
-  std::vector<int> vec { 3, 2, 1, 5 };
-  set.insert(vec.begin(), vec.end());
+  oplib::ds::Set<int> set { 3, 2 ,1, 5 };
 
   auto range = set.equal_range(1);
   EXPECT_EQ(*range.first, 1);
@@ -223,9 +202,7 @@ TEST_F(SetTest, testEqualRange)
 
 TEST_F(SetTest, testCopyAssign)
 {
-  oplib::ds::Set<int> set;
-  std::vector<int> vec { 3, 2, 1, 5 };
-  set.insert(vec.begin(), vec.end());
+  oplib::ds::Set<int> set { 3, 2, 1, 5 };
   oplib::ds::Set<int> set2(set);
   EXPECT_EQ(set2.size(), 4u);
 
@@ -236,9 +213,7 @@ TEST_F(SetTest, testCopyAssign)
 
 TEST_F(SetTest, testMoveAssign)
 {
-  oplib::ds::Set<int> set;
-  std::vector<int> vec { 3, 2, 1, 5 };
-  set.insert(vec.begin(), vec.end());
+  oplib::ds::Set<int> set { 3, 2, 1, 5 };
   oplib::ds::Set<int> set2(std::move(set));
   EXPECT_EQ(set2.size(), 4u);
   EXPECT_EQ(set.size(), 0u);
