@@ -516,17 +516,58 @@ RBTree<Key, Value, KeyOfValue, Comp, Alloc>::erase(iterator iter_)
     NodePtr node = static_cast<NodePtr>(iter_._pnode);
     NodePtr nnode = static_cast<NodePtr>(next._pnode);
 
-    // TODO move if possible
-    node->_value = nnode->_value;
+   // node->_value = nnode->_value;
+    swapNode(node, nnode);
     
-    eraseOneChild(next._pnode);
-    return std::make_pair(iterator(node), true);
+    eraseOneChild(iter_._pnode);
+    return std::make_pair(iterator(next), true);
   }
   else
   {
     eraseOneChild(iter_._pnode);
     return std::make_pair(next, true);
   }
+}
+
+template <typename Key, typename Value, class KeyOfValue,
+          typename Comp, class Alloc>
+void RBTree<Key, Value, KeyOfValue, Comp, Alloc>::swapNode(RBNodeBase* n1, RBNodeBase* n2)
+{
+  assert(n1 != _header && n2 != _header);
+  bool n1Root = (n1->_parent->_parent == n1) ? true : false;
+  bool n2Root = (n2->_parent->_parent == n2) ? true : false;
+
+  bool n1Leftmost = (_header->_left == n1) ? true : false;
+  bool n1Rightmost = (_header->_right == n1) ? true : false;
+
+  bool n2Leftmost = (_header->_left == n2) ? true : false;
+  bool n2Rightmost = (_header->_right == n2) ? true : false;
+
+  auto left1 = n1->_left;
+  auto right1 = n1->_right;
+  auto parent1 = n1->_parent;
+  auto left2 = n2->_left;
+  auto right2 = n2->_right;
+  auto parent2 = n2->_parent;
+
+  n1->_left = (left2 == n1) ? n2 : left2;
+  n1->_right = (right2 == n1) ? n2 : right2;
+  n1->_parent = (parent2 == n1) ? n2 : parent2;
+
+  n2->_left = (left1 == n2) ? n1 : left1;
+  n2->_right = (right1 == n2) ? n1 : right1;
+  n2->_parent = (parent1 == n2) ? n1 : parent1;
+
+  if (n1Root) _header->_parent = n2;
+  if (n2Root) _header->_parent = n1;
+
+  if (n1Leftmost) _header->_left = n2;
+  if (n1Rightmost) _header->_right = n2;
+
+  if (n2Leftmost) _header->_left = n1;
+  if (n2Leftmost) _header->_right = n2;
+
+  std::swap(n1->_color, n2->_color);
 }
 
 template <typename Key, typename Value, class KeyOfValue,

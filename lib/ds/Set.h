@@ -103,6 +103,16 @@ namespace detail
                                    });
     }
 
+    size_type erase(const value_type& val_)
+    { return _impl.erase(val_).second ? 1 : 0; }
+
+    // Erase element at pos and return the next position
+    iterator erase(const_iterator pos)
+    { return _impl.erase(pos).first; }
+
+    iterator erase(iterator first_, iterator last_)
+    { return _impl.erase(first_, last_); }
+
     void clear()
     { _impl.clear(); }
 

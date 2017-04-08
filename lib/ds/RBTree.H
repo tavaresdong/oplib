@@ -226,6 +226,7 @@ namespace ds
     void leftRotate(RBNodeBase* node_, RBNodeBase*& root_);
     void rightRotate(RBNodeBase* node_, RBNodeBase*& root_);
     void switchNode(RBNodeBase* parent_, RBNodeBase* child_);
+    void swapNode(RBNodeBase* n1_, RBNodeBase* n2_);
     void eraseCase1(RBNodeBase* node_, RBNodeBase* parent_);
     void eraseCase2(RBNodeBase* node_, RBNodeBase* parent_);
     void eraseCase3(RBNodeBase* node_, RBNodeBase* parent_);
@@ -284,6 +285,23 @@ namespace ds
       auto pos = find(val_);
       if (pos != end()) return erase(pos);
       return std::make_pair(end(), false);
+    }
+
+    iterator erase(iterator first_, iterator last_)
+    {
+      if (first_ == begin() && last_ == end())
+      {
+        clear();
+        return begin();
+      }
+      else
+      {
+        while (first_ != last_)
+        {
+          first_ = erase(first_).first;
+        }
+      }
+      return last_;
     }
 
     void swap(RBTree& rhs_)

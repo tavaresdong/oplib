@@ -89,6 +89,46 @@ TEST_F(SetTest, testHintInsert)
   EXPECT_EQ(*iter, 4);
 }
 
+TEST_F(SetTest, testErase)
+{
+  oplib::ds::Set<int> set;
+  std::vector<int> vec { 3, 2, 1, 5};
+  set.insert(vec.begin(), vec.end());
+  EXPECT_TRUE(set.erase(3) == 1);
+  EXPECT_EQ(set.size(), 3u);
+  EXPECT_TRUE(set.erase(6) == 0);
+}
+
+TEST_F(SetTest, testEraseByPos)
+{
+  oplib::ds::Set<int> set;
+  std::vector<int> vec { 3, 2, 1, 5};
+  set.insert(vec.begin(), vec.end());
+  auto iter = set.begin();
+  std::advance(iter, 2);
+  EXPECT_EQ(*iter, 3);
+  iter = set.erase(iter);
+  EXPECT_EQ(*iter, 5); 
+}
+
+TEST_F(SetTest, testRangeErase)
+{
+  oplib::ds::Set<int> set;
+  std::vector<int> vec { 3, 2, 1, 5};
+  set.insert(vec.begin(), vec.end());
+
+  auto first = set.begin();
+  auto last = set.begin();
+  std::advance(first, 1);
+  std::advance(last, 3);
+  EXPECT_EQ(*first, 2);
+  EXPECT_EQ(*last, 5);
+  auto it = set.erase(first, last);
+  EXPECT_TRUE(it == last);
+  EXPECT_EQ(*it, 5);
+  EXPECT_EQ(set.size(), 2u);
+}
+
 TEST_F(SetTest, testClear)
 {
   oplib::ds::Set<int> set;
