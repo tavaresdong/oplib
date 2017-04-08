@@ -64,11 +64,23 @@ namespace detail
                                    });
     }
 
+    // TODO copy construction move constructor
+
+
     ~Set() {}
 
    public:
     // Accessors
     size_type size() const { return _impl.size(); }
+    bool empty() const { return _impl.empty(); }
+    size_type max_size() const { return _impl.max_size(); }
+
+    iterator begin() { return _impl.begin(); }
+    iterator end() { return _impl.end(); }
+    const_iterator cbegin() const { return _impl.cbegin(); }
+    const_iterator cend() const { return _impl.cend(); }
+
+    // TODO rbegin rend crbegin crend
 
    private:
     imp_type _impl;

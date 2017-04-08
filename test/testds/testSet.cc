@@ -23,3 +23,25 @@ TEST_F(SetTest, testRangeConstruction)
   oplib::ds::Set<int> set(vec.begin(), vec.end());
   EXPECT_EQ(set.size(), 5u);
 }
+
+TEST_F(SetTest, testAccessors)
+{
+  std::vector<int> vec { 4, 1 ,3 ,34, 7 };
+  oplib::ds::Set<int> set(vec.begin(), vec.end());
+  EXPECT_EQ(set.size(), 5u);
+  EXPECT_FALSE(set.empty());
+}
+
+TEST_F(SetTest, testBeginEnd)
+{
+  std::vector<int> vec { 4, 1 ,3 ,34, 7 };
+  oplib::ds::Set<int> set(vec.begin(), vec.end());
+  auto ib = set.begin();
+  auto ie = set.end();
+  int pre = 0;
+  for (; ib != ie; ++ib)
+  {
+    EXPECT_TRUE(pre < *ib);
+    pre = *ib;
+  }
+}

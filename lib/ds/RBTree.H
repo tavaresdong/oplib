@@ -243,12 +243,13 @@ namespace ds
 
     iterator begin() { return leftmost(); }
     iterator end() { return _header; }
-    iterator find(const key_type& key_) const;
     const_iterator cbegin() const { return leftmost(); }
     const_iterator cend() const { return _header; }
+
     bool empty() const { return _nodeCount == 0; }
     size_type size() const { return _nodeCount; }
     size_type max_size() const { return size_type(-1); }
+    iterator find(const key_type& key_) const;
 
     // Used for debugging: whether the Red-Black tree
     // Property is kept: header is (red/no two consecutive red nodes in a path/
