@@ -223,3 +223,10 @@ TEST_F(SetTest, testMoveAssign)
   EXPECT_EQ(set3.size(), 4u);
   EXPECT_EQ(set2.size(), 0u);
 }
+
+TEST_F(SetTest, testReverseIter)
+{
+  oplib::ds::Set<int> set { 3, 2, 1, 5 };
+  auto rit = set.rbegin();
+  EXPECT_EQ(*rit, 5);
+}

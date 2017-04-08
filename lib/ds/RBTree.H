@@ -63,8 +63,6 @@ namespace ds
     using value_type = Value;
     using reference = Ref;
     using pointer = Ptr;
-    using iterator = RBIterator<Value, Value&, Value*>;
-    using const_iterator = RBIterator<Value, const Value&, const Value*>;
     using self = RBIterator<Value, Ref, Ptr>;
     using difference_type = ptrdiff_t;
     using iterator_category = std::bidirectional_iterator_tag;
@@ -72,7 +70,7 @@ namespace ds
 
     RBIterator() {}
     RBIterator(RBNodePtr ptr_) { _pnode = ptr_; }
-    RBIterator(const iterator& it_) { _pnode = it_._pnode; }
+    RBIterator(const RBIterator& it_) { _pnode = it_._pnode; }
 
     reference operator * () 
     { return (static_cast<RBNodePtr>(_pnode))->_value; }
@@ -122,8 +120,12 @@ namespace ds
     using const_reference = const value_type&;
     using pointer = value_type*;
     using const_pointer = const value_type*;
+
     using iterator = RBIterator<value_type, reference, pointer>;
     using const_iterator = const RBIterator<value_type, reference, pointer>; 
+    using reverse_iterator = std::reverse_iterator<iterator>;
+    using const_reverse_iterator = std::reverse_iterator<const_iterator>;
+
     using allocator_type = Alloc;
     using key_compare = Comp;
 
@@ -259,6 +261,14 @@ namespace ds
     iterator end() { return _header; }
     const_iterator cbegin() const { return leftmost(); }
     const_iterator cend() const { return _header; }
+    reverse_iterator rbegin()
+    { return reverse_iterator(end()); }
+    reverse_iterator rend()
+    { return reverse_iterator(begin()); }
+    const_reverse_iterator crbegin() const 
+    { return const_reverse_iterator(cend()); }
+    const_reverse_iterator crend() const 
+    { return const_reverse_iterator(cbegin()); }
 
     bool empty() const { return _nodeCount == 0; }
     size_type size() const { return _nodeCount; }

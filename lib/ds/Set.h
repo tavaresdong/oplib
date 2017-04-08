@@ -43,6 +43,8 @@ namespace detail
     using const_pointer = typename imp_type::const_pointer;
     using iterator = typename imp_type::iterator;
     using const_iterator = typename imp_type::const_iterator;
+    using reverse_iterator = typename imp_type::reverse_iterator;
+    using const_reverse_iterator = typename imp_type::const_reverse_iterator;
     using size_type = typename imp_type::size_type;
 
 
@@ -99,6 +101,10 @@ namespace detail
     iterator end() { return _impl.end(); }
     const_iterator cbegin() const { return _impl.cbegin(); }
     const_iterator cend() const { return _impl.cend(); }
+    reverse_iterator rbegin() { return _impl.rbegin(); }
+    reverse_iterator rend() { return _impl.rend(); }
+    const_reverse_iterator crbegin() const { return _impl.crbegin(); }
+    const_reverse_iterator crend() const { return _impl.crend(); }
 
     // Note: When accessing a member from a const member function,
     // the member automatically became const, so _impl inside
