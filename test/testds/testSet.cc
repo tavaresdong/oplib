@@ -237,6 +237,7 @@ namespace
   {
    public:
     Movable(int a, int b) : i(a * b) {}
+    Movable(int val) : i(val) {}
     Movable() {}
     ~Movable() {}
     Movable(const Movable& m) : i(m.i)
@@ -280,4 +281,19 @@ TEST_F(SetTest, testEmplace)
   set.emplace(std::move(m));
   EXPECT_EQ(m.get(), 0);
   EXPECT_EQ(set.begin()->get(), 1);
+}
+
+TEST_F(SetTest, testEmplaceHint)
+{
+  oplib::ds::Set<Movable> set;
+  set.insert(Movable(2));
+  set.insert(Movable(3));
+  set.insert(Movable(5));
+  set.insert(Movable(6));
+
+  auto iter = set.begin();
+  std::advance(iter, 2);
+  EXPECT_EQ(iter->get(), 5);
+  iter = set.emplace_hint(iter, 2, 2);
+  EXPECT_EQ(iter->get(), 4);
 }

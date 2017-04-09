@@ -87,7 +87,6 @@ namespace detail
     }
     ~Set() {}
 
-
    public:
 
     // Capacity 
@@ -130,6 +129,9 @@ namespace detail
     std::pair<iterator, bool> emplace(Args&&... args_)
     { return _impl.emplaceUnique(std::forward<Args>(args_)...); }
 
+    template <typename... Args>
+    iterator emplace_hint(const_iterator pos_, Args&&... args_)
+    { return _impl.emplaceUnique(pos_, std::forward<Args>(args_)...); }
 
     size_type erase(const value_type& val_)
     { return _impl.erase(val_).second ? 1 : 0; }

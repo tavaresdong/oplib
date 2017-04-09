@@ -165,58 +165,6 @@ RBTree<Key, Value, KeyOfValue, Comp, Alloc>::insert(NodePtr /* child */, NodePtr
 
 template <typename Key, typename Value, class KeyOfValue,
           typename Comp, class Alloc>
-typename RBTree<Key, Value, KeyOfValue, Comp, Alloc>::iterator
-RBTree<Key, Value, KeyOfValue, Comp, Alloc>::insertUnique(const_iterator iter_, const value_type& val_)
-{
-  // Insert with a hint, if hint is valid, constant time insertion is guaranteed
-  if (iter_._pnode == leftmost())
-  {
-    // (1) iter points to begin()
-    if (size() > 0 && _comparator(_keyExtractor(val_), key(static_cast<NodePtr>(iter_._pnode))))
-    {
-      return insert(static_cast<NodePtr>(iter_._pnode),
-                    static_cast<NodePtr>(iter_._pnode), val_);
-    }
-  }
-  else if (iter_._pnode == _header)
-  {
-    // (2) iter points to end() and val_ is larger than the biggest
-    if (size() > 0 && _comparator(key(static_cast<NodePtr>(rightmost())), _keyExtractor(val_)))
-    {
-      return insert(nullptr,
-                    static_cast<NodePtr>(rightmost()), val_);
-    }
-  }
-  else
-  {
-    auto before = iter_;
-    --before;
-
-    // If before < val_ < iter, then hint is the right place to insert
-    // (1) if iter->left != nullptr then before is the rightmost node of iter->left
-    //     so before's right must be nullptr, we can insert here
-    // (2) otherwise, iter->left is nullptr and before is iter_'s parent
-    //     and we can insert the new node into iter_'s left
-    if (_comparator(key(static_cast<NodePtr>(before._pnode)), _keyExtractor(val_)) &&
-        _comparator(_keyExtractor(val_), key(static_cast<NodePtr>(iter_._pnode))))
-    {
-      if (right(before._pnode) == nullptr)
-      {
-        return insert(nullptr, static_cast<NodePtr>(before._pnode), val_);
-      }
-      else
-      {
-        return insert(nullptr, static_cast<NodePtr>(iter_._pnode), val_);
-      }
-    }
-  }
-
-  // Fall back to general insert method: O(logn)
-  return insertUnique(val_).first;
-}
-
-template <typename Key, typename Value, class KeyOfValue,
-          typename Comp, class Alloc>
 void RBTree<Key, Value, KeyOfValue, Comp, Alloc>::rebalance(RBNodeBase* toInsert_, RBNodeBase*& root_)
 {
   // RBTree: the count of black nodes along all paths should be the same,
@@ -1051,3 +999,61 @@ RBTree<Key, Value, KeyOfValue, Comp, Alloc>::insertNode(NodePtr /* child */, Nod
   ++_nodeCount;
   return iterator(newNode_);
 }
+
+template <typename Key, typename Value, class KeyOfValue,
+          typename Comp, class Alloc>
+template <typename... Args>
+typename RBTree<Key, Value, KeyOfValue, Comp, Alloc>::iterator
+RBTree<Key, Value, KeyOfValue, Comp, Alloc>::emplaceUnique(const_iterator iter_, Args&&... args_)
+{
+  auto newNode = createNode(std::forward<Args>(args_)...);
+
+  // Insert with a hint, if hint is valid, constant time insertion is guaranteed
+  if (iter_._pnode == leftmost())
+  {
+    // (1) iter points to begin()
+    if (size() > 0 && _comparator(_keyExtractor(newNode->_value), key(static_cast<NodePtr>(iter_._pnode))))
+    {
+      return insertNode(static_cast<NodePtr>(iter_._pnode),
+                        static_cast<NodePtr>(iter_._pnode),
+                        newNode);
+    }
+  }
+  else if (iter_._pnode == _header)
+  {
+    // (2) iter points to end() and val_ is larger than the biggest
+    if (size() > 0 && _comparator(key(static_cast<NodePtr>(rightmost())), _keyExtractor(newNode->_value)))
+    {
+      return insertNode(nullptr,
+                        static_cast<NodePtr>(rightmost()),
+                        newNode);
+    }
+  }
+  else
+  {
+    auto before = iter_;
+    --before;
+
+    // If before < val_ < iter, then hint is the right place to insert
+    // (1) if iter->left != nullptr then before is the rightmost node of iter->left
+    //     so before's right must be nullptr, we can insert here
+    // (2) otherwise, iter->left is nullptr and before is iter_'s parent
+    //     and we can insert the new node into iter_'s left
+    if (_comparator(key(static_cast<NodePtr>(before._pnode)), _keyExtractor(newNode->_value)) &&
+        _comparator(_keyExtractor(newNode->_value), key(static_cast<NodePtr>(iter_._pnode))))
+    {
+      if (right(before._pnode) == nullptr)
+      {
+        return insertNode(nullptr, static_cast<NodePtr>(before._pnode), newNode);
+      }
+      else
+      {
+        return insertNode(nullptr, static_cast<NodePtr>(iter_._pnode), newNode);
+      }
+    }
+  }
+
+  // Fall back to general insert method: O(logn)
+  return emplaceUnique(std::forward<Args>(args_)...).first;
+}
+

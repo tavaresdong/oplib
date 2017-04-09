@@ -46,7 +46,9 @@ namespace ds
   {
     using Ptr = RBNode<T>*;
     T _value;
-    RBNode(T val_) : _value(val_) {}
+
+    template <typename... Args>
+    RBNode(Args&&... args_) : _value(std::forward<Args>(args_)...) {}
   };
 
   struct RBIteratorBase
@@ -326,11 +328,15 @@ namespace ds
     template <typename... Args>
     std::pair<iterator, bool> emplaceUnique(Args&&... args_);
 
+    template <typename... Args>
+    iterator emplaceUnique(const_iterator iter_, Args&&... args_);
+
     iterator insertEqual(const value_type& val_);
 
     std::pair<iterator, bool> insertUnique(const value_type& val_)
     { return emplaceUnique(val_); }
-    iterator insertUnique(const_iterator iter_, const value_type& val_);
+    iterator insertUnique(const_iterator iter_, const value_type& val_)
+    { return emplaceUnique(iter_, val_); }
 
     // Erase an element by position
     std::pair<iterator, bool> erase(iterator iter);
