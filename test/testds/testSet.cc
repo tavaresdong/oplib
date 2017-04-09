@@ -230,3 +230,54 @@ TEST_F(SetTest, testReverseIter)
   auto rit = set.rbegin();
   EXPECT_EQ(*rit, 5);
 }
+
+namespace
+{
+  class Movable
+  {
+   public:
+    Movable(int a, int b) : i(a * b) {}
+    Movable() {}
+    ~Movable() {}
+    Movable(const Movable& m) : i(m.i)
+    {
+      std::cout << "Copy ctor called" << std::endl;
+    }
+
+    Movable& operator = (const Movable& m)
+    {
+      i = m.i;
+      return *this;
+    }
+
+    Movable(Movable&& m) : i(m.i) 
+    { 
+      std::cout << "Move ctor called" << std::endl;
+      m.i = 0; 
+    }
+    Movable& operator = (Movable&& m)
+    {
+      i = m.i;
+      m.i = 0;
+      return *this;
+    }
+
+    bool operator < (const Movable& m) const
+    {
+      return i < m.i;
+    }
+    
+    int get() { return i; }
+   private:
+    int i = 1;
+  };
+}
+
+TEST_F(SetTest, testEmplace)
+{
+  oplib::ds::Set<Movable> set;
+  Movable m;
+  set.emplace(std::move(m));
+  EXPECT_EQ(m.get(), 0);
+  EXPECT_EQ(set.begin()->get(), 1);
+}

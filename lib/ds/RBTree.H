@@ -151,12 +151,28 @@ namespace ds
     void putNode(NodePtr ptr_)
     { if (ptr_ != nullptr) _allocator.deallocate(ptr_, 1); }
 
-    NodePtr createNode(const value_type& val_)
+   // NodePtr createNode(const value_type& val_)
+   // {
+   //   auto nd = getNode();
+   //   try
+   //   {
+   //     _allocator.construct(nd, val_);
+   //   }
+   //   catch (...)
+   //   {
+   //     putNode(nd);
+   //   }
+   //   return nd;
+   // }
+   //
+
+    template <typename... Args>
+    NodePtr createNode(Args&&... args_)
     {
       auto nd = getNode();
       try
       {
-        _allocator.construct(nd, val_);
+        _allocator.construct(nd, std::forward<Args>(args_)...);
       }
       catch (...)
       {
@@ -226,6 +242,8 @@ namespace ds
     void clear(NodePtr ptr_);
 
     iterator insert(NodePtr child_, NodePtr parent_, const value_type& val_);
+
+    iterator insertNode(NodePtr child_, NodePtr parent_, NodePtr newNode_);
     void eraseOneChild(RBNodeBase* node_);
     void rebalance(RBNodeBase* toInsert_, RBNodeBase*& root_);
     void leftRotate(RBNodeBase* node_, RBNodeBase*& root_);
@@ -305,9 +323,13 @@ namespace ds
       }
     }
 
+    template <typename... Args>
+    std::pair<iterator, bool> emplaceUnique(Args&&... args_);
+
     iterator insertEqual(const value_type& val_);
 
-    std::pair<iterator, bool> insertUnique(const value_type& val_);
+    std::pair<iterator, bool> insertUnique(const value_type& val_)
+    { return emplaceUnique(val_); }
     iterator insertUnique(const_iterator iter_, const value_type& val_);
 
     // Erase an element by position

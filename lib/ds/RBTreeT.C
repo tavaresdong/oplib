@@ -165,68 +165,6 @@ RBTree<Key, Value, KeyOfValue, Comp, Alloc>::insert(NodePtr /* child */, NodePtr
 
 template <typename Key, typename Value, class KeyOfValue,
           typename Comp, class Alloc>
-std::pair<typename RBTree<Key, Value, KeyOfValue, Comp, Alloc>::iterator, bool>
-RBTree<Key, Value, KeyOfValue, Comp, Alloc>::insertUnique(const value_type& val_)
-{
- // This implementation is OK, but costs two invocations of _comparator, 
- // which is not efficient!
- //
- // NodePtr _par = _header;
- // NodePtr _cur = root();
-
- // while (_cur != nullptr)
- // {
- //   _par = _cur;
- //   if (_comparator(_keyExtractor(val_), key(_cur)))
- //   {
- //     _cur = _cur->_left;
- //   }
- //   else if (_comparator(key(_cur), _keyExtractor(val_)))
- //   {
- //     _cur = _cur ->_right;
- //   }
- //   else
- //   {
- //     // Value of current node equals the val_ to insert
- //     return std::make_pair(iterator(_cur), false);
- //   }
- // }
-
- // return std::make_pair(insert(static_cast<NodePtr>(_cur),
- //                       static_cast<NodePtr>(_par),
- //                       val_), true);
-  NodePtr par = _header;
-  NodePtr cur = root();
-  bool comp = true;
-  while (cur != nullptr)
-  {
-    par = cur;
-    comp = _comparator(_keyExtractor(val_), key(cur));
-    cur = comp ? left(cur) : right(cur);
-  }
-
-  iterator it { par };
-  if (comp)
-  {
-    if (it == begin())
-      return std::make_pair(insert(static_cast<NodePtr>(cur), 
-                                   static_cast<NodePtr>(par),
-                                   val_), true);
-    else
-      --it; // The last element along the path that has value <= val_
-  }
-
-  if (_comparator(key(static_cast<NodePtr>(it._pnode)),
-                  _keyExtractor(val_)))
-    return std::make_pair(insert(static_cast<NodePtr>(cur),
-                                 static_cast<NodePtr>(par),
-                                 val_), true);
-
-  return std::make_pair(it, false);
-}
-
-template <typename Key, typename Value, class KeyOfValue,
-          typename Comp, class Alloc>
 typename RBTree<Key, Value, KeyOfValue, Comp, Alloc>::iterator
 RBTree<Key, Value, KeyOfValue, Comp, Alloc>::insertUnique(const_iterator iter_, const value_type& val_)
 {
@@ -1033,4 +971,83 @@ RBTree<Key, Value, KeyOfValue, Comp, Alloc>::operator = (RBTree<Key, Value, KeyO
   RBTree<Key, Value, KeyOfValue, Comp, Alloc> tmp(std::move(rhs_));
   swap(tmp);
   return *this;
+}
+
+template <typename Key, typename Value, class KeyOfValue,
+          typename Comp, class Alloc>
+template <typename... Args>
+std::pair<typename RBTree<Key, Value, KeyOfValue, Comp, Alloc>::iterator, bool>
+RBTree<Key, Value, KeyOfValue, Comp, Alloc>::emplaceUnique(Args&&... args_)
+{
+  auto newNode = createNode(std::forward<Args>(args_)...);
+
+  NodePtr par = _header;
+  NodePtr cur = root();
+  bool comp = true;
+  while (cur != nullptr)
+  {
+    par = cur;
+    comp = _comparator(_keyExtractor(newNode->_value), key(cur));
+    cur = comp ? left(cur) : right(cur);
+  }
+
+  iterator it { par };
+  if (comp)
+  {
+    if (it == begin())
+      return std::make_pair(insertNode(static_cast<NodePtr>(cur), 
+                                       static_cast<NodePtr>(par),
+                                       newNode), true);
+    else
+      --it; // The last element along the path that has value <= val_
+  }
+
+  if (_comparator(key(static_cast<NodePtr>(it._pnode)),
+                  _keyExtractor(newNode->_value)))
+    return std::make_pair(insertNode(static_cast<NodePtr>(cur),
+                                     static_cast<NodePtr>(par),
+                                     newNode), true);
+
+  return std::make_pair(it, false);
+}
+
+template <typename Key, typename Value, class KeyOfValue,
+          typename Comp, class Alloc>
+typename RBTree<Key, Value, KeyOfValue, Comp, Alloc>::iterator
+RBTree<Key, Value, KeyOfValue, Comp, Alloc>::insertNode(NodePtr /* child */, NodePtr parent_, NodePtr newNode_)
+{
+
+  if (parent_ == _header)
+  {
+    // Case1: empty tree
+    parent_->_left = newNode_;
+    parent_->_right = newNode_;
+    parent_->_parent = newNode_;
+  }
+  else if (_comparator(_keyExtractor(newNode_->_value), key(parent_)))
+  {
+    parent_->_left = newNode_;
+    if (parent_ == leftmost())
+    {
+      // Assign leftmost to the new node
+      _header->_left = newNode_;
+    }
+  }
+  else
+  {
+    parent_->_right = newNode_;
+    if (parent_ == rightmost())
+    {
+      // Assign rightmost to the new node
+      _header->_right = newNode_;
+    }
+  }
+
+  // Initialize the newly created node:
+  newNode_->_left = newNode_->_right = nullptr;
+  newNode_->_parent = parent_;
+
+  rebalance(newNode_, _header->_parent);
+  ++_nodeCount;
+  return iterator(newNode_);
 }

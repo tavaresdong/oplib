@@ -96,7 +96,6 @@ namespace detail
     size_type max_size() const { return _impl.max_size(); }
 
     // Iterators
-    // TODO rbegin rend crbegin crend
     iterator begin() { return _impl.begin(); }
     iterator end() { return _impl.end(); }
     const_iterator cbegin() const { return _impl.cbegin(); }
@@ -113,7 +112,6 @@ namespace detail
     value_compare value_comp() const { return _impl.key_comp(); }
 
     // Modifiers
-    // TODO insert an rvalue insert a init-list 
     std::pair<iterator, bool> insert(const value_type& val_)
     { return _impl.insertUnique(val_); }
 
@@ -127,6 +125,11 @@ namespace detail
                                      _impl.insertUnique(val_);
                                    });
     }
+
+    template <typename... Args>
+    std::pair<iterator, bool> emplace(Args&&... args_)
+    { return _impl.emplaceUnique(std::forward<Args>(args_)...); }
+
 
     size_type erase(const value_type& val_)
     { return _impl.erase(val_).second ? 1 : 0; }
