@@ -210,6 +210,10 @@ namespace ds
     { return _impl.equal_range(key_); }
   };
 
+  // Oveload swap() for Map 
+  template <typename Key, typename T, typename Comp, typename Alloc>
+  void swap(Map<Key, T, Comp, Alloc>& m1, Map<Key, T, Comp, Alloc>& m2)
+  { m1.swap(m2); }
 
 }
 }

@@ -153,21 +153,6 @@ namespace ds
     void putNode(NodePtr ptr_)
     { if (ptr_ != nullptr) _allocator.deallocate(ptr_, 1); }
 
-   // NodePtr createNode(const value_type& val_)
-   // {
-   //   auto nd = getNode();
-   //   try
-   //   {
-   //     _allocator.construct(nd, val_);
-   //   }
-   //   catch (...)
-   //   {
-   //     putNode(nd);
-   //   }
-   //   return nd;
-   // }
-   //
-
     template <typename... Args>
     NodePtr createNode(Args&&... args_)
     {
