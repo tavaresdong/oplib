@@ -132,6 +132,14 @@ namespace ds
                                    });
     }
 
+    template <typename... Args>
+    std::pair<iterator, bool> emplace(Args&&... args_)
+    { return _impl.emplaceUnique(std::forward<Args>(args_)...); }
+
+    template <typename... Args>
+    iterator emplace_hint(const_iterator pos_, Args&&... args_)
+    { return _impl.emplaceUnique(pos_, std::forward<Args>(args_)...); }
+
     mapped_type& operator[] (const key_type& key_)
     { return (_impl.insertUnique(std::make_pair(key_, mapped_type())).first)->second; }
 
