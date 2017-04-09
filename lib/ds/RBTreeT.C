@@ -234,7 +234,7 @@ RBTree<Key, Value, KeyOfValue, Comp, Alloc>::insertUnique(const_iterator iter_, 
   if (iter_._pnode == leftmost())
   {
     // (1) iter points to begin()
-    if (size() > 0 && _comparator(val_, key(static_cast<NodePtr>(iter_._pnode))))
+    if (size() > 0 && _comparator(_keyExtractor(val_), key(static_cast<NodePtr>(iter_._pnode))))
     {
       return insert(static_cast<NodePtr>(iter_._pnode),
                     static_cast<NodePtr>(iter_._pnode), val_);
@@ -243,7 +243,7 @@ RBTree<Key, Value, KeyOfValue, Comp, Alloc>::insertUnique(const_iterator iter_, 
   else if (iter_._pnode == _header)
   {
     // (2) iter points to end() and val_ is larger than the biggest
-    if (size() > 0 && _comparator(key(static_cast<NodePtr>(rightmost())), val_))
+    if (size() > 0 && _comparator(key(static_cast<NodePtr>(rightmost())), _keyExtractor(val_)))
     {
       return insert(nullptr,
                     static_cast<NodePtr>(rightmost()), val_);
@@ -259,8 +259,8 @@ RBTree<Key, Value, KeyOfValue, Comp, Alloc>::insertUnique(const_iterator iter_, 
     //     so before's right must be nullptr, we can insert here
     // (2) otherwise, iter->left is nullptr and before is iter_'s parent
     //     and we can insert the new node into iter_'s left
-    if (_comparator(key(static_cast<NodePtr>(before._pnode)), val_) &&
-        _comparator(val_, key(static_cast<NodePtr>(iter_._pnode))))
+    if (_comparator(key(static_cast<NodePtr>(before._pnode)), _keyExtractor(val_)) &&
+        _comparator(_keyExtractor(val_), key(static_cast<NodePtr>(iter_._pnode))))
     {
       if (right(before._pnode) == nullptr)
       {

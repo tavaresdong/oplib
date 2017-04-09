@@ -315,9 +315,9 @@ namespace ds
 
     // Erase an element by value, if there are multiple values, erase the first one
     // encountered
-    std::pair<iterator, bool> erase(const value_type& val_)
+    std::pair<iterator, bool> erase(const key_type& key_)
     {
-      auto pos = find(val_);
+      auto pos = find(key_);
       if (pos != end()) return erase(pos);
       return std::make_pair(end(), false);
     }
