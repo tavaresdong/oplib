@@ -9,6 +9,7 @@ set(libop_ds_SRCS
     RBTree.H
     Set.h
     Map.h
+    Hashtable.h
 )
 
 # Declare the library
