@@ -45,15 +45,76 @@ namespace ds
 
   template <typename Value, typename Key, typename HashFunc,
             typename ExtractKey, typename EqualKey, 
+            class Alloc>
+  class Hashtable;
+
+  template <typename Value, typename Key, typename HashFunc,
+            typename ExtractKey, typename EqualKey, 
+            class Alloc = std::allocator<Value>>
+  struct HashIterator
+  {
+    using hashtable = Hashtable<Value, Key, HashFunc, ExtractKey, EqualKey, Alloc>;
+    using self = HashIterator<Value, Key, HashFunc, ExtractKey, EqualKey, Alloc>;
+    using reference = Value&;
+    using pointer = Value*;
+    using difference_type = ptrdiff_t;
+    using iterator_category = std::forward_iterator_tag;
+    using NodePtr = HashNode<Value>*;
+
+    NodePtr _pnode;
+    hashtable* _ht;
+
+    HashIterator() {}
+    HashIterator(NodePtr ptr_) { _pnode = ptr_; }
+    HashIterator(const HashIterator& it_) { _pnode = it_._pnode; }
+
+    reference operator * () 
+    { return _pnode->_val; }
+
+    pointer operator -> () 
+    { return &(operator *()); }
+
+    void increment();
+
+    self& operator ++ () 
+    { increment(); return *this; }
+
+    self operator ++ (int) 
+    {
+      self tmp = *this;
+      increment();
+      return tmp;
+    }
+
+    bool operator == (const HashIterator& rhs_) const
+    { return _pnode == rhs_._pnode; }
+   
+    bool operator != (const HashIterator& rhs_) const
+    { return !operator ==(rhs_); }
+
+  };
+
+  template <typename Value, typename Key, typename HashFunc,
+            typename ExtractKey, typename EqualKey, 
             class Alloc = std::allocator<Value>>
   class Hashtable
   {
+    friend class HashIterator<Value, Key, HashFunc, ExtractKey, EqualKey, Alloc>;
+
    public:
     using hasher = HashFunc;
     using key_equal = EqualKey;
-    using size_type = size_t;
     using value_type = Value;
     using allocator_type = Alloc;
+    using size_type = size_t;
+
+    using reference = value_type;
+    using const_reference = const value_type;
+    using pointer = value_type*;
+    using const_pointer = const value_type*;
+
+    using iterator = HashIterator<Value, Key, hasher, ExtractKey, EqualKey, Alloc>;
+    using const_iterator = const HashIterator<Value, Key, hasher, ExtractKey, EqualKey, Alloc>;
 
    private:
     hasher _hash;
@@ -76,6 +137,7 @@ namespace ds
     // _buckets storing lists of values with the same hashed position
     using BucketList = std::vector<NodePtr, NodeAlloc>;
     BucketList _buckets;
+
 
    private:
     // Allocate a new node
@@ -149,7 +211,7 @@ namespace ds
       }
     }
 
-    bool insertUniqueNoresize(const value_type& val_)
+    std::pair<iterator, bool> insertUniqueNoresize(const value_type& val_)
     {
       const size_type n = bucketNum(val_, _buckets.size());
       NodePtr first = _buckets[n];
@@ -157,17 +219,20 @@ namespace ds
       {
         // The key already exists
         if (_equals(_keyExtractor(cur->_val), _keyExtractor(val_)))
-          return false;
+          return std::make_pair(iterator(cur), false);
       }
 
       NodePtr tmp = createNode(val_);
       tmp->_next = _buckets[n];
       _buckets[n] = tmp;
       ++_numElements;
-      return true;
+      return std::make_pair(iterator(tmp), true);
     }
 
    public:
+
+    bool empty() const
+    { return _numElements == 0; }
 
     size_type bucket_count() const
     { return _buckets.size(); }
@@ -175,20 +240,23 @@ namespace ds
     size_type size() const
     { return _numElements; }
 
+    size_type max_size() const { return size_type(-1); }
+
     // Maximum number of _buckets available in this system
     size_type max_bucket_count()
     { return primesList[primeCount - 1]; }
 
     Hashtable(size_type n,
-              const HashFunc& hf = HashFunc(),
-              const EqualKey& eq = EqualKey())
-    : _hash(hf), _equals(eq), _keyExtractor(ExtractKey()), _numElements(0)
+              const HashFunc& hf_ = HashFunc(),
+              const EqualKey& eq_ = EqualKey(),
+              const Alloc& alloc_ = Alloc())
+    : _hash(hf_), _equals(eq_), _keyExtractor(ExtractKey()), _alloc(alloc_), _numElements(0)
     { init(n); }
 
     ~Hashtable()
     { clear(); }
 
-    bool insertUnique(const value_type& val_)
+    std::pair<iterator, bool> insertUnique(const value_type& val_)
     {
       // test if we need to expand the table
       resize(_numElements + 1);
@@ -203,6 +271,52 @@ namespace ds
       for (auto first = _buckets[index_]; first != nullptr; first = first->_next)
         cnt += 1;
       return cnt;
+    }
+
+    iterator find(const value_type& val_)
+    {
+      const size_type n = bucketNum(val_, _buckets.size());
+
+      NodePtr first = _buckets[n];
+      for (auto cur = first; cur != nullptr; cur = cur->_next)
+      {
+        // The key already exists
+        if (_equals(_keyExtractor(cur->_val), _keyExtractor(val_)))
+          return iterator(cur);
+      }
+      // TODO change to end()
+      return iterator(nullptr);
+    }
+
+    std::pair<iterator, bool> erase(const_iterator iter_)
+    {
+      const size_type n = bucketNum(iter_->_val, _buckets.size());
+      NodePtr first = _buckets[n];
+
+      auto prev = _buckets[n];
+      for (auto cur = first; cur != nullptr; cur = cur->_next)
+      {
+        // The key already exists
+        if (cur == iter_->_pnode)
+        {
+          if (prev == _buckets[n])
+            _buckets[n] = cur->_next;
+          else
+          {
+            prev->_next = cur->_next;
+          }
+          auto n = cur->_next;
+          putNode(cur);
+          return std::make_pair(iterator(n), true);
+        }
+        prev = cur;
+      }
+      return std::make_pair(iterator(nullptr), false);
+    }
+
+    iterator erase(const value_type& val_)
+    {
+      // TODO
     }
 
     void clear()
@@ -255,6 +369,14 @@ namespace ds
     }
 
   };
+
+  template <typename Value, typename Key, typename HashFunc,
+            typename ExtractKey, typename EqualKey, 
+            class Alloc>
+  void HashIterator<Value, Key, HashFunc, ExtractKey, EqualKey, Alloc>::increment()
+  {
+    _pnode = _pnode->_next;
+  }
 }
 }
 
