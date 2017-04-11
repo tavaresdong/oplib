@@ -49,3 +49,18 @@ TEST_F(HashsetTest, testInsert)
   EXPECT_FALSE(it.second);
   EXPECT_EQ(*it.first, 5);
 }
+
+TEST_F(HashsetTest, testBeginEnd)
+{
+  oplib::ds::Hashset<int> iht(50);
+  EXPECT_EQ(iht.size(), 0u);
+  iht.insert(5);
+  iht.insert(55);
+  iht.insert(5);
+  EXPECT_EQ(iht.size(), 2u);
+  iht.insert(14);
+  iht.insert(19);
+  iht.insert(28);
+  for (auto iter = iht.begin(); iter != iht.end(); ++iter)
+  { std::cout << *iter << std::endl; }
+}

@@ -56,6 +56,13 @@ namespace ds
     size_type max_size() const
     { return _impl.max_size(); }
 
+    // Iterators
+    iterator begin()
+    { return _impl.begin(); }
+
+    iterator end()
+    { return _impl.end(); }
+
     // Constructor/Destructor
     // TODO copy/assign
     explicit Hashset(size_type n_,
@@ -74,6 +81,7 @@ namespace ds
     // Modifiers
     std::pair<iterator, bool> insert(const value_type& val_)
     { return _impl.insertUnique(val_); }
+
 
   };
 }

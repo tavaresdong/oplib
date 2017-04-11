@@ -61,12 +61,12 @@ namespace ds
     using iterator_category = std::forward_iterator_tag;
     using NodePtr = HashNode<Value>*;
 
-    NodePtr _pnode;
-    hashtable* _ht;
+    NodePtr _pnode { nullptr };
+    hashtable* _ht { nullptr };
 
     HashIterator() {}
-    HashIterator(NodePtr ptr_) { _pnode = ptr_; }
-    HashIterator(const HashIterator& it_) { _pnode = it_._pnode; }
+    HashIterator(NodePtr ptr_, const hashtable* ht_):
+    _pnode(ptr_), _ht(const_cast<hashtable*>(ht_)) {}
 
     reference operator * () 
     { return _pnode->_val; }
@@ -219,17 +219,39 @@ namespace ds
       {
         // The key already exists
         if (_equals(_keyExtractor(cur->_val), _keyExtractor(val_)))
-          return std::make_pair(iterator(cur), false);
+          return std::make_pair(iterator(cur, this), false);
       }
 
       NodePtr tmp = createNode(val_);
       tmp->_next = _buckets[n];
       _buckets[n] = tmp;
       ++_numElements;
-      return std::make_pair(iterator(tmp), true);
+      return std::make_pair(iterator(tmp, this), true);
+    }
+
+    iterator getFirstElem() const
+    {
+      if (!empty())
+      {
+        for (size_type i = 0; i < _buckets.size(); ++i)
+        {
+          if (_buckets[i] != nullptr)
+          {
+            return iterator(_buckets[i], this);
+          }
+        }
+      }
+      return iterator(nullptr, this);
     }
 
    public:
+
+    // Iterators
+    iterator begin()
+    { return getFirstElem(); }
+
+    iterator end()
+    { return iterator(nullptr, this); }
 
     bool empty() const
     { return _numElements == 0; }
@@ -282,10 +304,10 @@ namespace ds
       {
         // The key already exists
         if (_equals(_keyExtractor(cur->_val), _keyExtractor(val_)))
-          return iterator(cur);
+          return iterator(cur, this);
       }
       // TODO change to end()
-      return iterator(nullptr);
+      return iterator(nullptr, this);
     }
 
     std::pair<iterator, bool> erase(const_iterator iter_)
@@ -307,11 +329,11 @@ namespace ds
           }
           auto n = cur->_next;
           putNode(cur);
-          return std::make_pair(iterator(n), true);
+          return std::make_pair(iterator(n, this), true);
         }
         prev = cur;
       }
-      return std::make_pair(iterator(nullptr), false);
+      return std::make_pair(iterator(nullptr, this), false);
     }
 
     iterator erase(const value_type& val_)
@@ -375,7 +397,14 @@ namespace ds
             class Alloc>
   void HashIterator<Value, Key, HashFunc, ExtractKey, EqualKey, Alloc>::increment()
   {
-    _pnode = _pnode->_next;
+    if (_pnode == nullptr) return;
+    if (_pnode->_next == nullptr)
+    {
+      auto n = _ht->bucketNum(_pnode->_val, _ht->_buckets.size());
+      _pnode = _pnode->_next;
+      while (_pnode == nullptr && ++n < _ht->_buckets.size())
+        _pnode = _ht->_buckets[n];
+    }
   }
 }
 }
