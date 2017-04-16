@@ -78,12 +78,49 @@ namespace ds
 
     ~Hashset() {}
 
+    // Accessors
+    iterator find(const key_type& key_)
+    { return _impl.find(key_); }
+
+    const_iterator find(const key_type& key_) const
+    { return _impl.find(key_); }
+
+    size_type count(const key_type& key_)
+    { return _impl.find(key_) == _impl.end() ? 0 : 1; }
+
     // Modifiers
     std::pair<iterator, bool> insert(const value_type& val_)
     { return _impl.insertUnique(val_); }
 
+    iterator insert(const_iterator hint_, const value_type& val_)
+    { return _impl.insertHintUnique(hint_, val_); }
+
+    iterator erase(const_iterator pos_)
+    { return _impl.erase(pos_).first; }
+
+    size_type erase(const key_type& key_)
+    { return _impl.erase(key_) ? 1 : 0; }
+
+    iterator erase(const_iterator first_, const_iterator last_)
+    { return _impl.erase(first_, last_); }
+
+    void clear()
+    { _impl.clear(); }
+
+    void swap(Hashset& set_)
+    { _impl.swap(set_._impl); }
 
   };
+
+  template <
+            typename Key,
+            typename Hash,
+            typename Pred,
+            typename Alloc
+           >
+  void swap(Hashset<Key, Hash, Pred, Alloc>& set1_,
+            Hashset<Key, Hash, Pred, Alloc>& set2_)
+  { set1_.swap(set2_); }
 }
 }
 

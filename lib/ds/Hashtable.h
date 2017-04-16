@@ -7,6 +7,7 @@
 #include <algorithm>
 #include <utility>
 
+// TODO: add c++11 new features: emplace move copy/assign
 namespace oplib 
 {
 namespace ds
@@ -56,10 +57,10 @@ namespace ds
     using hashtable = Hashtable<Value, Key, HashFunc, ExtractKey, EqualKey, Alloc>;
     using self = HashIterator<Value, Key, HashFunc, ExtractKey, EqualKey, Alloc>;
     using reference = Value&;
-    using pointer = Value*;
     using difference_type = ptrdiff_t;
     using iterator_category = std::forward_iterator_tag;
     using NodePtr = HashNode<Value>*;
+    using pointer = NodePtr;
 
     NodePtr _pnode { nullptr };
     hashtable* _ht { nullptr };
@@ -68,11 +69,11 @@ namespace ds
     HashIterator(NodePtr ptr_, const hashtable* ht_):
     _pnode(ptr_), _ht(const_cast<hashtable*>(ht_)) {}
 
-    reference operator * () 
+    reference operator * () const
     { return _pnode->_val; }
 
-    pointer operator -> () 
-    { return &(operator *()); }
+    NodePtr operator -> () const
+    { return _pnode; }
 
     void increment();
 
@@ -229,6 +230,12 @@ namespace ds
       return std::make_pair(iterator(tmp, this), true);
     }
 
+    iterator insertHintUniqueNoresize(const_iterator hint_, const value_type& val_)
+    {
+      if (*hint_ == val_) return iterator(hint_._pnode, this);
+      return insertUniqueNoresize(val_).first;
+    }
+
     iterator getFirstElem() const
     {
       if (!empty())
@@ -250,7 +257,13 @@ namespace ds
     iterator begin()
     { return getFirstElem(); }
 
+    const_iterator cbegin() const
+    { return getFirstElem(); }
+
     iterator end()
+    { return iterator(nullptr, this); }
+
+    const_iterator cend() const
     { return iterator(nullptr, this); }
 
     bool empty() const
@@ -285,6 +298,12 @@ namespace ds
       return insertUniqueNoresize(val_);
     }
 
+    iterator insertHintUnique(const_iterator hint_, const value_type& val_)
+    {
+      resize(_numElements + 1);
+      return insertHintUniqueNoresize(hint_, val_);
+    }
+
     size_type elemsInbucket(size_type index_) const
     {
       if (index_ < 0 || index_ >= _buckets.size())
@@ -297,6 +316,11 @@ namespace ds
 
     iterator find(const value_type& val_)
     {
+      return static_cast<iterator>(static_cast<const Hashtable&>(*this).find(val_));
+    }
+
+    const_iterator find(const value_type& val_) const
+    {
       const size_type n = bucketNum(val_, _buckets.size());
 
       NodePtr first = _buckets[n];
@@ -306,12 +330,24 @@ namespace ds
         if (_equals(_keyExtractor(cur->_val), _keyExtractor(val_)))
           return iterator(cur, this);
       }
-      // TODO change to end()
-      return iterator(nullptr, this);
+
+      return cend();
+    }
+
+    iterator erase(const_iterator first_, const_iterator last_)
+    {
+      iterator cur = first_;
+      for (; cur != last_; )
+      {
+        cur = erase(cur).first;
+      }
+      return cur;
     }
 
     std::pair<iterator, bool> erase(const_iterator iter_)
     {
+      if (iter_ == end()) return std::make_pair(iterator(nullptr, this), false);
+
       const size_type n = bucketNum(iter_->_val, _buckets.size());
       NodePtr first = _buckets[n];
 
@@ -319,26 +355,28 @@ namespace ds
       for (auto cur = first; cur != nullptr; cur = cur->_next)
       {
         // The key already exists
-        if (cur == iter_->_pnode)
+        if (cur == iter_._pnode)
         {
+          iterator next(cur, this);
+          ++next;
           if (prev == _buckets[n])
             _buckets[n] = cur->_next;
           else
           {
             prev->_next = cur->_next;
           }
-          auto n = cur->_next;
           putNode(cur);
-          return std::make_pair(iterator(n, this), true);
+          --_numElements;
+          return std::make_pair(next, true);
         }
         prev = cur;
       }
       return std::make_pair(iterator(nullptr, this), false);
     }
 
-    iterator erase(const value_type& val_)
+    bool erase(const value_type& val_)
     {
-      // TODO
+      return erase(find(val_)).second;
     }
 
     void clear()
@@ -388,6 +426,17 @@ namespace ds
       {
 
       }
+    }
+
+    void swap(Hashtable& table_)
+    {
+      using std::swap;
+      swap(_hash, table_._hash);
+      swap(_equals, table_._equals);
+      swap(_keyExtractor, table_._keyExtractor);
+      swap(_alloc, table_._alloc);
+      swap(_numElements, table_._numElements);
+      swap(_buckets, table_._buckets);
     }
 
   };
