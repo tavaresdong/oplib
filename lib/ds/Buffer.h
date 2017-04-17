@@ -5,6 +5,7 @@
 #include <cassert>
 #include <algorithm>
 #include <utility>
+#include <string>
 
 namespace oplib
 {
