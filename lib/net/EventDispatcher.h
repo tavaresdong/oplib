@@ -49,11 +49,27 @@ namespace oplib
       updateLoop();
     }
 
+    void enableWriting()
+    {
+      _events |= kWriteEvent;
+      updateLoop();
+    }
+
+    void disableWriting()
+    {
+      _events &= ~kWriteEvent;
+      updateLoop();
+    }
+
+    bool isWriting()
+    { return _events & kWriteEvent; }
+
     void disable()
     {
       _events = kNoEvent;
       updateLoop();
     }
+
 
     EventLoop* ownerLoop() { return _loop; }
 

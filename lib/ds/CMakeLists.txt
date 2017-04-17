@@ -10,6 +10,7 @@ set(libop_ds_SRCS
     Set.h
     Map.h
     Hashset.h
+    Buffer.cc
 )
 
 # Declare the library

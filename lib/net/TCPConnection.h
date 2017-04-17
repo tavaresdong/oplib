@@ -47,6 +47,15 @@ namespace oplib
     // Called by the TCPServer in loop thread
     void connectionEstablished();
     void connectionClosed(); 
+
+    // send() is thread-safe, can be called from another thread TODO
+    void send(const std::string& message_)
+    {}
+
+    // shutdown() is thread-safe TODO
+    void shutdown()
+    {}
+
    private:
 
     // Register to EventDispatcher
@@ -59,6 +68,7 @@ namespace oplib
     { 
       CONNECTING,
       CONNECTED,
+      DISCONNECTING,
       DISCONNECTED
     };
 

@@ -37,12 +37,19 @@ namespace ds
     const char* peek()
     { return _data.data() + _readIndex; }
 
-    void retrieve(int sz_)
+    void retrieve(size_t sz_)
     {
-      assert(_readIndex + sz_ <= _writeIndex);
+      if (sz_ > readableBytes())
+        retrieveAll();
+
       _readIndex += sz_;
       if (_readIndex == _writeIndex)
         reset();
+    }
+
+    void retrieveAll()
+    {
+      retrieve(readableBytes());
     }
 
     std::string retrieveAsString()
@@ -62,6 +69,9 @@ namespace ds
       std::copy(data_, data_ + len_, begin() + _writeIndex);
       _writeIndex += len_;
     }
+
+    void append(const std::string& str_)
+    { append(str_.data(), str_.size()); }
 
     void prepend(const char* data_, size_t len_)
     {
@@ -109,7 +119,7 @@ namespace ds
         std::copy(begin() + _readIndex, begin() + _writeIndex,
                   begin() + prependSize);
         _readIndex = prependSize;
-        _writeIndex = _readIndex + readableBytes();
+        _writeIndex = _readIndex + readableLen;
         assert(readableLen == readableBytes());
       }
 
