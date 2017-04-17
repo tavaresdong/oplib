@@ -9,7 +9,7 @@ namespace oplib
   : _loop(loop_), _listening(false), _listenSock(socketutils::createOrDie()),
     _dispatcher(_loop, _listenSock.fd())
   {
-    // Reuse the address
+    // Reuse the address when closed
     _listenSock.setReuseAddr(true);
 
     // Bind the socket to listenAddr_
@@ -36,10 +36,10 @@ namespace oplib
     // Make use of Socket's destructor to guarantee resource release (RAII)
     auto peerSock = std::make_unique<Socket>(_listenSock.accept(&peer));
     if (peerSock->fd() >= 0)
-    if (_newConnectionCb)
-    {
-      _newConnectionCb(std::move(peerSock), peer);
-    }
+      if (_newConnectionCb)
+      {
+        _newConnectionCb(std::move(peerSock), peer);
+      }
     // As the connfd is managed by unique_ptr, we don't need 
     // to release it manually
   }

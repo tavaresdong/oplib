@@ -1,14 +1,13 @@
 #ifndef OPLIB_EVENTDISPATCHER_H
 #define OPLIB_EVENTDISPATCHER_H
 
-#include <functional>
-
-#include <util/Common.h>
 #include "Types.h"
+#include <util/Common.h>
+
+#include <functional>
 
 namespace oplib
 {
-  // Forward declare EventLoop
   class EventLoop;
 
   class EventDispatcher : Noncopyable
@@ -73,7 +72,6 @@ namespace oplib
 
     EventLoop* ownerLoop() { return _loop; }
 
-    // Key method: called by loop
     void handleEvent(oplib::Timestamp receiveTime_);
 
     int index() const { return _index; }

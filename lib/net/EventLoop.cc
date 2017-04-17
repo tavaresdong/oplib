@@ -12,16 +12,14 @@
 
 namespace oplib
 {
-
-  // Thread local pointer: every thread can only 
-  // have one loop
+  // Thread local pointer: every thread can only have one loop
   __thread EventLoop* gLoopInThread { nullptr };
 
   EventLoop::EventLoop()
   : _threadId(CurrentThread::tid()),
     _poller(std::make_unique<Poller>(this)),
     _timerMgr(std::make_unique<TimerManager>(this)),
-    _wakeupfd( ::eventfd(0, EFD_CLOEXEC | EFD_NONBLOCK)),
+    _wakeupfd(::eventfd(0, EFD_CLOEXEC | EFD_NONBLOCK)),
     _wakeupDispatcher(std::make_unique<EventDispatcher>(this, _wakeupfd))
   {
     if (gLoopInThread != nullptr)
@@ -55,14 +53,10 @@ namespace oplib
   }
 
   void EventLoop::updateEventDispatcher(EventDispatcher* dp_)
-  {
-    _poller->updateEventDispatcher(dp_);
-  }
+  { _poller->updateEventDispatcher(dp_); }
 
   void EventLoop::removeEventDispatcher(EventDispatcher* dp_)
-  {
-    _poller->removeEventDispatcher(dp_);
-  }
+  { _poller->removeEventDispatcher(dp_); }
 
   void EventLoop::loop()
   {
@@ -76,13 +70,13 @@ namespace oplib
     while (!_done)
     {
       activeDispatchers.clear();
-      _poller->poll(_timeout, &activeDispatchers);
+      oplib::Timestamp pollReturn = _poller->poll(_timeout, &activeDispatchers);
 
       for (auto dispatcher : activeDispatchers)
       {
         // When the events are filled, 
         // call handleEvent on all the dispatchers
-        dispatcher->handleEvent(oplib::Timestamp::now());
+        dispatcher->handleEvent(pollReturn);
       }
 
       // Execute pending functors here
@@ -132,7 +126,7 @@ namespace oplib
     // (1) currently not in loop thread, must wake up or the functor
     // won't get executed in time
     // (2) Currently executing functors, need to wakeup
-    // so the functors newly added could get executed in time
+    // so the functors newly added can be executed in time
     if (!inLoopThread() || _executingFunctors)
     {
       wakeup();

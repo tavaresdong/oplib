@@ -25,9 +25,7 @@ namespace oplib
     ~EventLoop();
 
     void loop();
-
     void inLoopThreadOrDie();
-
     bool inLoopThread() const
     {
       // Return true if running thread is the loop's thread

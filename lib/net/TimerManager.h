@@ -43,13 +43,6 @@ namespace oplib
     bool _repeating;
   };
 
-  // Store the address of a timer
-  // struct TimerId
-  // {
-  //   TimerId(Timer* addr_) : _addr(addr_) {}
-  //   Timer* _addr;
-  // };
-
   class TimerManager : Noncopyable
   {
    public:

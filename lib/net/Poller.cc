@@ -21,7 +21,7 @@ namespace oplib
     _loop->inLoopThreadOrDie();
   }
 
-  Timestamp Poller::poll(int timeout_ /*in ms*/, EventDispatcherList *activeDispatchers_)
+  Timestamp Poller::poll(int timeout_, EventDispatcherList *activeDispatchers_)
   {
     // can only be called from loop thread
     inLoopThreadOrDie();

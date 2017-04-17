@@ -2,7 +2,7 @@
 #include "EventLoop.h"
 
 #include <poll.h>
-#include <assert.h>
+#include <cassert>
 
 namespace oplib
 {
@@ -11,7 +11,11 @@ namespace oplib
   const int EventDispatcher::kWriteEvent = POLLOUT;
 
   EventDispatcher::EventDispatcher(EventLoop* loop_, int fd_)
-  : _handlingEvent(false), _fd(fd_), _loop(loop_), _events(0), _revents(0), _index(-1)
+  : _handlingEvent(false),
+    _fd(fd_), _loop(loop_),
+    _events(0),
+    _revents(0),
+    _index(-1)
   {}
 
   EventDispatcher::~EventDispatcher()
