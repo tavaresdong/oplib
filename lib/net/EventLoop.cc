@@ -82,7 +82,7 @@ namespace oplib
       {
         // When the events are filled, 
         // call handleEvent on all the dispatchers
-        dispatcher->handleEvent();
+        dispatcher->handleEvent(oplib::Timestamp::now());
       }
 
       // Execute pending functors here

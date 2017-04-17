@@ -20,7 +20,8 @@ TCPConnection::TCPConnection(EventLoop *loop_,
   _dispatcher(std::make_unique<EventDispatcher>(_loop, _sock->fd()))
 {
   // TODO log
-  _dispatcher->setReadCallback(std::bind(&TCPConnection::handleRead, this));
+  using namespace std::placeholders;
+  _dispatcher->setReadCallback(std::bind(&TCPConnection::handleRead, this, _1));
   _dispatcher->setCloseCallback(std::bind(&TCPConnection::handleClose, this));
   _dispatcher->setErrorCallback(std::bind(&TCPConnection::handleError, this));
 }
@@ -67,22 +68,24 @@ void TCPConnection::connectionClosed()
   // TODO log here
 }
 
-void TCPConnection::handleRead()
+void TCPConnection::handleRead(oplib::Timestamp receiveTime_)
 {
   // Simple version, TODO: use buffer
   // We need to check for read 0 situation in handleRead
-  char buf[65536];
-  ssize_t nread = ::read(_sock->fd(), buf, sizeof(buf));
-  if (nread > 0)
+  int savedErrno = 0;
+  ssize_t n = _inputBuffer.readFd(_dispatcher->fd(), &savedErrno);
+  if (n > 0)
   {
-    _messageCallback(shared_from_this(), buf, nread);
+    _messageCallback(shared_from_this(), &_inputBuffer, receiveTime_);
   }
-  else if (nread == 0)
+  else if (n == 0)
   {
     handleClose();
   }
   else
   {
+    errno = savedErrno;
+    // TODO : log here
     handleError();
   }
 }

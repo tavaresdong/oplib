@@ -25,7 +25,7 @@ namespace oplib
     _loop->updateEventDispatcher(this);
   }
 
-  void EventDispatcher::handleEvent()
+  void EventDispatcher::handleEvent(oplib::Timestamp receiveTime_)
   {
     _handlingEvent = true;
     if (_revents & POLLNVAL)
@@ -47,7 +47,7 @@ namespace oplib
 
     if (_revents & (POLLIN | POLLPRI | POLLRDHUP))
     {
-      _readCallback();
+      _readCallback(receiveTime_);
     }
 
     if (_revents & POLLOUT)

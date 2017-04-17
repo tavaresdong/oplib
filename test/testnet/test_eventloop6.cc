@@ -1,10 +1,6 @@
-// Transplanted from muduo example
 #include <net/TCPServer.h>
 #include <net/EventLoop.h>
 #include <net/InetAddress.h>
-#include <ds/Buffer.h>
-#include <util/Timestamp.h>
-
 #include <stdio.h>
 
 void onConnection(const oplib::TCPConnectionPtr& conn)
@@ -22,12 +18,16 @@ void onConnection(const oplib::TCPConnectionPtr& conn)
   }
 }
 
-void onMessage(const oplib::TCPConnectionPtr& conn_,
-               oplib::ds::Buffer* buf_,
-               oplib::Timestamp receiveTime_)
+void onMessage(const oplib::TCPConnectionPtr& conn,
+               oplib::ds::Buffer* buf,
+               oplib::Timestamp receiveTime)
 {
-  printf("onMessage(): received %zd bytes from connection [%s]\n",
-         buf_->readableBytes(), conn_->name().c_str());
+  printf("onMessage(): received %zd bytes from connection [%s] at %s\n",
+         buf->readableBytes(),
+         conn->name().c_str(),
+         receiveTime.toFormatString().c_str());
+
+  printf("onMessage(): [%s]\n", buf->retrieveAsString().c_str());
 }
 
 int main()
@@ -37,7 +37,7 @@ int main()
   oplib::InetAddress listenAddr(9981);
   oplib::EventLoop loop;
 
-  oplib::TCPServer server(&loop, listenAddr, "yuchenServer");
+  oplib::TCPServer server(&loop, listenAddr, "MyServer");
   server.setConnectionCallback(onConnection);
   server.setMessageCallback(onMessage);
   server.start();

@@ -1,10 +1,12 @@
 #ifndef OPLIB_NET_TYPES_H
 #define OPLIB_NET_TYPES_H
 
+#include "Socket.h"
+#include <ds/Buffer.h>
+#include <util/Timestamp.h>
+
 #include <functional>
 #include <memory>
-
-#include "Socket.h"
 
 namespace oplib
 {
@@ -13,11 +15,12 @@ namespace oplib
 
   typedef std::function<void()> TimerCallback;
   typedef std::function<void()> EventCallback;
+  typedef std::function<void(oplib::Timestamp)> ReadEventCallback;
   typedef std::function<void()> Functor;
 
   typedef std::function<void (std::unique_ptr<Socket>, const InetAddress&)> NewConnectionCallback;
   typedef std::function<void (const TCPConnectionPtr&)> ConnectionCallback;
-  typedef std::function<void (const TCPConnectionPtr&, const char *data_, ssize_t)> MessageCallback;
+  typedef std::function<void (const TCPConnectionPtr&, oplib::ds::Buffer*_, oplib::Timestamp)> MessageCallback;
   typedef std::function<void (const TCPConnectionPtr&)> CloseCallback;
 }
 

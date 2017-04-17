@@ -18,7 +18,7 @@ namespace oplib
     EventDispatcher(EventLoop *loop_, int fd_);
     ~EventDispatcher();
 
-    void setReadCallback(const EventCallback& cb_)
+    void setReadCallback(const ReadEventCallback& cb_)
     {
       _readCallback = cb_;
     }
@@ -74,7 +74,7 @@ namespace oplib
     EventLoop* ownerLoop() { return _loop; }
 
     // Key method: called by loop
-    void handleEvent();
+    void handleEvent(oplib::Timestamp receiveTime_);
 
     int index() const { return _index; }
     void setIndex(int ind_) { _index = ind_; } 
@@ -98,7 +98,7 @@ namespace oplib
     int _revents;
     int _index;
 
-    EventCallback _readCallback;
+    ReadEventCallback _readCallback;
     EventCallback _writeCallback;
     EventCallback _errorCallback;
     EventCallback _closeCallback;

@@ -4,12 +4,13 @@
 
 #include <net/EventLoop.h>
 #include <net/EventDispatcher.h>
+#include <util/Timestamp.h>
 
 oplib::EventLoop* gLoop;
 
-void timeout()
+void timeout(oplib::Timestamp receiveTime_)
 {
-  printf("Timeout\n");
+  printf("%s Timeout\n", oplib::Timestamp::now().toFormatString().c_str());
   gLoop->quit();
 }
 

@@ -1,7 +1,10 @@
 #ifndef OPLIB_TCPCONNECTION_H
 #define OPLIB_TCPCONNECTION_H
 
+#include <ds/Buffer.h>
 #include <util/Common.h>
+#include <util/Timestamp.h>
+
 #include "EventLoop.h"
 #include "InetAddress.h"
 
@@ -60,7 +63,7 @@ namespace oplib
 
     // Register to EventDispatcher
     // for handling reading event
-    void handleRead();
+    void handleRead(oplib::Timestamp receiveTime_);
     void handleClose();
     void handleError();
 
@@ -89,6 +92,8 @@ namespace oplib
     CloseCallback _closeCallback;
     MessageCallback _messageCallback;
     std::unique_ptr<EventDispatcher> _dispatcher;
+
+    oplib::ds::Buffer _inputBuffer;
   };
 
   typedef std::shared_ptr<TCPConnection> TCPConnectionPtr;
