@@ -29,6 +29,9 @@ void Socket::setReuseAddr(bool on_)
   socketutils::setReuseAddrOrDie(_sockfd, on_);
 }
 
+void Socket::shutdownWrite()
+{ socketutils::shutdownWrite(_sockfd); }
+
 int Socket::accept(InetAddress* peer_)
 {
   struct sockaddr_in6 addr;

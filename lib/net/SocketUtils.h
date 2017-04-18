@@ -56,6 +56,8 @@ namespace socketutils
     }
   }
 
+  void shutdownWrite(int sockfd_);
+
   void close(int sockfd_);
 
   int createOrDie();

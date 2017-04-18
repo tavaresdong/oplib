@@ -1,8 +1,9 @@
 #include "TCPConnection.h"
 #include "EventDispatcher.h"
+#include <util/Common.h>
 
 #include <unistd.h>
-#include <assert.h>
+#include <cassert>
 
 using namespace oplib;
 
@@ -22,6 +23,7 @@ TCPConnection::TCPConnection(EventLoop *loop_,
   // TODO log
   using namespace std::placeholders;
   _dispatcher->setReadCallback(std::bind(&TCPConnection::handleRead, this, _1));
+  _dispatcher->setWriteCallback(std::bind(&TCPConnection::handleWrite, this));
   _dispatcher->setCloseCallback(std::bind(&TCPConnection::handleClose, this));
   _dispatcher->setErrorCallback(std::bind(&TCPConnection::handleError, this));
 }
@@ -52,7 +54,8 @@ void TCPConnection::connectionEstablished()
 void TCPConnection::connectionClosed()
 {
   _loop->inLoopThreadOrDie();
-  assert(_state == State::CONNECTED);
+  assert(_state == State::CONNECTED ||
+         _state == State::DISCONNECTING);
   setState(State::DISCONNECTED);
 
   // Sometimes we need to call connectionClosed
@@ -90,10 +93,47 @@ void TCPConnection::handleRead(oplib::Timestamp receiveTime_)
   }
 }
 
+void TCPConnection::handleWrite()
+{
+  _loop->inLoopThreadOrDie();
+  if (_dispatcher->isWriting())
+  {
+    ssize_t nwrite = ::write(_dispatcher->fd(),
+                             _outputBuffer.peek(),
+                             _outputBuffer.readableBytes());
+    if (nwrite > 0)
+    {
+      _outputBuffer.retrieve(nwrite);
+      if (_outputBuffer.readableBytes() == 0u)
+      {
+        _dispatcher->disableWriting();
+        if (_state == State::DISCONNECTING)
+        {
+          shutdownInLoop();
+        }
+      }
+      else
+      {
+        // TODO log: ready to write more data
+      }
+    }
+    else
+    {
+      // TODO log write error
+      abort();
+    }
+  }
+  else
+  {
+    // TODO: log connection is down, no more writing
+  }
+}
+
 void TCPConnection::handleClose()
 {
   _loop->inLoopThreadOrDie();
-  assert(_state == State::CONNECTED);
+  assert(_state == State::CONNECTED ||
+         _state == State::DISCONNECTING);
   _dispatcher->disable();
 
   // This CloseCallback binds to TCPServer/TCPClient's removeConnection
@@ -105,4 +145,74 @@ void TCPConnection::handleError()
 {
   // TODO: log error info
   abort();
+}
+
+void TCPConnection::send(const std::string& message_)
+{
+  if (_state == State::CONNECTED)
+  {
+    if (_loop->inLoopThread())
+    {
+      sendInLoop(message_);
+    }
+    else
+    {
+      // Make a copy of message_ and send in loop thread
+      _loop->runInLoop(std::bind(&TCPConnection::sendInLoop, this, message_));
+    }
+  } 
+}
+
+void TCPConnection::sendInLoop(const std::string& message_)
+{
+  _loop->inLoopThreadOrDie();
+  ssize_t nwrite = 0;
+  if (!_dispatcher->isWriting() && _outputBuffer.readableBytes() == 0u)
+  {
+    // Try to write directly if writing and no pending data
+    nwrite = ::write(_dispatcher->fd(), message_.data(), message_.size());
+    if (nwrite >= 0)
+    {
+      if (implicit_cast<size_t>(nwrite) < message_.size())
+      {
+        // TODO log
+      }
+    }
+    else
+    {
+      // TODO: log error instead of aborting
+      nwrite = 0;
+      abort();
+    }
+
+    assert(nwrite >= 0);
+    if (implicit_cast<size_t>(nwrite) < message_.size())
+    {
+      _outputBuffer.append(message_.data() + nwrite, message_.size() - nwrite);
+      if (!_dispatcher->isWriting())
+      {
+        // Remaining data to write, inform the dispatcher
+        // to watch writing event
+        _dispatcher->enableWriting();
+      }
+    }
+  }
+}
+
+void TCPConnection::shutdown()
+{
+  if (_state == State::CONNECTED)
+  {
+    setState(State::DISCONNECTING);
+    _loop->runInLoop(std::bind(&TCPConnection::shutdownInLoop, this));
+  }
+}
+
+void TCPConnection::shutdownInLoop()
+{
+  _loop->inLoopThreadOrDie();
+  if (!_dispatcher->isWriting())
+  {
+    _sock->shutdownWrite();
+  }
 }

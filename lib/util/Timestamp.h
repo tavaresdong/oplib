@@ -4,7 +4,8 @@
 #include <stdint.h>
 #include <stdio.h>
 #include <time.h>
-#include <inttypes.h>
+#include <sstream>
+#include <iomanip>
 #include <sys/time.h>
 #include <string>
 
@@ -97,11 +98,12 @@ namespace oplib
 
   inline std::string Timestamp::toString() const
   {
-    char buf[32] = {0};
     int64_t seconds = _timeInMicroSeconds / numMicroSecondsInSeconds;
     int64_t microSeconds = _timeInMicroSeconds % numMicroSecondsInSeconds;
-    ::snprintf(buf, sizeof(buf) - 1, "%" PRId64 ".%06" PRId64 "", seconds, microSeconds);
-    return buf;
+
+    std::ostringstream oss;
+    oss << seconds << "." << std::setw(6) << std::setfill('0') << microSeconds;
+    return oss.str();
   }
 
   inline std::string Timestamp::toFormatString() const

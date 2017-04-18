@@ -139,5 +139,14 @@ struct sockaddr_in getLocalAddr(int sockfd_)
   return localaddr;
 }
 
+void shutdownWrite(int sockfd_)
+{
+  if (::shutdown(sockfd_, SHUT_WR) < 0)
+  {
+    // TODO : log error
+    abort();
+  }
+}
+
 }
 }

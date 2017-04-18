@@ -52,20 +52,22 @@ namespace oplib
     void connectionClosed(); 
 
     // send() is thread-safe, can be called from another thread TODO
-    void send(const std::string& message_)
-    {}
+    void send(const std::string& message_);
 
     // shutdown() is thread-safe TODO
-    void shutdown()
-    {}
+    void shutdown();
 
    private:
 
     // Register to EventDispatcher
     // for handling reading event
     void handleRead(oplib::Timestamp receiveTime_);
+    void handleWrite();
     void handleClose();
     void handleError();
+
+    void sendInLoop(const std::string& message_);
+    void shutdownInLoop();
 
     enum class State 
     { 
@@ -94,6 +96,7 @@ namespace oplib
     std::unique_ptr<EventDispatcher> _dispatcher;
 
     oplib::ds::Buffer _inputBuffer;
+    oplib::ds::Buffer _outputBuffer;
   };
 
   typedef std::shared_ptr<TCPConnection> TCPConnectionPtr;

@@ -24,6 +24,8 @@ namespace oplib
 
     int accept(InetAddress* peer_);
 
+    void shutdownWrite();
+
    private:
     const int _sockfd;
   };
