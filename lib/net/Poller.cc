@@ -32,13 +32,11 @@ namespace oplib
     Timestamp pollReturnTime { Timestamp::now() };
     if (numEvents > 0)
     {
-      printf("Poller:: poll return from %d with events: %d\n", CurrentThread::tid(), numEvents);
       fillDispatchers(numEvents, activeDispatchers_);
     }
     else if (numEvents < 0)
     {
       // Error Happened, TODO: use error log instead
-      printf("Poller error\n");
       abort();
     }
     return pollReturnTime;
@@ -84,7 +82,6 @@ namespace oplib
       struct pollfd& pfd = _pollfds[index];
       assert(pfd.fd == dispatcher_->fd() || pfd.fd == -dispatcher_->fd() - 1);
       pfd.events = static_cast<short>(dispatcher_->events());
-      printf("Updating dispatcher's events %d\n in thread %d\n", pfd.events, CurrentThread::tid());
       pfd.revents = 0;
       if (dispatcher_->isIgnored())
       {
@@ -100,7 +97,6 @@ namespace oplib
     if (dispatcher_->index() < 0)
     {
       // TODO log error
-      printf("Removing event dispatcher error\n");
       abort();
     }
     else

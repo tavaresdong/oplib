@@ -24,7 +24,7 @@ namespace oplib
     // Manipulate EventLoop data structure(loop->poller->pollfds)
     _loop->inLoopThreadOrDie();
     _listening = true;
-    _listenSock.listen(); //TODO
+    _listenSock.listen();
     _dispatcher.enableReading();   
   }
 
@@ -36,10 +36,12 @@ namespace oplib
     // Make use of Socket's destructor to guarantee resource release (RAII)
     auto peerSock = std::make_unique<Socket>(_listenSock.accept(&peer));
     if (peerSock->fd() >= 0)
+    {
       if (_newConnectionCb)
       {
         _newConnectionCb(std::move(peerSock), peer);
       }
+    }
     // As the connfd is managed by unique_ptr, we don't need 
     // to release it manually
   }

@@ -38,19 +38,16 @@ void TCPServer::start()
 
 void TCPServer::newConnection(std::unique_ptr<Socket> sock_, const InetAddress& peerAddress_)
 {
-
   // Create the TCPConnection
   // This should be called in the loop thread
   _loop->inLoopThreadOrDie();
 
-  printf("Acception new connection from %d\n", CurrentThread::tid());
-
   std::ostringstream oss;
   oss << _name << "_" << _nextConnId;
+  ++_nextConnId; // increment the connId so connNames are identical
 
   // Connection name is TCPServer name(ip + port) + conn ID
   const std::string connName = oss.str();
-  // TODO log
   
   // localaddr is the newly created address at local host for the incoming connection
   InetAddress localAddr(socketutils::getLocalAddr(sock_->fd()));
@@ -58,10 +55,11 @@ void TCPServer::newConnection(std::unique_ptr<Socket> sock_, const InetAddress& 
   EventLoop* dispatchedLoop = _threadPool->getNextLoop();
 
   // std::make_shared is used to save one memory allocation
-  printf("Choosing loop: %p\n", static_cast<void*>(dispatchedLoop));
   TCPConnectionPtr conn(std::make_shared<TCPConnection>(dispatchedLoop, connName, std::move(sock_),
                                                         localAddr, peerAddress_));
+  // Log here
   printf("Connection name is %s\n", connName.c_str());
+  assert(_connections.count(connName) == 0);
   _connections[connName] = conn;
   auto cnt = _connections.count(connName);
   assert(cnt == 1);
@@ -76,19 +74,18 @@ void TCPServer::newConnection(std::unique_ptr<Socket> sock_, const InetAddress& 
 
 void TCPServer::removeConnection(const TCPConnectionPtr& conn_)
 {
-  printf("TCPServer::removeConnection\n");
   _loop->runInLoop(std::bind(&TCPServer::removeConnectionInLoop, this, conn_));
 }
 
 void TCPServer::removeConnectionInLoop(const TCPConnectionPtr& conn_)
 {
   _loop->inLoopThreadOrDie();
-  printf("removeConnectionInLoop %s from _connections\n", conn_->name().c_str());
   auto n = _connections.erase(conn_->name());
   assert(n == 1);
   UNUSED(n);
 
   EventLoop* dispatchedLoop = conn_->getLoop();
+
   // Extend the lifetime of conn_ to connectionClosed is called
   dispatchedLoop->enqueue(std::bind(&TCPConnection::connectionClosed, conn_));
 }
