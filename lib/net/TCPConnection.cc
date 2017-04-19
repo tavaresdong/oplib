@@ -3,9 +3,25 @@
 #include <util/Common.h>
 
 #include <unistd.h>
+#include <signal.h>
 #include <cassert>
 
 using namespace oplib;
+
+namespace detail
+{
+  // Use a global object to ignore sigpipe
+  class IgnoreSigPipe
+  {
+   public:
+    IgnoreSigPipe()
+    {
+      ::signal(SIGPIPE, SIG_IGN);
+    }
+  };
+
+  IgnoreSigPipe gIgnore;
+}
 
 TCPConnection::TCPConnection(EventLoop *loop_,
                              const std::string& name_,
@@ -180,9 +196,17 @@ void TCPConnection::sendInLoop(const std::string& message_)
     }
     else
     {
-      // TODO: log error instead of aborting
+      // TODO: log
       nwrite = 0;
-      abort();
+      if (errno == EPIPE)
+      {
+        // Peer is down
+        handleClose(); 
+      }
+      else if (errno != EWOULDBLOCK)
+      {
+        abort();
+      }
     }
 
     assert(nwrite >= 0);

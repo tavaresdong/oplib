@@ -9,6 +9,7 @@ file(GLOB eventloop_t8 test_eventloop8.cc)
 file(GLOB timertest test_timer.cc)
 file(GLOB listenertest test_listener.cc)
 file(GLOB tcpservertest test_tcpserver.cc)
+file(GLOB sigpipetest test_sigpipe.cc)
 
 ADD_EXECUTABLE(testeventLoop1 ${eventloop_t1})
 ADD_EXECUTABLE(testeventLoop2 ${eventloop_t2})
@@ -21,6 +22,7 @@ ADD_EXECUTABLE(testeventLoop8 ${eventloop_t8})
 ADD_EXECUTABLE(timertest ${timertest})
 ADD_EXECUTABLE(listenertest ${listenertest})
 ADD_EXECUTABLE(tcpservertest ${tcpservertest})
+ADD_EXECUTABLE(sigpipetest ${sigpipetest})
 
 TARGET_LINK_LIBRARIES(testeventLoop1
     libop_thread
@@ -73,6 +75,11 @@ TARGET_LINK_LIBRARIES(listenertest
 )
 
 TARGET_LINK_LIBRARIES(tcpservertest
+    libop_thread
+    libop_net
+)
+
+TARGET_LINK_LIBRARIES(sigpipetest
     libop_thread
     libop_net
 )
