@@ -9,4 +9,3 @@ mkdir -p $BUILD_DIR \
     && cd $BUILD_DIR \
     && cmake $SOURCE_DIR \
     && make \
-    && make test
