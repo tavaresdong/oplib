@@ -5,6 +5,7 @@
 #include <unistd.h>
 #include <signal.h>
 #include <cassert>
+#include <cstdio>
 
 using namespace oplib;
 
@@ -123,6 +124,10 @@ void TCPConnection::handleWrite()
       if (_outputBuffer.readableBytes() == 0u)
       {
         _dispatcher->disableWriting();
+        if (_writeCompleteCallback)
+        {
+          _loop->enqueue(std::bind(_writeCompleteCallback, shared_from_this()));
+        }
         if (_state == State::DISCONNECTING)
         {
           shutdownInLoop();
@@ -136,12 +141,13 @@ void TCPConnection::handleWrite()
     else
     {
       // TODO log write error
-      abort();
+      printf("Error writing data to peer\n");
     }
   }
   else
   {
     // TODO: log connection is down, no more writing
+    printf("Connection is down, no more writing\n");
   }
 }
 
@@ -160,6 +166,7 @@ void TCPConnection::handleClose()
 void TCPConnection::handleError()
 {
   // TODO: log error info
+  printf("Handling TCPConnection error\n");
   abort();
 }
 
@@ -206,10 +213,12 @@ void TCPConnection::sendInLoop(const std::string& message_)
       if (errno == EPIPE)
       {
         // Peer is down
-        handleClose(); 
+        //handleClose(); 
+        printf("Peer is down\n");
       }
       else if (errno != EWOULDBLOCK)
       {
+        printf("Error sending data, not receiving EWOULDBLOCK\n");
         abort();
       }
     }

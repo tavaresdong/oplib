@@ -36,6 +36,7 @@ namespace oplib
     else if (numEvents < 0)
     {
       // Error Happened, TODO: use error log instead
+      printf("Poller error\n");
       abort();
     }
     return pollReturnTime;
@@ -94,7 +95,7 @@ namespace oplib
     if (dispatcher_->index() < 0)
     {
       // TODO log error
-      //
+      printf("Removing event dispatcher error\n");
       abort();
     }
     else

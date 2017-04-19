@@ -63,6 +63,7 @@ namespace oplib
     void enableTcpNoDelay();
     void disableTcpNoDelay();
 
+    EventLoop* getLoop() { return _loop; }
    private:
 
     // Register to EventDispatcher

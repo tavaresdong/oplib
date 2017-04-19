@@ -6,7 +6,6 @@
 #include <stdlib.h>
 #include <strings.h>
 #include <unistd.h>
-#include <stdio.h>
 
 namespace oplib
 {
@@ -19,6 +18,7 @@ void close(int sockfd_)
   if (ret < 0)
   {
     // TODO: error log
+    printf("Close socket error\n");
     abort();
   }
 }
@@ -30,6 +30,7 @@ int createOrDie()
   if (fd < 0)
   {
     // TODO error log
+    printf("Create socket error\n");
     abort();
   }
   return fd;
@@ -41,6 +42,7 @@ void bindOrDie(int sockfd_, const struct sockaddr* addr_)
   if (ret < 0)
   {
     // TODO error log
+    printf("Bind socket error\n");
     abort();
   }
 }
@@ -52,6 +54,7 @@ void listenOrDie(int sockfd_)
   if (ret < 0)
   {
     // TODO: error log
+    printf("Listen socket error\n");
     abort();
   }
 }
@@ -63,6 +66,7 @@ void setReuseAddrOrDie(int sockfd_, bool on_)
   if (ret < 0)
   {
     // TODO error log
+    printf("Set reuse socket error\n");
     abort();
   }
 }
@@ -107,6 +111,7 @@ int accept(int sockfd_, struct sockaddr_in6* addr_)
       default:
         // TODO error log
         // TODO check other error codes
+        printf("Accept socket error\n");
         abort();
     }
   }
@@ -133,6 +138,7 @@ struct sockaddr_in getLocalAddr(int sockfd_)
   if (::getsockname(sockfd_, sockaddr_cast(&localaddr), &addrlen) < 0)
   {
     // TODO error log
+    printf("get local addr error\n");
     abort();
   }
 
@@ -144,6 +150,7 @@ void shutdownWrite(int sockfd_)
   if (::shutdown(sockfd_, SHUT_WR) < 0)
   {
     // TODO : log error
+    printf("shutdown write error\n");
     abort();
   }
 }

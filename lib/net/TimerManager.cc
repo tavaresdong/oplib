@@ -9,7 +9,8 @@
 #include <unistd.h>
 #include <sys/timerfd.h>
 #include <strings.h>
-#include <stdlib.h>
+#include <cstdlib>
+#include <cstdio>
 
 #include <iostream>
 
@@ -21,7 +22,11 @@ namespace oplib
     {
       int timerfd = ::timerfd_create(CLOCK_MONOTONIC, TFD_NONBLOCK | TFD_CLOEXEC);
       // TODO if timerfd < 0 log error and abort
-      if (timerfd < 0) abort();
+      if (timerfd < 0)
+      {
+        printf("create timerfd error\n");
+        abort();
+      }
       return timerfd;
     }
   }

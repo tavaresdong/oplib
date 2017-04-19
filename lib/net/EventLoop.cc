@@ -25,6 +25,7 @@ namespace oplib
     if (gLoopInThread != nullptr)
     {
       // TODO: add log here
+      printf("Already a loop in thread\n");
       abort();
     }
     gLoopInThread = this;
@@ -41,6 +42,7 @@ namespace oplib
     if (!inLoopThread())
     {
       // TODO: add log here
+      printf("No running in loop thread\n");
       abort();
     } 
   }

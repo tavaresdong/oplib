@@ -7,6 +7,7 @@
 
 #include <string>
 #include <cstdlib>
+#include <cstdio>
 
 namespace oplib
 {
@@ -41,6 +42,7 @@ namespace socketutils
     if (::inet_pton(AF_INET, ip_.data(), &addr_->sin_addr))
     {
       // TODO error log
+      printf("ipPortToSockAddr error\n");
       abort();
     }
   }
@@ -52,6 +54,7 @@ namespace socketutils
     if (::inet_pton(AF_INET6, ip_.data(), &addr6_->sin6_addr))
     {
       // TODO error log
+      printf("ipPortToSockAddr error\n");
       abort();
     }
   }

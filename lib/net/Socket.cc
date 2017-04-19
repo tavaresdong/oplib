@@ -4,6 +4,7 @@
 
 #include <strings.h>
 #include <unistd.h>
+#include <cstdio>
 #include <netinet/tcp.h>
 #include <sys/types.h>
 #include <sys/socket.h>
@@ -40,7 +41,10 @@ void Socket::setTcpNoDelay(bool on_)
                             TCP_NODELAY, &nodelay, sizeof(nodelay));
   // TODO: log
   if (result < 0)
+  {
+    printf("Set tcp nodelay error\n");
     abort();
+  }
 }
 
 int Socket::accept(InetAddress* peer_)

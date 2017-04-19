@@ -1,15 +1,17 @@
 #ifndef OPLIB_TCPSERVER_H
 #define OPLIB_TCPSERVER_H
 
+#include "InetAddress.h"
+#include "Types.h"
+#include "TCPConnection.h"
+#include "Listener.h"
+#include "EventLoopThreadPool.h"
+
 #include <string>
 #include <map>
 #include <memory>
 
 #include <util/Common.h>
-#include "InetAddress.h"
-#include "Types.h"
-#include "TCPConnection.h"
-#include "Listener.h"
 
 namespace oplib
 {
@@ -17,7 +19,10 @@ namespace oplib
   {
    public:
 
-    TCPServer(EventLoop* loop_, const InetAddress& address_, const std::string name_);
+    TCPServer(EventLoop* loop_, 
+              const InetAddress& address_, 
+              const std::string name_,
+              int nThreads_ = 0);
     ~TCPServer();
 
     // Thread-safe
@@ -33,6 +38,10 @@ namespace oplib
     void setWriteCompleteCallback(const ConnectionEventCallback cb_)
     { _writeCompleteCallback = cb_; }
 
+    // This must be called before _threadPool is started
+    void setNumThreads(int nThreads_)
+    { _threadPool->setNumThreads(nThreads_); }
+
    private:
     
     // Register to Listener, called when new connection is accepted
@@ -40,6 +49,7 @@ namespace oplib
     void newConnection(std::unique_ptr<Socket> sock_, const InetAddress& address_);
 
     void removeConnection(const TCPConnectionPtr& conn_);
+    void removeConnectionInLoop(const TCPConnectionPtr& conn_);
 
     // Store connections
     using ConnectionMap = std::map<std::string, TCPConnectionPtr>;
@@ -56,6 +66,7 @@ namespace oplib
     bool _started;
     int _nextConnId;
     ConnectionMap _connections;
+    std::unique_ptr<EventLoopThreadPool> _threadPool;
   };
 }
 

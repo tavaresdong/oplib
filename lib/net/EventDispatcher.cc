@@ -37,26 +37,30 @@ namespace oplib
       // TODO log warning
     }
 
-    if ((_revents & POLLHUP) && (!_revents & POLLIN))
+    if ((_revents & POLLHUP) && !(_revents & POLLIN))
     {
       // Peer closed, bust stil data to read, read
       // will return 0 only after all data in the channel are read
-      _closeCallback();
+      if (_closeCallback)
+        _closeCallback();
     }
 
     if (_revents & (POLLERR | POLLNVAL))
     {
-      _errorCallback();
+      if (_errorCallback)
+        _errorCallback();
     }
 
     if (_revents & (POLLIN | POLLPRI | POLLRDHUP))
     {
-      _readCallback(receiveTime_);
+      if (_readCallback)
+        _readCallback(receiveTime_);
     }
 
     if (_revents & POLLOUT)
     {
-      _writeCallback();
+      if (_writeCallback)
+        _writeCallback();
     }
 
     _handlingEvent = false;
