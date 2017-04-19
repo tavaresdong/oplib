@@ -240,3 +240,13 @@ void TCPConnection::shutdownInLoop()
     _sock->shutdownWrite();
   }
 }
+
+void TCPConnection::enableTcpNoDelay()
+{
+  _sock->setTcpNoDelay(true);
+}
+
+void TCPConnection::disableTcpNoDelay()
+{
+  _sock->setTcpNoDelay(false);
+}

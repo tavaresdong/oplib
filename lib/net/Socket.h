@@ -26,6 +26,8 @@ namespace oplib
 
     void shutdownWrite();
 
+    void setTcpNoDelay(bool on_);
+
    private:
     const int _sockfd;
   };

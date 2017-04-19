@@ -57,6 +57,9 @@ namespace oplib
     // shutdown() is thread-safe TODO
     void shutdown();
 
+    void enableTcpNoDelay();
+    void disableTcpNoDelay();
+
    private:
 
     // Register to EventDispatcher

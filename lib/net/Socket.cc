@@ -4,6 +4,7 @@
 
 #include <strings.h>
 #include <unistd.h>
+#include <netinet/tcp.h>
 #include <sys/types.h>
 #include <sys/socket.h>
 
@@ -31,6 +32,16 @@ void Socket::setReuseAddr(bool on_)
 
 void Socket::shutdownWrite()
 { socketutils::shutdownWrite(_sockfd); }
+
+void Socket::setTcpNoDelay(bool on_)
+{
+  int nodelay = on_ ? 1 : 0;
+  int result = ::setsockopt(_sockfd, IPPROTO_TCP,
+                            TCP_NODELAY, &nodelay, sizeof(nodelay));
+  // TODO: log
+  if (result < 0)
+    abort();
+}
 
 int Socket::accept(InetAddress* peer_)
 {
