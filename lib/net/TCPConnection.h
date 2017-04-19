@@ -47,6 +47,9 @@ namespace oplib
     void setCloseCallback(const CloseCallback& cb_)
     { _closeCallback = cb_; }
 
+    void setWriteCompleteCallback(const ConnectionEventCallback& cb_)
+    { _writeCompleteCallback = cb_; }
+
     // Called by the TCPServer in loop thread
     void connectionEstablished();
     void connectionClosed(); 
@@ -96,6 +99,8 @@ namespace oplib
     ConnectionCallback _connectionCallback;
     CloseCallback _closeCallback;
     MessageCallback _messageCallback;
+    ConnectionEventCallback _writeCompleteCallback;
+
     std::unique_ptr<EventDispatcher> _dispatcher;
 
     oplib::ds::Buffer _inputBuffer;

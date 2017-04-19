@@ -22,6 +22,7 @@ namespace oplib
   typedef std::function<void (const TCPConnectionPtr&)> ConnectionCallback;
   typedef std::function<void (const TCPConnectionPtr&, oplib::ds::Buffer*_, oplib::Timestamp)> MessageCallback;
   typedef std::function<void (const TCPConnectionPtr&)> CloseCallback;
+  typedef std::function<void (const TCPConnectionPtr&)> ConnectionEventCallback;
 }
 
 #endif

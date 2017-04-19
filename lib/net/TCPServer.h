@@ -30,6 +30,9 @@ namespace oplib
     void setMessageCallback(const MessageCallback& cb_)
     { _messageCallback = cb_; }
 
+    void setWriteCompleteCallback(const ConnectionEventCallback cb_)
+    { _writeCompleteCallback = cb_; }
+
    private:
     
     // Register to Listener, called when new connection is accepted
@@ -48,6 +51,8 @@ namespace oplib
     // To be passed to TCPConnections
     ConnectionCallback _connectionCallback;
     MessageCallback _messageCallback;
+    ConnectionEventCallback _writeCompleteCallback;
+
     bool _started;
     int _nextConnId;
     ConnectionMap _connections;

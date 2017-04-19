@@ -55,6 +55,7 @@ void TCPServer::newConnection(std::unique_ptr<Socket> sock_, const InetAddress& 
   conn->setConnectionCallback(_connectionCallback);
   conn->setMessageCallback(_messageCallback);
   conn->setCloseCallback(std::bind(&TCPServer::removeConnection, this, std::placeholders::_1));
+  conn->setWriteCompleteCallback(_writeCompleteCallback);
 
   // This will call the _connectionCallback
   conn->connectionEstablished();

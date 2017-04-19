@@ -193,6 +193,11 @@ void TCPConnection::sendInLoop(const std::string& message_)
       {
         // TODO log
       }
+      else if (_writeCompleteCallback)
+      {
+        // Write is complete, trigger _writeCompleteCallback
+        _loop->runInLoop(std::bind(_writeCompleteCallback, shared_from_this()));
+      }
     }
     else
     {
