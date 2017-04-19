@@ -5,7 +5,8 @@
 #include <poll.h>
 #include <stdlib.h>
 #include <algorithm>
-#include <assert.h>
+#include <cassert>
+#include <cstdio>
 
 namespace oplib
 {
@@ -31,6 +32,7 @@ namespace oplib
     Timestamp pollReturnTime { Timestamp::now() };
     if (numEvents > 0)
     {
+      printf("Poller:: poll return from %d with events: %d\n", CurrentThread::tid(), numEvents);
       fillDispatchers(numEvents, activeDispatchers_);
     }
     else if (numEvents < 0)
@@ -69,8 +71,8 @@ namespace oplib
       // A new dispatcher
       struct pollfd pfd;
       pfd.fd = dispatcher_->fd();
-      pfd.events = dispatcher_->events();
-      pfd.revents = dispatcher_->revents();
+      pfd.events = static_cast<short>(dispatcher_->events());
+      pfd.revents = 0;
       _pollfds.push_back(pfd);
       dispatcher_->setIndex(static_cast<int>(_pollfds.size()) - 1);
       _dispatchers[pfd.fd] = dispatcher_;
@@ -78,12 +80,15 @@ namespace oplib
     else
     {
       int index = dispatcher_->index();
-      auto& pfd = _pollfds[index];
+      assert(0 <= index && index < static_cast<int>(_pollfds.size()));
+      struct pollfd& pfd = _pollfds[index];
+      assert(pfd.fd == dispatcher_->fd() || pfd.fd == -dispatcher_->fd() - 1);
       pfd.events = static_cast<short>(dispatcher_->events());
+      printf("Updating dispatcher's events %d\n in thread %d\n", pfd.events, CurrentThread::tid());
       pfd.revents = 0;
       if (dispatcher_->isIgnored())
       {
-        pfd.events = -static_cast<short>(dispatcher_->events()) - 1;
+        pfd.fd = -dispatcher_->fd() - 1;
       }
     }
   }

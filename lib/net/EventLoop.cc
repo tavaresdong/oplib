@@ -58,7 +58,10 @@ namespace oplib
   { _poller->updateEventDispatcher(dp_); }
 
   void EventLoop::removeEventDispatcher(EventDispatcher* dp_)
-  { _poller->removeEventDispatcher(dp_); }
+  {
+    printf("EventLoop::removeEventDispatcher\n");
+    _poller->removeEventDispatcher(dp_); 
+  }
 
   void EventLoop::loop()
   {
@@ -146,6 +149,7 @@ namespace oplib
 
   void EventLoop::executePendingFunctors()
   {
+    printf("Executing pending functors in thread %d\n", CurrentThread::tid());
     _executingFunctors.exchange(true);
     std::vector<Functor> toExecute;
     {
@@ -154,6 +158,7 @@ namespace oplib
       toExecute.swap(_pendingFunctors);
     }
 
+    printf("Executing pending functors (%lu) in thread %d\n", toExecute.size(), CurrentThread::tid());
     // Execute the functors sequentially
     for (auto& func : toExecute)
     {

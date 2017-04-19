@@ -32,6 +32,7 @@ namespace oplib
   void EventDispatcher::handleEvent(oplib::Timestamp receiveTime_)
   {
     _handlingEvent = true;
+
     if (_revents & POLLNVAL)
     {
       // TODO log warning
@@ -41,24 +42,28 @@ namespace oplib
     {
       // Peer closed, bust stil data to read, read
       // will return 0 only after all data in the channel are read
+      printf("EventDispatcher::closeCallback()\n");
       if (_closeCallback)
         _closeCallback();
     }
 
     if (_revents & (POLLERR | POLLNVAL))
     {
+      printf("EventDispatcher::errorCallback()\n");
       if (_errorCallback)
         _errorCallback();
     }
 
     if (_revents & (POLLIN | POLLPRI | POLLRDHUP))
     {
+      printf("EventDispatcher::readCallback() from thread %d\n", CurrentThread::tid());
       if (_readCallback)
         _readCallback(receiveTime_);
     }
 
     if (_revents & POLLOUT)
     {
+      printf("EventDispatcher::writeCallback() from thread %d\n", CurrentThread::tid());
       if (_writeCallback)
         _writeCallback();
     }

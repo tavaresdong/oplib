@@ -43,6 +43,8 @@ void TCPServer::newConnection(std::unique_ptr<Socket> sock_, const InetAddress& 
   // This should be called in the loop thread
   _loop->inLoopThreadOrDie();
 
+  printf("Acception new connection from %d\n", CurrentThread::tid());
+
   std::ostringstream oss;
   oss << _name << "_" << _nextConnId;
 
@@ -74,13 +76,14 @@ void TCPServer::newConnection(std::unique_ptr<Socket> sock_, const InetAddress& 
 
 void TCPServer::removeConnection(const TCPConnectionPtr& conn_)
 {
+  printf("TCPServer::removeConnection\n");
   _loop->runInLoop(std::bind(&TCPServer::removeConnectionInLoop, this, conn_));
 }
 
 void TCPServer::removeConnectionInLoop(const TCPConnectionPtr& conn_)
 {
   _loop->inLoopThreadOrDie();
-  printf("Erasing conn %s from _connections\n", conn_->name().c_str());
+  printf("removeConnectionInLoop %s from _connections\n", conn_->name().c_str());
   auto n = _connections.erase(conn_->name());
   assert(n == 1);
   UNUSED(n);

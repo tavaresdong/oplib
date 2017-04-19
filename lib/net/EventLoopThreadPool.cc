@@ -36,7 +36,7 @@ EventLoop* EventLoopThreadPool::getNextLoop()
   _masterLoop->inLoopThreadOrDie();
 
   // If single-threaded, just use the master loop
-  auto loop = _masterLoop;
+  EventLoop* loop = _masterLoop;
 
   if (!_loops.empty())
   {

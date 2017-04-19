@@ -1,0 +1,66 @@
+main(): pid = 22858
+Poller:: poll return from 22858 with events: 1
+EventDispatcher::readCallback() from thread 22858
+Acception new connection from 22858
+Choosing loop: 0x7f3dbd2c5cf0
+Connection name is MyServer_0.0.0.0:9981_1
+Executing pending functors in thread 22858
+Poller:: poll return from 22859 with events: 1
+Executing pending functors (0) in thread 22858
+EventDispatcher::readCallback() from thread 22859
+Executing pending functors in thread 22859
+Executing pending functors (1) in thread 22859
+Connection established from 22859
+onConnection(): new connection [MyServer_0.0.0.0:9981_1] from 127.0.0.1:40310
+Sending data complete
+Poller:: poll return from 22859 with events: 1
+EventDispatcher::readCallback() from thread 22859
+Updating dispatcher's events 0
+ in thread 22859
+TCPConnection::handleClose() from 22859
+TCPServer::removeConnection
+Executing pending functors in thread 22859
+Executing pending functors (0) in thread 22859
+Poller:: poll return from 22859 with events: 1
+EventDispatcher::readCallback() from thread 22859
+Poller:: poll return from 22858 with events: 1
+EventDispatcher::readCallback() from thread 22858
+Updating dispatcher's events 0
+ in thread 22859
+TCPConnection::handleClose() from 22859
+Executing pending functors in thread 22858
+TCPServer::removeConnection
+Executing pending functors (1) in thread 22858
+EventDispatcher::writeCallback() from thread 22859
+Updating dispatcher's events 0
+ in thread 22859
+Connection is down, no more writing
+Executing pending functors in thread 22859
+Executing pending functors (0) in thread 22859
+removeConnectionInLoop MyServer_0.0.0.0:9981_1 from _connections
+Poller:: poll return from 22859 with events: 1
+EventDispatcher::readCallback() from thread 22859
+Updating dispatcher's events 0
+ in thread 22859
+TCPConnection::handleClose() from 22859
+TCPServer::removeConnection
+EventDispatcher::writeCallback() from thread 22859
+Updating dispatcher's events 0
+ in thread 22859
+Connection is down, no more writing
+Executing pending functors in thread 22859
+Executing pending functors (1) in thread 22859
+Poller:: poll return from 22858 with events: 1
+EventDispatcher::readCallback() from thread 22858
+TCPConnection::connectionClosed
+Executing pending functors in thread 22858
+Updating dispatcher's events 0
+ in thread 22859
+Executing pending functors (2) in thread 22858
+removeConnectionInLoop MyServer_0.0.0.0:9981_1 from _connections
+onConnection(): connection [MyServer_0.0.0.0:9981_1] is down
+EventLoop::removeEventDispatcher
+Poller:: poll return from 22859 with events: 1
+EventDispatcher::readCallback() from thread 22859
+Executing pending functors in thread 22859
+Executing pending functors (0) in thread 22859

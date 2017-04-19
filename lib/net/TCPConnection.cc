@@ -48,11 +48,14 @@ TCPConnection::TCPConnection(EventLoop *loop_,
 TCPConnection::~TCPConnection()
 {
   // TODO log here
+  printf("TCPConnection destroyed\n");
 }
 
 void TCPConnection::connectionEstablished()
 {
   _loop->inLoopThreadOrDie();
+
+  printf("Connection established from %d\n", CurrentThread::tid());
   assert(_state == State::CONNECTING);
   setState(State::CONNECTED);
 
@@ -70,6 +73,7 @@ void TCPConnection::connectionEstablished()
 
 void TCPConnection::connectionClosed()
 {
+  printf("TCPConnection::connectionClosed\n");
   _loop->inLoopThreadOrDie();
   assert(_state == State::CONNECTED ||
          _state == State::DISCONNECTING);
@@ -123,6 +127,7 @@ void TCPConnection::handleWrite()
       _outputBuffer.retrieve(nwrite);
       if (_outputBuffer.readableBytes() == 0u)
       {
+        printf("Writing disabled\n");
         _dispatcher->disableWriting();
         if (_writeCompleteCallback)
         {
@@ -147,6 +152,7 @@ void TCPConnection::handleWrite()
   else
   {
     // TODO: log connection is down, no more writing
+    _dispatcher->disableWriting();
     printf("Connection is down, no more writing\n");
   }
 }
@@ -159,7 +165,7 @@ void TCPConnection::handleClose()
   _dispatcher->disable();
 
   // This CloseCallback binds to TCPServer/TCPClient's removeConnection
-  // method
+  printf("TCPConnection::handleClose() from %d\n", CurrentThread::tid());
   _closeCallback(shared_from_this());
 }
 

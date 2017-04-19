@@ -1,6 +1,6 @@
 #include "EventLoopThread.h"
 
-#include <assert.h>
+#include <cassert>
 
 namespace oplib
 {
@@ -50,6 +50,7 @@ namespace oplib
       }
     }
 
+    assert(_loop != nullptr);
     return _loop;
   }
 }
