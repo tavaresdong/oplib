@@ -7,6 +7,7 @@ file(GLOB eventloop_t6 test_eventloop6.cc)
 file(GLOB eventloop_t7 test_eventloop7.cc)
 file(GLOB eventloop_t8 test_eventloop8.cc)
 file(GLOB eventloop_t9 test_eventloop9.cc)
+file(GLOB eventloop_t10 test_eventloop10.cc)
 file(GLOB timertest test_timer.cc)
 file(GLOB listenertest test_listener.cc)
 file(GLOB tcpservertest test_tcpserver.cc)
@@ -21,6 +22,7 @@ ADD_EXECUTABLE(testeventLoop6 ${eventloop_t6})
 ADD_EXECUTABLE(testeventLoop7 ${eventloop_t7})
 ADD_EXECUTABLE(testeventLoop8 ${eventloop_t8})
 ADD_EXECUTABLE(testeventLoop9 ${eventloop_t9})
+ADD_EXECUTABLE(testeventLoop10 ${eventloop_t10})
 ADD_EXECUTABLE(timertest ${timertest})
 ADD_EXECUTABLE(listenertest ${listenertest})
 ADD_EXECUTABLE(tcpservertest ${tcpservertest})
@@ -67,6 +69,11 @@ TARGET_LINK_LIBRARIES(testeventLoop8
 )
 
 TARGET_LINK_LIBRARIES(testeventLoop9
+    libop_thread
+    libop_net
+)
+
+TARGET_LINK_LIBRARIES(testeventLoop10
     libop_thread
     libop_net
 )

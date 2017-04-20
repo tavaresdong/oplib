@@ -46,6 +46,11 @@ namespace oplib
         _closeCallback();
     }
 
+    if (_revents & POLLNVAL)
+    {
+      printf("EventDispatcher::handleEvent() : POLLNVAL\n");
+    }
+
     if (_revents & (POLLERR | POLLNVAL))
     {
       if (_errorCallback)

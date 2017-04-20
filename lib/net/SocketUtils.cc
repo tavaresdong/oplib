@@ -155,5 +155,45 @@ void shutdownWrite(int sockfd_)
   }
 }
 
+int getSocketError(int sockfd_)
+{
+  int optval;
+  socklen_t optlen = sizeof optval;
+
+  if (::getsockopt(sockfd_, SOL_SOCKET, SO_ERROR, &optval, &optlen) < 0)
+  {
+    return errno;
+  }
+  else
+  {
+    return optval;
+  }
+}
+
+struct sockaddr_in getPeerAddr(int sockfd_)
+{
+  struct sockaddr_in peeraddr;
+  ::bzero(&peeraddr, sizeof(peeraddr));
+  socklen_t addrlen = sizeof(peeraddr);
+  if (::getpeername(sockfd_, sockaddr_cast(&peeraddr), &addrlen) < 0)
+  {
+    printf("Error in getpeername\n");
+  }
+  return peeraddr;
+}
+
+bool isSelfConnect(int sockfd_)
+{
+  struct sockaddr_in localaddr = getLocalAddr(sockfd_);
+  struct sockaddr_in peeraddr = getPeerAddr(sockfd_);
+  return localaddr.sin_port == peeraddr.sin_port
+      && localaddr.sin_addr.s_addr == peeraddr.sin_addr.s_addr;
+}
+
+int connect(int sockfd, const struct sockaddr_in& addr)
+{
+  return ::connect(sockfd, sockaddr_cast(&addr), sizeof addr);
+}
+
 }
 }

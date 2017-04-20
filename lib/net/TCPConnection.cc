@@ -1,11 +1,13 @@
 #include "TCPConnection.h"
 #include "EventDispatcher.h"
+#include "SocketUtils.h"
 #include <util/Common.h>
 
 #include <unistd.h>
 #include <signal.h>
 #include <cassert>
 #include <cstdio>
+#include <string.h>
 
 using namespace oplib;
 
@@ -167,8 +169,8 @@ void TCPConnection::handleClose()
 void TCPConnection::handleError()
 {
   // TODO: log error info
-  printf("TCPConnection::handleError() called\n");
-  abort();
+  int err = socketutils::getSocketError(_dispatcher->fd());
+  printf("TCPConnection::handleError() error is %s\n", ::strerror(err));
 }
 
 void TCPConnection::send(const std::string& message_)

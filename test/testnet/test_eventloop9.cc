@@ -58,7 +58,7 @@ int main()
   oplib::InetAddress listenAddr(9981);
   oplib::EventLoop loop;
 
-  oplib::TCPServer server(&loop, listenAddr, "MyServer", 3);
+  oplib::TCPServer server(&loop, listenAddr, "MyServer");
   server.setConnectionCallback(onConnection);
   server.setMessageCallback(onMessage);
   server.setWriteCompleteCallback(onWriteComplete);

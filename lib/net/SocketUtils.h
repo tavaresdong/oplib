@@ -39,7 +39,13 @@ namespace socketutils
   {
     addr_->sin_family = AF_INET;
     addr_->sin_port = hostToNetwork16(port_);
-    if (::inet_pton(AF_INET, ip_.data(), &addr_->sin_addr))
+    int result = ::inet_pton(AF_INET, ip_.data(), &addr_->sin_addr);
+    if (result == 0)
+    {
+      printf("Invalid address representation: %s, cannot convert to ip address\n", ip_.c_str());
+      abort();
+    }
+    else if (result < 0)
     {
       // TODO error log
       printf("ipPortToSockAddr error\n");
@@ -51,7 +57,13 @@ namespace socketutils
   {
     addr6_->sin6_family = AF_INET6;
     addr6_->sin6_port = hostToNetwork16(port_);
-    if (::inet_pton(AF_INET6, ip_.data(), &addr6_->sin6_addr))
+    int result = ::inet_pton(AF_INET6, ip_.data(), &addr6_->sin6_addr);
+    if (result == 0)
+    {
+      printf("Invalid address representation: %s, cannot convert to valid ipv6 address\n", ip_.c_str());
+      abort();
+    }
+    else if (result < 0)
     {
       // TODO error log
       printf("ipPortToSockAddr error\n");
@@ -59,9 +71,12 @@ namespace socketutils
     }
   }
 
+  int connect(int sockfd, const struct sockaddr_in& addr);
+
   void shutdownWrite(int sockfd_);
 
   void close(int sockfd_);
+
 
   int createOrDie();
 
@@ -84,6 +99,12 @@ namespace socketutils
   std::string toHostPort(const struct sockaddr_in* addr_);
 
   struct sockaddr_in getLocalAddr(int sockfd_);
+
+  int getSocketError(int sockfd_);
+
+  bool isSelfConnect(int sockfd_);
+
+  struct sockaddr_in getPeerAddr(int sockfd_);
 }
 }
 

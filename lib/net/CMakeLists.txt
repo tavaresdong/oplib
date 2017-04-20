@@ -11,6 +11,7 @@ set(libop_net_SRCS
     SocketUtils.cc
     TCPServer.cc
     TCPConnection.cc
+    Connector.cc
 )
 
 # Declare the library

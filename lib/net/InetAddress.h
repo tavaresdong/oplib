@@ -27,6 +27,8 @@ namespace oplib
     // std::string toIpPort() const;
     std::string toHostPort() const;
 
+    const struct sockaddr_in& getSockAddrInet() const { return _addr; }
+
     const struct sockaddr* sockaddr() const;
 
     static bool resolve(const std::string& host_, InetAddress* result_);
