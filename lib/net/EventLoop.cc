@@ -90,23 +90,28 @@ namespace oplib
     _looping.exchange(false);
   }
 
-  void EventLoop::runAt(const Timestamp& when_, const TimerCallback& cb_)
+  TimerId EventLoop::runAt(const Timestamp& when_, const TimerCallback& cb_)
   {
-    _timerMgr->addTimer(cb_, when_, 0.0);
+    return _timerMgr->addTimer(cb_, when_, 0.0);
   }
 
-  void EventLoop::runEvery(double interval_, const TimerCallback& cb_)
+  TimerId EventLoop::runEvery(double interval_, const TimerCallback& cb_)
   {
     Timestamp fire { Timestamp::now() };
     fire += interval_;
-    _timerMgr->addTimer(cb_, fire, interval_);
+    return _timerMgr->addTimer(cb_, fire, interval_);
   }
 
-  void EventLoop::runAfter(double delay_, const TimerCallback& cb_)
+  TimerId EventLoop::runAfter(double delay_, const TimerCallback& cb_)
   {
     Timestamp fire { Timestamp::now() };
     fire += delay_; 
-    _timerMgr->addTimer(cb_, fire, 0.0);
+    return _timerMgr->addTimer(cb_, fire, 0.0);
+  }
+
+  void EventLoop::cancel(TimerId timerId_)
+  {
+    _timerMgr->cancel(timerId_);
   }
 
   void EventLoop::runInLoop(const Functor& func_)

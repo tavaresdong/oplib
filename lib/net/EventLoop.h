@@ -1,16 +1,18 @@
 #ifndef OPLIB_EVENTLOOP_H
 #define OPLIB_EVENTLOOP_H
 
-#include <util/Common.h>
-#include <util/Timestamp.h>
-#include <thread/Thread.h>
-#include <thread/Mutex.h>
 #include "Types.h"
+#include "TimerManager.h"
 
 #include <sys/types.h>
 #include <atomic>
 #include <memory>
 #include <vector>
+
+#include <util/Common.h>
+#include <util/Timestamp.h>
+#include <thread/Thread.h>
+#include <thread/Mutex.h>
 
 namespace oplib
 {
@@ -50,13 +52,16 @@ namespace oplib
     void removeEventDispatcher(EventDispatcher* dp_);
 
     // Run at a time
-    void runAt(const Timestamp& when_, const TimerCallback& cb_);
+    TimerId runAt(const Timestamp& when_, const TimerCallback& cb_);
 
     // Run every time interval
-    void runEvery(double interval_, const TimerCallback& cb_);
+    TimerId runEvery(double interval_, const TimerCallback& cb_);
 
     // Run after a period of time
-    void runAfter(double delay_, const TimerCallback& cb_);
+    TimerId runAfter(double delay_, const TimerCallback& cb_);
+
+    // Cancel a timer
+    void cancel(TimerId timerId_);
 
     // Run a functor callback in the loop thread
     void runInLoop(const Functor& func_);

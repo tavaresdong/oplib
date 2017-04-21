@@ -3,6 +3,7 @@
 #include <net/EventLoop.h>
 #include <thread/Thread.h>
 #include <util/Timestamp.h>
+#include <net/TimerManager.h>
 
 #include <functional>
 
@@ -11,6 +12,8 @@
 
 int cnt = 0;
 oplib::EventLoop* g_loop;
+bool cancelled;
+oplib::TimerId timerid;
 
 void printTid()
 {
@@ -27,11 +30,28 @@ void print(const char* msg)
   }
 }
 
+void guard(const oplib::TimerId& id_)
+{
+  if (cnt > 10 && !cancelled)
+  {
+    cancelled = true;
+    printf("More than 10 prints, cancel the 3-second timer\n");
+    g_loop->cancel(id_);
+  }
+}
+
+void selfCancel()
+{
+  printf("selfCancel\n");
+  g_loop->cancel(timerid);
+}
+
 int main()
 {
   printTid();
   oplib::EventLoop loop;
   g_loop = &loop;
+  cancelled = false;
 
   print("main");
   loop.runAfter(1, std::bind(print, "once1"));
@@ -39,7 +59,9 @@ int main()
   loop.runAfter(2.5, std::bind(print, "once2.5"));
   loop.runAfter(3.5, std::bind(print, "once3.5"));
   loop.runEvery(2, std::bind(print, "every2"));
-  loop.runEvery(3, std::bind(print, "every3"));
+  auto id =  loop.runEvery(3, std::bind(print, "every3"));
+  loop.runEvery(1, std::bind(guard, id));
+  timerid = loop.runEvery(2, selfCancel);
 
   loop.loop();
   print("main loop exits");

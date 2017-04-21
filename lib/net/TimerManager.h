@@ -7,7 +7,9 @@
 
 #include <vector>
 #include <map>
+#include <set>
 #include <memory>
+#include <atomic>
 
 namespace oplib
 {
@@ -15,10 +17,16 @@ namespace oplib
   {
    public:
     Timer(TimerCallback cb_, Timestamp when_, double interval_)
-    : _timerCallback(cb_), _when(when_), _interval(interval_), _repeating(interval_ > 0.0)
+    : _timerCallback(cb_),
+      _when(when_),
+      _interval(interval_), 
+      _repeating(interval_ > 0.0),
+      _id(++_sequence)
     {}
 
     void run() { _timerCallback(); }
+
+    int id() { return _id; }
 
     Timestamp expireTime() const { return _when; }
     bool repeating() const { return _repeating; }
@@ -41,7 +49,14 @@ namespace oplib
     Timestamp _when;
     double _interval;
     bool _repeating;
+    int _id;
+
+    // Atomic incrementing sequence number for timers created
+    // to identify different timers because their address could be the same
+    static std::atomic<int> _sequence;
   };
+
+  typedef std::pair<std::shared_ptr<Timer>, int> TimerId;
 
   class TimerManager : Noncopyable
   {
@@ -56,21 +71,22 @@ namespace oplib
     
     TimerList expiredTimers(Timestamp current_);
 
-    void addTimer(const TimerCallback& cb_, Timestamp when_, double interval_);
+    TimerId addTimer(const TimerCallback& cb_, Timestamp when_, double interval_);
 
-    // TODO cancel a timer
+    void cancel(const TimerId& timerId_);
+
    private:
     using TimerMap = std::multimap<Timestamp, std::shared_ptr<Timer>>;
+    using ActiveTimerSet = std::set<TimerId>;
 
     void addTimerInLoop(const std::shared_ptr<Timer>& timer_);
+    void cancelInLoop(const TimerId& timerId_);
 
     void reset(const TimerList& timerlist_);
+    bool insert(const std::shared_ptr<Timer>& timerptr_);
 
     // Reset timerfd to watch the most recently triggered timer in the future
     void resetTimerfd();
-
-    // Insert a timer into the TimerManager, update timerfd if needed
-    bool insert(const std::shared_ptr<Timer>& timerptr_);
 
     // TODO: implement binary head/4-heap to store non-expired timers
 
@@ -78,6 +94,9 @@ namespace oplib
     const int _timerfd;
     EventDispatcher _dispatcher;
     TimerMap _timers;
+    ActiveTimerSet _activeTimers;
+    ActiveTimerSet _cancelledTimers;
+    bool _executingExpiredTimers;
   };
 
 }

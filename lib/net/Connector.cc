@@ -20,7 +20,8 @@ Connector::Connector(EventLoop* loop_, const InetAddress& serverAddr_)
 Connector::~Connector()
 {
   // TODO: cancel the timer
-  //_loop->cancel(timerid);
+  printf("Connector::~Connector()\n");
+  _loop->cancel(_timerId);
   assert(!_dispatcher);
 }
 
@@ -177,7 +178,7 @@ void Connector::retry(int sockfd)
   if (_connect)
   {
     // TODO use a timerid to record the timer so we can cancel if needed
-    _loop->runAfter(_retryDelay / 1000.0, std::bind(&Connector::startInLoop, this));
+    _timerId = _loop->runAfter(_retryDelay / 1000.0, std::bind(&Connector::startInLoop, this));
     _retryDelay = std::min(maxRetryMs, 2 * _retryDelay);
   }
   else

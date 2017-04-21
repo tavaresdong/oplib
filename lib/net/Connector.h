@@ -4,6 +4,7 @@
 #include "EventLoop.h"
 #include "InetAddress.h"
 #include "EventDispatcher.h"
+#include "TimerManager.h"
 
 #include <functional>
 #include <memory>
@@ -71,6 +72,8 @@ namespace net
      std::unique_ptr<EventDispatcher> _dispatcher;
      NewConnectionCallback _newConnectionCallback;
      int _retryDelay;
+
+     TimerId _timerId;
   };
 
   typedef std::shared_ptr<Connector> ConnectorPtr;
