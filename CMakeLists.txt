@@ -11,3 +11,4 @@ include_directories(${PROJECT_SOURCE_DIR}/lib)
 
 add_subdirectory(test)
 add_subdirectory(lib)
+add_subdirectory(app)
